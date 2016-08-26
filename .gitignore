@@ -1,0 +1,35 @@
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+~*
+ehthumbs.db
+Thumbs.db
+*.log
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+wp-content/themes/twenty*/
+readme.2fd238191462749640e7d5599b608102.html
+wp-content/plugins/wordfence/tmp/
