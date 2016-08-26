@@ -86,4 +86,9 @@ function parallax_homepage_widgets() {
 
 }
 
-genesis();
+//genesis();
+
+//get_header(); ?>
+<?php get_header('custom');?>
+
+Hello World

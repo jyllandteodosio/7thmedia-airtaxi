@@ -20,9 +20,9 @@ function parallax_customizer(){
 include_once( get_stylesheet_directory() . '/lib/output.php' );
 
 //* Child theme (do not remove)
-define( 'CHILD_THEME_NAME', 'Parallax Pro Theme' );
-define( 'CHILD_THEME_URL', 'http://my.studiopress.com/themes/parallax/' );
-define( 'CHILD_THEME_VERSION', '1.2.2' );
+define( 'CHILD_THEME_NAME', 'AirTaxi' );
+define( 'CHILD_THEME_URL', '' );
+define( 'CHILD_THEME_VERSION', '1.0' );
 
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'parallax_enqueue_scripts_styles' );

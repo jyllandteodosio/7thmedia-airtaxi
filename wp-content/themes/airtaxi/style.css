@@ -1,11 +1,10 @@
 /*
-	Theme Name: Parallax Pro Theme
-	Theme URI: http://my.studiopress.com/themes/parallax/
-	Description: The new role of website design is to tell a story, which is what Parallax Pro was developed to do.
-	Author: StudioPress
-	Author URI: http://www.studiopress.com/
+	Theme Name: AirTaxi
+	Theme URI: 
+	Description: 
+	Author URI: 
 
-	Version: 1.2.2
+	Version: 1.0
 
 	Tags: black, white, blue, green, orange, pink, one-column, two-columns, responsive-layout, custom-header, custom-menu, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
@@ -898,7 +897,7 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #000;
+	background-color: #4ec5cd;
 	left: 0;
 	position: fixed;
 	top: 0;
