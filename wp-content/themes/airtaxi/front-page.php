@@ -14,7 +14,7 @@ add_action( 'genesis_meta', 'parallax_home_genesis_meta' );
  */
 function parallax_home_genesis_meta() {
 
-	if ( is_active_sidebar( 'home-section-1' ) || is_active_sidebar( 'home-section-2' ) || is_active_sidebar( 'home-section-3' ) || is_active_sidebar( 'home-section-4' ) || is_active_sidebar( 'home-section-5' ) ) {
+	if ( is_active_sidebar( 'home-section-1' ) || is_active_sidebar( 'home-section-2' ) || is_active_sidebar( 'home-section-3' ) || is_active_sidebar( 'home-section-4' ) || is_active_sidebar( 'home-section-5' ) || is_active_sidebar( 'home-section-6' ) || is_active_sidebar( 'home-section-7' ) ) {
 
 		//* Enqueue parallax script
 		add_action( 'wp_enqueue_scripts', 'parallax_enqueue_parallax_script' );
@@ -83,12 +83,20 @@ function parallax_homepage_widgets() {
 		'before' => '<div class="home-odd home-section-5 widget-area"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
+    
+    genesis_widget_area( 'home-section-6', array(
+		'before' => '<div class="home-even home-section-6 widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	) );
+    
+    genesis_widget_area( 'home-section-7', array(
+		'before' => '<div class="home-odd home-section-7 widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	) );
 
 }
 
-//genesis();
+//get_header('custom');
 
-//get_header(); ?>
-<?php get_header('custom');?>
+genesis();
 
-Hello World

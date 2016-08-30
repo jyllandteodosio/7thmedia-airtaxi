@@ -29,9 +29,11 @@ add_action( 'wp_enqueue_scripts', 'parallax_enqueue_scripts_styles' );
 function parallax_enqueue_scripts_styles() {
 
 	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.js', array( 'jquery' ), '1.0.0' );
 
 	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Montserrat|Sorts+Mill+Goudy', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script|Lato', array(), CHILD_THEME_VERSION );
 
 }
 
@@ -43,11 +45,11 @@ add_theme_support( 'genesis-responsive-viewport' );
 
 //* Reposition the primary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_before_content_sidebar_wrap', 'genesis_do_nav' );
+//add_action( 'genesis_header', 'genesis_do_nav' );
 
 //* Reposition the secondary navigation menu
-remove_action( 'genesis_after_header', 'genesis_do_subnav' );
-add_action( 'genesis_footer', 'genesis_do_subnav', 7 );
+//remove_action( 'genesis_after_header', 'genesis_do_subnav' );
+//add_action( 'genesis_footer', 'genesis_do_subnav', 7 );
 
 //* Reduce the secondary navigation menu to one level depth
 add_filter( 'wp_nav_menu_args', 'parallax_secondary_menu_args' );
@@ -67,12 +69,12 @@ genesis_unregister_layout( 'sidebar-content-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
 
 //* Add support for additional color styles
-add_theme_support( 'genesis-style-selector', array(
-	'parallax-pro-blue'   => __( 'Parallax Pro Blue', 'parallax' ),
-	'parallax-pro-green'  => __( 'Parallax Pro Green', 'parallax' ),
-	'parallax-pro-orange' => __( 'Parallax Pro Orange', 'parallax' ),
-	'parallax-pro-pink'   => __( 'Parallax Pro Pink', 'parallax' ),
-) );
+//add_theme_support( 'genesis-style-selector', array(
+//	'parallax-pro-blue'   => __( 'Parallax Pro Blue', 'parallax' ),
+//	'parallax-pro-green'  => __( 'Parallax Pro Green', 'parallax' ),
+//	'parallax-pro-orange' => __( 'Parallax Pro Orange', 'parallax' ),
+//	'parallax-pro-pink'   => __( 'Parallax Pro Pink', 'parallax' ),
+//) );
 
 //* Unregister secondary sidebar
 unregister_sidebar( 'sidebar-alt' );
@@ -147,4 +149,14 @@ genesis_register_sidebar( array(
 	'id'          => 'home-section-5',
 	'name'        => __( 'Home Section 5', 'parallax' ),
 	'description' => __( 'This is the home section 5 section.', 'parallax' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'home-section-6',
+	'name'        => __( 'Home Section 6', 'parallax' ),
+	'description' => __( 'This is the home section 6 section.', 'parallax' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'home-section-7',
+	'name'        => __( 'Home Section 7', 'parallax' ),
+	'description' => __( 'This is the home section 7 section.', 'parallax' ),
 ) );
