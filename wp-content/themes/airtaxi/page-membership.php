@@ -1,10 +1,10 @@
 <?php
 /**
- * This file adds the Home Page to the Parallax Pro Theme.
+ * This file adds the .
  *
- * @author StudioPress
- * @package Parallax
- * @subpackage Customizations
+ * @author 
+ * @package 
+ * @subpackage 
  */
 
 add_action( 'genesis_meta', 'parallax_home_genesis_meta' );

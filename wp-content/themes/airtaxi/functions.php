@@ -114,6 +114,59 @@ function parallax_comments_gravatar( $args ) {
 
 }
 
+
+/**
+* CUSTOM CODE====================================================
+*/
+/**
+ * Replace "themeslug" with your theme's unique slug
+ *
+ * @see http://codex.wordpress.org/Theme_Review#Guidelines
+ */
+add_filter( 'single_template', 'themeslug_single_template' );
+
+/**
+ * Add category considerations to the templates WordPress uses for single posts
+ *
+ * @global obj $post The default WordPress post object. Used so we have an ID for get_post_type()
+ * @param string $template The currently located template from get_single_template()
+ * @return string The new locate_template() result
+ */
+function themeslug_single_template( $template ) {
+    global $post;
+
+    $categories = get_the_category();
+
+    if ( ! $categories )
+        return $template; // no need to continue if there are no categories
+
+    $post_type = get_post_type( $post->ID );
+
+    $templates = array();
+
+    foreach ( $categories as $category ) {
+
+        $templates[] = "single-{$post_type}-{$category->slug}.php";
+
+        $templates[] = "single-{$post_type}-{$category->term_id}.php";
+    }
+
+    // remember the default templates
+
+    $templates[] = "single-{$post_type}.php";
+
+    $templates[] = 'single.php';
+
+    $templates[] = 'index.php';
+
+    /**
+     * Let WordPress figure out if the templates exist or not.
+     *
+     * @see http://codex.wordpress.org/Function_Reference/locate_template
+     */
+    return locate_template( $templates );
+}
+
 //* Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 1 );
 
