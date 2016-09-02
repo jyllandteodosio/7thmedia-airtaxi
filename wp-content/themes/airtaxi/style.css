@@ -2101,6 +2101,11 @@ CUSTOM CSS
 ---------------------------------------------------------------------------------------------------- */
 
 
+.site-inner {
+    max-width: 100%;
+}
+
+
 /* Homepage Section - Slideshow
 --------------------------------------------- */
 
@@ -2108,7 +2113,8 @@ CUSTOM CSS
     font-size: 30px;
 }
 
-#meteor-slides-widget-2 .meteor-slides .meteor-buttons {
+#meteor-slides-widget-2 .meteor-slides .meteor-buttons,
+.aircraft-slideshow .meteor-slides .meteor-buttons {
     bottom: 15px;
     box-sizing: initial;
     height: 9px;
@@ -2122,7 +2128,8 @@ CUSTOM CSS
     text-align: center;     
 }
 
-#meteor-slides-widget-2 .meteor-slides .meteor-buttons a {
+#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+.aircraft-slideshow .meteor-slides .meteor-buttons a {
     float: none;
     background: #f3f3f3;
     border-radius: 16px;
@@ -2137,11 +2144,13 @@ CUSTOM CSS
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-#meteor-slides-widget-2 .meteor-buttons a.activeSlide {
+#meteor-slides-widget-2 .meteor-buttons a.activeSlide,
+.aircraft-slideshow .meteor-buttons a.activeSlide {
     background: #4ec5cd; 
 }
 
-#meteor-slides-widget-2 div.meteor-slides.navpaged, div.meteor-slides.navboth {
+#meteor-slides-widget-2 div.meteor-slides.navpaged, div.meteor-slides.navboth,
+.aircraft-slideshow div.meteor-slides.navpaged, div.meteor-slides.navboth {
     margin-bottom: 0px;
 }
 
@@ -2251,7 +2260,7 @@ CUSTOM CSS
     background: rgba(78, 197, 207, 0.8);
     border: 4px solid #238f96;
     color: #fff;
-    padding: 30px;
+    padding: 20px 30px;
     font-size: 16px;
     line-height: 24px;
     min-height: 260px;
@@ -2323,6 +2332,7 @@ CUSTOM CSS
 }
 
 
+
 /* Membership Page
 --------------------------------------------- */
 
@@ -2335,15 +2345,139 @@ CUSTOM CSS
 /* Aircraft Page
 --------------------------------------------- */
 
-.aircraft-detail-page {
-    
+
+.aircraft-detail-page .aircraft-name {
+    font-family: 'Lato', sans-serif;
+    font-size: 36px;
+    color: #686868;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
-/* Slideshow */
+.aircraft-detail-page .aircraft-slideshow {
+    position: relative;
+    overflow: hidden;
+}
+
+.aircraft-detail-page .aircraft-details {
+    position: absolute;
+    z-index: 998;
+    color: #fff;
+    background-color: rgba(33,33,33,0.8);
+    padding: 20px;
+    right: 0;
+    width: 25%;
+    max-width: 300px;
+    height: 100%;
+    font-size: 16px;
+}
+
+.aircraft-slideshow .mslide p {
+    display: none;
+}
+
+.aircraft-details .detail-label {
+    font-size: 18px;
+    font-weight: 900;
+    padding-bottom: 6px;
+}
+
+.aircraft-details ul {
+    padding-bottom: 20px;
+}
+
+.detail-capacity {
+    text-align: center;
+}
+
+.detail-capacity .detail-label {
+    text-align: left;
+}
 
 
+/*aircraft details responsive version*/
+/*
+.aircraft-details ul {
+    padding: 0px 20px;
+    display: inline-block;
+    width: 23%;
+    margin: 10px;
+    vertical-align: top;
+    text-align: center;
+}
+*/
 
+.aircraft-fleet-gallery {
+    padding-bottom: 60px;
+}
 
+.aircraft-fleet-gallery .gallery-label {
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #4ec5cd;
+    padding: 0px 40px;
+}
+
+.gallery-container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.gallery-slider {
+    padding: 20px;
+}
+
+.gallery-slider a {
+    color: #212121;
+}
+
+.gallery-slider .gallery-slider-item {
+    display: inline-block;
+    width: 300px;
+    height: 140px;
+    background-color: #f3f3f3;
+    border: 3px solid #dfdfdf;
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.gallery-slider .gallery-slider-item:hover {
+    border: 3px solid #4ec5cd;
+}
+
+.gallery-slider .gallery-slider-item  .gallery-image-container {
+    height: 100px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.gallery-slider .slick-prev, 
+.gallery-slider .slick-next {
+    background: #686868;
+    padding-top: 1px;
+    padding-left: 5px;
+    border-radius: 22px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+}
+
+.gallery-slider .slick-prev:hover, 
+.gallery-slider .slick-next:hover,
+.gallery-slider .slick-prev:active, 
+.gallery-slider .slick-next:active,
+.gallery-slider .slick-prev:focus, 
+.gallery-slider .slick-next:focus {
+    background: #4ec5cd;
+    padding-top: 1px;
+    color: #fff;
+}
 
 
 
