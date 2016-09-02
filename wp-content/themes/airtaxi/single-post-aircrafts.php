@@ -123,12 +123,10 @@ get_header('custom'); ?>
                         ?>
                         
                         <div class="gallery-image-container">
-                        
-                        <?php 
-                        // displays image
-                        echo wp_get_attachment_image( get_the_ID(), 'medium' ); 
-                        ?>
-                        
+                            <?php 
+                            // displays image
+                            echo wp_get_attachment_image( get_the_ID(), 'medium' ); 
+                            ?>
                         </div><!-- gallery-image-container -->
 
                         <?php
