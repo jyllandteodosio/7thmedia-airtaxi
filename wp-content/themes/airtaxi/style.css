@@ -2362,6 +2362,9 @@ CUSTOM CSS
     margin-bottom: 0px;
 }
 
+
+/*----- Membership Page Content -----*/
+
 .m-panel {
     margin-top: -30px;
 }
@@ -2403,8 +2406,11 @@ CUSTOM CSS
     background-color: #fff !important;
 }
 
+/*----- Perks and Privileges table -----*/
+
 .m-panel-table table {
     border-collapse: collapse;
+    text-align: center;
 }
 
 .m-panel table th {
@@ -2422,15 +2428,18 @@ div.mperks-diamond-header {
     text-transform: uppercase;
 }
 
-div.mperks-emerald-header {
+div.mperks-emerald-header, 
+div.mrates-emerald-header {
     background-color: #056029;
 }
 
-div.mperks-sapphire-header {
+div.mperks-sapphire-header,
+div.mrates-sapphire-header {
     background-color: #205f95;
 }
 
-div.mperks-diamond-header {
+div.mperks-diamond-header,
+div.mrates-diamond-header {
     background-color: #989798;
 }
 
@@ -2464,8 +2473,67 @@ div.mperks-diamond-header {
     padding: 15px;
     line-height: 24px;
     height: 100%;
+    text-align: left;
 }
 
+
+/*----- Rates table -----*/
+
+.mrates-text,
+.mrates-emerald,
+.mrates-sapphire,
+.mrates-diamond {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+div.mrates-emerald-header,
+div.mrates-sapphire-header,
+div.mrates-diamond-header {
+    color: #fff;
+    min-height: 106px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px 0px;
+    min-width: 160px;
+}
+
+div.mrates-sapphire-header,
+div.mrates-diamond-header {
+    line-height: 66px;
+}
+
+.mrates-m {
+    color: #212121;
+    width: 200px;
+    max-width: 100%;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 20px 0px;
+    min-width: 160px;
+}
+
+.mrates-subheader {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.mrates-aircraft {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.mrates-cap {
+    font-family: 'Dashicons';
+    font-size: 24px;
+}
+
+.mrates-fee {
+    font-size: 44px;
+    line-height: 44px;
+}
 
 /*add code for screen size 800 and below*/
 
