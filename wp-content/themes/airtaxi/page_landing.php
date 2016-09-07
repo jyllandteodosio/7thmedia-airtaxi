@@ -1,5 +1,7 @@
 <?php
 /**
+ * Template Name: Page Landing
+ *
  * This file adds the Landing template to the Parallax Pro Theme.
  *
  * @author StudioPress

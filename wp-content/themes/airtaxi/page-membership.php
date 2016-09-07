@@ -1,39 +1,53 @@
 <?php
 /**
- * This file adds the .
+ * Template Name: Membership Page
  *
  * @author 
  * @package 
  * @subpackage 
  */
 
-//get_header('custom');
+get_header('custom');
+$page_title = strtolower(get_the_title());
+?>
+<div class="m-panel">
+    <div class="m-panel-title">
+        <h1>Membership</h1>
+    </div>
 
-add_action( 'genesis_meta', 'parallax_home_genesis_meta' );
-/**
- * Add widget support for homepage. If no widgets active, display the default loop.
- *
- */
-function parallax_home_genesis_meta() {
+    <main class="content">
+        <?php
+            //* Get all membership page posts 
+            $args = array(
+                'posts_per_page'   => 2,
+                'category_name'    => 'membership',
+                'orderby'          => 'date',
+                'order'            => 'ASC',
+                'post_type'        => 'post',
+                'post_status'      => 'publish',
+                'suppress_filters' => true 
+            );
+            $posts_array = get_posts( $args ); 
 
-		//* Add homepage widgets
-		add_action( 'genesis_loop', 'parallax_membership_widgets' );
-}
+            foreach ( $posts_array as $post ) :
+        ?>
+        
+        <div class="m-panel-content">
+            <div class="m-panel-header">
+                <?php the_title(); ?>
+            </div>
 
-//* Add markup for homepage widgets
-function parallax_membership_widgets() {
+            <div class="m-panel-table">
+                <?php
+                    //do_shortcode(the_content());
+                    $content = $post->post_content;
+                    echo apply_filters('the_content',$content);
+                ?>
+            </div>
+        </div>
+        
+        <?php endforeach; ?>
+    </main>
+</div>
 
-	genesis_widget_area( 'membership-section-0', array(
-		'before' => '<div id="membership-section-0" class="home-odd home-section-0 widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
-
-	genesis_widget_area( 'membership-section-1', array(
-		'before' => '<div id="membership-section-1" class="home-odd home-section-1 widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
-
-}
-
-genesis();
-
+<?php get_footer(); ?>

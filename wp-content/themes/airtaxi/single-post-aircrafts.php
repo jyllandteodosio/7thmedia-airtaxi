@@ -1,6 +1,6 @@
 <?php 
 /**
-* Template Name: 
+* Template Name: Aircraft Detail - Single Post Page
 *
 * The template for displaying pages
 *

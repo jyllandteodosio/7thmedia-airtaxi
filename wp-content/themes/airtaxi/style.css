@@ -1930,6 +1930,7 @@ Media Queries
 	.one-sixth,
 	.one-third,
 	.pricing-table .one-third,
+    .tabs .one-third,
 	.three-fourths,
 	.three-sixths,
 	.two-fourths,
@@ -2336,10 +2337,137 @@ CUSTOM CSS
 /* Membership Page
 --------------------------------------------- */
 
-#membership-section-0 {
-    padding: 100px 0px;
+.page-template-page-membership .site-container {
+    background-color: #f3f3f3;
 }
 
+.page-template-page-membership .entry-header {
+    margin-top: -30px;
+}
+
+.page-template-page-membership .entry-header::after {
+    border: none;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    width: 25%;
+}
+
+.page-template-page-membership .entry-content {
+    display: none;
+}
+
+.page-template-page-membership .entry {
+    margin-bottom: 0px;
+}
+
+.m-panel {
+    margin-top: -30px;
+}
+
+.m-panel-title,
+.m-panel-header,
+.m-panel-description {
+    text-align: center;
+}
+
+.m-panel-title h1 {
+    margin-bottom: 0;
+}
+
+.m-panel-header {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #686868;
+}
+
+.m-panel-description,
+.m-panel-content {
+    font-size: 16px;
+}
+
+.m-panel-content {
+    margin-bottom: 100px;
+}
+
+.m-panel .wpsm-comptable td {
+    min-width: 10px;
+    padding: 0px;
+    border: 1px solid #e8e8e8;
+}
+
+.wpsm-comptable td:hover, 
+.wpsm-comptable td.betterhover, 
+.wpsm-comptable tr:hover td {
+    background-color: #fff !important;
+}
+
+.m-panel-table table {
+    border-collapse: collapse;
+}
+
+.m-panel table th {
+    background: none;
+    padding: 0px;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: center;
+}
+
+div.mperks-emerald-header,
+div.mperks-sapphire-header,
+div.mperks-diamond-header {
+    padding: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+div.mperks-emerald-header {
+    background-color: #056029;
+}
+
+div.mperks-sapphire-header {
+    background-color: #205f95;
+}
+
+div.mperks-diamond-header {
+    background-color: #989798;
+}
+
+.mperks-emerald {
+    color: #056029;
+}
+
+.mperks-sapphire {
+    color: #205f95;
+}
+
+.mperks-diamond {
+    color: #989798;
+}
+
+.mperks-emerald,
+.mperks-sapphire,
+.mperks-diamond {
+    text-align: center;
+    padding: 15px;
+    font-weight: 700;
+    line-height: 2;
+}
+
+.mperks-check {
+    font-family: "Dashicons";
+    font-size: 24px;
+}
+
+.mperks-text {
+    padding: 15px;
+    line-height: 24px;
+    height: 100%;
+}
+
+
+/*add code for screen size 800 and below*/
 
 
 /* Aircraft Page
@@ -2478,6 +2606,362 @@ CUSTOM CSS
     padding-top: 1px;
     color: #fff;
 }
+
+
+
+/* Rates Page
+--------------------------------------------- */
+
+.rates-panel {
+    margin-bottom: 100px;
+}
+
+.rates-panel-title h1 {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    font-size: 48px;
+}
+
+
+/*----- Tabs -----*/
+.tabs .tab-links .one-third {
+    width: 33.33%;
+}
+
+.tabs {
+    width:100%;
+    display:inline-block;
+    background: #f3f3f3;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+/*----- Tab Links -----*/
+
+.tab-links-container {
+    background-color: #f3f3f3;
+}
+
+/* Clearfix */
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.tab-links {
+    width: 1140px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.tab-links li {
+    margin:0px;
+    float:left;
+    list-style:none;
+    text-align: center;
+}
+
+.tab-links a {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    transition: all linear 0.15s;
+    height: 60px;
+    width: 100%;
+    line-height: 60px;
+    background:#f3f3f3;
+    color: #212121;
+    border: 1px solid #dfdfdf;
+}
+
+.tab-links a:hover {
+    background:#4ec5cd;
+    color:#fff;
+    font-weight: 800;
+    text-decoration:none;
+    border: none;
+    padding: 1px;
+}
+
+li.active a, li.active a:hover {
+    background:#4ec5cd;
+    font-weight: 800;
+    color:#fff;
+    border: none;
+    padding: 1px;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    padding: 30px 0px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:rgba(78,197,205,0.4);
+}
+
+.tab {
+    display:none;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.tab.active {
+    display:block;
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px 40px;
+}
+
+.tab-overlay {
+    background: rgba(78,197,205,0.4);
+}
+
+
+.tab-disclaimer {
+    background-color: #212121;
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    margin-top: 30px;
+    left: 0;
+}
+
+/*----- Rates Panel -----*/
+
+.rates-panel-tabs {
+    background-repeat: no-repeat;
+}
+
+.rates-box {
+    width: 220px !important;
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
+}
+
+.rates-box-row {
+    display: table-row;
+}
+
+.rates-box-header {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    line-height: 24px;
+    height: 68px;
+    display: table-cell;
+    vertical-align: middle;
+    background: #f3f3f3;
+}
+
+.aerial-tours-tab .rates-box-title {
+    font-size: 13px;
+    height: 80px;
+    padding: 0px 10px;
+}
+
+.rates-box-title {
+    font-size: 16px;
+    line-height: 18px;
+    height: 76px;
+    width: inherit;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0px 15px;
+}
+
+.rates-box-duration {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4ec5cd;
+}
+
+table.rates-box-list {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.rates-box-list tbody {
+    border: none;
+}
+
+.rates-box-list tr{
+    background-color: #f3f3f3;
+    margin-top: 1px;
+    font-size: 14px;
+    border-top: 1px solid #fff;
+}
+
+.rates-box-list td {
+    border: none;
+    padding: 15px;
+}
+
+.rates-box-item .item-capacity,
+.rates-box-item .item-aircraft {
+    line-height: 14px;
+}
+
+.item-aircraft {
+    font-size: 12px;
+}
+
+.rates-box-item .item-price {
+    text-align: right;
+}
+
+
+.rates-panel-tabs .slick-prev, 
+.rates-panel-tabs .slick-next {
+    background: #686868;
+    padding-top: 1px;
+    padding-left: 5px;
+    border-radius: 22px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+}
+
+.rates-panel-tabs .slick-prev {
+    left: -45px;
+}
+
+.rates-panel-tabs .slick-next {
+    right: -45px;
+}
+
+.rates-panel-tabs .slick-prev:hover, 
+.rates-panel-tabs .slick-next:hover,
+.rates-panel-tabs .slick-prev:active, 
+.rates-panel-tabs .slick-next:active,
+.rates-panel-tabs .slick-prev:focus, 
+.rates-panel-tabs .slick-next:focus {
+    background: #212121;
+    padding-top: 1px;
+    color: #fff;
+}
+
+/*----- Destination Tours Box -----*/
+
+.destinations-box {
+    background-color: #fff;
+    padding: 15px;
+    min-height: 280px;
+    font-size: 14px;
+    position: relative;
+    height: auto;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
+    margin-bottom: 20px;
+    width: 1140px !important;
+    max-width: 100%;
+}
+
+.destinations-box-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.destinations-box-description {
+    padding: 10px 0px 15px;
+    font-size: 16px;
+}
+
+.destinations-box tbody {
+    border: none;
+}
+
+.destinations-box td {
+    border: none;
+    padding: 0px;
+}
+
+.destinations-box-rates {
+    height: 80px;
+}
+
+.destinations-box-rates ul,
+.destinations-box-item .item-capacity,
+.destinations-box-item .item-price {
+    display: inline-block;
+}
+
+.destinations-box-item {
+    width: 31%;
+    padding: 10px 15px;
+    margin-right: 10px;
+    float: left;
+    background-color: #f3f3f3;
+}
+
+
+.destinations-box-item .item-price {
+    float: right;
+}
+
+.destinations-box-item .item-additional {
+    text-align: right;
+    color: #4ec5cd;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.destinations-box .two-thirds {
+    width: 65.81196581196582%;
+    float: none;
+    position: relative;
+    display: inline-block;
+}
+
+.destinations-box .one-third {
+    width: 30%;
+    margin-left: 0px;
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.destinations-box .itinerary-title {
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 0px 2px;
+    color: #4ec5cd;
+}
+
+table.destinations-box-itinerary {
+    margin-bottom: 0px;
+    width: auto;
+}
+
+.destinations-box-itinerary .item-activity {
+    margin-left: 20px;
+}
+
+.destination-box-notes {
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+
+
+
 
 
 
