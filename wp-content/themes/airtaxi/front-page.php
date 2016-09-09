@@ -25,10 +25,7 @@ function parallax_home_genesis_meta() {
 			if ( ! wp_is_mobile() ) {
 
 				wp_enqueue_script( 'parallax-script', get_bloginfo( 'stylesheet_directory' ) . '/js/parallax.js', array( 'jquery' ), '1.0.0' );
-
 			}
-
-		
 		}
 
 		//* Add parallax-home body class
@@ -60,7 +57,9 @@ function parallax_home_genesis_meta() {
 
 //* Add markup for homepage widgets
 function parallax_homepage_widgets() {
-
+    
+    $base_url = get_site_url();
+    
 	genesis_widget_area( 'home-section-0', array(
 		'before' => '<div id="home-section-0" class="home-odd home-section-0 widget-area"><div class="wrap">',
 		'after'  => '</div></div>',
@@ -82,7 +81,7 @@ function parallax_homepage_widgets() {
 	) );
 
 	genesis_widget_area( 'home-section-4', array(
-		'before' => '<div id="home-section-4" class="home-odd home-section-4 widget-area"><div class="wrap">',
+		'before' => '<div id="home-section-4" class="home-odd home-section-4 widget-area" style="background-image:url('.$base_url.'/wp-content/uploads/2016/09/Makati_Skyline_for_banner.jpg)"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
     

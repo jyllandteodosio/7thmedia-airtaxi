@@ -1,5 +1,30 @@
 jQuery(function( $ ){
     
+    //-- Homepage - Smooth Scroll ---------------------------------------------//
+    
+    $('a[href*="#"]:not([href="#"])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top-30
+                }, 1200);
+                return false;
+            }
+        }
+    });
+    
+    
+    //-- Homepage - Base Locations - Image Map Hover ---------------------------------------------//
+    
+    $('#home-section-2').ready(function() {
+        $('#base-locations').vectorMap({map: 'ph_mill_en'});
+    });
+    
+    
+    //-- Rates Page Tabs ---------------------------------------------//
+    
     $('.tabs .tab-links a').on('click', function(e)  {
         var classname = $(this).attr('class');
         var currentAttrValue = $(this).attr('href');
@@ -16,6 +41,11 @@ jQuery(function( $ ){
         
         tablink.slick('slickGoTo', 0, true);
     });
+    
+    
+    //-- Slick JS ---------------------------------------------//
+    
+    /*---- Aircraft Detail Page - Fleet Gallery Slick -----*/
     
     $('.gallery-slider').slick({
         dots: false,
@@ -55,6 +85,8 @@ jQuery(function( $ ){
         ]
     });
 
+    /*---- Rates Page - Drop Off Slick -----*/
+    
     $('.drop-off-tab').slick({
         dots: false,
         arrows: true,
@@ -100,6 +132,8 @@ jQuery(function( $ ){
         ]
     });
 
+    /*---- Rates Page - Aerial Tours Slick -----*/
+    
     $('.aerial-tours-tab').slick({
         dots: false,
         arrows: true,
@@ -144,6 +178,8 @@ jQuery(function( $ ){
             // instead of a settings object
         ]
     });
+    
+    /*---- Rates Page - Destination Tours Slick -----*/
 
     $('.destinations-tab').slick({
         dots: false,
@@ -191,6 +227,7 @@ jQuery(function( $ ){
     });
     
     $('.m-panel-table').ready(function() {
+        // Membership perks table
         if($('.m-panel-table div').hasClass('mperks-emerald')){
             $('div.mperks-emerald-header').parent().css("border","2px solid #056029");
             $('div.mperks-emerald').parent().css("border-left","2px solid #056029");
@@ -208,6 +245,25 @@ jQuery(function( $ ){
             $('div.mperks-diamond').parent().css("border-left","2px solid #989798");
             $('div.mperks-diamond').parent().css("border-right","2px solid #989798");
             $('#mperks-end.mperks-diamond').parent().css("border-bottom","2px solid #989798");
+        }
+        // Membership rates table
+        if($('.m-panel-table div').hasClass('mrates-emerald')){
+            $('div.mrates-emerald-header').parent().css("border","4px solid #056029");
+            $('div.mrates-emerald').parent().css("border-left","4px solid #056029");
+            $('div.mrates-emerald').parent().css("border-right","4px solid #056029");
+            $('#mrates-end.mrates-emerald').parent().css("border-bottom","4px solid #056029");
+        }
+        if($('.m-panel-table div').hasClass('mrates-sapphire')){
+            $('div.mrates-sapphire-header').parent().css("border","4px solid #205f95");
+            $('div.mrates-sapphire').parent().css("border-left","4px solid #205f95");
+            $('div.mrates-sapphire').parent().css("border-right","4px solid #205f95");
+            $('#mrates-end.mrates-sapphire').parent().css("border-bottom","4px solid #205f95");
+        }
+        if($('.m-panel-table div').hasClass('mrates-diamond')){
+            $('div.mrates-diamond-header').parent().css("border","4px solid #989798");
+            $('div.mrates-diamond').parent().css("border-left","4px solid #989798");
+            $('div.mrates-diamond').parent().css("border-right","4px solid #989798");
+            $('#mrates-end.mrates-diamond').parent().css("border-bottom","4px solid #989798");
         }
     });
     

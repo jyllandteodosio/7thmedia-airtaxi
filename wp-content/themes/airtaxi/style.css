@@ -2210,6 +2210,52 @@ CUSTOM CSS
 }
 
 
+
+/* Homepage Section - Base Locations
+--------------------------------------------- */
+
+
+#gallery-2 {
+    color: transparent;
+}
+
+#gallery-2 figcaption {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+#gallery-2 .gallery-item {
+    padding: 10px 20px;
+    color: #212121;
+}
+
+#gallery-2 .gallery-item .gallery-icon {
+    height: 100px;
+}
+
+.location-images {
+    display: none;
+}
+
+.location-hover {
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+    border: 4px solid #4ec5cd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.location-hover img {
+    height: auto;
+    width: 200px;
+}
+
+
+
+
 /* Homepage Section - Quote/Callouts
 --------------------------------------------- */
 
@@ -2238,7 +2284,7 @@ CUSTOM CSS
     position: absolute;
     left: 0;
     right: 0;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .call-now label {
@@ -2256,6 +2302,21 @@ CUSTOM CSS
 
 /* Homepage Section - Membership - Membership Table
 --------------------------------------------- */
+
+#home-section-4 {
+    background-size: cover;
+    background-position: center;
+    min-height: 650px;
+}
+
+#home-section-4 #text-7 h4.widgettitle  {
+    font-size: 34px !important;
+    margin-bottom: 0px !important;
+}
+
+#home-section-4 #text-7 .textwidget h1 {
+    font-size: 56px;
+}
 
 .membership-table .one-third {
     background: rgba(78, 197, 207, 0.8);
@@ -2283,20 +2344,38 @@ CUSTOM CSS
     margin-bottom: 40px;
 }
 
+.rates-table .one-fourth {
+    min-width: 263px;
+}
+
 .rates-table h2 {
     background-color: #4ec5cd;
     color: #fff;
     padding: 10px 0px;
+    margin: 0;
+}
+
+.rates-table img {
+    height: auto;
+    width: 100%;
 }
 
 .rates-table ul li {
-    padding: 10px 0px;
     border-top: 2px solid #f3f3f3;
     background: #fff;
 }
 
-.rates-table ul li:hover {
+.rates-table .rates-table-link {
+    padding: 15px 0px;
+}
+
+.rates-table .rates-table-link:hover {
     background: #4ec5cd;
+    color: #fff;
+}
+
+.rates-table ul {
+    margin-top: -10px;
 }
 
 .rates-table ul li a {
@@ -2304,12 +2383,8 @@ CUSTOM CSS
     font-size: 16px;
 }
 
-.rates-table ul li a:hover {
-    color: #fff;
-}
-
 .rates-more ul li {
-    padding: 10px 40px;
+    padding: 16.5px 40px;
 }
 
 .rates-more ul li:hover {
@@ -2338,7 +2413,7 @@ CUSTOM CSS
 --------------------------------------------- */
 
 .page-template-page-membership .site-container {
-    background-color: #f3f3f3;
+    background-color: #eaeaea;
 }
 
 .page-template-page-membership .entry-header {
@@ -2391,7 +2466,8 @@ CUSTOM CSS
 }
 
 .m-panel-content {
-    margin-bottom: 100px;
+    padding: 0 200px 50px;
+	width: 100%;
 }
 
 .m-panel .wpsm-comptable td {
@@ -2411,6 +2487,8 @@ CUSTOM CSS
 .m-panel-table table {
     border-collapse: collapse;
     text-align: center;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .m-panel table th {
@@ -2479,6 +2557,12 @@ div.mrates-diamond-header {
 
 /*----- Rates table -----*/
 
+div.mrates {
+    padding-top: 60px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .mrates-text,
 .mrates-emerald,
 .mrates-sapphire,
@@ -2486,6 +2570,12 @@ div.mrates-diamond-header {
     padding: 15px;
     text-align: center;
     font-size: 14px;
+}
+
+.mrates-emerald,
+.mrates-sapphire,
+.mrates-diamond {
+    line-height: 18px;
 }
 
 div.mrates-emerald-header,
@@ -2507,7 +2597,6 @@ div.mrates-diamond-header {
 
 .mrates-m {
     color: #212121;
-    width: 200px;
     max-width: 100%;
     text-transform: uppercase;
     font-size: 14px;
@@ -2527,12 +2616,25 @@ div.mrates-diamond-header {
 
 .mrates-cap {
     font-family: 'Dashicons';
-    font-size: 24px;
+    font-size: 14px;
 }
 
 .mrates-fee {
     font-size: 44px;
     line-height: 44px;
+}
+
+.mrates-per-month {
+    text-transform: uppercase;
+}
+
+.mrates-c1,
+.mrates-options {
+    margin-top: 10px;
+}
+
+.mrates-inquire {
+    font-size: 18px;
 }
 
 /*add code for screen size 800 and below*/
