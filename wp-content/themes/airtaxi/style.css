@@ -2101,6 +2101,10 @@ Media Queries
 CUSTOM CSS
 ---------------------------------------------------------------------------------------------------- */
 
+a:active,
+a:focus {
+    outline: none;
+}
 
 .site-inner {
     max-width: 100%;
@@ -2214,6 +2218,68 @@ CUSTOM CSS
 /* Homepage Section - Base Locations
 --------------------------------------------- */
 
+.base-locations-header {
+    color: #212121;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.base-locations-subheader {
+    color: #4ec5cd;
+    font-family: 'Dancing Script', cursive;
+    padding: 20px;
+    font-size: 56px;
+}
+
+.location-images {
+    display: none;
+}
+
+.location-hover {
+    height: 210px;
+    width: 300px;
+    overflow: hidden;
+    border: 4px solid #4ec5cd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin-left: 50%;
+    margin-bottom: -10px;
+    position: relative;
+}
+
+.location-hover img {
+    height: auto;
+    width: 200px;
+}
+
+.jvectormap-tip {
+    border: none !important; 
+    border-radius: 0px !important; 
+    background: transparent !important; 
+}
+
+#base-locations {
+    margin: 0 37%;
+}
+
+.legend {
+    width: 0; 
+    height: 0; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto -5px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #000;
+}
+
+
+/* Homepage Section - Aircraft Fleet
+--------------------------------------------- */
 
 #gallery-2 {
     color: transparent;
@@ -2225,34 +2291,21 @@ CUSTOM CSS
 }
 
 #gallery-2 .gallery-item {
-    padding: 10px 20px;
+    padding: 4px 20px;
+    margin: 10px 0px;
     color: #212121;
+    border: 3px solid transparent;
+}
+
+#gallery-2 .gallery-item:hover {
+    border: 3px solid #dfdfdf;
 }
 
 #gallery-2 .gallery-item .gallery-icon {
     height: 100px;
+    display: table-cell;
+    vertical-align: bottom;
 }
-
-.location-images {
-    display: none;
-}
-
-.location-hover {
-    height: 200px;
-    width: 300px;
-    overflow: hidden;
-    border: 4px solid #4ec5cd;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-}
-
-.location-hover img {
-    height: auto;
-    width: 200px;
-}
-
 
 
 
@@ -2261,29 +2314,16 @@ CUSTOM CSS
 
 .quote {
     font-family: 'Dancing Script', cursive;
-    color: #fff;
     font-size: 36px;
-    background: #4ec5cd;
     height: 146px;
-    width: 100%;
     line-height: 146px;
-    position: absolute;
-    left: 0;
-    right: 0;
     margin: 0 auto;
 }
 
 .call-now {
-    color: #fff;
     font-weight: 700;
     font-size: 20px;
-    background: #4ec5cd;
     height: 90px;
-    width: 100%;
-    line-height: 90px;
-    position: absolute;
-    left: 0;
-    right: 0;
     margin: 10px auto;
 }
 
@@ -2291,12 +2331,34 @@ CUSTOM CSS
     margin: 0px 30px 0px 60px;
 }
 
+.quote,
+.call-now {
+    background: #4ec5cd;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.quote,
+.call-now,
 .call-now a {
     color: #fff;
 }
 
 .call-now a:hover {
-    color: #34a8b0;
+    color: #686868;
+}
+
+.call-now span.dashicons,
+.call-now span.dashicons-before:before {
+    margin: 0px 10px 0px 20px;
+}
+
+.call-now,
+.call-now span.dashicons,
+.call-now span.dashicons-before:before {
+    line-height: 90px;
 }
 
 
@@ -2321,7 +2383,6 @@ CUSTOM CSS
 .membership-table .one-third {
     background: rgba(78, 197, 207, 0.8);
     border: 4px solid #238f96;
-    color: #fff;
     padding: 20px 30px;
     font-size: 16px;
     line-height: 24px;
@@ -2332,8 +2393,13 @@ CUSTOM CSS
     font-family: "Lato", sans-serif;
     font-weight: 800;
     font-size: 24px;
+}
+
+.membership-table .one-third,
+.membership-table h4 {
     color: #fff;
 }
+
 
 
 /* Homepage Section - Rates
@@ -2349,7 +2415,6 @@ CUSTOM CSS
 }
 
 .rates-table h2 {
-    background-color: #4ec5cd;
     color: #fff;
     padding: 10px 0px;
     margin: 0;
@@ -2370,7 +2435,6 @@ CUSTOM CSS
 }
 
 .rates-table .rates-table-link:hover {
-    background: #4ec5cd;
     color: #fff;
 }
 
@@ -2394,7 +2458,6 @@ CUSTOM CSS
 
 .rates-more li.rates-inquire {
     margin-top: 24px;
-    background: #4ec5cd;
     text-transform: uppercase;
 }
 
@@ -2405,6 +2468,280 @@ CUSTOM CSS
 
 .rates-more li.rates-inquire:hover {
     background: #34a8b0;
+}
+
+.rates-table h2,
+.rates-more li.rates-inquire,
+.rates-table .rates-table-link:hover {
+    background: #4ec5cd;
+}
+
+
+/* Homepage Section - Contact Us
+--------------------------------------------- */
+
+#home-section-6 {
+    background-color: #f3f3f3 !important;
+}
+
+.contact-us {
+    padding: 20px;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.contact-us h1,
+.map h1,
+.contact-us {
+    color: #212121;
+}
+
+.contact-us h1,
+.map h1 {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    text-align: left;
+}
+
+.contact-tel,
+.contact-mob {
+    color: #4ec5cd;
+    font-size: 14px;
+    font-weight: 700;
+    width: 50%;
+    padding-bottom: 20px;
+}
+
+.contact-tel {
+    float: left;
+    text-align: left;
+}
+
+.contact-mob {
+    float: right;
+    text-align: right;
+}
+
+.contact-left,
+.contact-right {
+    width: 49.5%;
+}
+
+.contact-tel,
+.contact-mob,
+.contact-left,
+.contact-right {
+    display: inline-block;
+}
+
+.contact-form,
+.contact-form input,
+.contact-form textarea,
+.map-inquire {
+    font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background-color: #eaeaea;
+    border: none;
+    padding: 8px;
+}
+
+.contact-left,
+.contact-right,
+.contact-form p {
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="submit"],
+.map-inquire {
+    background-color: #4ec5cd;
+}
+
+.contact-form input[type="submit"],
+.contact-form input[type="submit"]:hover,
+.map-inquire {
+    height: 40px;
+}
+
+.contact-form input[type="submit"]:hover,
+.map-links li a:hover,
+.map-inquire:hover {
+    background-color: #34a8b0;
+}
+
+
+/*----- Contact Tabs -----*/
+
+.contact-tabs .contact-tab-links .one-fifth {
+    width: 20%;
+}
+
+.contact-tabs {
+    width:100%;
+    display:inline-block;
+    background: #f3f3f3;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+ 
+/*----- Contact Tab Links -----*/
+
+..contact-tab-links-container {
+    background-color: #f3f3f3;
+}
+
+/* Clearfix */
+..contact-tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.contact-tab-links{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.contact-tab-links li {
+    margin:0px;
+    float:left;
+    list-style:none;
+}
+
+.contact-tab-links li a {
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    border: 1px solid #eaeaea;
+}
+
+.contact-tab-links li a:hover,
+.map-inquire,
+a.map-inquire:hover {
+    color: #fff;
+    border: none;
+    font-weight: 700;
+}
+
+.contact-tab-content .tab.active {
+    max-width: 1140px;
+    padding: 0px;
+}
+
+.contact-tab-content .tab .google-map {
+    padding: 10px 0px;
+    margin-top: 35px;
+}
+
+.contact-tab-links li a:hover,
+.contact-tab-content .tab .google-map {
+    background: #4ec5cd;
+}
+
+.contact-tab-links li a,
+.contact-tab-content .tab .map-details {
+    color: #212121;
+}
+
+.contact-tab-links li a,
+.contact-tab-content .tab .map-details {
+    background-color: #fff;
+}
+
+.contact-tab-content .tab .map-details {
+    padding: 20px;
+    text-align: left;
+}
+
+.map-details .map-name {
+    font-size: 18px;
+}
+
+.map-details .map-address,
+.map-details .map-links {
+    font-size: 14px;
+}
+
+.map-details .map-name,
+.map-details .map-address,
+.map-details .map-links {
+    padding-bottom: 10px;
+}
+
+.map-details .map-name,
+.map-details .map-links {
+    font-weight: 700;
+}
+
+.map-details .map-links {
+    height: 30px;
+}
+
+.map-address p {
+    margin-bottom: 10px;
+    line-height: 14px;
+}
+
+.contact-tab-links li a,
+.map-links .map-links-label,
+.map-links ul,
+.map-links li,
+.map-links li a,
+.map-inquire {
+    display: inline-block;
+}
+
+.map-links .map-links-label {
+    float: left;
+}
+
+.map-links ul {
+    float: right;
+}
+
+.map-links li {
+    padding-left: 5px;
+}
+
+.map-links li a {
+    height: 30px;
+    width: 120px;
+}
+
+.map-links li a:hover {
+    color: #fff;
+}
+
+.map .contact-apply {
+    padding: 20px;
+    background: #fff;
+    margin-top: 20px;
+    text-align: left;
+    color: #212121;
+    font-size: 24px;
+    height: 80px;
+    line-height: 40px;
+}
+
+.map-inquire {
+    float: right;
+    width: 300px;
+    max-width: 100%;
+    margin-left: 20px;
+    padding: 0px 10px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+.contact-tab-links li,
+.map-links li a,
+.map-inquire {
+    text-align: center;
 }
 
 
@@ -2486,7 +2823,6 @@ CUSTOM CSS
 
 .m-panel-table table {
     border-collapse: collapse;
-    text-align: center;
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -2495,13 +2831,19 @@ CUSTOM CSS
     background: none;
     padding: 0px;
     border-bottom: 1px solid #e8e8e8;
+}
+
+.mperks-emerald,
+.mperks-sapphire,
+.mperks-diamond,
+.m-panel-table table,
+.m-panel table th {
     text-align: center;
 }
 
 div.mperks-emerald-header,
 div.mperks-sapphire-header,
 div.mperks-diamond-header {
-    padding: 15px;
     font-size: 16px;
     text-transform: uppercase;
 }
@@ -2536,8 +2878,6 @@ div.mrates-diamond-header {
 .mperks-emerald,
 .mperks-sapphire,
 .mperks-diamond {
-    text-align: center;
-    padding: 15px;
     font-weight: 700;
     line-height: 2;
 }
@@ -2548,10 +2888,20 @@ div.mrates-diamond-header {
 }
 
 .mperks-text {
-    padding: 15px;
     line-height: 24px;
     height: 100%;
     text-align: left;
+}
+
+
+div.mperks-emerald-header,
+div.mperks-sapphire-header,
+div.mperks-diamond-header,
+.mperks-emerald,
+.mperks-sapphire,
+.mperks-diamond,
+.mperks-text {
+    padding: 15px;
 }
 
 
@@ -2661,7 +3011,6 @@ div.mrates-diamond-header {
 .aircraft-detail-page .aircraft-details {
     position: absolute;
     z-index: 998;
-    color: #fff;
     background-color: rgba(33,33,33,0.8);
     padding: 20px;
     right: 0;
@@ -2715,7 +3064,6 @@ div.mrates-diamond-header {
     line-height: 60px;
     font-size: 24px;
     font-weight: 700;
-    color: #fff;
     background-color: #4ec5cd;
     padding: 0px 40px;
 }
@@ -2763,7 +3111,6 @@ div.mrates-diamond-header {
     border-radius: 22px;
     width: 30px;
     height: 30px;
-    color: #fff;
 }
 
 .gallery-slider .slick-prev:hover, 
@@ -2774,6 +3121,18 @@ div.mrates-diamond-header {
 .gallery-slider .slick-next:focus {
     background: #4ec5cd;
     padding-top: 1px;
+}
+
+.aircraft-detail-page .aircraft-details,
+.aircraft-fleet-gallery .gallery-label,
+.gallery-slider .slick-prev:hover, 
+.gallery-slider .slick-next:hover,
+.gallery-slider .slick-prev:active, 
+.gallery-slider .slick-next:active,
+.gallery-slider .slick-prev:focus, 
+.gallery-slider .slick-next:focus,
+.gallery-slider .slick-prev, 
+.gallery-slider .slick-next {
     color: #fff;
 }
 
@@ -2795,6 +3154,7 @@ div.mrates-diamond-header {
 
 
 /*----- Tabs -----*/
+
 .tabs .tab-links .one-third {
     width: 33.33%;
 }
@@ -2802,19 +3162,19 @@ div.mrates-diamond-header {
 .tabs {
     width:100%;
     display:inline-block;
-    background: #f3f3f3;
     background-repeat: no-repeat;
     background-size: cover;
 }
  
 /*----- Tab Links -----*/
 
+.tabs,
 .tab-links-container {
     background-color: #f3f3f3;
 }
 
 /* Clearfix */
-.tab-links:after {
+.tab-links:after{
     display:block;
     clear:both;
     content:'';
@@ -2847,44 +3207,45 @@ div.mrates-diamond-header {
 }
 
 .tab-links a:hover {
-    background:#4ec5cd;
-    color:#fff;
-    font-weight: 800;
     text-decoration:none;
+}
+
+.map-links li a,
+li.active a, li.active a:hover,
+.tab-links a:hover{
     border: none;
+    color:#fff;
+    background:#4ec5cd;
+    font-weight: 800;
     padding: 1px;
 }
 
-li.active a, li.active a:hover {
-    background:#4ec5cd;
-    font-weight: 800;
-    color:#fff;
-    border: none;
-    padding: 1px;
-}
+
 
 /*----- Content of Tabs -----*/
+
 .tab-content {
     padding: 30px 0px;
-    border-radius:3px;
-    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-    background:rgba(78,197,205,0.4);
+    border-radius: 3px;
+    box-shadow: -1px 1px 1px rgba(0,0,0,0.15);
 }
 
 .tab {
-    display:none;
-    max-width: 1140px;
-    margin: 0 auto;
+    display: none;
 }
 
 .tab.active {
-    display:block;
-    max-width: 1140px;
-    margin: 0 auto;
-    text-align: center;
+    display: block;
     padding: 0px 40px;
 }
 
+.tab,
+.tab-active {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.tab-content, 
 .tab-overlay {
     background: rgba(78,197,205,0.4);
 }
@@ -2894,14 +3255,20 @@ li.active a, li.active a:hover {
     background-color: #212121;
     color: #fff;
     font-size: 14px;
-    line-height: 40px;
-    text-align: center;
-    height: 40px;
-    width: 100%;
-    position: absolute;
-    margin-top: 30px;
     left: 0;
+    line-height: 40px;
+    height: 40px;
+    margin-top: 30px;
+    position: absolute;
+    width: 100%;
 }
+
+.tab-disclaimer,
+.tab.active {
+    text-align: center;
+}
+
+
 
 /*----- Rates Panel -----*/
 
@@ -2910,13 +3277,13 @@ li.active a, li.active a:hover {
 }
 
 .rates-box {
-    width: 220px !important;
-    display: inline-block;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    text-align: center;
     background-color: #fff;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-align: center;
+    width: 220px !important;
 }
 
 .rates-box-row {
@@ -2924,15 +3291,14 @@ li.active a, li.active a:hover {
 }
 
 .rates-box-header {
-    text-transform: uppercase;
+    display: table-cell;
     font-size: 20px;
     font-weight: 600;
-    padding: 10px;
-    line-height: 24px;
     height: 68px;
-    display: table-cell;
+    line-height: 24px;
+    padding: 10px;
+    text-transform: uppercase;
     vertical-align: middle;
-    background: #f3f3f3;
 }
 
 .aerial-tours-tab .rates-box-title {
@@ -2942,13 +3308,13 @@ li.active a, li.active a:hover {
 }
 
 .rates-box-title {
-    font-size: 16px;
-    line-height: 18px;
-    height: 76px;
-    width: inherit;
     display: table-cell;
-    vertical-align: middle;
+    font-size: 16px;
+    height: 76px;
+    line-height: 18px;
     padding: 0px 15px;
+    vertical-align: middle;
+    width: inherit;
 }
 
 .rates-box-duration {
@@ -2958,7 +3324,6 @@ li.active a, li.active a:hover {
 }
 
 table.rates-box-list {
-    font-size: 14px;
     margin-top: 10px;
     margin-bottom: 0px;
 }
@@ -2967,11 +3332,19 @@ table.rates-box-list {
     border: none;
 }
 
-.rates-box-list tr{
+.rates-box-header,
+.rates-box-list tr {
     background-color: #f3f3f3;
-    margin-top: 1px;
+}
+
+table.rates-box-list ,
+.rates-box-list tr {
     font-size: 14px;
+}
+
+.rates-box-list tr{
     border-top: 1px solid #fff;
+    margin-top: 1px;
 }
 
 .rates-box-list td {
@@ -2996,12 +3369,12 @@ table.rates-box-list {
 .rates-panel-tabs .slick-prev, 
 .rates-panel-tabs .slick-next {
     background: #686868;
-    padding-top: 1px;
-    padding-left: 5px;
     border-radius: 22px;
-    width: 30px;
-    height: 30px;
     color: #fff;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 1px;
+    width: 30px;
 }
 
 .rates-panel-tabs .slick-prev {
@@ -3019,43 +3392,43 @@ table.rates-box-list {
 .rates-panel-tabs .slick-prev:focus, 
 .rates-panel-tabs .slick-next:focus {
     background: #212121;
-    padding-top: 1px;
     color: #fff;
+    padding-top: 1px;
 }
 
 /*----- Destination Tours Box -----*/
 
 .destinations-box {
     background-color: #fff;
-    padding: 15px;
-    min-height: 280px;
-    font-size: 14px;
-    position: relative;
-    height: auto;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
+    font-size: 14px;
+    height: auto;
     margin-bottom: 20px;
-    width: 1140px !important;
     max-width: 100%;
+    min-height: 280px;
+    padding: 15px;
+    position: relative;
+    width: 1140px !important;
 }
 
 .destinations-box-title {
-    text-transform: uppercase;
     font-size: 24px;
-    line-height: 24px;
     font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
 }
 
 .destinations-box-description {
-    padding: 10px 0px 15px;
     font-size: 16px;
+    padding: 10px 0px 15px;
 }
 
-.destinations-box tbody {
+.destinations-box tbody,
+.destinations-box td {
     border: none;
 }
 
 .destinations-box td {
-    border: none;
     padding: 0px;
 }
 
@@ -3070,46 +3443,52 @@ table.rates-box-list {
 }
 
 .destinations-box-item {
-    width: 31%;
-    padding: 10px 15px;
-    margin-right: 10px;
-    float: left;
     background-color: #f3f3f3;
+    float: left;
+    margin-right: 10px;
+    padding: 10px 15px;
+    width: 31%;
 }
 
 
-.destinations-box-item .item-price {
+.destinations-box-item .item-price,
+.destinations-box .one-third {
     float: right;
 }
 
 .destinations-box-item .item-additional {
-    text-align: right;
-    color: #4ec5cd;
-    font-size: 12px;
     font-weight: 600;
+    text-align: right;
+}
+
+.destinations-box-item .item-additional,
+.destinations-box .itinerary-title {
+    color: #4ec5cd;
 }
 
 .destinations-box .two-thirds {
-    width: 65.81196581196582%;
+    display: inline-block;
     float: none;
     position: relative;
-    display: inline-block;
+    width: 65.81196581196582%;
 }
 
 .destinations-box .one-third {
-    width: 30%;
-    margin-left: 0px;
-    float: right;
-    position: relative;
     display: inline-block;
+    margin-left: 0px;
+    position: relative;
+    width: 30%;
 }
 
 .destinations-box .itinerary-title {
-    width: 100%;
-    font-weight: 600;
-    text-transform: uppercase;
     padding: 10px 0px 2px;
-    color: #4ec5cd;
+    width: 100%;
+}
+
+.destination-box-notes,
+.destinations-box .itinerary-title {
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 table.destinations-box-itinerary {
@@ -3121,14 +3500,23 @@ table.destinations-box-itinerary {
     margin-left: 20px;
 }
 
-.destination-box-notes {
-    padding-top: 10px;
+.destination-box-notes,
+.destinations-box-item .item-additional {
     font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
 }
 
+.destination-box-notes {
+    padding-top: 10px;
+}
 
+.acf-map {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    }
 
 
 

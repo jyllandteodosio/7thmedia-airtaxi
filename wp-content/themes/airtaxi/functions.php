@@ -36,7 +36,25 @@ function parallax_enqueue_scripts_styles() {
     
     wp_enqueue_script( 'jvectormap', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ), '2.0.3' );
     
-    wp_enqueue_script( 'jvectormap-ph', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-ph-mill-en.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'jvectormap-ph', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-ph-custom.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '3', true );
+    
+	wp_enqueue_script( 'google-map-init', get_stylesheet_directory_uri() . '/js/maps/google-maps.js', array('google-map', 'jquery'), '0.1', true );
+    
+    /*.acf-map {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    
+    //html & acf
+    <div class = "acf-map">
+    <div class = "marker" data-lat = "<?php echo get_field('google_map')['lat']; ?>" data-lng="<?php echo get_field('google_map')['lng']; ?>"></div>
+    </div>*/
 
 	wp_enqueue_style( 'dashicons' );
     

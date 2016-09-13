@@ -1,8 +1,8 @@
 jQuery(function( $ ){
     
-    //-- Homepage - Smooth Scroll ---------------------------------------------//
+    //-- Homepage - Smooth Scroll --//
     
-    $('a[href*="#"]:not([href="#"])').click(function() {
+    $('a[href*="#"]:not([href="#"]):not(.contact-map)').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -16,14 +16,128 @@ jQuery(function( $ ){
     });
     
     
-    //-- Homepage - Base Locations - Image Map Hover ---------------------------------------------//
+    //-- Homepage - Base Locations - Image Map Hover --//
     
     $('#home-section-2').ready(function() {
-        $('#base-locations').vectorMap({map: 'ph_mill_en'});
+        $('#base-locations').vectorMap({
+            map: 'ph_mill_en',
+            backgroundColor: '#ffffff',
+            hoverOpacity: 1,
+            hoverColor: false,
+            zoomOnScroll: false,
+            regionStyle: {
+                initial: {
+                    fill: '#d1d2d4',
+                    "fill-opacity": 1,
+                    stroke: '#a9abae',
+                    "stroke-width": 1.5,
+                    "stroke-opacity": 1
+                },
+                    hover: {
+                        "fill-opacity": 0.8,
+                        cursor: 'pointer'
+                    },
+                    selected: {
+                        fill: 'yellow'
+                    }
+            },
+            onRegionTipShow: function (e, e1, text) {
+                e.preventDefault();
+            },
+            markerStyle: {
+                hover: {
+                    stroke: "#fff",
+                    "stroke-width": 2,
+                    cursor: 'pointer'
+                }
+            },
+            markers: [
+                {
+                    coords: [102,185],
+                    name: "Clark",
+                    style: {
+                        fill: "#55dfe8",
+                        stroke: "#45b9c1",
+                        "stroke-width": 2,
+                        r: 7
+                    },
+                    legend: {
+                        vertical: true,
+                        title: 'test',
+                        cssClass: 'legend'
+                    }
+                },
+                {
+                    coords: [118,200],
+                    name: "Metro Manila",
+                    style: {
+                        fill: "#55dfe8",
+                        stroke: "#45b9c1",
+                        "stroke-width": 2,
+                        r: 7
+                    }
+                },
+                {
+                    coords: [155,270],
+                    name: "Boracay Island",
+                    style: {
+                        fill: "#55dfe8",
+                        stroke: "#45b9c1",
+                        "stroke-width": 2,
+                        r: 7
+                    }
+                },
+                {
+                    coords: [228,305],
+                    name: "Cebu",
+                    style: {
+                        fill: "#55dfe8",
+                        stroke: "#45b9c1",
+                        "stroke-width": 2,
+                        r: 7
+                    }
+                },
+                {
+                    coords: [284,397],
+                    name: "Davao",
+                    style: {
+                        fill: "#55dfe8",
+                        stroke: "#45b9c1",
+                        "stroke-width": 2,
+                        r: 7
+                    }
+                }
+            ],
+            onMarkerTipShow: function(e, label, code) {
+                console.log(code);
+                switch (code) {
+                        case '0': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
+                        break;
+                        
+                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
+                        break;
+                        
+                        case '2': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
+                        break;
+                        
+                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
+                        break;
+                        
+                        case '4': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
+                        break;
+                        
+                    default: break;
+                };
+            }
+        });
+        
+        $('#base-locations .jvectormap-zoomin').hide();
+        $('#base-locations .jvectormap-zoomout').hide();
+
     });
     
     
-    //-- Rates Page Tabs ---------------------------------------------//
+    //-- Rates Page Tabs --//
     
     $('.tabs .tab-links a').on('click', function(e)  {
         var classname = $(this).attr('class');
@@ -43,7 +157,22 @@ jQuery(function( $ ){
     });
     
     
-    //-- Slick JS ---------------------------------------------//
+    //-- Homepage - Contact Us - Location Map Tabs --//
+    
+    $('.contact-tabs .contact-tab-links a').on('click', function(e)  {
+        e.preventDefault();
+        var currentAttrValue = $(this).attr('href');
+        
+        // Show/Hide Tabs
+        $('.contact-tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
+        // Change/remove current tab to active
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+
+    });
+    
+    
+    //-- Slick JS --//
     
     /*---- Aircraft Detail Page - Fleet Gallery Slick -----*/
     
