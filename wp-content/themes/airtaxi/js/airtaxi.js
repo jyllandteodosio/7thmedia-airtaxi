@@ -1,6 +1,7 @@
 jQuery(function( $ ){
     
-    //-- Homepage - Smooth Scroll --//
+    
+    //-- Homepage - Menu Link - Smooth Scroll --//
     
     $('a[href*="#"]:not([href="#"]):not(.contact-map)').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -109,7 +110,6 @@ jQuery(function( $ ){
                 }
             ],
             onMarkerTipShow: function(e, label, code) {
-                console.log(code);
                 switch (code) {
                         case '0': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
                         break;

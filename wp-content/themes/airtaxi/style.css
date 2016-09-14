@@ -2101,6 +2101,15 @@ Media Queries
 CUSTOM CSS
 ---------------------------------------------------------------------------------------------------- */
 
+.acf-map {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
 a:active,
 a:focus {
     outline: none;
@@ -2108,6 +2117,12 @@ a:focus {
 
 .site-inner {
     max-width: 100%;
+}
+
+#menu-main-menu li {
+    transition: background .15s ease-in-out;
+   -moz-transition: background .15s ease-in-out;
+   -webkit-transition: background .15s ease-in-out;
 }
 
 
@@ -2295,6 +2310,9 @@ a:focus {
     margin: 10px 0px;
     color: #212121;
     border: 3px solid transparent;
+    transition: border .25s ease-in-out;
+   -moz-transition: border .25s ease-in-out;
+   -webkit-transition: border .25s ease-in-out;
 }
 
 #gallery-2 .gallery-item:hover {
@@ -2447,6 +2465,13 @@ a:focus {
     font-size: 16px;
 }
 
+.rates-table .rates-table-link,
+.rates-more ul li {
+    transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
+}
+
 .rates-more ul li {
     padding: 16.5px 40px;
 }
@@ -2590,12 +2615,12 @@ a:focus {
  
 /*----- Contact Tab Links -----*/
 
-..contact-tab-links-container {
+.contact-tab-links-container {
     background-color: #f3f3f3;
 }
 
 /* Clearfix */
-..contact-tab-links:after {
+.contact-tab-links:after {
     display:block;
     clear:both;
     content:'';
@@ -2635,7 +2660,6 @@ a.map-inquire:hover {
 
 .contact-tab-content .tab .google-map {
     padding: 10px 0px;
-    margin-top: 35px;
 }
 
 .contact-tab-links li a:hover,
@@ -2711,6 +2735,9 @@ a.map-inquire:hover {
 .map-links li a {
     height: 30px;
     width: 120px;
+    transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
 }
 
 .map-links li a:hover {
@@ -2736,6 +2763,10 @@ a.map-inquire:hover {
     padding: 0px 10px;
     line-height: 40px;
     text-transform: uppercase;
+    
+    transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
 }
 
 .contact-tab-links li,

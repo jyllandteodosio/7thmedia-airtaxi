@@ -97,7 +97,6 @@ function parallax_homepage_widgets() {
 
 }
 
-//get_header('custom');
 
 genesis();
 
