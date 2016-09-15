@@ -162,16 +162,75 @@ jQuery(function( $ ){
     $('.contact-tabs .contact-tab-links a').on('click', function(e)  {
         e.preventDefault();
         var currentAttrValue = $(this).attr('href');
-        
         // Show/Hide Tabs
-        $('.contact-tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+        $('.contact-tabs ' + currentAttrValue).addClass('active').css({
+            'opacity': 1,
+            'position': 'relative',
+            'left': 0+'px',
+            'transition': 'opacity .50s ease-in-out',
+            '-moz-transition': 'opacity .50s ease-in-out',
+            '-webkit-transition': 'opacity .50s ease-in-out'
+        }).fadeIn(400).siblings().removeClass('active').css({
+            'opacity': 0,
+            'position': 'absolute',
+            'left': -9999+'px'
+        });
 
         // Change/remove current tab to active
         $(this).parent('li').addClass('active').siblings().removeClass('active');
 
     });
     
+    //-- Homepage - Contact Us - Location Map Markers --//
     
+    $('.contact-maps').ready(function() {
+        
+        $('.contact-maps').each(function() {
+            var id = $(this).attr('id');
+            var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
+            var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
+            var coords = {lat: lat, lng: lng};
+            console.log(coords);
+            
+            var map = new google.maps.Map(document.getElementById('map-'+id), {
+                zoom: 17,
+                center: coords
+            });
+            
+            var marker = new google.maps.Marker({
+                position: {lat: lat, lng: lng},
+                map: map,
+                title: 'AirTaxi.PH',
+                icon: {
+                    url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
+                    scaledSize: new google.maps.Size(128, 128)
+                }
+            });
+            
+            google.maps.event.trigger(map, 'resize');
+            
+        });
+    });
+    
+    //-- Homepage - Contact Us - Location Map Markers --//
+    
+    $('.map-view').click(function() {
+        var id = $(this).attr('id');
+        var mapName = $('#map-name-'+id).val();
+        var mapAddress = $('#map-address-'+id).val();
+        var image = $('#map-image-'+id).val();
+        var imageAlt = $('#map-image-alt-'+id).val();
+        
+        $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
+        $('.pop-dir').removeClass('hidden');
+        $('.overlay').removeClass('hidden');
+    
+        $('#pop-dir-close').on('click', function(){
+            $('.overlay').toggleClass('hidden');
+            $('.pop-dir').toggleClass('hidden');
+        });
+    
+    });
     //-- Slick JS --//
     
     /*---- Aircraft Detail Page - Fleet Gallery Slick -----*/

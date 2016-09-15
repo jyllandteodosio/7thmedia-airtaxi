@@ -2101,13 +2101,8 @@ Media Queries
 CUSTOM CSS
 ---------------------------------------------------------------------------------------------------- */
 
-.acf-map {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+.hidden {
+    display: none;
 }
 
 a:active,
@@ -2612,6 +2607,21 @@ a:focus {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.contact-tab-content .tab.active {
+    display: block;
+    padding: 0px 40px;
+    opacity: 1;
+    position: relative;
+    left: 0px;
+}
+
+.contact-tabs .tab {
+    display: block;
+    opacity: 0;
+    left: -9999px;
+    position: absolute;
+}
  
 /*----- Contact Tab Links -----*/
 
@@ -2659,7 +2669,7 @@ a.map-inquire:hover {
 }
 
 .contact-tab-content .tab .google-map {
-    padding: 10px 0px;
+    padding: 15px 0px;
 }
 
 .contact-tab-links li a:hover,
@@ -2668,12 +2678,16 @@ a.map-inquire:hover {
 }
 
 .contact-tab-links li a,
-.contact-tab-content .tab .map-details {
+.contact-tab-content .tab .map-details,
+.map-details .map-name h3,
+.pop-dir h4,
+.pop-dir p  {
     color: #212121;
 }
 
 .contact-tab-links li a,
-.contact-tab-content .tab .map-details {
+.contact-tab-content .tab .map-details,
+.pop-dir {
     background-color: #fff;
 }
 
@@ -2682,23 +2696,30 @@ a.map-inquire:hover {
     text-align: left;
 }
 
-.map-details .map-name {
+.map-details .map-name h3,
+.pop-dir h4 {
     font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 0px;
 }
 
 .map-details .map-address,
-.map-details .map-links {
+.map-details .map-links,
+.pop-dir p {
     font-size: 14px;
 }
 
-.map-details .map-name,
+.map-details .map-name h3,
 .map-details .map-address,
-.map-details .map-links {
+.map-details .map-links,
+.pop-dir h4,
+.pop-dir p {
     padding-bottom: 10px;
 }
 
-.map-details .map-name,
-.map-details .map-links {
+.map-details .map-name h3,
+.map-details .map-links,
+.pop-dir h4 {
     font-weight: 700;
 }
 
@@ -2706,9 +2727,10 @@ a.map-inquire:hover {
     height: 30px;
 }
 
-.map-address p {
+.map-address p,
+.pop-dir p {
     margin-bottom: 10px;
-    line-height: 14px;
+    line-height: 24px;
 }
 
 .contact-tab-links li a,
@@ -2775,6 +2797,50 @@ a.map-inquire:hover {
     text-align: center;
 }
 
+.contact-maps {
+    text-align: center;
+    position: relative;
+}
+
+.map-container {
+    margin: 0 auto;
+}
+
+.map-view {
+    cursor: pointer;
+}
+
+.pop-dir {
+    padding: 30px;
+    max-width: 600px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+}
+
+.pop-dir-close {
+    height: 30px;
+    width: 100%;
+    color: #212121;
+    text-align: right;
+    font-family: 'Dashicons';
+    float: right;
+    cursor: pointer;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(31,31,31,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
 
 
 /* Membership Page
@@ -3539,15 +3605,6 @@ table.destinations-box-itinerary {
 .destination-box-notes {
     padding-top: 10px;
 }
-
-.acf-map {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    }
 
 
 

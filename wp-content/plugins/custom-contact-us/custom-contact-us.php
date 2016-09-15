@@ -5,7 +5,7 @@
  * Plugin URI: http://7thmedia.com
  * Description: A brief description of the Plugin.
  * Version: 1.0
- * Author: jylland.teodosio@7thmedia.com
+ * Author: 7th Media
  * Author URI: http://7thmedia.com
  * License: GPL2
  * 
@@ -40,6 +40,7 @@ class Custom_Contact_Us extends WP_Widget {
         echo $before_widget;
         
         // Display the widget
+        echo '<div class="overlay hidden"><div class="pop-dir hidden"></div></div>';
         echo '<div class="widget-text wp_widget_plugin_box">';
         
         // Check if title is set
@@ -53,133 +54,116 @@ class Custom_Contact_Us extends WP_Widget {
             echo '</div>';
         }
         
-        echo '<div class="map two-thirds">
-    <h1>Locations</h1>
-    <div class="contact-tabs">
-        <div class="contact-tab-links-container">
-            <ul class="contact-tab-links">
-                <li class="active one-fifth first"><a class="contact-map map-manila" href="#tab1">Manila</a></li>
-                <li class="one-fifth"><a class="contact-map map-cebu" href="#tab2">Cebu</a></li>
-                <li class="one-fifth"><a class="contact-map map-boracay" href="#tab3">Boracay</a></li>
-                <li class="one-fifth"><a class="contact-map map-clark" href="#tab4">Clark</a></li>
-                <li class="one-fifth"><a class="contact-map map-davao" href="#tab5">Davao</a></li>
-            </ul>
-        </div>
-        <div class="contact-tab-content">
-            <div id="tab1" class="tab active">
-                <div class="google-map">
-                tab1
-                </div>
-                <div class="map-details">
-                    <div class="map-name">MANILA, AirTaxi.PH Hangar</div>
-                    <div class="map-address">
-                        <p>Asian Aerospace Center, Lima Gate, Andrews Avenue</p>
-                        <p>Manila International Airport Complex</p>
-                        <p>Pasay City, 1300 Philippines</p>
-                    </div>
-                    <div class="map-links">
-                        <div class="map-links-label">Driving directions: </div>
-                        <ul>
-                            <li><a href="#" class="contact-map map-view">View</a></li>
-                            <li><a href="#" class="contact-map map-download">Download</a></li>
-                            <li><a href="#" class="contact-map map-email">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="tab2" class="tab">
-                <div class="google-map">
-                tab2
-                </div>
-                <div class="map-details">
-                    <div class="map-name">CEBU, AirTaxi.PH Hangar</div>
-                    <div class="map-address">
-                        <p>Asian Aerospace FBO Facility, Lots 8,9, and 21</p>
-                        <p>Gen. Aviation, Mactan-Cebu International Airport</p>
-                        <p>Lapu-Lapu City, 2009 Philippines</p>
-                    </div>
-                    <div class="map-links">
-                        <div class="map-links-label">Driving directions: </div>
-                        <ul>
-                            <li><a href="#" class="contact-map map-view">View</a></li>
-                            <li><a href="#" class="contact-map map-download">Download</a></li>
-                            <li><a href="#" class="contact-map map-email">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="tab3" class="tab">
-                <div class="google-map">
-                tab3
-                </div>
-                <div class="map-details">
-                    <div class="map-name">BORACAY, AirTaxi.PH Hangar</div>
-                    <div class="map-address">
-                        <p>Asian Aerospace Center, Lima Gate, Andrews Avenue</p>
-                        <p>Manila International Airport Complex</p>
-                        <p>Pasay City, 1300 Philippines</p>
-                    </div>
-                    <div class="map-links">
-                        <div class="map-links-label">Driving directions: </div>
-                        <ul>
-                            <li><a href="#" class="contact-map map-view">View</a></li>
-                            <li><a href="#" class="contact-map map-download">Download</a></li>
-                            <li><a href="#" class="contact-map map-email">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="tab4" class="tab">
-                <div class="google-map">
-                tab4
-                </div>
-                <div class="map-details">
-                    <div class="map-name">CLARK, AirTaxi.PH Hangar</div>
-                    <div class="map-address">
-                        <p>Asian Aerospace FBO Facility, Gate 8</p>
-                        <p>Clark International Airport Complex</p>
-                        <p>Pampanga City, 2009 Philippines</p>
-                    </div>
-                    <div class="map-links">
-                        <div class="map-links-label">Driving directions: </div>
-                        <ul>
-                            <li><a href="#" class="contact-map map-view">View</a></li>
-                            <li><a href="#" class="contact-map map-download">Download</a></li>
-                            <li><a href="#" class="contact-map map-email">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="tab5" class="tab">
-                <div class="google-map">
-                tab5
-                </div>
-                <div class="map-details">
-                    <div class="map-name">DAVAO, AirTaxi.PH Hangar</div>
-                    <div class="map-address">
-                        <p>Asian Aerospace Center, Lima Gate, Andrews Avenue</p>
-                        <p>Manila International Airport Complex</p>
-                        <p>Pasay City, 1300 Philippines</p>
-                    </div>
-                    <div class="map-links">
-                        <div class="map-links-label">Driving directions: </div>
-                        <ul>
-                            <li><a href="#" class="contact-map map-view">View</a></li>
-                            <li><a href="#" class="contact-map map-download">Download</a></li>
-                            <li><a href="#" class="contact-map map-email">Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="contact-apply">
-        Want to join our team?
-        <a href="#" class="contact-map map-inquire">Inquire Here</a>
-    </div>
-</div>';
+        //* Get all contact-us location maps
         
-        echo '</div>';
+        $post_args = array(
+            'posts_per_page'   => 5,
+            'category_name'    => 'contact-us-maps',
+            'orderby'          => 'date',
+            'order'            => 'ASC',
+            'post_type'        => 'post',
+            'post_status'      => 'publish',
+            'suppress_filters' => false 
+        );
+        
+        global $post;
+        $temp = $post;
+        $posts_array = get_posts( $post_args ); 
+        
+        echo '<div class="map two-thirds">';
+        echo '<h1>Locations</h1>';
+        echo '<div class="contact-tabs">';
+        echo '<div class="contact-tab-links-container">';
+        echo '<ul class="contact-tab-links">';
+        
+        $first = 0;
+        
+        foreach ( $posts_array as $post ) :
+            setup_postdata( $post );
+            $first++;
+        
+            if($first == 1):
+            echo '<li class="active one-fifth first"><a class="contact-map map-'.strtolower(get_the_title()).'" href="#tab'.$first.'">'.get_the_title().'</a></li>';
+        
+            else:
+            echo '<li class="one-fifth"><a class="contact-map map-'.strtolower(get_the_title()).'" href="#tab'.$first.'">'.get_the_title().'</a></li>';
+            
+            endif;
+            
+        endforeach;
+        
+        echo '</ul>'; // .contact-tab-links
+        echo '</div>'; // .contact-tab-links-container
+        
+        // Tab Container
+        echo '<div class="contact-tab-content">';
+        
+        $first = 0;
+        
+        foreach ( $posts_array as $post ) :
+            setup_postdata( $post );
+        
+            $first++;
+            
+            //Tab Content
+            if($first == 1):
+            echo '<div id="tab'.$first.'" class="tab active">';
+            else:
+            echo '<div id="tab'.$first.'" class="tab">';
+            endif;
+        
+            // Google Map
+            echo '<div class="google-map">';
+        
+            echo '<div class="contact-maps" id="'.$first.'">';
+        
+            echo '<div class="map-coords hidden">';
+            echo '<input type="hidden" id="marker-lat-'.$first.'" value="'.get_field('map')['lat'].'"/>';
+            echo '<input type="hidden" id="marker-lng-'.$first.'" value="'.get_field('map')['lng'].'"/>';
+            echo '</div>'; // .map-coords .hidden
+        
+            echo '<div id="map-'.$first.'" class="map-container" style="height: 360px; width: 720px"></div>';
+            echo '</div>'; // .contact-maps
+        
+            echo '</div>'; // .google-map
+        
+            // Map Details
+            echo '<div class="map-details">';
+        
+            // Hangar Name
+            echo '<div class="map-name"><h3>'.get_field('hangar_name').'</h3></div>';
+        
+            // Hangar Address
+            echo '<div class="map-address"><p>'.get_field('hangar_address').'</p></div>';
+        
+            // Hangar Driving Directions
+            echo '<div class="map-links">
+                    <div class="map-links-label">Driving directions: </div>
+                    <ul>
+                        <li><a id="p'.$first.'" class="contact-map map-view">View</a></li>
+                        <li><a href="'.get_field('driving_directions')['url'].'" class="contact-map map-download" download>Download</a></li>
+                        <li><a id="email-dir-'.$first.'" href="#" class="contact-map map-email">Email</a></li>
+                    </ul>';
+            echo '</div>'; // .map-links
+            echo '</div>'; // .map-details
+        
+            // Driving Directions Popup
+            echo '<input type="hidden" id="map-name-p'.$first.'" value="'.get_field('hangar_name').'"/>';
+            echo '<input type="hidden" id="map-address-p'.$first.'" value="'.get_field('hangar_address').'"/>';
+            echo '<input type="hidden" id="map-image-p'.$first.'" value="'.get_field('driving_directions')['url'].'"/>';
+            echo '<input type="hidden" id="map-image-alt-p'.$first.'" value="'.get_field('driving_directions')['alt'].'"/>';
+        
+            echo '</div>'; // .tab
+            
+        endforeach;
+        
+        $post=$temp;
+        
+        echo '</div>';  // .contact-tab-content
+        echo '</div>';  // .contact-tabs
+        echo '</div>';  // .map .two-thirds
+        
+        echo '</div>'; // .widget-text .wp_widget_plugin_box
         echo $after_widget;
 	}
     
