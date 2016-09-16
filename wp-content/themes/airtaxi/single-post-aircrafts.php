@@ -22,8 +22,8 @@ get_header('custom'); ?>
     ?>
 
     <div class="aircraft-name">
-        <?php the_title(); ?> 
-        <strong><?php the_field('model'); ?></strong>
+        <h1><?php the_title(); ?> 
+        <strong><?php the_field('model'); ?></strong></h1>
     </div>
     
     <div class="aircraft-panel">
@@ -31,23 +31,25 @@ get_header('custom'); ?>
             <div class="aircraft-details">
               
                <ul class="detail-capacity">
-                   <li class="detail-label">Capacity:</li>
+                   <li><label class="detail-label">Capacity:</label></li>
                    <li>
-                   <?php for($i=0;$i<$capacity;$i++): ?>
-                       <span class="dashicons dashicons-admin-users"></span>
-                   <?php endfor; ?>
+                       <?php for($i=0;$i<$capacity;$i++): ?>
+                           <span class="dashicons dashicons-admin-users"></span>
+                       <?php endfor; ?>
                    </li>
-                   <li>Up to <?php echo $capacity; ?> passengers</li>
+                   <li>
+                       <p>Up to <?php echo $capacity; ?> passengers</p>
+                   </li>
                </ul><!-- detail-capacity -->
                
                <ul class="detail-about">
-                   <li class="detail-label">About:</li>
-                   <li><?php the_field('about'); ?></li>
+                   <li><label class="detail-label">About:</label></li>
+                   <li><p><?php the_field('about'); ?></p></li>
                </ul><!-- detail-about -->
                
                <ul class="detail-notable">
-                   <li class="detail-label">Notable Features:</li>
-                   <li>
+                   <li><label class="detail-label">Notable Features:</label></li>
+                   <li><p>
                    <?php 
                        // check if the repeater field has rows of data
                         if( have_rows('notable_features') ):
@@ -58,7 +60,7 @@ get_header('custom'); ?>
                                 echo "<br/>";
                             endwhile;
                         endif;
-                    ?>
+                    ?></p>
                    </li>
                </ul><!-- detail-notable -->
                

@@ -3,7 +3,7 @@ jQuery(function( $ ){
     
     //-- Homepage - Menu Link - Smooth Scroll --//
     
-    $('a[href*="#"]:not([href="#"]):not(.contact-map)').click(function() {
+    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a)').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -54,6 +54,13 @@ jQuery(function( $ ){
             },
             markers: [
                 {
+                    coords: [262,185],
+                    name: "Clark",
+                    style: {
+                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark-1.png"
+                    }
+                },
+                {
                     coords: [102,185],
                     name: "Clark",
                     style: {
@@ -61,11 +68,13 @@ jQuery(function( $ ){
                         stroke: "#45b9c1",
                         "stroke-width": 2,
                         r: 7
-                    },
-                    legend: {
-                        vertical: true,
-                        title: 'test',
-                        cssClass: 'legend'
+                    }
+                },
+                {
+                    coords: [278,200],
+                    name: "Metro Manila",
+                    style: {
+                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila.png"
                     }
                 },
                 {
@@ -79,6 +88,13 @@ jQuery(function( $ ){
                     }
                 },
                 {
+                    coords: [315,270],
+                    name: "Boracay Island",
+                    style: {
+                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay.png"
+                    }
+                },
+                {
                     coords: [155,270],
                     name: "Boracay Island",
                     style: {
@@ -89,6 +105,13 @@ jQuery(function( $ ){
                     }
                 },
                 {
+                    coords: [388,305],
+                    name: "Cebu",
+                    style: {
+                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu.png"
+                    }
+                },
+                {
                     coords: [228,305],
                     name: "Cebu",
                     style: {
@@ -96,6 +119,13 @@ jQuery(function( $ ){
                         stroke: "#45b9c1",
                         "stroke-width": 2,
                         r: 7
+                    }
+                },
+                {
+                    coords: [444,397],
+                    name: "Davao",
+                    style: {
+                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao.png"
                     }
                 },
                 {
@@ -111,19 +141,24 @@ jQuery(function( $ ){
             ],
             onMarkerTipShow: function(e, label, code) {
                 switch (code) {
-                        case '0': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
+                        case '0':
+                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
                         break;
                         
-                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
+                        case '2':
+                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
                         break;
                         
-                        case '2': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
+                        case '4':
+                        case '5': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
                         break;
                         
-                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
+                        case '6':
+                        case '7': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
                         break;
                         
-                        case '4': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
+                        case '8':
+                        case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
                         break;
                         
                     default: break;
@@ -190,7 +225,6 @@ jQuery(function( $ ){
             var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
             var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
             var coords = {lat: lat, lng: lng};
-            console.log(coords);
             
             var map = new google.maps.Map(document.getElementById('map-'+id), {
                 zoom: 17,
@@ -212,7 +246,7 @@ jQuery(function( $ ){
         });
     });
     
-    //-- Homepage - Contact Us - Location Map Markers --//
+    //-- Homepage - Contact Us - View Driving Directions Popup --//
     
     $('.map-view').click(function() {
         var id = $(this).attr('id');
@@ -222,15 +256,37 @@ jQuery(function( $ ){
         var imageAlt = $('#map-image-alt-'+id).val();
         
         $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
-        $('.pop-dir').removeClass('hidden');
+        $('.pop-dir').removeClass('hidden').hide().fadeIn(400);
         $('.overlay').removeClass('hidden');
     
         $('#pop-dir-close').on('click', function(){
-            $('.overlay').toggleClass('hidden');
-            $('.pop-dir').toggleClass('hidden');
+            $('.overlay').addClass('hidden');
+            $('.pop-dir').addClass('hidden').hide();
         });
     
     });
+    
+    //-- Homepage - Contact Us - Email Driving Directions Popup --//
+    $('.map-email').click(function() {
+        var id = $(this).attr('id');
+        var mapName = $('input[data-ref="map-name-'+id+'"]').val();
+        var mapAddress = $('input[data-ref="map-address-'+id+'"]').val();
+        var image = $('input[data-ref="map-image-'+id+'"]').val();
+        
+        $('input[name="hangar-name"]').attr('value', mapName);
+        $('input[name="hangar-address"]').attr('value', mapAddress);
+        $('input[name="hangar-image"]').attr('value', image);
+        
+        $('.pop-email').removeClass('hidden').hide().fadeIn(400);
+        $('.overlay').removeClass('hidden');
+        
+        $('#pop-email-close').on('click', function(){
+            $('.overlay').addClass('hidden');
+            $('.pop-email').addClass('hidden').hide();
+        });
+    });
+    
+    
     //-- Slick JS --//
     
     /*---- Aircraft Detail Page - Fleet Gallery Slick -----*/
@@ -280,9 +336,9 @@ jQuery(function( $ ){
         arrows: true,
         infinite: false,
         rows: 2,
-        slidesPerRow: 1,
+        slidesPerRow: 4,
         speed: 300,
-        slidesToShow: 4,
+        slidesToShow: 8,
         variableWidth: true,
         responsive: [
             {
@@ -327,9 +383,9 @@ jQuery(function( $ ){
         arrows: true,
         infinite: false,
         rows: 2,
-        slidesPerRow: 1,
+        slidesPerRow: 4,
         speed: 300,
-        slidesToShow: 4,
+        slidesToShow: 8,
         variableWidth: true,
         responsive: [
             {

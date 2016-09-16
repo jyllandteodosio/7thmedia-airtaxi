@@ -37,10 +37,19 @@ class Custom_Contact_Us extends WP_Widget {
         // these are the widget options
         $title = apply_filters('widget_title', $instance['title']);
         $text = apply_filters('widget_text', $instance['text']);
+        $email = apply_filters('widget_text', '[contact-form-7 id="271" title="Driving Directions"]');
         echo $before_widget;
         
         // Display the widget
-        echo '<div class="overlay hidden"><div class="pop-dir hidden"></div></div>';
+        echo '<div class="overlay hidden">';
+        
+        echo '<div class="pop-dir hidden"></div>';
+        echo '<div class="pop-email hidden"><div id="pop-email-close" class="pop-dir-close"></div><h4>Please enter your details so we can send you <br/> the directions to our facility.</h4>';
+        echo $email;
+        echo '</div>'; // .pop-email
+        
+        echo '</div>'; // .overlay
+        
         echo '<div class="widget-text wp_widget_plugin_box">';
         
         // Check if title is set
@@ -142,15 +151,15 @@ class Custom_Contact_Us extends WP_Widget {
                     <ul>
                         <li><a id="p'.$first.'" class="contact-map map-view">View</a></li>
                         <li><a href="'.get_field('driving_directions')['url'].'" class="contact-map map-download" download>Download</a></li>
-                        <li><a id="email-dir-'.$first.'" href="#" class="contact-map map-email">Email</a></li>
+                        <li><a id="e'.$first.'" class="contact-map map-email">Email</a></li>
                     </ul>';
             echo '</div>'; // .map-links
             echo '</div>'; // .map-details
         
             // Driving Directions Popup
-            echo '<input type="hidden" id="map-name-p'.$first.'" value="'.get_field('hangar_name').'"/>';
-            echo '<input type="hidden" id="map-address-p'.$first.'" value="'.get_field('hangar_address').'"/>';
-            echo '<input type="hidden" id="map-image-p'.$first.'" value="'.get_field('driving_directions')['url'].'"/>';
+            echo '<input type="hidden" data-ref="map-name-e'.$first.'" id="map-name-p'.$first.'" value="'.get_field('hangar_name').'"/>';
+            echo '<input type="hidden" data-ref="map-address-e'.$first.'" id="map-address-p'.$first.'" value="'.get_field('hangar_address').'"/>';
+            echo '<input type="hidden" data-ref="map-image-e'.$first.'" id="map-image-p'.$first.'" value="'.get_field('driving_directions')['url'].'"/>';
             echo '<input type="hidden" id="map-image-alt-p'.$first.'" value="'.get_field('driving_directions')['alt'].'"/>';
         
             echo '</div>'; // .tab

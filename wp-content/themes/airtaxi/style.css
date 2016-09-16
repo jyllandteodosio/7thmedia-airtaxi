@@ -2394,7 +2394,7 @@ a:focus {
 }
 
 .membership-table .one-third {
-    background: rgba(78, 197, 207, 0.8);
+    background: rgba(78, 197, 207, 0.9);
     border: 4px solid #238f96;
     padding: 20px 30px;
     font-size: 16px;
@@ -2479,19 +2479,22 @@ a:focus {
 .rates-more li.rates-inquire {
     margin-top: 24px;
     text-transform: uppercase;
+    padding: 0px;
 }
 
 .rates-more li.rates-inquire a {
     color: #fff !important;
     font-weight: 700;
+    display: block;
+    padding: 16.5px 40px;
 }
 
-.rates-more li.rates-inquire:hover {
+.rates-more li.rates-inquire a:hover {
     background: #34a8b0;
 }
 
 .rates-table h2,
-.rates-more li.rates-inquire,
+.rates-more li.rates-inquire a,
 .rates-table .rates-table-link:hover {
     background: #4ec5cd;
 }
@@ -2559,12 +2562,15 @@ a:focus {
 .contact-form,
 .contact-form input,
 .contact-form textarea,
+.pop-email,
+.pop-email input,
 .map-inquire {
     font-size: 14px;
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.pop-email input {
     background-color: #eaeaea;
     border: none;
     padding: 8px;
@@ -2577,20 +2583,29 @@ a:focus {
 }
 
 .contact-form input[type="submit"],
+.pop-email input[type="submit"],
 .map-inquire {
     background-color: #4ec5cd;
 }
 
 .contact-form input[type="submit"],
 .contact-form input[type="submit"]:hover,
+.pop-email input[type="submit"],
+.pop-email input[type="submit"]:hover,
 .map-inquire {
     height: 40px;
 }
 
 .contact-form input[type="submit"]:hover,
+.pop-email input[type="submit"]:hover,
 .map-links li a:hover,
 .map-inquire:hover {
     background-color: #34a8b0;
+}
+
+.pop-email p {
+    text-align: left;
+    color: #212121;
 }
 
 
@@ -2687,7 +2702,8 @@ a.map-inquire:hover {
 
 .contact-tab-links li a,
 .contact-tab-content .tab .map-details,
-.pop-dir {
+.pop-dir,
+.pop-email {
     background-color: #fff;
 }
 
@@ -2806,13 +2822,15 @@ a.map-inquire:hover {
     margin: 0 auto;
 }
 
-.map-view {
+.map-view,
+.map-email,
+.pop-dir-close {
     cursor: pointer;
 }
 
-.pop-dir {
+.pop-dir,
+.pop-email {
     padding: 30px;
-    max-width: 600px;
     position: absolute;
     margin: auto;
     left: 0;
@@ -2822,6 +2840,22 @@ a.map-inquire:hover {
     z-index: 9999;
 }
 
+.pop-dir {
+    max-width: 600px;
+}
+
+.pop-email {
+    max-width: 480px;
+}
+
+.pop-email h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    line-height: 30px;
+    padding-bottom: 20px;
+}
+
 .pop-dir-close {
     height: 30px;
     width: 100%;
@@ -2829,7 +2863,7 @@ a.map-inquire:hover {
     text-align: right;
     font-family: 'Dashicons';
     float: right;
-    cursor: pointer;
+    font-size: 24px;
 }
 
 .overlay {
@@ -3091,7 +3125,7 @@ div.mrates-diamond-header {
 --------------------------------------------- */
 
 
-.aircraft-detail-page .aircraft-name {
+.aircraft-detail-page .aircraft-name h1 {
     font-family: 'Lato', sans-serif;
     font-size: 36px;
     color: #686868;
@@ -3114,21 +3148,21 @@ div.mrates-diamond-header {
     width: 25%;
     max-width: 300px;
     height: 100%;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .aircraft-slideshow .mslide p {
     display: none;
 }
 
-.aircraft-details .detail-label {
-    font-size: 18px;
-    font-weight: 900;
-    padding-bottom: 6px;
+.aircraft-slideshow {
+    background-color: #212121;
 }
 
-.aircraft-details ul {
-    padding-bottom: 20px;
+.aircraft-details .detail-label {
+    font-size: 16px;
+    font-weight: 900;
+    padding-bottom: 16px;
 }
 
 .detail-capacity {
@@ -3137,6 +3171,8 @@ div.mrates-diamond-header {
 
 .detail-capacity .detail-label {
     text-align: left;
+    margin-bottom: 20px;
+    display: block;
 }
 
 
@@ -3181,7 +3217,7 @@ div.mrates-diamond-header {
 .gallery-slider .gallery-slider-item {
     display: inline-block;
     width: 300px;
-    height: 140px;
+    max-height: 170px;
     background-color: #f3f3f3;
     border: 3px solid #dfdfdf;
     padding: 10px 20px;
@@ -3333,7 +3369,6 @@ li.active a, li.active a:hover,
 
 .tab.active {
     display: block;
-    padding: 0px 40px;
 }
 
 .tab,
@@ -3360,8 +3395,7 @@ li.active a, li.active a:hover,
     width: 100%;
 }
 
-.tab-disclaimer,
-.tab.active {
+.tab-disclaimer {
     text-align: center;
 }
 
@@ -3373,12 +3407,16 @@ li.active a, li.active a:hover,
     background-repeat: no-repeat;
 }
 
+.rates-panel-tabs tab {
+    padding: 0px 40px;
+}
+
 .rates-box {
     background-color: #fff;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
     display: inline-block;
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-right: 20px;
     text-align: center;
     width: 220px !important;
 }
@@ -3605,8 +3643,6 @@ table.destinations-box-itinerary {
 .destination-box-notes {
     padding-top: 10px;
 }
-
-
 
 
 
