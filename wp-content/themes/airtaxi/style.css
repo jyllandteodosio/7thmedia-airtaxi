@@ -916,7 +916,7 @@ Site Header
 .title-area {
 	float: left;
 	padding: 20px 0;
-	width: 360px;
+	width: 300px;
 }
 
 .header-full-width .title-area {
@@ -963,7 +963,7 @@ Site Header
 .site-header .widget-area {
 	float: right;
 	text-align: right;
-	width: 740px;
+	width: 840px;
 }
 
 .site-header .widget-area,
@@ -3275,7 +3275,7 @@ div.mrates-diamond-header {
 --------------------------------------------- */
 
 .rates-panel {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
 }
 
 .rates-panel-title h1 {
@@ -3418,7 +3418,7 @@ li.active a, li.active a:hover,
     margin-bottom: 20px;
     margin-right: 20px;
     text-align: center;
-    width: 220px !important;
+    width: 270px !important;
 }
 
 .rates-box-row {
@@ -3430,8 +3430,8 @@ li.active a, li.active a:hover,
     font-size: 20px;
     font-weight: 600;
     height: 68px;
+    width: 270px;
     line-height: 24px;
-    padding: 10px;
     text-transform: uppercase;
     vertical-align: middle;
 }
@@ -3644,10 +3644,33 @@ table.destinations-box-itinerary {
     padding-top: 10px;
 }
 
+/*----- Rates Links Panel -----*/
 
+.rates-links-panel {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #eaeaea;
+    position: relative;
+    min-height: 500px;
+    padding-top: 60px;
+}
 
+.rates-links-box {
+    max-width: 1140px;
+    margin: 0 auto;
+    font-size: 16px;
+}
 
+.rates-links-box .rates-table h2 {
+    background-color: #686868;
+}
 
+.rates-links-box .rates-table ul {
+    margin-top: 0px;
+}
 
-
+.rates-links-title h1 {
+    font-size: 48px;
+    padding-bottom: 20px;
+}
 

@@ -218,33 +218,35 @@ jQuery(function( $ ){
     
     //-- Homepage - Contact Us - Location Map Markers --//
     
-    $('.contact-maps').ready(function() {
-        
-        $('.contact-maps').each(function() {
-            var id = $(this).attr('id');
-            var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
-            var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
-            var coords = {lat: lat, lng: lng};
-            
-            var map = new google.maps.Map(document.getElementById('map-'+id), {
-                zoom: 17,
-                center: coords
+    if($('.site-container').has('.contact-maps')) {
+        $('.contact-maps').ready(function() {
+
+            $('.contact-maps').each(function() {
+                var id = $(this).attr('id');
+                var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
+                var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
+                var coords = {lat: lat, lng: lng};
+
+                var map = new google.maps.Map(document.getElementById('map-'+id), {
+                    zoom: 17,
+                    center: coords
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat: lat, lng: lng},
+                    map: map,
+                    title: 'AirTaxi.PH',
+                    icon: {
+                        url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
+                        scaledSize: new google.maps.Size(128, 128)
+                    }
+                });
+
+                google.maps.event.trigger(map, 'resize');
+
             });
-            
-            var marker = new google.maps.Marker({
-                position: {lat: lat, lng: lng},
-                map: map,
-                title: 'AirTaxi.PH',
-                icon: {
-                    url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
-                    scaledSize: new google.maps.Size(128, 128)
-                }
-            });
-            
-            google.maps.event.trigger(map, 'resize');
-            
         });
-    });
+    }
     
     //-- Homepage - Contact Us - View Driving Directions Popup --//
     
@@ -338,7 +340,7 @@ jQuery(function( $ ){
         rows: 2,
         slidesPerRow: 4,
         speed: 300,
-        slidesToShow: 8,
+        slidesToShow: -1,
         variableWidth: true,
         responsive: [
             {
@@ -385,7 +387,7 @@ jQuery(function( $ ){
         rows: 2,
         slidesPerRow: 4,
         speed: 300,
-        slidesToShow: 8,
+        slidesToShow: -1,
         variableWidth: true,
         responsive: [
             {

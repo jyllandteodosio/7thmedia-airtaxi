@@ -106,17 +106,19 @@ get_header('custom'); ?>
                     )
                 );
                 $the_query = new WP_Query( $args );
+                $posts = $the_query->get_posts();
                 // get aircraft gallery vectors
                 if ( $the_query->have_posts() ) {
-                    while ( $the_query->have_posts() ) {
+                    foreach ( $posts as $post ) {
                         $url = get_field('_gallery_link_url');
-                        
-                        echo '<a href="'. $url .'" alt="' . $model . '">';
+                        $alt = get_field('_wp_attachment_image_alt');
                         
                         //marks the displayed image in the gallery
-                        if(get_field('_wp_attachment_image_alt') == $model){
-                            echo '<div class="gallery-slider-item item-center">';
+                        if( $model == $alt ){
+                            echo '<a href="'. $url .'" alt="' . $alt . '" class="hidden">';
+                            echo '<div class="gallery-slider-item item-center" style="border: 3px solid #4ec5cd">';
                         } else {
+                            echo '<a href="'. $url .'" alt="' . $alt . '">';
                             echo '<div class="gallery-slider-item">';
                         }
                         

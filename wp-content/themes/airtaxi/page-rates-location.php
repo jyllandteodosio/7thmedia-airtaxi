@@ -278,4 +278,7 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php 
+    get_template_part( 'page-rates-links' );
+    get_footer(); 
+?>

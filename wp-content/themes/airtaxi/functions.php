@@ -245,3 +245,20 @@ genesis_register_sidebar( array(
 	'description' => __( 'This is the home section 6 section.', 'parallax' ),
 ) );
 
+//* News Page Widget Areas
+genesis_register_sidebar( array(
+	'id'          => 'news-featured',
+	'name'        => __( 'Featured News', 'parallax' ),
+	'description' => __( 'Featured News Widget Area', 'parallax' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'news-related-post',
+	'name'        => __( 'Related News Posts', 'parallax' ),
+	'description' => __( 'Related News Widget Area', 'parallax' ),
+) );
+genesis_register_sidebar( array(
+	'id'          => 'news-recent-post',
+	'name'        => __( 'Recent News Posts', 'parallax' ),
+	'description' => __( 'Recent News Widget Area', 'parallax' ),
+) );
+
