@@ -38,5 +38,4 @@ function redirect_after_logout(){
 
 }
 
-
 ?>

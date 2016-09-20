@@ -7,7 +7,6 @@
  * @subpackage 
  */
 
-get_header('custom');
 
 add_action( 'genesis_meta', 'parallax_news_genesis_meta' );
 /**
@@ -17,25 +16,6 @@ add_action( 'genesis_meta', 'parallax_news_genesis_meta' );
 function parallax_news_genesis_meta() {
 
 	if ( is_active_sidebar( 'news-featured' ) || is_active_sidebar( 'news-related-post' ) || is_active_sidebar( 'news-recent-post' ) ) {
-        
-        //* Enqueue parallax script
-		add_action( 'wp_enqueue_scripts', 'parallax_enqueue_parallax_script' );
-		function parallax_enqueue_parallax_script() {
-
-			if ( ! wp_is_mobile() ) {
-
-				wp_enqueue_script( 'parallax-script', get_bloginfo( 'stylesheet_directory' ) . '/js/parallax.js', array( 'jquery' ), '1.0.0' );
-			}
-		}
-
-		//* Add parallax-home body class
-		add_filter( 'body_class', 'parallax_body_class' );
-		function parallax_body_class( $classes ) {
-		
-   			$classes[] = 'parallax-home';
-  			return $classes;
-  			
-		}
 
 		//* Force full width content layout
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -45,7 +25,7 @@ function parallax_news_genesis_meta() {
 
 		//* Remove breadcrumbs
 		remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs');
-
+        
 		//* Remove the default Genesis loop
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 
@@ -64,21 +44,22 @@ function parallax_newspage_widgets() {
 		'before' => '<div class="news-featured widget-area"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
-
+    
 	genesis_widget_area( 'news-related-post', array(
-		'before' => '<div class="news-related-post widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
+		'before' => '<main class="content-2"><div class="news-related-post widget-area"><div class="wrap">',
+		'after'  => '</div></div></main>',
 	) );
 
 	genesis_widget_area( 'news-recent-post', array(
-		'before' => '<div class="news-recent-post widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
+		'before' => '<aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="News Sidebar"><div class="news-recent-post widget-area"><div class="wrap">',
+		'after'  => '</div></div></aside>',
 	) );
-
+    
 }
 
-genesis();
+//get_header('custom');
 
+genesis();
 
 get_footer();
 

@@ -7,7 +7,7 @@
 *
 * @package 
 * @subpackage 
-* @since Twenty 
+* @since  
 */
 
 get_header('custom'); ?>

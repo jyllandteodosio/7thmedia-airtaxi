@@ -722,11 +722,11 @@ Common Classes
 }
 
 .entry-title a {
-	color: #000;
+	color: #4ec5cd;
 }
 
 .entry-title a:hover {
-	color: #f04848;
+	color: #34a8b0;
 }
 
 .widget-title {
@@ -1187,7 +1187,7 @@ Content Area
 }
 
 .home-odd .featured-content .entry-title a:hover {
-	color: #f04848;
+	color: #34a8b0;
 }
 
 .home-even p:last-child,
@@ -1289,8 +1289,8 @@ Content Area
 }
 
 .pricing-table a.button:hover {
-	background-color: #f04848;
-	border: 3px solid #f04848;
+	background-color: #34a8b0;
+	border: 3px solid #34a8b0;
 	color: #fff !important;
 }
 
@@ -1367,12 +1367,9 @@ p.entry-meta {
 }
 
 .entry-header::after {
-	border-bottom: 1px solid #000;
 	content: "";
 	display: block;
-	margin: 0 auto 60px;
-	padding-bottom: 30px;
-	width: 25%;
+	padding-bottom: 10px;
 }
 
 .sidebar .entry-header::after {
@@ -1458,7 +1455,7 @@ p.entry-meta {
 
 .archive-pagination li a:hover,
 .archive-pagination .active a {
-	background-color: #f04848;
+	background-color: #34a8b0;
 	color: #fff;
 }
 
@@ -1616,7 +1613,7 @@ Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {
-	background-color: #f04848;
+	background-color: #212121;
 	clear: both;
 	font-size: 24px;
 	padding: 100px 0;
@@ -1659,7 +1656,7 @@ Site Footer
 }
 
 .site-footer a:hover {
-	color: #f04848;
+	color: #34a8b0;
 }
 
 .site-footer p {
@@ -3276,6 +3273,7 @@ div.mrates-diamond-header {
 
 .rates-panel {
     margin-bottom: 40px;
+    margin-top: 70px;
 }
 
 .rates-panel-title h1 {
@@ -3284,6 +3282,12 @@ div.mrates-diamond-header {
     margin-bottom: 30px;
     font-size: 48px;
 }
+
+.page-template-page-rates-location .site-inner {
+    margin-top: 100px;
+    margin-bottom: -20px;
+}
+
 
 
 /*----- Tabs -----*/
@@ -3673,4 +3677,195 @@ table.destinations-box-itinerary {
     font-size: 48px;
     padding-bottom: 20px;
 }
+
+
+/* News Page
+--------------------------------------------- */
+
+
+.page-template-page-news .content,
+.news-single-after {
+    width: 1140px;
+    padding: 0 0 50px;
+    float: none;
+    margin: 0 auto;
+}
+
+.page-template-page-news .content-2,
+.news-single-after .content-2 {
+    width: 700px;
+    float: left;
+}
+
+.page-template-page-news .content-2 {
+    padding-bottom: 50px;
+}
+
+.featured-news {
+    min-height: 400px;
+    padding: 20px;
+    margin-bottom: 40px;
+    background-size: contain;
+}
+
+.featured-news,
+.featured-news h1,
+.featured-news h4,
+.read-more,
+.readmore {
+    color: #fff;
+}
+
+.featured-news h1,
+.featured-news h4,
+.read-more,
+.readmore,
+.news-related-post .widget-title,
+.news-recent-post .widget-title,
+.news-recent-post .rpfc-container li a,
+.news-related-post .entry-title  {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.news-related-post .widget-title,
+.news-recent-post .widget-title {
+    color: #212121;
+}
+
+.read-more,
+.readmore {
+    height: 40px;
+    width: 200px;
+    display: block;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;    
+    background: #4ec5cd;
+    line-height: 40px;
+    margin: 20px 0px;
+}
+
+.read-more:hover,
+.readmore:hover {
+    color: #fff;
+    background: #34a8b0;
+}
+
+.news-related-post .entry-header {
+    text-align: left;
+}
+
+.news-related-post .entry-title {
+    font-size: 24px;
+    color: #4ec5cd;
+    margin-bottom: 0px;
+}
+
+.news-related-post .entry {
+    margin-bottom: 10px;
+}
+
+.news-related-post p.entry-meta {
+    font-size: 14px;
+    color: #686868;
+}
+
+.yuzo_related_post_widget .yuzo_text, 
+.yuzo_related_post .yuzo_views_post {
+    color: !important;
+    line-height: 16px;
+    font-size: 16px;
+}
+
+/* Single News Post
+--------------------------------------------- */
+
+.single-news .site-inner {
+    margin-top: 100px;
+}
+
+.single-news .content {
+    padding: 0px 0px 50px;
+}
+
+.single-news .news-featured-image {
+    min-height: 600px;
+}
+
+.single-news .news-single-content {
+    max-width: 1140px;
+    margin: 40px auto;
+}
+
+.news-single-post h1 {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #212121;
+}
+
+/* Footer
+--------------------------------------------- */
+
+footer {
+    padding: 40px 0px;
+    margin: 0 auto;
+    background: #212121;
+    color: #fff;
+    overflow:auto;
+}
+
+.footer-container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.footer-container .footer-logo {
+    float: left;
+}
+
+.footer-container .footer-links {
+    float: right;
+}
+
+.footer-logo img,
+.footer-logo small {
+    display: block;
+}
+
+.footer-logo small {
+    font-size: 14px;
+    font-family: 'Lato Light', sans-serif;
+    margin-top: 20px;
+}
+
+.footer-links a {
+    margin-left: 10px;
+}
+
+/* Media Queries
+--------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
