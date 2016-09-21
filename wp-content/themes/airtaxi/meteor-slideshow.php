@@ -143,12 +143,19 @@
 					<?php the_post_thumbnail( 'featured-slide', array( 'title' => get_the_title() ) ); ?>
 					
 				<?php endif; ?>
-				
-				<p><?php the_title(); ?></p>
-				<?php if(get_field('slide_button_link')): ?>
-				<span class="slide-button-title"><?php the_field('slide_button_title')?></span>
-				<a class="slide-buttons" href='<?php the_field('slide_button_link'); ?>'><?php the_field('slide_button_name'); ?></a>
-				<?php endif; ?>
+				<div class="slide-container">
+				    <div class="slide-text-container">
+				        <p class="slide-main-text"><?php the_title(); ?></p>
+				        <?php if(get_field('slide_button_link')): ?>
+                            <p class="slide-button-title">
+                                <?php the_field('slide_button_title')?>
+                            </p>
+                            <p class="slide-button-links">
+                                <a class="slide-buttons" href='<?php the_field('slide_button_link'); ?>'><?php the_field('slide_button_name'); ?></a>
+                            </p>
+				        <?php endif; ?>
+				    </div>
+				</div>
 			
 			</div><!-- .mslide -->
 			

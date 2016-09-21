@@ -2125,99 +2125,157 @@ a:focus {
     font-size: 30px;
 }
 
-#meteor-slides-widget-2 .meteor-slides .meteor-buttons,
-.aircraft-slideshow .meteor-slides .meteor-buttons {
-    bottom: 15px;
+#meteor-slides-widget-2 .meteor-buttons,
+.aircraft-slideshow .meteor-buttons {
     box-sizing: initial;
+    
+    width: 100%;
     height: 9px;
+    
     left: 10px;
     right: 0;
-    margin: 0 auto 30px;
+    bottom: 15px;
+    
+    margin: 0 auto 40px !important;
     padding: 6px 0 0;
-    position: absolute;
-    width: 100%;
-    z-index: 999;
-    text-align: center;     
+    
+    z-index: 999;    
 }
 
 #meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     float: none;
-    background: #f3f3f3;
-    border-radius: 16px;
-    box-shadow: none;
-    display: inline-block;
     width: 16px;
     height: 16px;
-    margin: 0 20px 0 0 !important;
-    outline: none;
+    
     text-indent: -9999px;
+    margin: 0 20px 0 0 !important;
+    
+    border-radius: 16px;
+    box-shadow: none;
+    outline: none;
     transition: all 0s ease 0s; 
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    
+    background: #f3f3f3;
+    
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-#meteor-slides-widget-2 .meteor-buttons a.activeSlide,
-.aircraft-slideshow .meteor-buttons a.activeSlide {
-    background: #4ec5cd; 
+.meteor-buttons a.activeSlide {
+    background: #4ec5cd !important; 
 }
 
-#meteor-slides-widget-2 div.meteor-slides.navpaged, div.meteor-slides.navboth,
-.aircraft-slideshow div.meteor-slides.navpaged, div.meteor-slides.navboth {
-    margin-bottom: 0px;
+div.meteor-slides.navpaged,
+div.meteor-slides.navboth {
+    margin-bottom: 0px !important;
+}
+
+.meteor-slides p {
+    top: 60px;
+    left: 0;
+    right: 0;
+    
+    width: 96%;
+    
+    font-size: 1.8em;
+    line-height: 1.3em;
+    
+    margin: 0 auto;
+    padding: 2%;
+    
+    position: relative;
+}
+
+.slide-container {
+    top: 0px;
+    width: 100%;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(31,31,31,0.4) 0%,rgba(31,31,31,0) 100%);
+    height: 860px;
+    max-height: 100%;
+}
+
+.slide-text-container {
+    position: relative;
+}
+
+.meteor-slides .mslide a.slide-buttons {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: none;
+    
+    padding: 20px;
+    
+    min-width: 200px;
+    min-height: 60px;
+    
+    background: rgba(78,197,205,0.8);
+    border: 3px solid #fff;
+}
+
+.meteor-slides .mslide a.slide-buttons:hover {
+    background: rgba(52,168,176,0.8);
+}
+
+.meteor-slides p,
+.slide-text-container {
+    text-shadow: 2px 1px 2px rgba(0,0,0,0.6);
+}
+
+.meteor-slides p,
+.meteor-slides .mslide a.slide-buttons,
+.slide-text-container {
+    color: #fff;
+}
+
+.meteor-slides p.slide-main-text {
+    margin-top: 40px;
+}
+
+.slide-text-container,
+.slide-container {
+    display: block;
 }
 
 .meteor-slides p {
     font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    top: 80px;
-    color: #fff;
-    left: 0;
-    right: 0;
-    line-height: 1.5em;
-    margin: 0 auto;
-    padding: 2%;
-    position: absolute;
-    text-align: center;
-    text-shadow: 2px 1px 2px rgba(0,0,0,0.4);
-    width: 96%;
 }
 
-.slide-buttons {
-    font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-    width: 200px;
-    height: 60px;
-    text-align: center;
+.meteor-slides p.slide-button-title {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.meteor-slides p.slide-button-title,
+.meteor-slides p.slide-button-links {
+    padding: 10px 0px;
+}
+
+.slide-buttons,
+#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+.aircraft-slideshow .meteor-slides .meteor-buttons a {
+    display: inline-block;
+}
+
+.slide-container,
+.meteor-slides .meteor-buttons {
     position: absolute;
-    z-index: 1000;
-    top: 400px;
-    left: 0;
-    right: 0;
-    margin: 0 auto !important;
-    padding: 30px !important;
-    border: 3px solid #fff !important;
-    background: rgba(78, 197, 205, 0.8);
+    text-align: center;
 }
 
 .slide-buttons:hover {
     background: #fff;
-}
-
-.slide-button-title {
-    color: #fff;
-    top: 300px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 60px auto 20px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    text-shadow: 2px 1px 2px rgba(0,0,0,0.4);
 }
 
 
@@ -3810,7 +3868,7 @@ table.destinations-box-itinerary {
 --------------------------------------------- */
 
 footer {
-    padding: 40px 0px;
+    padding: 40px;
     margin: 0 auto;
     background: #212121;
     color: #fff;
