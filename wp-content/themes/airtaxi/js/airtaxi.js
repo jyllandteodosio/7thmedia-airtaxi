@@ -1,6 +1,5 @@
 jQuery(function( $ ){
     
-    
     //-- Homepage - Menu Link - Smooth Scroll --//
     
     $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a)').click(function() {
@@ -9,13 +8,34 @@ jQuery(function( $ ){
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
                 $('html, body').animate({
-                    scrollTop: target.offset().top-30
+                    scrollTop: target.offset().top-40
                 }, 1200);
                 return false;
             }
         }
     });
     
+    //-- Homepage - Auto Scroll --//
+    
+    var screenWidth = $(window).width();
+    
+    if( screenWidth <= 720 ) {
+        $('.sections').fullpage({
+            scrollBar: true,
+            fitToSection: false,
+            autoScrolling: false,
+        });
+        
+        $('#gallery-2').removeClass('gallery-columns-4').addClass('gallery-columns-2');
+        
+    } else {
+        $('.sections').fullpage({
+            scrollBar: true,
+            fitToSection: false,
+        });
+        
+        $('#gallery-2').removeClass('gallery-columns-2').addClass('gallery-columns-4');
+    }
     
     //-- Homepage - Base Locations - Image Map Hover --//
     
@@ -226,6 +246,11 @@ jQuery(function( $ ){
                 var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
                 var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
                 var coords = {lat: lat, lng: lng};
+                
+                if(screenWidth == 720) {
+//                    alert($(id))
+				    $('#'+id+' .map-container').css('width','648px');
+                }
 
                 var map = new google.maps.Map(document.getElementById('map-'+id), {
                     zoom: 17,
@@ -245,6 +270,7 @@ jQuery(function( $ ){
                 google.maps.event.trigger(map, 'resize');
 
             });
+            
         });
     }
     
@@ -269,6 +295,7 @@ jQuery(function( $ ){
     });
     
     //-- Homepage - Contact Us - Email Driving Directions Popup --//
+    
     $('.map-email').click(function() {
         var id = $(this).attr('id');
         var mapName = $('input[data-ref="map-name-'+id+'"]').val();
@@ -427,50 +454,65 @@ jQuery(function( $ ){
     
     /*---- Rates Page - Destination Tours Slick -----*/
 
-    $('.destinations-tab').slick({
-        dots: false,
-        arrows: true,
-        infinite: false,
-        rows: 2,
-        slidesPerRow: 1,
-        speed: 300,
-        slidesToShow: 1,
-        variableWidth: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: false,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
+//    $('.destinations-tab').slick({
+//        dots: false,
+//        arrows: true,
+//        infinite: false,
+//        rows: 2,
+//        slidesPerRow: 1,
+//        speed: 300,
+//        slidesToShow: 1,
+//        variableWidth: true,
+//        responsive: [
+//            {
+//                breakpoint: 1024,
+//                settings: {
+//                    rows: 2,
+//                    slidesPerRow: 2,
+//                    slidesToShow: 1,
+//                    slidesToScroll: 1,
+//                    infinite: false,
+//                    dots: true
+//                }
+//            },
+//            {
+//                breakpoint: 720,
+//                settings: {
+//                    rows: 2,
+//                    slidesPerRow: 2,
+//                    slidesToShow: 1,
+//                    slidesToScroll: 1,
+//                    infinite: false,
+//                    dots: true
+//                }
+//            },
+//            {
+//                breakpoint: 600,
+//                settings: {
+//                    rows: 2,
+//                    slidesPerRow: 2,
+//                    slidesToShow: 1,
+//                    slidesToScroll: 1,
+//                    infinite: false,
+//                    dots: true
+//                }
+//            },
+//            {
+//                breakpoint: 480,
+//                settings: {
+//                    rows: 2,
+//                    slidesPerRow: 2,
+//                    slidesToShow: 1,
+//                    slidesToScroll: 1,
+//                    infinite: false,
+//                    dots: true
+//                }
+//            }
+//            // You can unslick at a given breakpoint now by adding:
+//            // settings: "unslick"
+//            // instead of a settings object
+//        ]
+//    });
     
     $('.m-panel-table').ready(function() {
         // Membership perks table

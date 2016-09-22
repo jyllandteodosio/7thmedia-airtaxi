@@ -903,7 +903,7 @@ Site Header
 	top: 0;
 	width: 100%;
 	z-index: 999;
-    box-shadow: 2px 2px #12a8b2;
+    box-shadow: 0px 2px #12a8b2;
 }
 
 .admin-bar .site-header {
@@ -1848,9 +1848,9 @@ Media Queries
 	.home-section-5 {
 		background-attachment: scroll;
 		background-position: top;
-		-webkit-background-size: auto;
-		-moz-background-size:    auto;
-		background-size:         auto;
+		-webkit-background-size: cover;
+		-moz-background-size:    cover;
+		background-size:         cover;
 	}
 
 	.content {
@@ -1876,7 +1876,7 @@ Media Queries
 
 	.site-header {
 		padding-bottom: 10px;
-		position: static;
+/*		position: static;*/
 	}
 
 	.content,
@@ -1887,8 +1887,7 @@ Media Queries
 	}
 
 	.genesis-nav-menu,
-	.site-header .widget-area,
-	.site-title {
+	.site-header .widget-area {
 		text-align: center;
 	}
 
@@ -1993,7 +1992,7 @@ Media Queries
 		border: none;
 		display: block;
 		padding: 20px;
-		text-transform: none;
+/*		text-transform: none;*/
 	}
 
 	.genesis-nav-menu.responsive-menu .menu-item-has-children {
@@ -2045,9 +2044,7 @@ Media Queries
 
 	.genesis-nav-menu.responsive-menu .sub-menu li a,
 	.genesis-nav-menu.responsive-menu .sub-menu li a:hover {
-		padding: 12px 20px;
 		position: relative;
-		text-transform: none;
 		width: 100%;
 	}
 
@@ -2070,7 +2067,7 @@ Media Queries
 
 	.home-even,
 	.home-odd {
-		padding: 90px 0 100px;
+	    padding: 120px 0 100px;
 	}
 
 	.parallax-home .simple-social-icons ul li {
@@ -2121,11 +2118,16 @@ a:focus {
 /* Homepage Section - Slideshow
 --------------------------------------------- */
 
-#meteor-slides-widget-2 {
-    font-size: 30px;
+#meteor-slides-widget-3 {
+    display: none;
+}
+
+.widget_meteor-slides-widget {
+    font-size: 2em;
 }
 
 #meteor-slides-widget-2 .meteor-buttons,
+#meteor-slides-widget-3 .meteor-buttons,
 .aircraft-slideshow .meteor-buttons {
     box-sizing: initial;
     
@@ -2143,6 +2145,7 @@ a:focus {
 }
 
 #meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     float: none;
     width: 16px;
@@ -2253,8 +2256,8 @@ div.meteor-slides.navboth {
 }
 
 .meteor-slides p.slide-button-title {
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 1.3em;
+    line-height: 1em;
 }
 
 .meteor-slides p.slide-button-title,
@@ -2264,6 +2267,7 @@ div.meteor-slides.navboth {
 
 .slide-buttons,
 #meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     display: inline-block;
 }
@@ -2282,6 +2286,11 @@ div.meteor-slides.navboth {
 
 /* Homepage Section - Base Locations
 --------------------------------------------- */
+
+.base-locations-container {
+    margin-bottom: -8%;
+    overflow: hidden;
+}
 
 .base-locations-header {
     color: #212121;
@@ -2392,7 +2401,7 @@ div.meteor-slides.navboth {
     font-weight: 700;
     font-size: 20px;
     height: 90px;
-    margin: 10px auto;
+    margin: 0px auto;
 }
 
 .call-now label {
@@ -2406,6 +2415,7 @@ div.meteor-slides.navboth {
     right: 0;
     position: absolute;
     width: 100%;
+    bottom: 0;
 }
 
 .quote,
@@ -2436,7 +2446,6 @@ div.meteor-slides.navboth {
 #home-section-4 {
     background-size: cover;
     background-position: center;
-    min-height: 650px;
 }
 
 #home-section-4 #text-7 h4.widgettitle  {
@@ -2452,15 +2461,15 @@ div.meteor-slides.navboth {
     background: rgba(78, 197, 207, 0.9);
     border: 4px solid #238f96;
     padding: 20px 30px;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1em;
+    line-height: 1.4em;
     min-height: 260px;
 }
 
 .membership-table h4 {
     font-family: "Lato", sans-serif;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 1.6em;
 }
 
 .membership-table .one-third,
@@ -2989,8 +2998,8 @@ a.map-inquire:hover {
 }
 
 .m-panel-content {
-    padding: 0 200px 50px;
-	width: 100%;
+    padding: 0 20px 50px;
+    max-width: 1140px;
 }
 
 .m-panel .wpsm-comptable td {
@@ -3595,17 +3604,30 @@ table.rates-box-list ,
 
 /*----- Destination Tours Box -----*/
 
+.destinations-tab {
+    overflow: auto;
+}
+
 .destinations-box {
     background-color: #fff;
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
     font-size: 14px;
     height: auto;
     margin-bottom: 20px;
-    max-width: 100%;
+    overflow: auto;
+/*
+    margin-right: 20px;
+    float: left;
+    max-width: 400px;
+*/
     min-height: 280px;
     padding: 15px;
     position: relative;
-    width: 1140px !important;
+}
+
+.dest-container {
+    float: left;
+    text-align: left;
 }
 
 .destinations-box-title {
@@ -3629,11 +3651,6 @@ table.rates-box-list ,
     padding: 0px;
 }
 
-.destinations-box-rates {
-    height: 80px;
-}
-
-.destinations-box-rates ul,
 .destinations-box-item .item-capacity,
 .destinations-box-item .item-price {
     display: inline-block;
@@ -3641,15 +3658,25 @@ table.rates-box-list ,
 
 .destinations-box-item {
     background-color: #f3f3f3;
-    float: left;
-    margin-right: 10px;
     padding: 10px 15px;
-    width: 31%;
+    margin-bottom: 10px;
+    width: 32%;
+    margin-right: 10px;
+    display: inline-block;
 }
 
+.destinations-box-image {
+    height: auto;
+    text-align: center;
+    float: right;
+}
 
-.destinations-box-item .item-price,
-.destinations-box .one-third {
+.destinations-box-image img {
+    max-width: 100%;
+    width: 300px;
+}
+
+.destinations-box-item .item-price {
     float: right;
 }
 
@@ -3661,20 +3688,6 @@ table.rates-box-list ,
 .destinations-box-item .item-additional,
 .destinations-box .itinerary-title {
     color: #4ec5cd;
-}
-
-.destinations-box .two-thirds {
-    display: inline-block;
-    float: none;
-    position: relative;
-    width: 65.81196581196582%;
-}
-
-.destinations-box .one-third {
-    display: inline-block;
-    margin-left: 0px;
-    position: relative;
-    width: 30%;
 }
 
 .destinations-box .itinerary-title {
@@ -3715,6 +3728,7 @@ table.destinations-box-itinerary {
     position: relative;
     min-height: 500px;
     padding-top: 60px;
+    padding-bottom: 20px;
 }
 
 .rates-links-box {
@@ -3907,7 +3921,110 @@ footer {
 --------------------------------------------- */
 
 
+@media (min-width: 1920px) {
+    .home-even,
+    .home-odd {
+        min-height: 800px;
+    }
+}
 
+@media (min-width: 720px) and (max-width: 1919px) {
+    .home-even,
+    .home-odd {
+        min-height: 640px;
+    }
+}
+
+@media (max-width: 720px) {
+    .responsive-menu-icon {
+        float: right;
+        margin-top: -70px;
+    }
+    
+    .responsive-menu-icon::before {
+        color: #fff;
+        content: "\f333";
+        font: normal 40px/1 'dashicons';
+        margin: 0 auto;
+    }
+    
+    #home-section-0 {
+        padding-bottom: 0px;
+    }
+    
+/*
+    #home-section-1,
+    #home-section-5 {
+        background-size: cover;
+    }
+*/
+    
+    #home-section-0 .wrap,
+    .page-template-page-membership .site-inner {
+        padding: 0;
+    }
+    
+    #meteor-slides-widget-2 {
+        display: none;
+    }
+    
+    #meteor-slides-widget-3 {
+        display: block;
+    }
+    
+    #base-locations {
+        margin: 0 10%;
+    }
+    
+    .location-hover {
+        margin-left: 0;
+    }
+    
+    .membership-table .one-third {
+        margin-bottom: 20px;
+        min-height: 200px;
+    }
+    
+    .rates-table .one-fourth {
+        max-width: 400px;
+        margin: 0 auto 40px;
+        float: none;
+    }
+    
+    .wpsm-comptable-wrap {
+        overflow: scroll;
+    }
+    
+    .page-template-page-rates-location .site-inner {
+        padding: 0;
+    }
+    
+    .tab-content {
+        padding: 30px 60px;
+    }
+    
+    .destinations-box-image {
+        float: none;
+    }
+    
+    .destinations-box,
+    .destinations-box-title {
+        text-align: center;
+    }
+    .destinations-box-image img {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .destinations-box-item {
+        width: 100%;
+        margin-right: 10px;
+        text-align: left;
+        display: block;
+    }
+
+}
 
 
 

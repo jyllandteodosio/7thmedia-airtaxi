@@ -22,7 +22,8 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
         <h1><?php the_title(); ?></h1>
     </div>
     <div class="rates-panel-tabs">
-        <div class="tabs" style="background-image: url('<?php echo $feat_image;?>')">
+<!--        <div class="tabs" style="background-image: url('<?php echo $feat_image;?>')">-->
+        <div class="tabs">
             <div class="tab-links-container">
                 <ul class="tab-links">
                     <li class="active one-third first"><a class="drop-off" href="#tab1">Drop-off or Pick-up</a></li>
@@ -185,82 +186,87 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         foreach ( $posts_array as $post ) :
                         ?>
                         <div class="destinations-box">
-                           <div class="two-thirds first">
-                            <div class="destinations-box-row">
-                                <div class="destinations-box-title">
-                                    <?php echo get_field('tour_package_name'); ?>
+<!--
+                            
+-->
+                            <div class="destinations-box-text">
+                                <div class="destinations-box-row">
+                                    <div class="destinations-box-title">
+                                        <?php echo get_field('tour_package_name'); ?>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="destinations-box-description">
-                                <?php echo get_field('tour_description'); ?>
-                            </div>
-                            <div class="destinations-box-rates">
-                            <?php
-                            if( have_rows('rates') ):
-                                // loop through the rows of data
-                                while ( have_rows('rates') ) : the_row();
-                                    // display a sub field value
-                            ?>
-                               <ul class="destinations-box-item">
-                                   <li>
-                                       <div class="item-capacity">
-                                           <?php the_sub_field('capacity'); ?> PAX
-                                       </div>  
-                                       <div class="item-price">
-                                           P <?php the_sub_field('price'); ?>
-                                       </div>
-                                   </li>
-                                   <li>
-                                       <div class="item-aircraft">
-                                           <?php the_sub_field('aircraft_model'); ?>
-                                       </div>
-                                   </li>
-                                   <li>
-                                       <?php if(get_sub_field('additional_price')): ?>
-                                       <div class="item-additional">
-                                           <?php the_sub_field('additional_price'); ?>
-                                       </div>
-                                       <?php endif;?>
-                                   </li>
-                               </ul>
-                            <?php
-                                endwhile;
-                            endif;
-                            ?>
-                           </div>
-                           <div class="itinerary-title">
-                               Tour Itinerary:
-                           </div>
-                           <table class="destinations-box-itinerary">
-                               <?php
-                               if( have_rows('tour_itinerary') ):
-                               // loop through the rows of data
-                                   while ( have_rows('tour_itinerary') ) : the_row();
-                                   // display a sub field value
-                               ?>
-                               <tr>
-                                   <td>
-                                       <div class="item-time">
-                                           <?php the_sub_field('time'); ?>
-                                       </div>
-                                   </td>
-                                   <td>
-                                       <div class="item-activity">
-                                           <?php the_sub_field('activity'); ?>
-                                       </div>
-                                   </td>
-                               </tr>
-                               <?php
+                                <div class="destinations-box-description">
+                                    <?php echo get_field('tour_description'); ?>
+                                </div>
+                                <div class="destinations-box-rates">
+                                <?php
+                                if( have_rows('rates') ):
+                                    // loop through the rows of data
+                                    while ( have_rows('rates') ) : the_row();
+                                        // display a sub field value
+                                ?>
+                                   <ul class="destinations-box-item">
+                                       <li>
+                                           <div class="item-capacity">
+                                               <?php the_sub_field('capacity'); ?> PAX
+                                           </div>  
+                                           <div class="item-price">
+                                               P <?php the_sub_field('price'); ?>
+                                           </div>
+                                       </li>
+                                       <li>
+                                           <div class="item-aircraft">
+                                               <?php the_sub_field('aircraft_model'); ?>
+                                           </div>
+                                       </li>
+                                       <li>
+                                           <?php if(get_sub_field('additional_price')): ?>
+                                           <div class="item-additional">
+                                               <?php the_sub_field('additional_price'); ?>
+                                           </div>
+                                           <?php endif;?>
+                                       </li>
+                                   </ul>
+                                <?php
                                     endwhile;
-                               endif;
-                               ?>
-                           </table>
-                           <div class="destination-box-notes">
-                               <?php echo get_field('notes'); ?>
-                           </div>
-                           </div>
-                            <div class="destinations-box-image one-third">
-                                <img src="<?php echo get_field('tour_image'); ?>"/>
+                                endif;
+                                ?>
+                               </div>
+                               <div class="dest-container">
+                                   <div class="itinerary-title">
+                                       Tour Itinerary:
+                                   </div>
+                                   <table class="destinations-box-itinerary">
+                                       <?php
+                                       if( have_rows('tour_itinerary') ):
+                                       // loop through the rows of data
+                                           while ( have_rows('tour_itinerary') ) : the_row();
+                                           // display a sub field value
+                                       ?>
+                                       <tr>
+                                           <td>
+                                               <div class="item-time">
+                                                   <?php the_sub_field('time'); ?>
+                                               </div>
+                                           </td>
+                                           <td>
+                                               <div class="item-activity">
+                                                   <?php the_sub_field('activity'); ?>
+                                               </div>
+                                           </td>
+                                       </tr>
+                                       <?php
+                                            endwhile;
+                                       endif;
+                                       ?>
+                                   </table>
+                                   <div class="destination-box-notes">
+                                       <?php echo get_field('notes'); ?>
+                                   </div>
+                               </div>
+                               <div class="destinations-box-image">
+                                    <img src="<?php echo get_field('tour_image'); ?>"/>
+                                </div>
                             </div>
                         </div>
                         <?php

@@ -37,6 +37,7 @@ class Custom_Contact_Us extends WP_Widget {
         // these are the widget options
         $title = apply_filters('widget_title', $instance['title']);
         $text = apply_filters('widget_text', $instance['text']);
+        $inquire = apply_filters('widget_text', $instance['inquire']);
         $email = apply_filters('widget_text', '[contact-form-7 id="271" title="Driving Directions"]');
         echo $before_widget;
         
@@ -170,6 +171,12 @@ class Custom_Contact_Us extends WP_Widget {
         
         echo '</div>';  // .contact-tab-content
         echo '</div>';  // .contact-tabs
+        
+        echo '<div class="contact-apply">';
+        echo 'Want to join our team? ';
+        echo '<a href="'.$inquire.'" class="map-inquire">Inquire Now</a>';
+        echo '</div>';  // .contact-apply
+        
         echo '</div>';  // .map .two-thirds
         
         echo '</div>'; // .widget-text .wp_widget_plugin_box
@@ -187,9 +194,11 @@ class Custom_Contact_Us extends WP_Widget {
         if( $instance ) {
             $title = esc_attr($instance['title']);
             $text = esc_attr($instance['text']);
+            $inquire = esc_attr($instance['inquire']);
         } else {
             $title = '';
             $text = '';
+            $inquire = '';
         }
         ?>
 
@@ -201,6 +210,11 @@ class Custom_Contact_Us extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Contact Form 7 Shortcode:', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" type="text" value="<?php echo $text; ?>" />
+        </p>
+           
+        <p>
+            <label for="<?php echo $this->get_field_id('inquire'); ?>"><?php _e('Inquire Page Link', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('inquire'); ?>" name="<?php echo $this->get_field_name('inquire'); ?>" type="text" value="<?php echo $inquire; ?>" />
         </p>
             
         <?php
@@ -217,7 +231,7 @@ class Custom_Contact_Us extends WP_Widget {
         // Fields
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['text'] = strip_tags($new_instance['text']);
-        $instance['checkbox'] = strip_tags($new_instance['checkbox']);
+        $instance['inquire'] = strip_tags($new_instance['inquire']);
         return $instance;
 	}
 

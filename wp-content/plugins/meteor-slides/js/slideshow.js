@@ -28,7 +28,7 @@ $j(document).ready(function() {
 		next:          '#meteor-next',
 		pager:         '#meteor-buttons',
 		pagerEvent:    'click',
-		pause:         1,
+		pause:         0,
 		prev:          '#meteor-prev',
 		slideExpr:     '.mslide',
 		speed:         $slidespeed,
