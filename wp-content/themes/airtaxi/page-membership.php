@@ -78,4 +78,4 @@ $page_title = strtolower(get_the_title());
     <?php endforeach; ?>
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer('custom'); ?>

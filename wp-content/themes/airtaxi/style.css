@@ -1954,7 +1954,10 @@ Media Queries
 		width: 100%;
 	}
 
-	.site-inner,
+    .site-inner {
+		padding: 0;
+    }
+    
 	.wrap {
 		padding: 0 5%;
 	}
@@ -2298,6 +2301,7 @@ div.meteor-slides.navboth {
     font-family: 'Dancing Script', cursive;
     padding: 20px;
     font-size: 56px;
+    line-height: 56px;
 }
 
 .location-images {
@@ -2848,7 +2852,6 @@ a.map-inquire:hover {
     text-align: left;
     color: #212121;
     font-size: 24px;
-    height: 80px;
     line-height: 40px;
 }
 
@@ -2994,6 +2997,10 @@ a.map-inquire:hover {
 
 .m-panel-content {
     padding: 0 20px 50px;
+}
+
+.m-panel-table {
+    margin: 0 auto;
     max-width: 1140px;
 }
 
@@ -3235,17 +3242,7 @@ div.mrates-diamond-header {
 }
 
 
-/*aircraft details responsive version*/
-/*
-.aircraft-details ul {
-    padding: 0px 20px;
-    display: inline-block;
-    width: 23%;
-    margin: 10px;
-    vertical-align: top;
-    text-align: center;
-}
-*/
+
 
 .aircraft-fleet-gallery {
     padding-bottom: 60px;
@@ -3456,6 +3453,7 @@ li.active a, li.active a:hover,
     left: 0;
     line-height: 40px;
     height: 40px;
+    max-height: 100%;
     margin-top: 30px;
     position: absolute;
     width: 100%;
@@ -3753,9 +3751,16 @@ table.destinations-box-itinerary {
 .page-template-page-news .content,
 .news-single-after {
     width: 1140px;
+    max-width: 100%;
     padding: 0 0 50px;
     float: none;
     margin: 0 auto;
+}
+
+.news-after-entry {
+    width: 1140px;
+    max-width: 100%;
+    padding: 0px 20px;
 }
 
 .page-template-page-news .content-2,
@@ -3838,10 +3843,6 @@ table.destinations-box-itinerary {
     color: #686868;
 }
 
-.news-after-entry {
-    max-width: 1140px;
-}
-
 .yuzo_related_post_widget .yuzo_text, 
 .yuzo_related_post .yuzo_views_post {
     color: !important;
@@ -3865,8 +3866,10 @@ table.destinations-box-itinerary {
 }
 
 .single-news .news-single-content {
-    max-width: 1140px;
     margin: 40px auto;
+    width: 1140px;
+    max-width: 100%;
+    padding: 0px 20px;
 }
 
 .news-single-post h1 {
@@ -3888,7 +3891,7 @@ footer {
     position: absolute;
     width: 100%;
     left: 0;
-    height: 270px;
+    height: 200px;
     bottom: 0px;
 }
 
@@ -3920,6 +3923,10 @@ footer {
     margin-left: 10px;
 }
 
+footer.footer-custom {
+    position: relative;
+}
+
 #home-section-6 {
     padding-bottom: 0px;
 }
@@ -3936,6 +3943,7 @@ footer {
     .home-odd {
         min-height: 800px;
     }
+    
     #home-section-0 {
         min-height: 0;
     }
@@ -3974,6 +3982,14 @@ footer {
         min-height: 640px;
     }
     
+    #home-section-0 {
+        min-height: 0;
+    }
+    
+    #home-section-0 .fp-tableCell {
+        vertical-align: top;
+    }
+    
     .quote, .call-now {
         bottom: 70px;
     }
@@ -3987,7 +4003,10 @@ footer {
     }
 }
 
-@media (max-width: 720px) {
+
+@media (max-width: 1024px) {
+    
+    
     .responsive-menu-icon {
         float: right;
         margin-top: -70px;
@@ -4002,6 +4021,27 @@ footer {
     
     #home-section-0 {
         padding-bottom: 0px;
+        margin-top: 100px;
+        margin-bottom: -40px;
+    }
+    
+    #home-section-1,
+    #home-section-5 {
+        background-repeat: repeat-y;
+    }
+    
+    .meteor-slides p.slide-main-text {
+        margin-top: 20px;
+    }
+    
+    .meteor-slides p {
+        font-size: 1.2em;
+        line-height: 1.3em;
+    }
+    
+    .meteor-slides p.slide-button-title {
+        font-size: 0.8em;
+        line-height: 1em;
     }
     
     .home-even .widget,
@@ -4009,28 +4049,40 @@ footer {
         margin-bottom: 40px;
     }
     
+    #meteor-slides-widget-2 .meteor-buttons, 
+    #meteor-slides-widget-3 .meteor-buttons {
+        margin: 0 auto 15px !important;
+    }
+    
+    .aircraft-slideshow .meteor-buttons {
+        margin: 0 auto 30px !important;
+    }
+    
 /*
     #home-section-1,
     #home-section-5 {
         background-size: cover;
     }
+    
 */
+    .call-now {
+        bottom: 0px;
+    }
+    
+    div.contact-us.one-third,
+    div.map.two-thirds {
+        width: 80%;
+        float: none;
+        margin: 0 auto 40px;
+    }
     
     #home-section-0 .wrap,
     .page-template-page-membership .site-inner {
         padding: 0;
     }
     
-    #meteor-slides-widget-2 {
-        display: none;
-    }
-    
-    #meteor-slides-widget-3 {
-        display: block;
-    }
-    
     #base-locations {
-        margin: 0 10%;
+        margin: 0 27%;
     }
     
     .location-hover {
@@ -4039,12 +4091,13 @@ footer {
     
     .membership-table .one-third {
         margin-bottom: 20px;
-        min-height: 200px;
+        min-height: 320px;
     }
     
     .rates-table .one-fourth {
         max-width: 400px;
         margin: 0 auto 40px;
+        width: 320px;
         float: none;
     }
     
@@ -4054,6 +4107,7 @@ footer {
     
     .page-template-page-rates-location .site-inner {
         padding: 0;
+        margin-top: 200px;
     }
     
     .tab-content {
@@ -4076,15 +4130,334 @@ footer {
     
     .destinations-box-item {
         width: 100%;
-        margin-right: 10px;
+        margin-right: 10px;     
         text-align: left;
         display: block;
+    }
+    
+    .page-template-page-news .content-2, .news-single-after .content-2 {
+        width: 100%;
+        float: none;
+    }
+    
+    .page-template-page-news .site-inner {
+        margin-top: 230px;
+    }
+    
+    .news-single-after .sidebar {
+        padding: 50px 20px;
+    }
+    
+    .sidebar {
+        float: none;
+        width: 360px;
+    }
+    
+    .news-recent-post .wrap {
+        padding: 0 5%;
+    }
+    
+    .aircraft-detail-page .aircraft-details {
+        position: relative;
+        width: 100%; 
+        max-width: 100%; 
+    }
+    .aircraft-detail-page {
+        margin-top: 100px;
+    }
+    
+    /*aircraft details responsive version*/
+    .aircraft-details ul {
+        padding: 0px 20px;
+        display: inline-block;
+        width: 22%;
+        margin: 10px;
+        vertical-align: top;
+        text-align: left;
+    }
+    
+    .tab-disclaimer {
+        line-height: 20px;
+        padding: 0px 40px;
+    }
+    
+    .m-panel {
+        margin-top: 70px;
     }
 
 }
 
+@media (max-width: 768px) {
+    #home-section-0 {
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+    
+    #meteor-slides-widget-2 {
+        display: none;
+    }
+    
+    #meteor-slides-widget-3 {
+        display: block;
+    }
+    
+    .meteor-slides .mslide {
+        background: #212121;
+    }
+    
+    div.contact-us.one-third, div.map.two-thirds {
+        width: 100%;
+        float: none;
+        margin: 0 auto 40px;
+    }
+    
+    .page-template-page-news .site-inner {
+        margin-top: 160px;
+    }
+    
+    #base-locations {
+        margin: 0 17%;
+    }
+    
+    .aircraft-details ul {
+        width: 45%;
+    }
+    
+    .membership-table .one-third {
+        margin-bottom: 20px;
+        min-height: 200px;
+    }
+    
+    .page-template-page-rates-location .site-inner {
+        padding: 0;
+        margin-top: 100px;
+    }
+    
+    .gallery-slider .gallery-slider-item {
+        width: 250px;
+    }
+    
+    .news-after-entry {
+        padding: 0;
+    }
+}
 
+@media (max-width: 375px) {
+    .header-image .site-title > a {
+        margin: 10px auto 0;
+    }
+    
+    .meteor-slides p {
+        font-size: 0.8em;
+        line-height: 1em;
+    }
+    
+    .meteor-slides p.slide-button-title {
+        font-size: 0.6em;
+        line-height: 1em;
+    }
+    
+    .meteor-slides p.slide-main-text {
+         margin-top: 0px; 
+    }
+    
+    .home-even .widget-title,
+    .home-odd .widget-title {
+        font-size: 56px;
+        line-height: 56px;
+        margin-bottom: 40px;
+    }
+    
+    .location-hover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 20px auto;
+    }
+    
+    .jvectormap-tip {
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    .quote, .call-now {
+        max-height: 100%;
+        line-height: 1.5;
+        padding: 20px 0;
+    }
+    
+    .call-now {
+        height: 100px;
+        padding: 20px 30px;
+    }
+    
+    .call-now, .call-now span.dashicons, 
+    .call-now span.dashicons-before:before {
+        line-height: 33px;
+    }
+    
+    .contact-tab-links li a {
+        font-size: 0.5em;
+    }
+    
+    .contact-tab-content .tab .map-details {
+        overflow: auto;
+    }
+    
+    .contact-tab-links li a, 
+    .map-links .map-links-label, 
+    .map-links ul, .map-links li, 
+    .map-links li a, .map-inquire {
+        display: block;
+    }
+    
+    .map-links li a {
+        margin: 5px auto;
+    }
+    
+    .map-details {
+        overflow: auto;
+    }
+    
+    .map .contact-apply {
+        overflow: auto;
+        text-align: center;
+    }
+    
+    .map-inquire,
+    .footer-links {
+        margin-top: 20px;
+    }
+    
+    .footer-container .left,
+    .footer-container .right {
+        float: none;
+    }
+    
+    .footer-logo img {
+        margin: 0 auto;
+    }
+    
+    footer.footer-custom {
+        text-align: center;
+    }
+    
+    .gallery-container {
+        width: 80%;
+    }
+    
+    .aircraft-details ul {
+        padding: 0;
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+        text-align: left;
+    }
+    
+    div.mperks-emerald-header, 
+    div.mperks-sapphire-header, 
+    div.mperks-diamond-header, 
+    .mperks-text {
+        padding: 5px;
+        font-size: 0.8em;
+        line-height: 1.4em;
+    }
+    
+    .mperks-emerald, 
+    .mperks-sapphire, 
+    .mperks-diamond {
+        padding: 5px;
+        font-size: 1em;
+    }
+    
+    .tab-content {
+        padding: 30px 50px;
+    }
+    
+    .tab-links a {
+        font-size: 14px;
+        padding: 20px 10px;
+        min-height: 90px;
+        line-height: 20px;
+    }
+    
+    .tab-links li.active a {
+        padding: 20px 10px;
+    }
+    
+    .news-after-entry,
+    .news-recent-post .wrap {
+        padding: 0;
+    }
+    
+    .tab, .tab-active {
+        max-width: 1140px;
+        margin: 0 auto 30px;
+    }
+    
+    .tab-disclaimer {
+        padding: 10px 40px;
+    }
+    
+    .tab-disclaimer {
+        line-height: 20px;
+        height: 100px;
+        max-height: 100%;
+        margin-top: 0px; 
+    }
+}
 
+@media (max-width: 320px) {
+    #base-locations {
+        margin: 0;
+    }
+    
+    .rates-table .one-fourth {
+        width: 263px;
+    }
+    
+    .call-now {
+        height: 120px;
+        padding: 20px 0px;
+    }
+    
+    .contact-tel, .contact-mob, .contact-left, .contact-right {
+        display: block; 
+        float: none;
+        text-align: center;
+        width: 100%
+    }
+    
+    .contact-form .contact-left,
+    .contact-form .contact-right {
+        text-align: left;
+    }
+    
+    .tab, .tab-active {
+        max-width: 1140px;
+        margin: 0 auto 50px;
+    }
+    
+    .tab-disclaimer {
+        height: 120px;
+    }
+    
+    .rates-box {
+        width: 220px !important;
+    }
+    
+    .news-recent-post .wrap {
+        padding: 0 5%;
+    }
+    
+    .news-single-after .news-recent-post .wrap {
+        padding: 0;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+}
 
 
 

@@ -19,14 +19,25 @@ jQuery(function( $ ){
     
     var screenWidth = $(window).width();
     
-    if( screenWidth <= 720 ) {
+    if( screenWidth <= 375 ) {
         $('.sections').fullpage({
             scrollBar: true,
             fitToSection: false,
             autoScrolling: false,
         });
         
-        $('#gallery-2').removeClass('gallery-columns-4').addClass('gallery-columns-2');
+        $('#gallery-2').removeClass('gallery-columns-2');
+        $('#gallery-2').removeClass('gallery-columns-4').addClass('gallery-columns-1');
+        
+    } else if( screenWidth > 375 && screenWidth <= 768 ) {
+        $('.sections').fullpage({
+            scrollBar: true,
+            fitToSection: false,
+            autoScrolling: false,
+        });
+        
+        $('#gallery-2').removeClass('gallery-columns-4');
+        $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-2');
         
     } else {
         $('.sections').fullpage({
@@ -35,9 +46,41 @@ jQuery(function( $ ){
             normalScrollElements: '#home-section-6.wrap',
         });
         
-        $('#gallery-2').removeClass('gallery-columns-2').addClass('gallery-columns-4');
+        $('#gallery-2').removeClass('gallery-columns-2');
+        $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-4');
     }
     
+    
+    //-- Homepage - Base Locations - Responsive Map --//
+    
+    var markerManila = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila.png";
+    var markerClark = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark.png";
+    var markerCebu = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu.png";
+    var markerBoracay = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay.png";
+    var markerDavao = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao.png";
+    
+    if( screenWidth <= 375 ) {
+        $('#base-locations').css('height', '480px');
+        $('#base-locations').css('width', '480px');
+        
+        markerManila = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila_2.png";
+        markerClark = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark_2.png";
+        markerCebu = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu_2.png";
+        markerBoracay = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay_2.png";
+        markerDavao = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao_2.png";
+        
+    }
+    
+    
+    /*
+    
+    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay_2.png
+    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu_2.png
+    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark_2.png
+    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao_2.png
+    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila_2.png
+    
+    */
     //-- Homepage - Base Locations - Image Map Hover --//
     
     $('#home-section-2').ready(function() {
@@ -78,7 +121,7 @@ jQuery(function( $ ){
                     coords: [262,185],
                     name: "Clark",
                     style: {
-                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark-1.png"
+                        image: markerClark
                     }
                 },
                 {
@@ -92,10 +135,10 @@ jQuery(function( $ ){
                     }
                 },
                 {
-                    coords: [278,200],
+                    coords: [278,202],
                     name: "Metro Manila",
                     style: {
-                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila.png"
+                        image: markerManila
                     }
                 },
                 {
@@ -112,7 +155,7 @@ jQuery(function( $ ){
                     coords: [315,270],
                     name: "Boracay Island",
                     style: {
-                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay.png"
+                        image: markerBoracay
                     }
                 },
                 {
@@ -129,7 +172,7 @@ jQuery(function( $ ){
                     coords: [388,305],
                     name: "Cebu",
                     style: {
-                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu.png"
+                        image: markerCebu
                     }
                 },
                 {
@@ -146,7 +189,7 @@ jQuery(function( $ ){
                     coords: [444,397],
                     name: "Davao",
                     style: {
-                        image: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao.png"
+                        image: markerDavao
                     }
                 },
                 {
@@ -248,10 +291,13 @@ jQuery(function( $ ){
                 var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
                 var coords = {lat: lat, lng: lng};
                 
-                if(screenWidth == 720) {
+                if( screenWidth <= 375 ) {
+//                    alert($(id))
+				    $('#'+id+' .map-container').css('width','288px');
+                } else if( screenWidth > 375 && screenWidth <= 768 ) {
 //                    alert($(id))
 				    $('#'+id+' .map-container').css('width','648px');
-                }
+                } 
 
                 var map = new google.maps.Map(document.getElementById('map-'+id), {
                     zoom: 17,

@@ -61,11 +61,9 @@ function parallax_newspage_widgets() {
     
 }
 
-//get_header('custom');
-
 genesis();
 
-get_footer();
+get_footer('custom');
 
 ?>
 

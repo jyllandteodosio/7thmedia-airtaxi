@@ -174,7 +174,7 @@ class Custom_Contact_Us extends WP_Widget {
         
         echo '<div class="contact-apply">';
         echo 'Want to join our team? ';
-        echo '<a href="'.$inquire.'" class="map-inquire">Inquire Now</a>';
+        echo '<a href=mailto:"'.$inquire.'?Subject="\[Application\]I want to join your team!" class="map-inquire" target="_top">Inquire Now</a>';
         echo '</div>';  // .contact-apply
         
         echo '</div>';  // .map .two-thirds
@@ -213,7 +213,7 @@ class Custom_Contact_Us extends WP_Widget {
         </p>
            
         <p>
-            <label for="<?php echo $this->get_field_id('inquire'); ?>"><?php _e('Inquire Page Link', 'wp_widget_plugin'); ?></label>
+            <label for="<?php echo $this->get_field_id('inquire'); ?>"><?php _e('Contact Email', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('inquire'); ?>" name="<?php echo $this->get_field_name('inquire'); ?>" type="text" value="<?php echo $inquire; ?>" />
         </p>
             

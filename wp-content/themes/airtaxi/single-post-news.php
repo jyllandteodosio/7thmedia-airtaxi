@@ -94,6 +94,6 @@ function single_newspage_widgets() {
 
 genesis();
 
-get_footer();
+get_footer('custom');
 
 ?>
