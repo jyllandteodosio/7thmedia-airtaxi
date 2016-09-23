@@ -16,19 +16,6 @@ echo '</div>'; //* end .site-inner or #inner
 
 do_action( 'genesis_before_footer' );
 ?>
-<footer>
-    <div class="footer-container">
-        <div class="footer-logo left">
-            <img width="200px" src="http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AIRTAXI.png" alt="AirTaxi.PH"/>
-            <small>© Copyright 2016. All Rights Reserved. Designed and Developed by 7th Media</small>
-        </div>
-
-        <div class="footer-links right">
-        <a href="" class="footer-link facebook"><i class="fa fa-facebook-official fa-2x"></i></a>
-        <a href="" class="footer-link instagram"><i class="fa fa-instagram fa-2x"></i></a>
-        </div>
-    </div>
-</footer>
 <?php
 do_action( 'genesis_after_footer' );
 

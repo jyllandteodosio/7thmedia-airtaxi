@@ -32,6 +32,7 @@ jQuery(function( $ ){
         $('.sections').fullpage({
             scrollBar: true,
             fitToSection: false,
+            normalScrollElements: '#home-section-6.wrap',
         });
         
         $('#gallery-2').removeClass('gallery-columns-2').addClass('gallery-columns-4');

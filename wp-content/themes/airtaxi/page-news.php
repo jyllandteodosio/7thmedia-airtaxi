@@ -45,6 +45,8 @@ function parallax_newspage_widgets() {
 		'after'  => '</div></div>',
 	) );
     
+    echo '<div class="news-after-entry">';
+    
 	genesis_widget_area( 'news-related-post', array(
 		'before' => '<main class="content-2"><div class="news-related-post widget-area"><div class="wrap">',
 		'after'  => '</div></div></main>',
@@ -54,6 +56,8 @@ function parallax_newspage_widgets() {
 		'before' => '<aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="News Sidebar"><div class="news-recent-post widget-area"><div class="wrap">',
 		'after'  => '</div></div></aside>',
 	) );
+    
+    echo '</div>'; //* .news-after-entry
     
 }
 
