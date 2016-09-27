@@ -38,10 +38,17 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         //* Get all drop off rates posts under location
                         $args = array(
                             'posts_per_page'   => -1,
-                            'category_name'    => $page_title.'-rates+drop-off-rates',
+                            'category_name'    => 'drop-off-rates',
+                            'tax_query'        => array(
+                                array(
+                                    'taxonomy' => 'location-rates',
+                                    'field'    => 'slug',
+                                    'terms'    => array('rates-'.$page_title)
+                                )
+                            ),
                             'orderby'          => 'date',
                             'order'            => 'ASC',
-                            'post_type'        => 'post',
+                            'post_type'        => 'rates',
                             'post_status'      => 'publish',
                             'suppress_filters' => true 
                         );
@@ -102,10 +109,10 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         //* Get all aerial tour rates posts under location
                         $args = array(
                             'posts_per_page'   => -1,
-                            'category_name'    => $page_title.'-rates+aerial-tours',
+                            'category_name'    => 'rates-'.$page_title.'-rates+aerial-tours',
                             'orderby'          => 'date',
                             'order'            => 'ASC',
-                            'post_type'        => 'post',
+                            'post_type'        => 'rates',
                             'post_status'      => 'publish',
                             'suppress_filters' => true 
                         );
@@ -173,10 +180,10 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         //* Get all destination tour packages rates posts under location
                         $args = array(
                             'posts_per_page'   => -1,
-                            'category_name'    => $page_title.'-rates+destination-tour-packages',
+                            'category_name'    => 'rates-'.$page_title.'-rates+destination-tour-packages',
                             'orderby'          => 'date',
                             'order'            => 'ASC',
-                            'post_type'        => 'post',
+                            'post_type'        => 'rates',
                             'post_status'      => 'publish',
                             'suppress_filters' => true 
                         );

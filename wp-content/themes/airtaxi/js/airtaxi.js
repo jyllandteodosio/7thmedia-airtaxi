@@ -1,5 +1,32 @@
 jQuery(function( $ ){
     
+    var screenWidth = $(window).width();
+    
+    //-- Homepage - Detect Scroll - Hide Menu --//
+    
+//    var lastScrollTop = 0;
+//    $(window).scroll(function(event){
+//        var st = $(this).scrollTop();
+//        if (st > lastScrollTop){
+//            console.log(st);
+//            $('.site-header').fadeOut(400);
+//            if(st >= 70) {
+//                if(screenWidth <= 375) {
+//                    $('#home-section-0').css('margin-top','0px');
+//                }
+//                $('#home-section-0').css('margin-top','-70px');
+//            }
+//        } else {
+//            if ( screenWidth > 375 ) {
+//                $('#home-section-0').css('margin-top','30px');
+//            } else {
+//                $('#home-section-0').css('margin-top','0px');
+//            }
+//            $('.site-header').fadeIn(400);
+//        }
+//        lastScrollTop = st;
+//    });
+    
     //-- Homepage - Menu Link - Smooth Scroll --//
     
     $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a)').click(function() {
@@ -15,12 +42,12 @@ jQuery(function( $ ){
         }
     });
     
-    //-- Homepage - Auto Scroll --//
     
-    var screenWidth = $(window).width();
+    //-- Homepage - Auto Scroll --//
     
     if( screenWidth <= 375 ) {
         $('.sections').fullpage({
+            verticalCentered: false,
             scrollBar: true,
             fitToSection: false,
             autoScrolling: false,
@@ -31,6 +58,7 @@ jQuery(function( $ ){
         
     } else if( screenWidth > 375 && screenWidth <= 768 ) {
         $('.sections').fullpage({
+            verticalCentered: false,
             scrollBar: true,
             fitToSection: false,
             autoScrolling: false,
@@ -41,6 +69,7 @@ jQuery(function( $ ){
         
     } else {
         $('.sections').fullpage({
+            verticalCentered: false,
             scrollBar: true,
             fitToSection: false,
             normalScrollElements: '#home-section-6.wrap',
@@ -60,8 +89,8 @@ jQuery(function( $ ){
     var markerDavao = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao.png";
     
     if( screenWidth <= 375 ) {
-        $('#base-locations').css('height', '480px');
-        $('#base-locations').css('width', '480px');
+        $('#base-locations').css('height', '420px');
+        $('#base-locations').css('width', '420px');
         
         markerManila = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila_2.png";
         markerClark = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark_2.png";
@@ -236,26 +265,6 @@ jQuery(function( $ ){
     });
     
     
-    //-- Rates Page Tabs --//
-    
-    $('.tabs .tab-links a').on('click', function(e)  {
-        var classname = $(this).attr('class');
-        var currentAttrValue = $(this).attr('href');
-        
-        var tablink = $('.'+classname+'-tab');
-
-        // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
-
-        // Change/remove current tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
-
-        e.preventDefault();
-        
-        tablink.slick('slickGoTo', 0, true);
-    });
-    
-    
     //-- Homepage - Contact Us - Location Map Tabs --//
     
     $('.contact-tabs .contact-tab-links a').on('click', function(e)  {
@@ -293,7 +302,7 @@ jQuery(function( $ ){
                 
                 if( screenWidth <= 375 ) {
 //                    alert($(id))
-				    $('#'+id+' .map-container').css('width','288px');
+				    $('#'+id+' .map-container').css('width','300px');
                 } else if( screenWidth > 375 && screenWidth <= 768 ) {
 //                    alert($(id))
 				    $('#'+id+' .map-container').css('width','648px');
@@ -323,23 +332,44 @@ jQuery(function( $ ){
     
     //-- Homepage - Contact Us - View Driving Directions Popup --//
     
-    $('.map-view').click(function() {
-        var id = $(this).attr('id');
-        var mapName = $('#map-name-'+id).val();
-        var mapAddress = $('#map-address-'+id).val();
-        var image = $('#map-image-'+id).val();
-        var imageAlt = $('#map-image-alt-'+id).val();
-        
-        $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
-        $('.pop-dir').removeClass('hidden').hide().fadeIn(400);
-        $('.overlay').removeClass('hidden');
-    
-        $('#pop-dir-close').on('click', function(){
-            $('.overlay').addClass('hidden');
-            $('.pop-dir').addClass('hidden').hide();
+    if($('.site-container').has('.contact-maps')) {
+        $('.contact-maps').ready(function() {
+
+            $('.contact-maps').each(function() {
+                var id = $(this).attr('id');
+                var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
+                var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
+                var coords = {lat: lat, lng: lng};
+                
+                if( screenWidth <= 375 ) {
+//                    alert($(id))
+				    $('#'+id+' .map-container').css('width','300px');
+                } else if( screenWidth > 375 && screenWidth <= 768 ) {
+//                    alert($(id))
+				    $('#'+id+' .map-container').css('width','648px');
+                } 
+
+                var map = new google.maps.Map(document.getElementById('map-'+id), {
+                    zoom: 17,
+                    center: coords
+                });
+
+                var marker = new google.maps.Marker({
+                    position: {lat: lat, lng: lng},
+                    map: map,
+                    title: 'AirTaxi.PH',
+                    icon: {
+                        url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
+                        scaledSize: new google.maps.Size(128, 128)
+                    }
+                });
+
+                google.maps.event.trigger(map, 'resize');
+
+            });
+            
         });
-    
-    });
+    }
     
     //-- Homepage - Contact Us - Email Driving Directions Popup --//
     
@@ -360,6 +390,24 @@ jQuery(function( $ ){
             $('.overlay').addClass('hidden');
             $('.pop-email').addClass('hidden').hide();
         });
+    });
+    
+    $('.map-view').click(function() {
+        var id = $(this).attr('id');
+        var mapName = $('#map-name-'+id).val();
+        var mapAddress = $('#map-address-'+id).val();
+        var image = $('#map-image-'+id).val();
+        var imageAlt = $('#map-image-alt-'+id).val();
+        
+        $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
+        $('.pop-dir').removeClass('hidden');
+        $('.overlay').removeClass('hidden');
+    
+        $('#pop-dir-close').on('click', function(){
+            $('.overlay').toggleClass('hidden');
+            $('.pop-dir').toggleClass('hidden');
+        });
+    
     });
     
     
@@ -560,6 +608,59 @@ jQuery(function( $ ){
 //            // instead of a settings object
 //        ]
 //    });
+    
+    //-- Rates Page Tabs --//
+    
+    $('.tabs .tab-links a').on('click', function(e)  {
+        var classname = $(this).attr('class');
+        var currentAttrValue = $(this).attr('href');
+        
+        var tablink = $('.'+classname+'-tab');
+        console.log(tablink);
+
+        // Show/Hide Tabs
+        $('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
+        // Change/remove current tab to active
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+
+        e.preventDefault();
+        
+        if(classname == 'drop-off' || classname == 'aerial-tours') {
+            tablink.slick('slickGoTo', 0, true);
+        }
+    });
+    
+    
+    //-- Homepage Links for Rates Page Tabs --//
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    
+        
+    var ratesTab = getUrlParameter('selectedTab');
+    
+    
+    if(ratesTab == 'drop-off') {
+        $('.tabs .tab-links a.drop-off').click();
+    } else if(ratesTab == 'aerial-tours') {
+        $('.tabs .tab-links a.aerial-tours').click();
+    } else if(ratesTab == 'destination-tours') {
+        $('.tabs .tab-links a.destinations').click();
+    }
+    
     
     $('.m-panel-table').ready(function() {
         // Membership perks table

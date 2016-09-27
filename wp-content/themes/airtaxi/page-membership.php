@@ -10,7 +10,7 @@
 get_header('custom');
 $page_title = strtolower(get_the_title());
 ?>
-<div class="m-panel">
+<div id="perks" class="m-panel">
     <div class="m-panel-title">
         <h1>Membership</h1>
     </div>
@@ -30,7 +30,7 @@ $page_title = strtolower(get_the_title());
         foreach ( $posts_array as $post ) :
     ?>
 
-    <div id="perks" class="m-panel-content mperks">
+    <div class="m-panel-content mperks">
         <div class="m-panel-header">
             <?php the_title(); ?>
         </div>

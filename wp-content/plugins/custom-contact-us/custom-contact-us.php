@@ -68,10 +68,9 @@ class Custom_Contact_Us extends WP_Widget {
         
         $post_args = array(
             'posts_per_page'   => 5,
-            'category_name'    => 'contact-us-maps',
             'orderby'          => 'date',
             'order'            => 'ASC',
-            'post_type'        => 'post',
+            'post_type'        => 'location-map',
             'post_status'      => 'publish',
             'suppress_filters' => false 
         );
