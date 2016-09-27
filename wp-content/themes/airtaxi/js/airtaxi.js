@@ -113,6 +113,10 @@ jQuery(function( $ ){
     //-- Homepage - Base Locations - Image Map Hover --//
     
     $('#home-section-2').ready(function() {
+        var margin = 0;
+        
+        margin = (screenWidth <= 375 ? 5 : 0);
+        
         $('#base-locations').vectorMap({
             map: 'ph_mill_en',
             backgroundColor: '#ffffff',
@@ -147,7 +151,7 @@ jQuery(function( $ ){
             },
             markers: [
                 {
-                    coords: [262,185],
+                    coords: [262+margin,185],
                     name: "Clark",
                     style: {
                         image: markerClark
@@ -164,7 +168,7 @@ jQuery(function( $ ){
                     }
                 },
                 {
-                    coords: [278,202],
+                    coords: [278+margin,202],
                     name: "Metro Manila",
                     style: {
                         image: markerManila
@@ -181,7 +185,7 @@ jQuery(function( $ ){
                     }
                 },
                 {
-                    coords: [315,270],
+                    coords: [315+margin,270],
                     name: "Boracay Island",
                     style: {
                         image: markerBoracay
@@ -198,7 +202,7 @@ jQuery(function( $ ){
                     }
                 },
                 {
-                    coords: [388,305],
+                    coords: [388+margin,305],
                     name: "Cebu",
                     style: {
                         image: markerCebu
@@ -215,7 +219,7 @@ jQuery(function( $ ){
                     }
                 },
                 {
-                    coords: [444,397],
+                    coords: [444+margin,397],
                     name: "Davao",
                     style: {
                         image: markerDavao
@@ -301,10 +305,8 @@ jQuery(function( $ ){
                 var coords = {lat: lat, lng: lng};
                 
                 if( screenWidth <= 375 ) {
-//                    alert($(id))
-				    $('#'+id+' .map-container').css('width','300px');
+				    $('#'+id+' .map-container').css('width','288px');
                 } else if( screenWidth > 375 && screenWidth <= 768 ) {
-//                    alert($(id))
 				    $('#'+id+' .map-container').css('width','648px');
                 } 
 
@@ -332,44 +334,23 @@ jQuery(function( $ ){
     
     //-- Homepage - Contact Us - View Driving Directions Popup --//
     
-    if($('.site-container').has('.contact-maps')) {
-        $('.contact-maps').ready(function() {
-
-            $('.contact-maps').each(function() {
-                var id = $(this).attr('id');
-                var lat = parseFloat($('.map-coords #marker-lat-'+id).val());
-                var lng = parseFloat($('.map-coords #marker-lng-'+id).val());
-                var coords = {lat: lat, lng: lng};
-                
-                if( screenWidth <= 375 ) {
-//                    alert($(id))
-				    $('#'+id+' .map-container').css('width','300px');
-                } else if( screenWidth > 375 && screenWidth <= 768 ) {
-//                    alert($(id))
-				    $('#'+id+' .map-container').css('width','648px');
-                } 
-
-                var map = new google.maps.Map(document.getElementById('map-'+id), {
-                    zoom: 17,
-                    center: coords
-                });
-
-                var marker = new google.maps.Marker({
-                    position: {lat: lat, lng: lng},
-                    map: map,
-                    title: 'AirTaxi.PH',
-                    icon: {
-                        url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
-                        scaledSize: new google.maps.Size(128, 128)
-                    }
-                });
-
-                google.maps.event.trigger(map, 'resize');
-
-            });
-            
+    $('.map-view').click(function() {
+        var id = $(this).attr('id');
+        var mapName = $('#map-name-'+id).val();
+        var mapAddress = $('#map-address-'+id).val();
+        var image = $('#map-image-'+id).val();
+        var imageAlt = $('#map-image-alt-'+id).val();
+        
+        $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
+        $('.pop-dir').removeClass('hidden');
+        $('.overlay').removeClass('hidden');
+    
+        $('#pop-dir-close').on('click', function(){
+            $('.overlay').toggleClass('hidden');
+            $('.pop-dir').toggleClass('hidden');
         });
-    }
+    
+    });
     
     //-- Homepage - Contact Us - Email Driving Directions Popup --//
     
@@ -390,24 +371,6 @@ jQuery(function( $ ){
             $('.overlay').addClass('hidden');
             $('.pop-email').addClass('hidden').hide();
         });
-    });
-    
-    $('.map-view').click(function() {
-        var id = $(this).attr('id');
-        var mapName = $('#map-name-'+id).val();
-        var mapAddress = $('#map-address-'+id).val();
-        var image = $('#map-image-'+id).val();
-        var imageAlt = $('#map-image-alt-'+id).val();
-        
-        $('.pop-dir').html('<div id="pop-dir-close" class="pop-dir-close"></div><h4>'+mapName+'</h4><p>'+mapAddress+'</p><img src="'+image+'" alt="'+imageAlt+'"/>');
-        $('.pop-dir').removeClass('hidden');
-        $('.overlay').removeClass('hidden');
-    
-        $('#pop-dir-close').on('click', function(){
-            $('.overlay').toggleClass('hidden');
-            $('.pop-dir').toggleClass('hidden');
-        });
-    
     });
     
     
@@ -477,22 +440,8 @@ jQuery(function( $ ){
                 }
             },
             {
-                breakpoint: 600,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+                breakpoint: 768,
+                settings: "unslick"
             }
             // You can unslick at a given breakpoint now by adding:
             // settings: "unslick"
@@ -524,22 +473,8 @@ jQuery(function( $ ){
                 }
             },
             {
-                breakpoint: 600,
-                settings: {
-                rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+                breakpoint: 768,
+                settings: "unslick"
             }
             // You can unslick at a given breakpoint now by adding:
             // settings: "unslick"
@@ -571,38 +506,10 @@ jQuery(function( $ ){
 //                }
 //            },
 //            {
-//                breakpoint: 720,
-//                settings: {
-//                    rows: 2,
-//                    slidesPerRow: 2,
-//                    slidesToShow: 1,
-//                    slidesToScroll: 1,
-//                    infinite: false,
-//                    dots: true
-//                }
-//            },
-//            {
-//                breakpoint: 600,
-//                settings: {
-//                    rows: 2,
-//                    slidesPerRow: 2,
-//                    slidesToShow: 1,
-//                    slidesToScroll: 1,
-//                    infinite: false,
-//                    dots: true
-//                }
-//            },
-//            {
-//                breakpoint: 480,
-//                settings: {
-//                    rows: 2,
-//                    slidesPerRow: 2,
-//                    slidesToShow: 1,
-//                    slidesToScroll: 1,
-//                    infinite: false,
-//                    dots: true
-//                }
+//                breakpoint: 768,
+//                settings: "unslick"
 //            }
+//            
 //            // You can unslick at a given breakpoint now by adding:
 //            // settings: "unslick"
 //            // instead of a settings object
@@ -685,18 +592,21 @@ jQuery(function( $ ){
         // Membership rates table
         if($('.m-panel-table div').hasClass('mrates-emerald')){
             $('div.mrates-emerald-header').parent().css("border","4px solid #056029");
+            $('div.mrates-emerald-header').parent().css("background","#056029");
             $('div.mrates-emerald').parent().css("border-left","4px solid #056029");
             $('div.mrates-emerald').parent().css("border-right","4px solid #056029");
             $('#mrates-end.mrates-emerald').parent().css("border-bottom","4px solid #056029");
         }
         if($('.m-panel-table div').hasClass('mrates-sapphire')){
             $('div.mrates-sapphire-header').parent().css("border","4px solid #205f95");
+            $('div.mrates-sapphire-header').parent().css("background","#205f95");
             $('div.mrates-sapphire').parent().css("border-left","4px solid #205f95");
             $('div.mrates-sapphire').parent().css("border-right","4px solid #205f95");
             $('#mrates-end.mrates-sapphire').parent().css("border-bottom","4px solid #205f95");
         }
         if($('.m-panel-table div').hasClass('mrates-diamond')){
             $('div.mrates-diamond-header').parent().css("border","4px solid #989798");
+            $('div.mrates-diamond-header').parent().css("background","#989798");
             $('div.mrates-diamond').parent().css("border-left","4px solid #989798");
             $('div.mrates-diamond').parent().css("border-right","4px solid #989798");
             $('#mrates-end.mrates-diamond').parent().css("border-bottom","4px solid #989798");
