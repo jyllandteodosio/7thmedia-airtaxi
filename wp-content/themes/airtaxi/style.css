@@ -4193,6 +4193,11 @@ footer.footer-custom {
     .m-panel {
         margin-top: 70px;
     }
+    
+    .drop-off-tab,
+    .aerial-tours-tab {
+        text-align: center;
+    }
 
 }
 
@@ -4248,11 +4253,6 @@ footer.footer-custom {
     
     .news-after-entry {
         padding: 0;
-    }
-    
-    .drop-off-tab,
-    .aerial-tours-tab {
-        text-align: center;
     }
 }
 

@@ -429,18 +429,7 @@ jQuery(function( $ ){
         variableWidth: true,
         responsive: [
             {
-                breakpoint: 1024,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: false,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 768,
+                breakpoint: 1025,
                 settings: "unslick"
             }
             // You can unslick at a given breakpoint now by adding:
@@ -462,18 +451,7 @@ jQuery(function( $ ){
         variableWidth: true,
         responsive: [
             {
-                breakpoint: 1024,
-                settings: {
-                    rows: 2,
-                    slidesPerRow: 1,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: false,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 768,
+                breakpoint: 1025,
                 settings: "unslick"
             }
             // You can unslick at a given breakpoint now by adding:
@@ -495,18 +473,7 @@ jQuery(function( $ ){
 //        variableWidth: true,
 //        responsive: [
 //            {
-//                breakpoint: 1024,
-//                settings: {
-//                    rows: 2,
-//                    slidesPerRow: 2,
-//                    slidesToShow: 1,
-//                    slidesToScroll: 1,
-//                    infinite: false,
-//                    dots: true
-//                }
-//            },
-//            {
-//                breakpoint: 768,
+//                breakpoint: 1025,
 //                settings: "unslick"
 //            }
 //            
