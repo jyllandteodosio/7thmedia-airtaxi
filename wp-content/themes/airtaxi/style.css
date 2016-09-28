@@ -2438,6 +2438,11 @@ div.meteor-slides.navboth {
     line-height: 90px;
 }
 
+.call-tel,
+.call-mob {
+    display: inline-block;
+}
+
 
 /* Homepage Section - Membership - Membership Table
 --------------------------------------------- */
@@ -3201,6 +3206,10 @@ div.mrates-diamond-header {
     text-align: center;
 }
 
+.aircraft-name {
+    padding: 0px 20px;
+}
+
 .aircraft-detail-page .aircraft-slideshow {
     position: relative;
     overflow: hidden;
@@ -3229,6 +3238,10 @@ div.mrates-diamond-header {
 .aircraft-details .detail-label {
     font-size: 16px;
     font-weight: 900;
+}
+
+.aircraft-details-responsive {
+    display: none;
 }
 
 .detail-capacity {
@@ -3890,10 +3903,11 @@ footer {
     margin: 0 auto;
     background: #212121;
     color: #fff;
-    position: absolute;
+    position: relative;
     width: 100%;
     left: 0;
     height: auto;
+    overflow: auto;
     bottom: 0px;
 }
 
@@ -3926,18 +3940,71 @@ footer {
 }
 
 footer.footer-custom {
-    position: relative;
     min-height: 200px;
-    overflow: auto;
 }
 
 #home-section-6 {
     padding-bottom: 0px;
 }
 
-#home-section-6 .wrap {
-    padding-bottom: 300px;
+#home-section-7 {
+    min-height: auto;
+    padding: 0;
+    background: #212121 !important;
+    margin-bottom: -80px;
 }
+
+#home-section-7 .wrap {
+    height: 280px;
+}
+
+
+/* Loader
+--------------------------------------------- */
+
+.loader-container {
+    position: absolute;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    background: rgba(31,31,31,0.8);
+/*    background: rgba(255,255,255,0.8);*/
+    padding: 40px;
+}
+
+.loader {
+    position: absolute;
+    z-index: 999999;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.image-loader {
+    transform: translateY(-50%);
+    margin: 0 auto;
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
 
 /* Media Queries
 --------------------------------------------- */
@@ -4010,6 +4077,7 @@ footer.footer-custom {
 
 @media (max-width: 1024px) {
     
+    /*-- Homepage --*/
     
     .responsive-menu-icon {
         float: right;
@@ -4061,21 +4129,9 @@ footer.footer-custom {
     .aircraft-slideshow .meteor-buttons {
         margin: 0 auto 30px !important;
     }
-    
-/*
-    #home-section-1,
-    #home-section-5 {
-        background-size: cover;
-    }
-    
-*/
+
     .call-now {
         bottom: 0px;
-    }
-    
-    .call-tel,
-    .call-mob {
-        display: inline-block;
     }
     
     div.contact-us.one-third,
@@ -4114,6 +4170,8 @@ footer.footer-custom {
         overflow: scroll;
     }
     
+    /*-- Rates Page --*/
+
     .page-template-page-rates-location .site-inner {
         padding: 0;
         margin-top: 200px;
@@ -4173,6 +4231,14 @@ footer.footer-custom {
     }
     .aircraft-detail-page {
         margin-top: 100px;
+    }
+    
+    .aircraft-details-main {
+        display: none;
+    }
+    
+    .aircraft-details-responsive {
+        display: block;
     }
     
     /*aircraft details responsive version*/
@@ -4360,9 +4426,10 @@ footer.footer-custom {
     .aircraft-details ul {
         padding: 0;
         display: inline-block;
-        margin: 0 0 0 10px;
+        margin: 0;
         vertical-align: top;
         text-align: left;
+        width: 100%;
     }
     
     div.mperks-emerald-header, 
@@ -4566,15 +4633,6 @@ footer.footer-custom {
     }
 
 }
-
-
-
-
-
-
-
-
-
 
 
 

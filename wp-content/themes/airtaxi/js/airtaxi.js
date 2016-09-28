@@ -27,6 +27,30 @@ jQuery(function( $ ){
 //        lastScrollTop = st;
 //    });
     
+    
+	//-- Loader --//
+
+//	$(document).ready(function() {
+//        $('html, body').css({
+//            'overflow': 'hidden',
+//            'height': '100%'
+//        });
+//        $('.site-container').before('<div class="loader-container"><div class="loader"></div></div>').fadeIn();
+//        $(window).load(function() {
+//            $('.loader-container').fadeOut(400).remove();
+//            $('html, body').css({
+//                'overflow': 'auto',
+//                'height': 'auto'
+//            });
+//        });
+//    });
+    
+    var baseURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    
+    if(baseURL == "http://localhost") {
+        baseURL = baseURL + "/Projects/airtaxi"
+    }
+    
     //-- Homepage - Menu Link - Smooth Scroll --//
     
     $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a)').click(function() {
@@ -82,34 +106,24 @@ jQuery(function( $ ){
     
     //-- Homepage - Base Locations - Responsive Map --//
     
-    var markerManila = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila.png";
-    var markerClark = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark.png";
-    var markerCebu = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu.png";
-    var markerBoracay = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay.png";
-    var markerDavao = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao.png";
+    var markerManila = baseURL + "/wp-content/uploads/2016/09/Manila.png";
+    var markerClark = baseURL + "/wp-content/uploads/2016/09/Clark.png";
+    var markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu.png";
+    var markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay.png";
+    var markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao.png";
     
     if( screenWidth <= 375 ) {
         $('#base-locations').css('height', '420px');
         $('#base-locations').css('width', '420px');
         
-        markerManila = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila_2.png";
-        markerClark = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark_2.png";
-        markerCebu = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu_2.png";
-        markerBoracay = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay_2.png";
-        markerDavao = "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao_2.png";
+        markerManila = baseURL + "/wp-content/uploads/2016/09/Manila_2.png";
+        markerClark = baseURL + "/wp-content/uploads/2016/09/Clark_2.png";
+        markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu_2.png";
+        markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay_2.png";
+        markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao_2.png";
         
     }
     
-    
-    /*
-    
-    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Boracay_2.png
-    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Cebu_2.png
-    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Clark_2.png
-    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Davao_2.png
-    http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Manila_2.png
-    
-    */
     //-- Homepage - Base Locations - Image Map Hover --//
     
     $('#home-section-2').ready(function() {
@@ -239,23 +253,23 @@ jQuery(function( $ ){
             onMarkerTipShow: function(e, label, code) {
                 switch (code) {
                         case '0':
-                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
+                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
                         break;
                         
                         case '2':
-                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
+                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
                         break;
                         
                         case '4':
-                        case '5': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
+                        case '5': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
                         break;
                         
                         case '6':
-                        case '7': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
+                        case '7': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
                         break;
                         
                         case '8':
-                        case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
+                        case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
                         break;
                         
                     default: break;
@@ -320,7 +334,7 @@ jQuery(function( $ ){
                     map: map,
                     title: 'AirTaxi.PH',
                     icon: {
-                        url: "http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
+                        url: baseURL + "/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
                         scaledSize: new google.maps.Size(128, 128)
                     }
                 });
@@ -359,6 +373,8 @@ jQuery(function( $ ){
         var mapName = $('input[data-ref="map-name-'+id+'"]').val();
         var mapAddress = $('input[data-ref="map-address-'+id+'"]').val();
         var image = $('input[data-ref="map-image-'+id+'"]').val();
+        
+        mapAddress = mapAddress.replace(/<br \/>/g,'')
         
         $('input[name="hangar-name"]').attr('value', mapName);
         $('input[name="hangar-address"]').attr('value', mapAddress);
@@ -535,48 +551,53 @@ jQuery(function( $ ){
         $('.tabs .tab-links a.destinations').click();
     }
     
+    var border2px = "2px solid";
+    var border4px = "4px solid";
+    var emerald = "#056029";
+    var sapphire = "#205f95";
+    var diamond = "#989798";
     
     $('.m-panel-table').ready(function() {
         // Membership perks table
         if($('.m-panel-table div').hasClass('mperks-emerald')){
-            $('div.mperks-emerald-header').parent().css("border","2px solid #056029");
-            $('div.mperks-emerald').parent().css("border-left","2px solid #056029");
-            $('div.mperks-emerald').parent().css("border-right","2px solid #056029");
-            $('#mperks-end.mperks-emerald').parent().css("border-bottom","2px solid #056029");
+            $('div.mperks-emerald-header').parent().css("border",border2px + " " + emerald);
+            $('div.mperks-emerald').parent().css("border-left",border2px + " " + emerald);
+            $('div.mperks-emerald').parent().css("border-right",border2px + " " + emerald);
+            $('#mperks-end.mperks-emerald').parent().css("border-bottom",border2px + " " + emerald);
         }
         if($('.m-panel-table div').hasClass('mperks-sapphire')){
-            $('div.mperks-sapphire-header').parent().css("border","2px solid #205f95");
-            $('div.mperks-sapphire').parent().css("border-left","2px solid #205f95");
-            $('div.mperks-sapphire').parent().css("border-right","2px solid #205f95");
-            $('#mperks-end.mperks-sapphire').parent().css("border-bottom","2px solid #205f95");
+            $('div.mperks-sapphire-header').parent().css("border",border2px + " " + sapphire);
+            $('div.mperks-sapphire').parent().css("border-left",border2px + " " + sapphire);
+            $('div.mperks-sapphire').parent().css("border-right",border2px + " " + sapphire);
+            $('#mperks-end.mperks-sapphire').parent().css("border-bottom",border2px + " " + sapphire);
         }
         if($('.m-panel-table div').hasClass('mperks-diamond')){
-            $('div.mperks-diamond-header').parent().css("border","2px solid #989798");
-            $('div.mperks-diamond').parent().css("border-left","2px solid #989798");
-            $('div.mperks-diamond').parent().css("border-right","2px solid #989798");
-            $('#mperks-end.mperks-diamond').parent().css("border-bottom","2px solid #989798");
+            $('div.mperks-diamond-header').parent().css("border",border2px + " " + diamond);
+            $('div.mperks-diamond').parent().css("border-left",border2px + " " + diamond);
+            $('div.mperks-diamond').parent().css("border-right",border2px + " " + diamond);
+            $('#mperks-end.mperks-diamond').parent().css("border-bottom",border2px + " " + diamond);
         }
         // Membership rates table
         if($('.m-panel-table div').hasClass('mrates-emerald')){
-            $('div.mrates-emerald-header').parent().css("border","4px solid #056029");
-            $('div.mrates-emerald-header').parent().css("background","#056029");
-            $('div.mrates-emerald').parent().css("border-left","4px solid #056029");
-            $('div.mrates-emerald').parent().css("border-right","4px solid #056029");
-            $('#mrates-end.mrates-emerald').parent().css("border-bottom","4px solid #056029");
+            $('div.mrates-emerald-header').parent().css("border",border4px + " " + emerald);
+            $('div.mrates-emerald-header').parent().css("background",emerald);
+            $('div.mrates-emerald').parent().css("border-left",border4px + " " + emerald);
+            $('div.mrates-emerald').parent().css("border-right",border4px + " " + emerald);
+            $('#mrates-end.mrates-emerald').parent().css("border-bottom",border4px + " " + emerald);
         }
         if($('.m-panel-table div').hasClass('mrates-sapphire')){
-            $('div.mrates-sapphire-header').parent().css("border","4px solid #205f95");
-            $('div.mrates-sapphire-header').parent().css("background","#205f95");
-            $('div.mrates-sapphire').parent().css("border-left","4px solid #205f95");
-            $('div.mrates-sapphire').parent().css("border-right","4px solid #205f95");
-            $('#mrates-end.mrates-sapphire').parent().css("border-bottom","4px solid #205f95");
+            $('div.mrates-sapphire-header').parent().css("border",border4px + " " + sapphire);
+            $('div.mrates-sapphire-header').parent().css("background",sapphire);
+            $('div.mrates-sapphire').parent().css("border-left",border4px + " " + sapphire);
+            $('div.mrates-sapphire').parent().css("border-right",border4px + " " + sapphire);
+            $('#mrates-end.mrates-sapphire').parent().css("border-bottom",border4px + " " + sapphire);
         }
         if($('.m-panel-table div').hasClass('mrates-diamond')){
-            $('div.mrates-diamond-header').parent().css("border","4px solid #989798");
-            $('div.mrates-diamond-header').parent().css("background","#989798");
-            $('div.mrates-diamond').parent().css("border-left","4px solid #989798");
-            $('div.mrates-diamond').parent().css("border-right","4px solid #989798");
-            $('#mrates-end.mrates-diamond').parent().css("border-bottom","4px solid #989798");
+            $('div.mrates-diamond-header').parent().css("border",border4px + " " + diamond);
+            $('div.mrates-diamond-header').parent().css("background",diamond);
+            $('div.mrates-diamond').parent().css("border-left",border4px + " " + diamond);
+            $('div.mrates-diamond').parent().css("border-right",border4px + " " + diamond);
+            $('#mrates-end.mrates-diamond').parent().css("border-bottom",border4px + " " + diamond);
         }
     });
     

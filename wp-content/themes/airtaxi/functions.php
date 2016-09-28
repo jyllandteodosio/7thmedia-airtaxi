@@ -242,6 +242,11 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Home Section 6', 'parallax' ),
 	'description' => __( 'This is the home section 6 section.', 'parallax' ),
 ) );
+genesis_register_sidebar( array(
+	'id'          => 'home-section-7',
+	'name'        => __( 'Home Section 7', 'parallax' ),
+	'description' => __( 'This is the home section 7 section.', 'parallax' ),
+) );
 
 //* News Page Widget Areas
 genesis_register_sidebar( array(

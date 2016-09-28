@@ -28,7 +28,7 @@ get_header('custom'); ?>
     
     <div class="aircraft-panel">
         <div class="aircraft-slideshow">
-            <div class="aircraft-details">
+            <div class="aircraft-details-main aircraft-details">
               
                <ul class="detail-capacity">
                    <li><label class="detail-label">Capacity:</label></li>
@@ -83,6 +83,60 @@ get_header('custom'); ?>
                
             </div><!-- aircraft-details -->
             <?php the_content(); ?>
+            <div class="aircraft-details-responsive aircraft-details">
+              
+               <ul class="detail-capacity">
+                   <li><label class="detail-label">Capacity:</label></li>
+                   <li>
+                       <?php for($i=0;$i<$capacity;$i++): ?>
+                           <span class="dashicons dashicons-admin-users"></span>
+                       <?php endfor; ?>
+                   </li>
+                   <li>
+                       <p>Up to <?php echo $capacity; ?> passengers</p>
+                   </li>
+               </ul><!-- detail-capacity -->
+               
+               <ul class="detail-about">
+                   <li><label class="detail-label">About:</label></li>
+                   <li><p><?php the_field('about'); ?></p></li>
+               </ul><!-- detail-about -->
+               
+               <ul class="detail-notable">
+                   <li><label class="detail-label">Notable Features:</label></li>
+                   <li><p>
+                   <?php 
+                       // check if the repeater field has rows of data
+                        if( have_rows('notable_features') ):
+                            // loop through the rows of data
+                            while ( have_rows('notable_features') ) : the_row();
+                                // display a sub field value
+                                the_sub_field('feature_item');
+                                echo "<br/>";
+                            endwhile;
+                        endif;
+                    ?></p>
+                   </li>
+               </ul><!-- detail-notable -->
+               
+               <ul class="detail-best">
+                   <li class="detail-label">Best For:</li>
+                   <li>
+                    <?php 
+                       // check if the repeater field has rows of data
+                        if( have_rows('best_for') ):
+                            // loop through the rows of data
+                            while ( have_rows('best_for') ) : the_row();
+                                // display a sub field value
+                                the_sub_field('best_for_item');
+                                echo "<br/>";
+                            endwhile;
+                        endif;
+                    ?>
+                   </li>
+               </ul><!-- detail-best -->
+               
+            </div><!-- aircraft-details -->
         </div><!-- aircraft-slideshow -->
     </div><!-- aircraft-panel -->
 </div><!-- aircraft-detail-page -->
