@@ -22,8 +22,8 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
         <h1><?php the_title(); ?></h1>
     </div>
     <div class="rates-panel-tabs">
-<!--        <div class="tabs" style="background-image: url('<?php echo $feat_image;?>')">-->
-        <div class="tabs">
+        <div class="tabs" style="background-image: url('<?php echo $feat_image;?>')">
+<!--        <div class="tabs">-->
             <div class="tab-links-container">
                 <ul class="tab-links">
                     <li class="active one-third first"><a class="drop-off" href="#tab1">Drop-off or Pick-up</a></li>

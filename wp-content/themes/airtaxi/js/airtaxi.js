@@ -494,26 +494,26 @@ jQuery(function( $ ){
     
     /*---- Rates Page - Destination Tours Slick -----*/
 
-//    $('.destinations-tab').slick({
-//        dots: false,
-//        arrows: true,
-//        infinite: false,
-//        rows: 2,
-//        slidesPerRow: 1,
-//        speed: 300,
-//        slidesToShow: 1,
-//        variableWidth: true,
-//        responsive: [
-//            {
-//                breakpoint: 1025,
-//                settings: "unslick"
-//            }
-//            
-//            // You can unslick at a given breakpoint now by adding:
-//            // settings: "unslick"
-//            // instead of a settings object
-//        ]
-//    });
+    $('.destinations-tab').slick({
+        dots: false,
+        arrows: true,
+        infinite: false,
+        rows: 2,
+        slidesPerRow: 1,
+        speed: 300,
+        slidesToShow: -1,
+        variableWidth: true,
+        responsive: [
+            {
+                breakpoint: 1025,
+                settings: "unslick"
+            }
+            
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
     
     //-- Rates Page Tabs --//
     

@@ -367,6 +367,7 @@ img {
 	border: none;
 	height: auto;
 	margin: 0;
+    padding-top: 10px;
 }
 
 /* Forms
@@ -1169,7 +1170,6 @@ Content Area
 }
 
 .home-odd,
-.home-odd a:hover,
 .home-odd h1,
 .home-odd h2,
 .home-odd h3,
@@ -1179,6 +1179,10 @@ Content Area
 .home-odd .featured-content .entry-title a,
 .home-odd .widget-title {
 	color: #686868;
+}
+
+.home-odd a:hover {
+    color: #34a8b0;
 }
 
 .home-odd .featured-content .entry-title a:hover {
@@ -2281,6 +2285,18 @@ div.meteor-slides.navboth {
 }
 
 
+/* Homepage Section - About Us
+--------------------------------------------- */
+
+#home-section-1 {
+    padding-bottom: 0;
+    margin-bottom: -14px;
+}
+
+
+#home-section-1 .textwidget {
+    text-align: left;
+}
 
 /* Homepage Section - Base Locations
 --------------------------------------------- */
@@ -2460,6 +2476,15 @@ div.meteor-slides.navboth {
     font-size: 56px;
 }
 
+#home-section-4 #text-6 h4.widgettitle,
+#home-section-4 #text-6 .textwidget h1 {
+    color: #fff;
+}
+
+.membership-table {
+    overflow: auto;
+}
+
 .membership-table .one-third {
     background: rgba(78, 197, 207, 0.9);
     border: 1px solid #238f96;
@@ -2480,7 +2505,29 @@ div.meteor-slides.navboth {
     color: #fff;
 }
 
+.learn-more {
+    margin-top: 50px;
+}
 
+.learn-more-button {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: none;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 3px solid #fff;
+    color: #fff;
+}
+
+a.learn-more-button:hover {
+    color: #fff;
+    background: rgba(52,168,176,0.8);
+}
 
 /* Homepage Section - Rates
 --------------------------------------------- */
@@ -3635,9 +3682,6 @@ table.rates-box-list ,
 
 /*----- Destination Tours Box -----*/
 
-.destinations-tab {
-    overflow: auto;
-}
 
 .destinations-box {
     background-color: #fff;
@@ -3646,14 +3690,13 @@ table.rates-box-list ,
     height: auto;
     margin-bottom: 20px;
     overflow: auto;
-/*
     margin-right: 20px;
     float: left;
-    max-width: 400px;
-*/
     min-height: 280px;
     padding: 15px;
     position: relative;
+    max-width: 1140px;
+    min-width: 1140px;
 }
 
 .dest-container {
@@ -4074,6 +4117,21 @@ footer.footer-custom {
     .call-now {
         bottom: 110px;
     }
+    
+    #home-section-1 {
+        margin-bottom: -115px;
+    }
+}
+
+@media (min-width: 1281px) and (max-width: 1366px) {
+    
+    #home-section-1 {
+        margin-bottom: 0px;
+    }
+    
+    #home-section-1 .wrap {
+        min-height: 610px;
+    }
 }
 
 @media (min-width: 720px) and (max-width: 1366px) {
@@ -4105,6 +4163,35 @@ footer.footer-custom {
     
     .quote, .call-now {
         bottom: 70px;
+    }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1920px) {
+    .about-image {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .about-image .one-half {
+        width: 50%;
+        margin-left: 0;
+    }
+    
+    .about-image .one-half img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1280px) {
+    
+    .about-image {
+        position: relative;
+        left: auto;
+        width: auto%;
+        margin-top: 0px;
     }
 }
 
@@ -4232,6 +4319,11 @@ footer.footer-custom {
         margin-bottom: -40px;
     }
     
+    #home-section-1 {
+        padding-bottom: 100px;
+        margin-bottom: 0px;
+    }
+    
     #home-section-1,
     #home-section-5 {
         background-repeat: repeat-y;
@@ -4332,7 +4424,11 @@ footer.footer-custom {
     }
     
     /*-- Rates Page --*/
-
+    
+    .rates-panel-tabs .tabs {
+        background-image: none !important;
+    }
+    
     .page-template-page-rates-location .site-inner {
         padding: 0;
         margin-top: 100px;
@@ -4340,6 +4436,15 @@ footer.footer-custom {
     
     .tab-content {
         padding: 30px 60px;
+    }
+    
+    .destinations-tab {
+        overflow: auto;
+    }
+    
+    .destinations-box {
+        max-width: 100%;
+        min-width: 100%;
     }
     
     .destinations-box-image {
@@ -4554,7 +4659,29 @@ footer.footer-custom {
 
 @media (max-width: 375px) {
     
+    body {
+        font-size: 14px;
+    }
+    
+    .yuzo_related_post_widget .yuzo_text, 
+    .yuzo_related_post .yuzo_views_post {
+        line-height: 1.5;
+        font-size: 14px;
+    }
+    
+    .news-single-post h1 {
+        font-size: 24px;
+    }
+    
+    .single-news .news-single-content {
+        margin: 20px auto;
+    }
+
     /*-- Homepage --*/
+    
+    .home-even, .home-odd {
+        font-size: 16px;
+    }
     
     .responsive-menu-icon {
         float: right;
@@ -4571,9 +4698,9 @@ footer.footer-custom {
         padding: 10px 0;
     }
     
-    .home-even .widget-title,
+    .home-even .widget-title, 
     .home-odd .widget-title {
-        font-size: 56px;
+        font-size: 48px;
         line-height: 56px;
         margin-bottom: 40px;
     }
@@ -4597,12 +4724,12 @@ footer.footer-custom {
     /*-- Homepage - Slideshow --*/
     
     .meteor-slides p {
-        font-size: 0.8em;
-        line-height: 1em;
+        font-size: 1em;
+        line-height: 1.1em;
     }
     
     .meteor-slides p.slide-button-title {
-        font-size: 0.6em;
+        font-size: 0.8em;
         line-height: 1em;
     }
     
@@ -4635,7 +4762,7 @@ footer.footer-custom {
     }
     
     .membership-table .one-third {
-        font-size: 0.8em;
+        font-size: 1em;
     }
     
     /*-- Homepage - Rates --*/
@@ -4875,6 +5002,7 @@ footer.footer-custom {
     
     /*-- News Page --*/
     
+    .single-news .news-recent-post .wrap,
     .news-after-entry {
         padding: 0;
     }

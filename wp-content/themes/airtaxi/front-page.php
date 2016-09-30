@@ -83,7 +83,7 @@ function parallax_homepage_widgets() {
 	) );
 
 	genesis_widget_area( 'home-section-4', array(
-		'before' => '<div id="home-section-4" class="home-odd home-section-4 widget-area section fp-auto-height" style="background-image:url('.$base_url.'/wp-content/uploads/2016/09/Makati_Skyline_for_banner.jpg)"><div class="wrap">',
+		'before' => '<div id="home-section-4" class="home-odd home-section-4 widget-area section fp-auto-height" style="background-image:url('.$base_url.'/wp-content/uploads/2016/09/Makati_Skyline_Overlay.png)"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
     
