@@ -56,12 +56,11 @@ function single_newspage_widgets() {
     echo '<div class="news-single-post">';
     
     $featuredURL = wp_get_attachment_url( get_post_thumbnail_id(get_field('post_id')), 'large');
+    $imageAlt = get_post_meta( get_post_thumbnail_id(get_field('post_id')), '_wp_attachment_image_alt', true);
     
     if($featuredURL != ""):
-    echo '<div class="news-featured-image" style="background: url('.$featuredURL.');
-                                                background-repeat: no-repeat;
-                                                background-size: cover;
-                                                background-position: center center">';
+    echo '<div class="news-featured-image">';
+    echo '<img src="'.$featuredURL.'" alt="'.$imageAlt.'"/>';
     echo '</div>'; // .news-featured-image
     endif;
     

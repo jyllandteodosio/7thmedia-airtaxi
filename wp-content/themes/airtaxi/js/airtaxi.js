@@ -70,39 +70,30 @@ jQuery(function( $ ){
     //-- Homepage - Auto Scroll --//
     
     if( screenWidth <= 375 ) {
-        $('.sections').fullpage({
-            verticalCentered: false,
-            scrollBar: true,
-            fitToSection: false,
-            autoScrolling: false,
-        });
         
         $('#gallery-2').removeClass('gallery-columns-2');
         $('#gallery-2').removeClass('gallery-columns-4').addClass('gallery-columns-1');
         
-    } else if( screenWidth > 375 && screenWidth <= 768 ) {
-        $('.sections').fullpage({
-            verticalCentered: false,
-            scrollBar: true,
-            fitToSection: false,
-            autoScrolling: false,
-        });
+    } else if( screenWidth > 375 && screenWidth <= 1024 ) {
         
         $('#gallery-2').removeClass('gallery-columns-4');
         $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-2');
         
     } else {
+        
+        $('#gallery-2').removeClass('gallery-columns-2');
+        $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-4');
+    }
+    
+    if(screenWidth > 1024) {
+        
         $('.sections').fullpage({
             verticalCentered: false,
             scrollBar: true,
             fitToSection: false,
             normalScrollElements: '#home-section-6.wrap',
         });
-        
-        $('#gallery-2').removeClass('gallery-columns-2');
-        $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-4');
     }
-    
     
     //-- Homepage - Base Locations - Responsive Map --//
     
@@ -368,7 +359,14 @@ jQuery(function( $ ){
     
     //-- Homepage - Contact Us - Email Driving Directions Popup --//
     
-    $('.map-email').click(function() {
+    $('.map-email').on('click', function() {
+        
+        $('body.mobile.ios.safari').css({
+            'overflow': 'hidden',
+            'height': '100%',
+            '-webkit-overflow-scrolling': 'auto' 
+        });
+        
         var id = $(this).attr('id');
         var mapName = $('input[data-ref="map-name-'+id+'"]').val();
         var mapAddress = $('input[data-ref="map-address-'+id+'"]').val();
@@ -380,12 +378,30 @@ jQuery(function( $ ){
         $('input[name="hangar-address"]').attr('value', mapAddress);
         $('input[name="hangar-image"]').attr('value', image);
         
-        $('.pop-email').removeClass('hidden').hide().fadeIn(400);
-        $('.overlay').removeClass('hidden');
+        if($('body').hasClass('safari')) {
+            $('.pop-email.pop-safari').removeClass('hidden').hide().fadeIn(400);
+            
+        } else {
+            $('.pop-email.pop-default').removeClass('hidden').hide().fadeIn(400);
+            $('.overlay').removeClass('hidden');
+        }
         
         $('#pop-email-close').on('click', function(){
-            $('.overlay').addClass('hidden');
-            $('.pop-email').addClass('hidden').hide();
+                $('.overlay').addClass('hidden');
+                $('.pop-email.pop-defaul').addClass('hidden').hide();
+        });
+        
+        $('#pop-safari-close').on('click', function(){
+        
+            $('body.mobile.ios.safari').css({
+                'overflow': 'auto',
+                'height': 'auto',
+                '-webkit-overflow-scrolling': 'touch' 
+            });
+            
+            if($('body').hasClass('safari')) {
+                $('.pop-email.pop-safari').addClass('hidden').hide();
+            }
         });
     });
     
