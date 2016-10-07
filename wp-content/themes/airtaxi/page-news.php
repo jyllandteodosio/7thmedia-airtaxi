@@ -7,62 +7,87 @@
  * @subpackage 
  */
 
+get_header('custom');
 
-add_action( 'genesis_meta', 'parallax_news_genesis_meta' );
-/**
- * Add widget support for news page. If no widgets active, display the default loop.
- *
- */
-function parallax_news_genesis_meta() {
+$cats = get_field('category_order');
 
-	if ( is_active_sidebar( 'news-featured' ) || is_active_sidebar( 'news-related-post' ) || is_active_sidebar( 'news-recent-post' ) ) {
+$news_cats = array();
 
-		//* Force full width content layout
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+foreach($cats as $cat) {
+    $cat_object = get_the_category($cat['category']);
+    var_dump($cat['category']);
+}
 
-		//* Remove primary navigation
-		remove_action( 'genesis_before_content_sidebar_wrap', 'genesis_do_nav' );
+print_r($news_cats);
 
-		//* Remove breadcrumbs
-		remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs');
+$args = array(
+    'post_type'     => 'post',
+    'post_status'   => 'published',
+    'posts_per_page'=> '3',
+    'category_name' => 'news',
+    'orderby'       => 'date',
+    'order'         => 'DESC'
+);
+
+$news_query = new WP_Query( $args );
+
+?>
+<div class="news-landing-container">
+
+    <?php
+    if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_query->the_post();
+    ?>
+    
+    <article>
+        <h2><?php the_title(); ?></h2>
+        <figure><?php the_post_thumbnail(); ?></figure>
+        <p><?php the_advanced_excerpt(); ?></p>
+    </article>
+    
+<!--
+    <div class="related-news">
+        <?php /*
+            $counter = 0;
+            $related_news = get_field('related_posts');
         
-		//* Remove the default Genesis loop
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
+            if($related_news): 
+                foreach($related_news as $news_object):
+                    $post = $news_object['post'];
+                    $counter++;
+                    setup_postdata($post);
+        ?>
+        <div class="related-news-item" data-news-number="<?php echo $counter; ?>">
+            <h3>
+                <a href="<?php the_permalink();?>">
+                    <?php echo the_title(); ?>
+                </a>
+            </h3>
+            <p><?php the_advanced_excerpt(); ?></p>
+        </div>
+        <?php 
+                endforeach; 
+                wp_reset_postdata();
+            endif;*/
+        ?>
+    </div>
+-->
 
-		//* Add news page widgets
-		add_action( 'genesis_loop', 'parallax_newspage_widgets' );
+    <?php
+    endwhile; endif;
+    wp_reset_postdata();
+    
+    //display next page (3 items) as related posts
+    
+    //display new category of posts
+    
+    
+    ?>
 
-	}
-}
 
-//* Add markup for news page widgets
-function parallax_newspage_widgets() {
     
-    $base_url = get_site_url();
-    
-	genesis_widget_area( 'news-featured', array(
-		'before' => '<div class="news-featured widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
-    
-    echo '<div class="news-after-entry">';
-    
-	genesis_widget_area( 'news-related-post', array(
-		'before' => '<main class="content-2"><div class="news-related-post widget-area"><div class="wrap">',
-		'after'  => '</div></div></main>',
-	) );
 
-	genesis_widget_area( 'news-recent-post', array(
-		'before' => '<aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="News Sidebar"><div class="news-recent-post widget-area"><div class="wrap">',
-		'after'  => '</div></div></aside>',
-	) );
-    
-    echo '</div>'; //* .news-after-entry
-    
-}
-
-genesis();
-
+</div>    
+<?php
 get_footer('custom');
 
 ?>

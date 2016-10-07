@@ -9,7 +9,7 @@
 ?>
 <div class="rates-links-panel">
     <div class="rates-links-title">
-        <h1><?php echo 'Rates'; ?></h1>
+        <h1>Helicopter Rates</h1>
     </div>
     <div class="rates-links-box">
         <div class="rates-table">

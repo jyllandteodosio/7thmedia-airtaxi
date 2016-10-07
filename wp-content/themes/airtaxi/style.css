@@ -544,7 +544,7 @@ Structure and Layout
 
 .site-inner {
 	clear: both;
-	margin-top: 170px;
+	margin-top: 140px;
 }
 
 .parallax-home .site-inner {
@@ -946,7 +946,7 @@ Site Header
 .header-image .site-title > a {
 	background-size: contain !important;
 	display: block;
-	height: 70px;
+	height: 40px;
 	text-indent: -9999px;
 	max-width: 360px;
 }
@@ -964,7 +964,7 @@ Site Header
 .site-header .widget-area {
 	float: right;
 	text-align: right;
-	width: 840px;
+	width: 820px;
 }
 
 .site-header .widget-area,
@@ -1017,7 +1017,7 @@ Site Navigation
 	display: block;
 	font-family: Lato, sans-serif;
     letter-spacing: 1px;
-	padding: 44px 20px;
+	padding: 30px 20px;
 }
 
 .genesis-nav-menu a:hover,
@@ -1049,6 +1049,7 @@ Site Navigation
 	padding: 20px;
 	position: relative;
 	width: 200px;
+    margin-right: -2px;
 }
 
 .genesis-nav-menu .sub-menu .sub-menu {
@@ -1101,6 +1102,8 @@ Site Navigation
 
 .site-header .sub-menu {
 	background-color: #4ec5cd;
+    border: 2px solid #12a8b2;
+    border-top: none;
 }
 
 /* Primary Navigation
@@ -1839,7 +1842,7 @@ Media Queries
 	}
 
 	.site-header .widget-area {
-		width: 560px;
+		width: 801px;
 	}
 
 	.home-section-1,
@@ -2398,6 +2401,9 @@ div.meteor-slides.navboth {
     text-align: center;
 }
 
+#home-section-3 #text-5 strong {
+    color: #686868;
+}
 
 
 /* Homepage Section - Quote/Callouts
@@ -3060,13 +3066,12 @@ a.map-inquire:hover {
 
 .m-panel-content {
     padding: 0px 0px 100px;
-    margin-top: 30px;
 }
 
 .m-panel-table {
     margin: 0 auto;
     max-width: 1140px;
-    padding: 5%;
+    padding: 10px 5%;
 }
 
 .m-panel .wpsm-comptable td {
@@ -3422,15 +3427,15 @@ div.mrates-diamond-header {
 }
 
 .page-template-page-rates-location .site-inner {
-    margin-top: 100px;
+    margin-top: 60px;
     margin-bottom: -20px;
 }
 #gallery-2 .gallery-item .gallery-icon {
     height: 100px;
-    /* display: table-cell; */
-    /* vertical-align: bottom; */
+    display: table-cell;
+    vertical-align: bottom; 
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 
@@ -3633,7 +3638,7 @@ table.rates-box-list ,
 
 .rates-box-list td {
     border: none;
-    padding: 15px;
+    padding: 15px 10px;
 }
 
 .rates-box-item .item-capacity,
@@ -3932,11 +3937,21 @@ table.destinations-box-itinerary {
     font-size: 16px;
 }
 
+.related-news-item {
+    width: 30%;
+    margin-right: 3%;
+    float: left
+}
+
+.related-news-item:nth-of-type(3n) {
+    margin-right: 0;
+}
+
 /* Single News Post
 --------------------------------------------- */
 
 .single-news .site-inner {
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .single-news .content {
@@ -4077,6 +4092,27 @@ footer.footer-custom {
 /* Media Queries
 --------------------------------------------- */
 
+@media (min-width: 1441px) and (max-width: 1920px) {
+    #home-section-1 .wrap {
+        min-height: 900px;
+    }
+    
+    #home-section-2 .wrap,
+    #home-section-3 .wrap {
+        min-height: 800px;
+    }
+    
+    #home-section-4 .wrap {
+        min-height: 820px;
+    }
+    
+    #home-section-5 .wrap {
+        min-height: 780px;
+    }
+    
+    
+}
+
 @media (min-width: 1367px) and (max-width: 1920px) {
     .home-even,
     .home-odd {
@@ -4091,15 +4127,18 @@ footer.footer-custom {
         vertical-align: top;
     }
     
-    #home-section-1 .wrap,
     #home-section-2 .wrap,
     #home-section-4 .wrap,
     #home-section-5 .wrap {
-        min-height: 742px;
+        min-height: 780px;
     }
     
     #home-section-3 {
         padding: 70px 0px 100px;
+        margin-bottom: -70px;
+    }
+    
+    #home-section-5 {
         margin-bottom: -70px;
     }
     
@@ -4121,9 +4160,38 @@ footer.footer-custom {
     #home-section-1 {
         margin-bottom: -115px;
     }
+    
+    #home-section-1 .wrap {
+        min-height: 800px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .site-header .wrap {
+        max-width: 1066px;
+    }
+    
+    .site-header .widget-area {
+        float: right;
+        text-align: right;
+        width: 801px;
+    }
+    
+    .title-area {
+        width: 210px;
+    }
 }
 
 @media (min-width: 1281px) and (max-width: 1366px) {
+    
+    .home-even,
+    .home-odd {
+        padding: 40px 0px;
+    }
+    
+    #home-section-0 {
+        padding: 0;
+    }
     
     #home-section-1 {
         margin-bottom: 0px;
@@ -4131,6 +4199,10 @@ footer.footer-custom {
     
     #home-section-1 .wrap {
         min-height: 610px;
+    }
+    
+    #home-section-3 .wrap {
+        min-height: 800px;
     }
 }
 
@@ -4193,16 +4265,36 @@ footer.footer-custom {
         width: auto%;
         margin-top: 0px;
     }
+    
+    .meteor-slides p.slide-main-text {
+         margin-top: 0px; 
+    }
+    
+    .meteor-slides p {
+        font-size: 1.3em;
+    }
+    
+    .meteor-slides p.slide-button-title {
+        font-size: 1em;
+    }
 }
 
 
 @media (max-width: 1024px) {
     
+    .header-image .title-area {
+        padding: 11px 0;
+    }
+    
+    .site-header .wrap {
+        padding: 0px 20px;
+    }
+    
     /*-- Homepage --*/
     
     .responsive-menu-icon {
         float: right;
-        margin-top: -70px;
+        margin-top: -57px;
     }
     
     .responsive-menu-icon::before {
@@ -4213,7 +4305,8 @@ footer.footer-custom {
     }
     
     .header-image .site-title > a {
-        margin: 0 auto 10px;
+        margin: 5px auto;
+        max-width: 100%;
     }
     
     .site-header .genesis-nav-menu.responsive-menu .current-menu-item > a, 
@@ -4315,7 +4408,6 @@ footer.footer-custom {
     
     #home-section-0 {
         padding-bottom: 0px;
-        margin-top: 40px;
         margin-bottom: -40px;
     }
     
@@ -4348,24 +4440,10 @@ footer.footer-custom {
     }
     
     .page-template-page-membership .site-inner {
-        margin-top: 100px;
+        margin-top: 70px;
     }
     
     /*-- Homepage - Slideshow --*/
-    
-    .meteor-slides p.slide-main-text {
-        margin-top: 20px;
-    }
-    
-    .meteor-slides p {
-        font-size: 1.2em;
-        line-height: 1.3em;
-    }
-    
-    .meteor-slides p.slide-button-title {
-        font-size: 0.8em;
-        line-height: 1em;
-    }
     
     #meteor-slides-widget-2 .meteor-buttons, 
     #meteor-slides-widget-3 .meteor-buttons {
@@ -4431,7 +4509,7 @@ footer.footer-custom {
     
     .page-template-page-rates-location .site-inner {
         padding: 0;
-        margin-top: 100px;
+        margin-top: 70px;
     }
     
     .tab-content {
@@ -4480,7 +4558,7 @@ footer.footer-custom {
     }
     
     .page-template-page-news .site-inner {
-        margin-top: 150px;
+        margin-top: 100px;
     }
     
     .news-single-after .sidebar {
@@ -4497,10 +4575,14 @@ footer.footer-custom {
     }
     
     .single-news .site-inner {
-        margin-top: 110px;
+        margin-top: 70px;
     }
     
     /*-- Aircrafts Page --*/
+    
+    .single-aircraft .site-inner {
+        margin-top: 70px;
+    }
     
     .aircraft-detail-page .aircraft-details {
         position: relative;
@@ -4508,7 +4590,7 @@ footer.footer-custom {
         max-width: 100%; 
     }
     .aircraft-detail-page {
-        margin-top: 10px;
+        margin-top: 70px;
     }
     
     .aircraft-details-main {
@@ -4548,6 +4630,22 @@ footer.footer-custom {
 
 }
 
+@media (max-width: 960px) {
+    .meteor-slides p {
+        font-size: 1em;
+        line-height: 1.3em;
+    }
+    
+    .meteor-slides p.slide-button-title {
+        font-size: 0.8em;
+        line-height: 1em;
+    }
+    
+    #home-section-0 {
+        margin-top: 70px;
+    }
+}
+
 @media (max-width: 768px) {
     
     /*-- Homepage --*/
@@ -4555,6 +4653,7 @@ footer.footer-custom {
     #home-section-0 {
         margin-top: 0;
         padding-bottom: 0;
+        padding-top: 70px;
     }
     
     /*-- Homepage - Slideshow --*/
@@ -4605,16 +4704,8 @@ footer.footer-custom {
     
     /*-- News Page --*/
     
-    .page-template-page-news .site-inner {
-        margin-top: 150px;
-    }
-    
     .news-after-entry {
         padding: 0;
-    }
-    
-    .single-news .site-inner {
-        margin-top: 112px;
     }
     
     /*-- Aircraft Page --*/
@@ -4628,7 +4719,7 @@ footer.footer-custom {
     }
     
     .aircraft-detail-page {
-        margin-top: 100px;
+        margin-top: 70px;
     }
     
     /*-- Rates Page --*/
@@ -5036,6 +5127,12 @@ footer.footer-custom {
     }
 */
     
+}
+
+@media (max-width: 960px) {
+    .aircraft-detail-page {
+        margin-top: 70px;
+    }
 }
 
 @media (max-width: 320px) {

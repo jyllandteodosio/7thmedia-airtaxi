@@ -148,24 +148,21 @@ get_header('custom'); ?>
        <div class="gallery-slider">
             <?php
                 $args = array(
-                    'post_type'   => 'attachment',
-                    'post_status' => 'any',
-                    'posts_per_page' => '-1',
-                    'tax_query'   => array(
-                        array(
-                            'taxonomy' => 'media_category', // your taxonomy
-                            'field'    => 'id',
-                            'terms'    => 9 // term id (id of the media category)
-                        )
-                    )
+                    'post_type'     => 'aircraft',
+                    'post_status'   => 'any',
+                    'posts_per_page'=> '-1',
+                    'meta_key'      => 'gallery_order',
+                    'orderby'       => 'meta_key',
+                    'order'         => 'ASC'
                 );
                 $the_query = new WP_Query( $args );
                 $posts = $the_query->get_posts();
                 // get aircraft gallery vectors
                 if ( $the_query->have_posts() ) {
                     foreach ( $posts as $post ) {
-                        $url = get_field('_gallery_link_url');
-                        $alt = get_field('_wp_attachment_image_alt');
+                        $image = get_field('aircraft_vector');
+                        $url = get_permalink();
+                        $alt = $image['alt'];
                         
                         //marks the displayed image in the gallery
                         if( $model == $alt ){
@@ -183,14 +180,18 @@ get_header('custom'); ?>
                         <div class="gallery-image-container">
                             <?php 
                             // displays image
-                            echo wp_get_attachment_image( get_the_ID(), 'medium' ); 
+                            echo wp_get_attachment_image( $image['id'], 'medium' ); 
                             ?>
                         </div><!-- gallery-image-container -->
-
-                        <?php
-                        // displays image caption
-                        echo the_excerpt();
                         
+                       <!--displays image caption-->
+                        <p>
+                            <?php echo get_field('aircraft_name'); ?>
+                            <br/>
+                            <strong><?php echo get_field('model'); ?></strong>
+                        </p>
+                        
+                        <?php
                         echo '</div></a>'; //gallery-slider-item
                     }
                 } else {
@@ -203,9 +204,7 @@ get_header('custom'); ?>
    </div><!-- gallery-container -->
 </div><!-- aircraft-fleet-gallery -->
 
-
     <?php endwhile; // end of the loop. ?>
-
 
 
 <?php get_footer('custom'); ?>
