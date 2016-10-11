@@ -3937,14 +3937,160 @@ table.destinations-box-itinerary {
     font-size: 16px;
 }
 
+.news-landing-container {
+    margin-bottom: 100px;
+}
+
+.news-page-title h1,
+.news-landing-title,
+.related-news-header h2,
+.related-news-item h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.news-page-title h1 {
+    color: #686868;
+    text-align: center;
+    max-width: 1140px;
+    margin: -30px auto 40px;
+    padding: 0 20px;
+    font-size: 1.6em;
+}
+
+.news-page-title,
+.news-landing-title,
+.news-landing-excerpt,
+.news-landing-content,
+.related-news-header h2,
+.related-news-container {
+    max-width: 1140px;
+    padding: 0px 20px;
+    margin: 0 auto;
+}
+
+.news-landing-title {
+    margin: 0 auto;
+    line-height: 1.5em;
+}
+
+.news-landing-title,
+.news-landing-excerpt,
+.news-landing-content {
+    padding: 20px;
+    color: #212121;
+}
+
+.news-landing-item .read-more,
+.news-landing-item .readmore {
+    margin: 20px auto;
+}
+
+.news-landing-item figure,
+.news-item-image {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.news-landing-item.row-gray {
+    background: #f3f3f3;
+}
+
+.news-landing-item figure img {
+    width: 100%;
+    height: auto;
+}
+
+.news-item-image {
+    display: block;
+}
+
+.news-item-close {
+    text-align: center;
+}
+
+.news-close-btn {
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    width: 200px;
+    padding: 0;
+}
+
+.news-close-btn:active,
+.news-close-btn:focus,
+.news-load-btn:active,
+.news-load-btn:focus {
+    outline: 0;
+}
+
+.news-item-div {
+    background: #f3f3f3;
+    padding: 1px 0;
+    margin: 0 auto;
+}
+
+.news-load-more {
+    padding: 40px 0;
+    text-align: center;
+    background: #f1f1f1;
+}
+
+.related-news {
+    overflow: auto;
+    background: #f1f1f1;
+}
+
+.related-news-header {
+    background: #212121;
+    padding: 10px 0px;
+}
+
+.related-news-header h2 {
+    color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.related-news-container {
+    padding: 0;
+}
+
 .related-news-item {
+    font-size: 14px;
     width: 30%;
-    margin-right: 3%;
-    float: left
+    height: 100%;
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px 20px;
+    color: #212121;
 }
 
 .related-news-item:nth-of-type(3n) {
     margin-right: 0;
+}
+
+.related-news-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.related-news-item h3 a {
+    color: #212121;
+}
+
+.related-news-item h3 a:hover {
+    color: #4EC5CD;
+}
+
+.related-news-item p {
+    margin-bottom: 0;
+}
+
+.related-news-item .read-more,
+.related-news-item .readmore {
+    display: none;
 }
 
 /* Single News Post
@@ -3967,6 +4113,10 @@ table.destinations-box-itinerary {
     width: 1140px;
     max-width: 100%;
     padding: 0px 20px;
+}
+
+.news-single-post {
+    margin-bottom: 100px;
 }
 
 .news-single-post h1 {

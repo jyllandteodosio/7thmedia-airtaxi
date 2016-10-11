@@ -95,183 +95,189 @@ jQuery(function( $ ){
         });
     }
     
-    //-- Homepage - Base Locations - Responsive Map --//
-    
-    var markerManila = baseURL + "/wp-content/uploads/2016/09/Manila.png";
-    var markerClark = baseURL + "/wp-content/uploads/2016/09/Clark.png";
-    var markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu.png";
-    var markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay.png";
-    var markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao.png";
-    
-    if( screenWidth <= 375 ) {
-        $('#base-locations').css('height', '420px');
-        $('#base-locations').css('width', '420px');
-        
-        markerManila = baseURL + "/wp-content/uploads/2016/09/Manila_2.png";
-        markerClark = baseURL + "/wp-content/uploads/2016/09/Clark_2.png";
-        markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu_2.png";
-        markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay_2.png";
-        markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao_2.png";
-        
-    }
-    
     //-- Homepage - Base Locations - Image Map Hover --//
     
-    $('#home-section-2').ready(function() {
-        var margin = 0;
+    if($('#home-section-2').length) {
         
-        margin = (screenWidth <= 375 ? 5 : 0);
-        
-        $('#base-locations').vectorMap({
-            map: 'ph_mill_en',
-            backgroundColor: '#ffffff',
-            hoverOpacity: 1,
-            hoverColor: false,
-            zoomOnScroll: false,
-            regionStyle: {
-                initial: {
-                    fill: '#d1d2d4',
-                    "fill-opacity": 1,
-                    stroke: '#a9abae',
-                    "stroke-width": 1.5,
-                    "stroke-opacity": 1
-                },
-                    hover: {
-                        "fill-opacity": 0.8,
-                        cursor: 'pointer'
-                    },
-                    selected: {
-                        fill: 'yellow'
-                    }
-            },
-            onRegionTipShow: function (e, e1, text) {
-                e.preventDefault();
-            },
-            markerStyle: {
-                hover: {
-                    stroke: "#fff",
-                    "stroke-width": 2,
-                    cursor: 'pointer'
-                }
-            },
-            markers: [
-                {
-                    coords: [262+margin,185],
-                    name: "Clark",
-                    style: {
-                        image: markerClark
-                    }
-                },
-                {
-                    coords: [102,185],
-                    name: "Clark",
-                    style: {
-                        fill: "#55dfe8",
-                        stroke: "#45b9c1",
-                        "stroke-width": 2,
-                        r: 7
-                    }
-                },
-                {
-                    coords: [278+margin,202],
-                    name: "Metro Manila",
-                    style: {
-                        image: markerManila
-                    }
-                },
-                {
-                    coords: [118,200],
-                    name: "Metro Manila",
-                    style: {
-                        fill: "#55dfe8",
-                        stroke: "#45b9c1",
-                        "stroke-width": 2,
-                        r: 7
-                    }
-                },
-                {
-                    coords: [315+margin,270],
-                    name: "Boracay Island",
-                    style: {
-                        image: markerBoracay
-                    }
-                },
-                {
-                    coords: [155,270],
-                    name: "Boracay Island",
-                    style: {
-                        fill: "#55dfe8",
-                        stroke: "#45b9c1",
-                        "stroke-width": 2,
-                        r: 7
-                    }
-                },
-                {
-                    coords: [388+margin,305],
-                    name: "Cebu",
-                    style: {
-                        image: markerCebu
-                    }
-                },
-                {
-                    coords: [228,305],
-                    name: "Cebu",
-                    style: {
-                        fill: "#55dfe8",
-                        stroke: "#45b9c1",
-                        "stroke-width": 2,
-                        r: 7
-                    }
-                },
-                {
-                    coords: [444+margin,397],
-                    name: "Davao",
-                    style: {
-                        image: markerDavao
-                    }
-                },
-                {
-                    coords: [284,397],
-                    name: "Davao",
-                    style: {
-                        fill: "#55dfe8",
-                        stroke: "#45b9c1",
-                        "stroke-width": 2,
-                        r: 7
-                    }
-                }
-            ],
-            onMarkerTipShow: function(e, label, code) {
-                switch (code) {
-                        case '0':
-                        case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
-                        break;
-                        
-                        case '2':
-                        case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
-                        break;
-                        
-                        case '4':
-                        case '5': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
-                        break;
-                        
-                        case '6':
-                        case '7': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
-                        break;
-                        
-                        case '8':
-                        case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
-                        break;
-                        
-                    default: break;
-                };
-            }
-        });
-        
-        $('#base-locations .jvectormap-zoomin').hide();
-        $('#base-locations .jvectormap-zoomout').hide();
+        $('#home-section-2').ready(function() {
 
-    });
+            //-- Homepage - Base Locations - Responsive Map --//
+
+            var markerManila = baseURL + "/wp-content/uploads/2016/09/Manila.png";
+            var markerClark = baseURL + "/wp-content/uploads/2016/09/Clark.png";
+            var markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu.png";
+            var markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay.png";
+            var markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao.png";
+
+            if( screenWidth <= 375 ) {
+                $('#base-locations').css('height', '420px');
+                $('#base-locations').css('width', '420px');
+
+                markerManila = baseURL + "/wp-content/uploads/2016/09/Manila_2.png";
+                markerClark = baseURL + "/wp-content/uploads/2016/09/Clark_2.png";
+                markerCebu = baseURL + "/wp-content/uploads/2016/09/Cebu_2.png";
+                markerBoracay = baseURL + "/wp-content/uploads/2016/09/Boracay_2.png";
+                markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao_2.png";
+
+            }
+
+            var margin = 0;
+
+            margin = (screenWidth <= 375 ? 5 : 0);
+
+            $('#base-locations').vectorMap({
+                map: 'ph_mill_en',
+                backgroundColor: '#ffffff',
+                hoverOpacity: 1,
+                hoverColor: false,
+                zoomOnScroll: false,
+                regionStyle: {
+                    initial: {
+                        fill: '#d1d2d4',
+                        "fill-opacity": 1,
+                        stroke: '#a9abae',
+                        "stroke-width": 1.5,
+                        "stroke-opacity": 1
+                    },
+                        hover: {
+                            "fill-opacity": 0.8,
+                            cursor: 'pointer'
+                        },
+                        selected: {
+                            fill: 'yellow'
+                        }
+                },
+                onRegionTipShow: function (e, e1, text) {
+                    e.preventDefault();
+                },
+                markerStyle: {
+                    hover: {
+                        stroke: "#fff",
+                        "stroke-width": 2,
+                        cursor: 'pointer'
+                    }
+                },
+                markers: [
+                    {
+                        coords: [262+margin,185],
+                        name: "Clark",
+                        style: {
+                            image: markerClark
+                        }
+                    },
+                    {
+                        coords: [102,185],
+                        name: "Clark",
+                        style: {
+                            fill: "#55dfe8",
+                            stroke: "#45b9c1",
+                            "stroke-width": 2,
+                            r: 7
+                        }
+                    },
+                    {
+                        coords: [278+margin,202],
+                        name: "Metro Manila",
+                        style: {
+                            image: markerManila
+                        }
+                    },
+                    {
+                        coords: [118,200],
+                        name: "Metro Manila",
+                        style: {
+                            fill: "#55dfe8",
+                            stroke: "#45b9c1",
+                            "stroke-width": 2,
+                            r: 7
+                        }
+                    },
+                    {
+                        coords: [315+margin,270],
+                        name: "Boracay Island",
+                        style: {
+                            image: markerBoracay
+                        }
+                    },
+                    {
+                        coords: [155,270],
+                        name: "Boracay Island",
+                        style: {
+                            fill: "#55dfe8",
+                            stroke: "#45b9c1",
+                            "stroke-width": 2,
+                            r: 7
+                        }
+                    },
+                    {
+                        coords: [388+margin,305],
+                        name: "Cebu",
+                        style: {
+                            image: markerCebu
+                        }
+                    },
+                    {
+                        coords: [228,305],
+                        name: "Cebu",
+                        style: {
+                            fill: "#55dfe8",
+                            stroke: "#45b9c1",
+                            "stroke-width": 2,
+                            r: 7
+                        }
+                    },
+                    {
+                        coords: [444+margin,397],
+                        name: "Davao",
+                        style: {
+                            image: markerDavao
+                        }
+                    },
+                    {
+                        coords: [284,397],
+                        name: "Davao",
+                        style: {
+                            fill: "#55dfe8",
+                            stroke: "#45b9c1",
+                            "stroke-width": 2,
+                            r: 7
+                        }
+                    }
+                ],
+                onMarkerTipShow: function(e, label, code) {
+                    switch (code) {
+                            case '0':
+                            case '1': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg);\"><\div>");
+                            break;
+
+                            case '2':
+                            case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
+                            break;
+
+                            case '4':
+                            case '5': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/GreenHeli-Boracay-Helipad-1-300x200.jpg);\"><\div>");
+                            break;
+
+                            case '6':
+                            case '7': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-L1-Cebu-lowres-300x225.jpg);\"><\div>");
+                            break;
+
+                            case '8':
+                            case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
+                            break;
+
+                        default: break;
+                    };
+                }
+            });
+
+            $('#base-locations .jvectormap-zoomin').hide();
+            $('#base-locations .jvectormap-zoomout').hide();
+
+        });
+    }
+    
+    
     
     
     //-- Homepage - Contact Us - Location Map Tabs --//
@@ -615,6 +621,64 @@ jQuery(function( $ ){
             $('div.mrates-diamond').parent().css("border-right",border4px + " " + diamond);
             $('#mrates-end.mrates-diamond').parent().css("border-bottom",border4px + " " + diamond);
         }
+    });
+    
+    //News Landing Page
+    //Removes images from excerpts
+    $('.news-landing-container').ready(function() {
+        $(this).find('.news-landing-excerpt figure').remove();
+        $(this).find('.related-news-excerpt figure').remove();
+    });
+    
+    
+    //View full news content
+    $('.news-landing-excerpt .read-more, .news-landing-excerpt .readmore').on('click', function(e) {
+        e.preventDefault();
+        
+        $this = $(this);
+        $postID = $(this).parents('.news-landing-item').attr('data-news-id');
+        
+        //local
+        var base = window.location.protocol + "//" + window.location.host + window.location.pathname.replace('news/','');
+        //testserver
+//        var base = window.location.protocol + "//" + window.location.host;
+        
+        //local
+        $url = '' + base + '/wp-json/wp/v2/posts/' + $postID;
+        //testserver
+//        $url = '' + base + 'wp-json/wp/v2/posts/' + $postID;
+        
+        console.log('Post ID: ' + $postID);
+        
+        $.ajax({
+            url: $url,
+            method: 'GET',
+            crossDomain: true,            
+            success: function(data, status) {
+                console.log('URL: ' + $url);
+                console.log(data);
+                if(!data) {
+                    console.log('no data found');
+                } else {
+                    console.log('data found');
+                    $this.parents('article').find('.news-landing-content').hide();
+                    $this.parents('article').find('.news-landing-content').html(data.content.rendered + '<div class="news-item-close"><button type="button" class="news-close-btn">Close Full Story</button></div>');
+                    $this.parents('article').find('.news-landing-content').fadeIn();
+                    $this.parents('.news-landing-excerpt').fadeOut().hide();
+                    
+                    $('.news-item-close').click(function() {
+                        $(this).parents('.news-landing-content').fadeOut().hide();
+                        $(this).parents('article').find('.news-landing-excerpt').fadeIn();
+                        $(this).parents('.news-landing-content').html('');
+                    });
+                }
+            }
+        });
+    });
+    
+    //Load more news
+    $('.news-load-btn').on('click', function() {
+        //get next page of posts
     });
     
 });

@@ -25,74 +25,98 @@ function single_news_genesis_meta() {
 
         $classes[] = 'single-news';
         return $classes;
-
     }
-
-	if ( is_active_sidebar( 'news-related-post' ) || is_active_sidebar( 'news-recent-post' ) ) {
-        
-		//* Force full width content layout
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
-		//* Remove primary navigation
-		remove_action( 'genesis_before_content_sidebar_wrap', 'genesis_do_nav' );
-
-		//* Remove breadcrumbs
-		remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs');
-        
-		//* Remove the default Genesis loop
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
-        
-		//* Add news page widgets
-		add_action( 'genesis_loop', 'single_newspage_widgets' );
-
-	}
 }
 
-//* Add markup for news page widgets
-function single_newspage_widgets() {
-    
-    while ( have_posts() ) : the_post();
-    
-    echo '<div class="news-single-post">';
-    
-    $featuredURL = wp_get_attachment_url( get_post_thumbnail_id(get_field('post_id')), 'large');
-    $imageAlt = get_post_meta( get_post_thumbnail_id(get_field('post_id')), '_wp_attachment_image_alt', true);
-    
-    if($featuredURL != ""):
-    echo '<div class="news-featured-image">';
-    echo '<img src="'.$featuredURL.'" alt="'.$imageAlt.'"/>';
-    echo '</div>'; // .news-featured-image
-    endif;
-    
-    echo '<div class="news-single-content">';
-    echo '<h1>'.get_the_title().'</h1>';
-    echo '<article>'.apply_filters('the_content', get_the_content()).'</article>';
-//    echo '<h4>Posted '.get_the_date().'</h4>';
-    echo '</div>'; // .news-single-content
-
-    echo '</div>'; // .news-single-post
-
-    endwhile; 
-    
-    echo '<div class="news-single-after">';
-    
-    
-	genesis_widget_area( 'news-related-post', array(
-		'before' => '<main class="content-2"><div class="news-related-post widget-area"><div class="wrap">',
-		'after'  => '</div></div></main>',
-	) );
-
-	genesis_widget_area( 'news-recent-post', array(
-		'before' => '<aside class="sidebar sidebar-primary widget-area" role="complementary" aria-label="News Sidebar"><div class="news-recent-post widget-area"><div class="wrap">',
-		'after'  => '</div></div></aside>',
-	) );
-    
-    echo '</div>'; // .news-single-after
-    
-}
-
-genesis();
-
-get_footer('custom');
+get_header('custom');
 
 ?>
+
+<?php if (have_posts() ): while ( have_posts() ) : the_post(); ?>
+   
+    <div class="news-single-post">
+    <?php  
+        $featuredURL = wp_get_attachment_image( get_post_thumbnail_id(get_field('post_id')), 'featured-news');
+    ?>
+        <?php if($featuredURL != ""): ?>
+           
+            <div class="news-featured-image">
+                <?php echo $featuredURL; ?>
+            </div>
+            
+        <?php endif; ?>
+    
+        <div class="news-single-content">
+            <h1><?php the_title(); ?></h1>
+            <article><?php the_content(); ?></article>
+        </div><!--.news-single-content-->
+        
+        <?php
+        
+        $exclude_post = $post->ID;
+        $cats = get_the_category();
+        $news_cat = get_term_by($field='slug', $value='news', $taxonomy='category');
+        
+        foreach($cats as $c) {
+            if($c->slug != 'news' && $c->parent == $news_cat->term_id) {
+                $cat = $c;
+            }
+        }
+        
+        $cat_args = 'news+'.$cat->slug;
+
+        //get next set of posts for related page
+        $related_args = array(
+            'post_type'     => 'post',
+            'post_status'   => 'published',
+            'posts_per_page'=> '3',
+            'paged'         => '1',
+            'category_name' => $cat_args,
+            'orderby'       => 'date',
+            'order'         => 'DESC',
+            'post__not_in'  => array($exclude_post),
+        );
+
+        $related_query = new WP_Query( $related_args );
+
+        ?>
+
+        <div class="related-news">
+            <div class="related-news-header">
+                <h2><?php echo $cat->name; ?></h2>
+            </div>
+            <div class="related-news-container">
+                <?php
+                if ( $related_query->have_posts() ) : while ( $related_query->have_posts() ) : $related_query->the_post();
+
+                setup_postdata($post);
+
+                $rel_img = get_post_thumbnail_id($post->ID);
+                $rel_img_url = wp_get_attachment_image_src($rel_img, $size='medium');
+
+                ?>
+                <div class="related-news-item" style="
+                   background: 
+                   linear-gradient(
+                   rgba(255,255,255,0.85),
+                   rgba(255,255,255,0.85)), 
+                   url(<?php echo $rel_img_url[0];?>) no-repeat center center; background-size: cover">
+                    <h3>
+                        <a href="<?php the_permalink();?>">
+                            <?php echo the_title(); ?>
+                        </a>
+                    </h3>
+                </div> 
+                <?php
+                endwhile; endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+        </div> <!-- related-news -->
+        
+    </div><!--.news-single-post-->
+    
+<?php endwhile; endif; ?>
+
+
+<?php get_footer('custom'); ?>

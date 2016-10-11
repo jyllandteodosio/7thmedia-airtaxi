@@ -8,7 +8,8 @@
  */
 
 get_header('custom');
-$page_title = strtolower(get_the_title());
+$title = get_the_title();
+$page_title = strtolower($title);
 ?>
 <div id="perks" class="m-panel">
     <div class="m-panel-title">
