@@ -25,7 +25,7 @@ $args = array(
     'post_type'     => 'post',
     'post_status'   => 'published',
     'category_name' => $cat_args,
-    'posts_per_page'=> '3',
+    'posts_per_page'=> '6',
     'paged'         => '1',
     'orderby'       => 'date',
     'order'         => 'DESC'
@@ -40,14 +40,14 @@ if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_q
 
     $news_item_count++;
     $news_row = '';
-    if(($news_item_count % 2) == 1) {
+    if(($news_item_count % 2) == 0) {
         $news_row = 'row-gray';
     } else {
         $news_row = '';
     }
     
 ?>
-    <div class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
+    <div class="news-landing-item" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>
@@ -60,7 +60,9 @@ if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_q
                 ?>
                 </figure>
             </a>
-            <div class="news-landing-excerpt"><?php the_advanced_excerpt(); ?></div>
+            <div class="news-landing-excerpt"><?php the_excerpt(); ?>
+                <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
+            </div>
             <div class="news-landing-content"></div>
         </article>
     </div>
@@ -68,12 +70,12 @@ if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_q
     endwhile; endif;
     wp_reset_postdata();
     
-    if($news_query->found_posts > 3):
+    if($news_query->found_posts > 6):
     ?>
     
     <div class="news-load-more">
-        <button type="button" class="news-load-btn">View More Posts</button>
-    </div>    
+        <button type="button" class="news-load-btn" data-next-page="2" data-news-cat="<?php echo $cat->term_id; ?>">View More Posts</button>
+    </div>
     
     <?php endif; ?>
 

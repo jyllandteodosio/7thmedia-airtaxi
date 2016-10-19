@@ -45,7 +45,8 @@ jQuery(function( $ ){
 //        });
 //    });
     
-    var baseURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+//    var baseURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    var baseURL = window.location.protocol + "//" + window.location.host;
     
     if(baseURL == "http://localhost") {
         baseURL = baseURL + "/Projects/airtaxi"
@@ -53,7 +54,7 @@ jQuery(function( $ ){
     
     //-- Homepage - Menu Link - Smooth Scroll --//
     
-    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a)').click(function() {
+    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a, .expanding-archives-section a)').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -263,7 +264,7 @@ jQuery(function( $ ){
                             break;
 
                             case '8':
-                            case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg\);\"><\div>");
+                            case '9': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/10/Temp-Photo-DAVAO.jpeg);\"><\div>");
                             break;
 
                         default: break;
@@ -384,31 +385,50 @@ jQuery(function( $ ){
         $('input[name="hangar-address"]').attr('value', mapAddress);
         $('input[name="hangar-image"]').attr('value', image);
         
-        if($('body').hasClass('safari')) {
-            $('.pop-email.pop-safari').removeClass('hidden').hide().fadeIn(400);
-            
-        } else {
-            $('.pop-email.pop-default').removeClass('hidden').hide().fadeIn(400);
-            $('.overlay').removeClass('hidden');
-        }
+        $('.pop-email.pop-default').removeClass('hidden').hide().fadeIn(400);
+        $('.overlay').removeClass('hidden');
         
         $('#pop-email-close').on('click', function(){
                 $('.overlay').addClass('hidden');
-                $('.pop-email.pop-defaul').addClass('hidden').hide();
+                $('.pop-email.pop-default').addClass('hidden').hide();
         });
         
-        $('#pop-safari-close').on('click', function(){
         
-            $('body.mobile.ios.safari').css({
-                'overflow': 'auto',
-                'height': 'auto',
-                '-webkit-overflow-scrolling': 'touch' 
-            });
-            
-            if($('body').hasClass('safari')) {
-                $('.pop-email.pop-safari').addClass('hidden').hide();
-            }
+        //safari pop up alternative
+//        if($('body').hasClass('safari')) {
+//            $('.pop-email.pop-safari').removeClass('hidden').hide().fadeIn(400);
+//            
+//        } else {
+//            $('.pop-email.pop-default').removeClass('hidden').hide().fadeIn(400);
+//            $('.overlay').removeClass('hidden');
+//        }
+//        
+//        $('#pop-safari-close').on('click', function(){
+//        
+//            $('body.mobile.ios.safari').css({
+//                'overflow': 'auto',
+//                'height': 'auto',
+//                '-webkit-overflow-scrolling': 'touch' 
+//            });
+//            
+//            if($('body').hasClass('safari')) {
+//                $('.pop-email.pop-safari').addClass('hidden').hide();
+//            }
+//        });
+    });
+    
+    //-- Homepage - Contact Us - Email - Join Our Team - Popup --//
+    
+    $('.map-inquire').on('click', function() {
+        
+        $('.pop-join').removeClass('hidden').hide().fadeIn(400);
+        $('.overlay').removeClass('hidden');
+        
+        $('#pop-join-close').on('click', function(){
+                $('.overlay').addClass('hidden');
+                $('.pop-join').addClass('hidden').hide();
         });
+        
     });
     
     
@@ -644,7 +664,7 @@ jQuery(function( $ ){
 //        var base = window.location.protocol + "//" + window.location.host;
         
         //local
-        $url = '' + base + '/wp-json/wp/v2/posts/' + $postID;
+        $url = '' + baseURL + '/wp-json/wp/v2/posts/' + $postID;
         //testserver
 //        $url = '' + base + 'wp-json/wp/v2/posts/' + $postID;
         
@@ -676,9 +696,116 @@ jQuery(function( $ ){
         });
     });
     
-    //Load more news
+    //Load more button
     $('.news-load-btn').on('click', function() {
         //get next page of posts
+        var next_page = $(this).attr('data-next-page');
+        var cat = $(this).attr('data-news-cat');
+
+        load_next_news(next_page, cat);
     });
+    
+    //Load more news
+    function load_next_news (next_page, cat) {
+        //testserver
+//        var base = window.location.protocol + "//" + window.location.host;
+        
+        //local
+        $url = '' + baseURL + '/wp-json/wp/v2/posts';
+        //testserver
+//        $url = '' + base + 'wp-json/wp/v2/posts;
+        
+        $params = {
+            page: next_page,
+            per_page: 6,
+            orderby: 'date',
+            order: 'desc',
+            categories: cat
+        };
+        
+        console.log($params);
+        var addCount = 6;
+        
+        if(next_page <= 1) {
+            addCount = 0;
+        }
+        
+        var next_news = $.ajax({
+            url: $url,
+            method: 'GET',
+            data: $params,
+            crossDomain: true,            
+            success: function(data, status) {
+                console.log('URL: ' + $url);
+                console.log(data);
+                if(!data) {
+                    console.log('no data found');
+                } else {
+                    console.log('data found');
+                    $.each(data, function(key, post){
+                        
+                        var imageURL = '';
+                        
+                        if(post.thumbnail) {
+                            var imageURL = '<figure>'
+                            +'<img src="'+post.thumbnail+'" alt="'+post.title.rendered+'">'
+                            +'</figure>';
+                        }
+                        
+                        $('.news-landing-container')
+                            .append('<div class="news-landing-item" data-news-id="'+key+1+addCount+'">'
+                            +'<article>'
+                            +'<div class="news-title-container">'
+                            +'<h2 class="news-landing-title">'+post.title.rendered+'</h2>'
+                            +'</div>'
+                            +'<a href="'+post.link+'" class="news-item-image">'
+                            +imageURL
+                            +'</a>'
+                            +'<div class="news-landing-excerpt">'+post.excerpt.rendered
+                            +'<a href="'+post.link+'" class="read-more">Read More</a>'
+                            +'</div>'
+                            +'<div class="news-landing-content"></div>'
+                            +'</article>'
+                            +'</div>');
+                    });
+                }
+            }
+        });
+        
+        next_news.done(function(data, textStatus, jqXHR) {
+            var currentPage = parseInt(next_page,10);
+            var shownEntries = $('.news-landing-item').length;
+                
+            totalEntries  = parseInt( jqXHR.getResponseHeader('X-WP-Total'), 10 );
+            totalPages  = parseInt( jqXHR.getResponseHeader('X-WP-TotalPages'), 10 );
+            console.log('total pages: ' + totalPages);
+            console.log('total entries: ' + totalEntries);
+            
+            if ( currentPage === totalPages ) {
+                console.log('current == total');
+                if($('.news-load-btn')) {
+                    console.log('.news-load-btn found');
+                    $('.news-load-btn').remove();
+                    $('.news-load-more').remove();
+                } else {
+                    console.log('.news-load-btn not found');
+                }
+            } else if ( currentPage < totalPages ) {
+                console.log('current < total');
+                $('.news-load-btn').remove();
+                $('.news-load-more').remove();
+                $('.news-landing-container').append('<div class="news-load-more"><button type="button" class="news-load-btn" data-next-page="'+(currentPage+1)+'" data-next-cat="'+cat+'">View More Posts</button></div>');
+            }
+
+            $('.news-load-btn').click(function() {
+                //get next page of posts
+                var next_page = $(this).attr('data-next-page');
+                var cat = $(this).attr('data-news-cat');
+
+                load_next_news(next_page, cat);
+            });
+            
+        });//end of next_news.done
+    }
     
 });

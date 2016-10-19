@@ -36,7 +36,7 @@ get_header('custom');
    
     <div class="news-single-post">
     <?php  
-        $featuredURL = wp_get_attachment_image( get_post_thumbnail_id(get_field('post_id')), 'featured-news');
+        $featuredURL = wp_get_attachment_image( get_post_thumbnail_id(get_field('post_id')), 'full');
     ?>
         <?php if($featuredURL != ""): ?>
            
@@ -106,6 +106,9 @@ get_header('custom');
                             <?php echo the_title(); ?>
                         </a>
                     </h3>
+                    <div class="related-news-excerpt">
+                        <?php the_excerpt(); ?>
+                    </div>
                 </div> 
                 <?php
                 endwhile; endif;

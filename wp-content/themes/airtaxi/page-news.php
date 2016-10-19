@@ -11,7 +11,10 @@ get_header('custom');
 
 ?>
 <div class="news-page-title">
-    <h1>AirTaxi.PH News</h1>
+   <div class="news-header-container">
+       <h1>AirTaxi.PH News</h1>
+       <?php include('searchform-dynamic.php'); ?>
+   </div>
 </div>
 <div class="news-landing-container">
 
@@ -36,6 +39,14 @@ foreach($cats as $c) :
         'orderby'       => 'date',
         'order'         => 'DESC'
     );
+    
+    ?>
+    
+    <div class="related-news-header top">
+        <h2><?php echo $cat->name; ?></h2>
+    </div>
+    
+    <?php
 
     $news_query = new WP_Query( $args );
     $news_item_count = 0;
@@ -51,7 +62,7 @@ foreach($cats as $c) :
     } else {
         $news_row = '';
     }
-?>
+?>    
     <div class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
@@ -65,7 +76,9 @@ foreach($cats as $c) :
                 ?>
                 </figure>
             </a>
-            <div class="news-landing-excerpt"><?php the_advanced_excerpt(); ?></div>
+            <div class="news-landing-excerpt"><?php the_excerpt(); ?>
+                <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
+            </div>
             <div class="news-landing-content"></div>
         </article>
     </div>
@@ -90,8 +103,8 @@ foreach($cats as $c) :
     ?>
 
     <div class="related-news" data-news-cat="<?php echo $c['category']; ?>">
-        <div class="related-news-header">
-            <h2><?php echo $cat->name; ?></h2>
+        <div class="related-news-header bottom">
+            <h2>Other <?php echo $cat->name; ?></h2>
         </div>
         <div class="related-news-container">
             <?php
@@ -115,7 +128,7 @@ foreach($cats as $c) :
                     </a>
                 </h3>
                 <div class="related-news-excerpt">
-                    <?php the_advanced_excerpt(); ?>
+                    <?php the_excerpt(); ?>
                 </div>
             </div> 
             <?php
@@ -126,7 +139,7 @@ foreach($cats as $c) :
     </div> <!-- related-news -->
 
     <div class="news-load-more">
-        <a href="<?php echo $cat_link; ?>" class="news-load-btn button">View More Posts</a>
+        <a href="<?php echo $cat_link; ?>" class="news-load-link button">View More Posts</a>
     </div>    
 <?php 
 endforeach; 

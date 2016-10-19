@@ -38,7 +38,9 @@ class Custom_Contact_Us extends WP_Widget {
         $title = apply_filters('widget_title', $instance['title']);
         $text = apply_filters('widget_text', $instance['text']);
         $inquire = apply_filters('widget_text', $instance['inquire']);
-        $email = apply_filters('widget_text', '[contact-form-7 id="271" title="Driving Directions"]');
+        $email = apply_filters('widget_text', $instance['email']);
+        $join = apply_filters('widget_text', $instance['join']);
+            
         echo $before_widget;
         
         // Display the widget
@@ -48,6 +50,9 @@ class Custom_Contact_Us extends WP_Widget {
         echo '<div class="pop-email pop-default hidden"><div id="pop-email-close" class="pop-dir-close"></div><h4>Please enter your details so we can send you <br/> the directions to our facility.</h4>';
         echo $email;
         echo '</div>'; // .pop-email
+        echo '<div class="pop-join hidden"><div id="pop-join-close" class="pop-dir-close"></div><h4>Please enter your details to know <br/>how to start a career with us.</h4>';
+        echo $join;
+        echo '</div>'; // .pop-join
         
         echo '</div>'; // .overlay
         
@@ -162,9 +167,10 @@ class Custom_Contact_Us extends WP_Widget {
             echo '<input type="hidden" data-ref="map-image-e'.$first.'" id="map-image-p'.$first.'" value="'.get_field('driving_directions')['url'].'"/>';
             echo '<input type="hidden" id="map-image-alt-p'.$first.'" value="'.get_field('driving_directions')['alt'].'"/>';
         
-            echo '<div class="pop-email pop-safari hidden"><div id="pop-safari-close" class="pop-dir-close"></div><h4>Please enter your details so we can send you <br/> the directions to our facility.</h4>';
-            echo $email;
-            echo '</div>'; // .pop-email
+            //safari pop up alternative
+//            echo '<div class="pop-email pop-safari hidden"><div id="pop-safari-close" class="pop-dir-close"></div><h4>Please enter your details so we can send you <br/> the directions to our facility.</h4>';
+//            echo $email;
+//            echo '</div>'; // .pop-email
         
             echo '</div>'; // .tab
             
@@ -176,8 +182,8 @@ class Custom_Contact_Us extends WP_Widget {
         echo '</div>';  // .contact-tabs
         
         echo '<div class="contact-apply">';
-        echo 'Join our team! ';
-        echo '<a href=mailto:"'.$inquire.'?Subject="\[Application\]I want to join your team!" class="map-inquire" target="_top">Inquire Now</a>';
+        echo $inquire;
+        echo '<button type="button" href="" class="map-inquire" target="_top">Inquire Now</button>';
         echo '</div>';  // .contact-apply
         
         echo '</div>';  // .map .two-thirds
@@ -198,10 +204,14 @@ class Custom_Contact_Us extends WP_Widget {
             $title = esc_attr($instance['title']);
             $text = esc_attr($instance['text']);
             $inquire = esc_attr($instance['inquire']);
+            $email = esc_attr($instance['email']);
+            $join = esc_attr($instance['join']);
         } else {
             $title = '';
             $text = '';
             $inquire = '';
+            $email = '';
+            $join = '';
         }
         ?>
 
@@ -211,13 +221,23 @@ class Custom_Contact_Us extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Contact Form 7 Shortcode:', 'wp_widget_plugin'); ?></label>
+            <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Contact Us Form Shortcode:', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" type="text" value="<?php echo $text; ?>" />
+        </p>
+          
+        <p>
+            <label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email Driving Directions Form Shortcode:', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" type="text" value="<?php echo $email; ?>" />
         </p>
            
         <p>
-            <label for="<?php echo $this->get_field_id('inquire'); ?>"><?php _e('Contact Email', 'wp_widget_plugin'); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id('inquire'); ?>" name="<?php echo $this->get_field_name('inquire'); ?>" type="text" value="<?php echo $inquire; ?>" />
+            <label for="<?php echo $this->get_field_id('inquire'); ?>"><?php _e('Inquire Panel Text', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('inquire'); ?>" name="<?php echo $this->get_field_name('inquire'); ?>" type="text" value="<?php echo $inquire; ?>" placeholder="Join our team!" />
+        </p>
+          
+        <p>
+            <label for="<?php echo $this->get_field_id('join'); ?>"><?php _e('Inquire Panel Form Shortcode:', 'wp_widget_plugin'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('join'); ?>" name="<?php echo $this->get_field_name('join'); ?>" type="text" value="<?php echo $join; ?>" />
         </p>
             
         <?php
@@ -235,6 +255,8 @@ class Custom_Contact_Us extends WP_Widget {
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['text'] = strip_tags($new_instance['text']);
         $instance['inquire'] = strip_tags($new_instance['inquire']);
+        $instance['email'] = strip_tags($new_instance['email']);
+        $instance['join'] = strip_tags($new_instance['join']);
         return $instance;
 	}
 

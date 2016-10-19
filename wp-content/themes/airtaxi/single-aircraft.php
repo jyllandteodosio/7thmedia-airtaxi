@@ -34,7 +34,15 @@ get_header('custom'); ?>
                    <li><label class="detail-label">Capacity:</label></li>
                    <li>
                        <?php for($i=0;$i<$capacity;$i++): ?>
-                           <span class="dashicons dashicons-admin-users"></span>
+                           <?php if($capacity >= 8): ?>
+                               <span class="dashicons dashicons-admin-users"></span>
+                               <?php if(($i+1) == ($capacity/2)): ?>
+                                   &nbsp;
+                                   &nbsp;
+                               <?php endif; ?>
+                           <?php else: ?>
+                               <span class="dashicons dashicons-admin-users"></span>
+                           <?php endif; ?>
                        <?php endfor; ?>
                    </li>
                    <li>

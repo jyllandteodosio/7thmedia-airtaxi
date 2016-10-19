@@ -1049,7 +1049,7 @@ Site Navigation
 	padding: 20px;
 	position: relative;
 	width: 200px;
-    margin-right: -2px;
+    margin-right: -4px;
 }
 
 .genesis-nav-menu .sub-menu .sub-menu {
@@ -1101,9 +1101,9 @@ Site Navigation
 --------------------------------------------- */
 
 .site-header .sub-menu {
-	background-color: #4ec5cd;
-    border: 2px solid #12a8b2;
-    border-top: none;
+	background-color: #43bdc5;
+    border: 2px solid #fff;
+/*    border-top: none;*/
 }
 
 /* Primary Navigation
@@ -2410,7 +2410,7 @@ div.meteor-slides.navboth {
 --------------------------------------------- */
 
 .quote {
-    font-family: 'Dancing Script', cursive;
+/*    font-family: 'Dancing Script', cursive;*/
     font-size: 36px;
     height: 146px;
     line-height: 146px;
@@ -2448,14 +2448,11 @@ div.meteor-slides.navboth {
     color: #686868;
 }
 
-.call-now span.dashicons,
-.call-now span.dashicons-before:before {
-    margin: 0px 10px 0px 20px;
+.call-now i {
+    margin-left: 20px;
 }
 
-.call-now,
-.call-now span.dashicons,
-.call-now span.dashicons-before:before {
+.call-now {
     line-height: 90px;
 }
 
@@ -2679,14 +2676,18 @@ a.learn-more-button:hover {
 .contact-form input,
 .contact-form textarea,
 .pop-email,
+.pop-join,
 .pop-email input,
+.pop-join input,
 .map-inquire {
     font-size: 14px;
 }
 
 .contact-form input,
 .contact-form textarea,
-.pop-email input {
+.pop-join textarea,
+.pop-email input,
+.pop-join input {
     background-color: #eaeaea;
     border: none;
     padding: 8px;
@@ -2700,6 +2701,7 @@ a.learn-more-button:hover {
 
 .contact-form input[type="submit"],
 .pop-email input[type="submit"],
+.pop-join input[type="submit"],
 .map-inquire {
     background-color: #4ec5cd;
 }
@@ -2707,23 +2709,29 @@ a.learn-more-button:hover {
 .contact-form input[type="submit"],
 .contact-form input[type="submit"]:hover,
 .pop-email input[type="submit"],
+.pop-join input[type="submit"],
 .pop-email input[type="submit"]:hover,
+.pop-join input[type="submit"]:hover,
 .map-inquire {
     height: 40px;
 }
 
 .contact-form input[type="submit"]:hover,
 .pop-email input[type="submit"]:hover,
+.pop-join input[type="submit"]:hover,
 .map-links li a:hover,
 .map-inquire:hover {
     background-color: #34a8b0;
 }
 
-.pop-email p {
+.pop-email p,
+.pop-join p {
     text-align: left;
     color: #212121;
+    margin-bottom: 20px;
 }
 
+/*
 .pop-email.pop-safari {
     position: relative;
     top: 0;
@@ -2735,6 +2743,7 @@ a.learn-more-button:hover {
 .pop-safari.pop-dir-close {
     float: none;
 }
+*/
 
 
 /*----- Contact Tabs -----*/
@@ -2831,7 +2840,8 @@ a.map-inquire:hover {
 .contact-tab-links li a,
 .contact-tab-content .tab .map-details,
 .pop-dir,
-.pop-email {
+.pop-email,
+.pop-join {
     background-color: #fff;
 }
 
@@ -2956,7 +2966,8 @@ a.map-inquire:hover {
 }
 
 .pop-dir,
-.pop-email {
+.pop-email,
+.pop-join {
     padding: 30px;
     position: absolute;
     margin: auto;
@@ -2972,13 +2983,15 @@ a.map-inquire:hover {
     max-width: 600px;
 }
 
-.pop-email {
+.pop-email,
+.pop-join {
     max-width: 480px;
     max-height: 100%;
     overflow: auto;
 }
 
-.pop-email h4 {
+.pop-email h4,
+.pop-join h4{
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     color: #212121;
@@ -2989,12 +3002,12 @@ a.map-inquire:hover {
 
 .pop-dir-close {
     height: 30px;
-    margin-top: 10px;
     color: #212121;
     text-align: right;
     font-family: 'Dashicons';
-    float: right;
     font-size: 24px;
+    position: absolute;
+    right: 30px;
 }
 
 .overlay {
@@ -3591,7 +3604,7 @@ li.active a, li.active a:hover,
 }
 
 .aerial-tours-tab .rates-box-title {
-    font-size: 13px;
+    font-size: 14px;
     height: 80px;
     padding: 0px 10px;
 }
@@ -3739,9 +3752,13 @@ table.rates-box-list ,
     background-color: #f3f3f3;
     padding: 10px 15px;
     margin-bottom: 10px;
-    width: 32%;
+    width: 32.56%;
     margin-right: 10px;
     display: inline-block;
+}
+
+.destinations-box-rates .destinations-box-item:nth-of-type(3) {
+    margin-right: 0;
 }
 
 .destinations-box-image {
@@ -3834,6 +3851,25 @@ table.destinations-box-itinerary {
 /* News Page
 --------------------------------------------- */
 
+.news-landing-content h1,
+.news-landing-content h2,
+.news-landing-content h3,
+.news-landing-content h4,
+.news-landing-content h5,
+.news-landing-content h6,
+.single-news h1,
+.single-news h2,
+.single-news h3,
+.single-news h4,
+.single-news h5,
+.single-news h6 {
+    font-family: 'Lato', sans-serif;
+    color: inherit;
+}
+
+.page-template-page-news .site-inner {
+    margin-top: 74px;
+}
 
 .page-template-page-news .content,
 .news-single-after {
@@ -3930,11 +3966,55 @@ table.destinations-box-itinerary {
     color: #686868;
 }
 
+/*
 .yuzo_related_post_widget .yuzo_text, 
 .yuzo_related_post .yuzo_views_post {
     color: !important;
     line-height: 16px;
     font-size: 16px;
+}
+*/
+
+.news-header-container {
+    overflow: auto;
+}
+
+.search-field::-webkit-input-placeholder {
+    color: #ccc;
+}
+.search-field:-moz-placeholder {
+    /* FF 4-18 */
+    color: #ccc;
+}
+.search-field::-moz-placeholder {
+    /* FF 19+ */
+    color: #ccc;
+}
+.search-field:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #ccc;
+}
+
+.news-search-form {
+    float: right;
+}
+
+.news-search-form .input-group {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+.news-search-form .search-field {
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 0.6em;
+    border: none;
+}
+
+.news-search-form .input-group i {
+    margin-right: 4px;
+    color: #686868;
 }
 
 .news-landing-container {
@@ -3951,15 +4031,19 @@ table.destinations-box-itinerary {
 
 .news-page-title h1 {
     color: #686868;
-    text-align: center;
-    max-width: 1140px;
-    margin: -30px auto 40px;
-    padding: 0 20px;
     font-size: 1.6em;
+    float: left;
+    margin-bottom: 0;
 }
 
-.news-page-title,
-.news-landing-title,
+.news-page-title {
+    padding: 20px;
+    background-color: #f3f3f3;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.news-header-container,
 .news-landing-excerpt,
 .news-landing-content,
 .related-news-header h2,
@@ -3970,8 +4054,12 @@ table.destinations-box-itinerary {
 }
 
 .news-landing-title {
+    max-width: 1140px;
     margin: 0 auto;
     line-height: 1.5em;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.8em;
 }
 
 .news-landing-title,
@@ -3992,7 +4080,7 @@ table.destinations-box-itinerary {
     margin: 0 auto;
 }
 
-.news-landing-item.row-gray {
+.news-landing-item:nth-of-type(odd) {
     background: #f3f3f3;
 }
 
@@ -4046,11 +4134,19 @@ table.destinations-box-itinerary {
     padding: 10px 0px;
 }
 
+.related-news-header.bottom {
+    background: rgba(31,31,31,0.4);
+}
+
 .related-news-header h2 {
     color: #fff;
     font-size: 1em;
     font-weight: 400;
     text-transform: uppercase;
+}
+
+.related-news-header.top h2 {
+    font-size: 1em;
 }
 
 .related-news-container {
@@ -4125,6 +4221,114 @@ table.destinations-box-itinerary {
     font-size: 36px;
     font-weight: 700;
     color: #212121;
+}
+
+/* Search Results Page
+--------------------------------------------- */
+
+.search-results h1,
+.search-results h2,
+.search-results h3,
+.search-results h4,
+.search-results h5,
+.search-results h6 {
+    font-family: 'Lato', sans-serif;
+    color: #686868;
+}
+
+
+.search-results-page {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 634px;
+}
+
+.search-results-search,
+.search-results-pager {
+    overflow: auto;
+}
+
+.search-results-search .news-search-form {
+    float: left;
+}
+
+.search-results-list {
+    margin: 1em auto 100px;
+}
+
+.search-results-item {
+    margin: 2em 0;
+}
+
+.search-results-item h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.search-results-item .result-content {
+    font-size: 0.8em;
+}
+
+.search-sidebar-container {
+    padding: 1em;
+    background: #f3f3f3;
+}
+
+.search-sidebar .expanding-archives-title {
+    background: none;
+}
+
+.search-sidebar .expanding-archives-collapse-section ul {
+    margin-left: 1em;
+}
+
+.search-results-pager .next-link {
+    float: right;
+}
+
+.search-results-pager .prev-link {
+    float: left;
+}
+
+/* Archive Page
+--------------------------------------------- */
+
+.archive-page {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 634px;
+}
+
+.archive-page h1,
+.archive-page h2,
+.archive-page h3,
+.archive-page h4,
+.archive-page h5,
+.archive-page h6 {
+    font-family: 'Lato', sans-serif;
+    color: #686868;
+}
+
+.archive-item {
+    margin: 2em 0;
+}
+
+.archive-item:nth-of-type(1) {
+    margin-top: 1em;
+}
+
+.archive-item h4 {
+    font-weight: 700;
+}
+
+.archive-item-content {
+    font-size: 0.8em;
+}
+
+.archive-sidebar .search-sidebar-container ul {
+    margin-left: 1em;
 }
 
 /* Footer
@@ -4316,21 +4520,60 @@ footer.footer-custom {
     }
 }
 
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .site-header .wrap {
-        max-width: 1066px;
-    }
+@media (min-width: 1141px) and (max-width: 1440px) {
     
     .site-header .widget-area {
         float: right;
         text-align: right;
-        width: 801px;
+        width: 900px;
     }
     
     .title-area {
         width: 210px;
     }
 }
+
+@media (min-width: 1090px) and (max-width: 1140px) {
+    
+    .site-header .widget-area {
+        float: right;
+        text-align: right;
+        width: 900px;
+    }
+    
+    .title-area {
+        width: 180px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1089px) {
+    
+    .site-header .widget-area {
+        float: right;
+        text-align: right;
+        width: 870px;
+    }
+    
+    .title-area {
+        width: 150px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .site-header .wrap {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1160px) {
+    .contact-tel, .contact-mob, .contact-left, .contact-right {
+        display: block;
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}
+
 
 @media (min-width: 1281px) and (max-width: 1366px) {
     
@@ -4708,7 +4951,7 @@ footer.footer-custom {
     }
     
     .page-template-page-news .site-inner {
-        margin-top: 100px;
+        margin-top: 140px;
     }
     
     .news-single-after .sidebar {
@@ -4776,6 +5019,13 @@ footer.footer-custom {
     
     #gallery-2 .gallery-item .gallery-icon {
         margin-bottom: 10px;
+    }
+    
+    /*-- Search Results Page --*/
+    
+    .search-results .site-inner,
+    .archive .site-inner {
+        margin-top: 100px;
     }
 
 }
@@ -4878,6 +5128,13 @@ footer.footer-custom {
         padding: 0;
         margin-top: 100px;
     }
+    
+    /*-- Search Results Page --*/
+    
+    .search-results-list,
+    .search-sidebar-container {
+        margin-bottom: 40px;
+    }
 }
 
 /*
@@ -4897,6 +5154,29 @@ footer.footer-custom {
 }
 */
 
+
+@media (max-width: 425px) {
+    .related-news-item {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid rgba(31,31,31,0.1);
+    }
+    
+    .search-results-container h2,
+    .search-sidebar-container h3 {
+        font-size: 1.2em;
+    }
+    
+    .search-results-search .news-search-form {
+        float: none;
+    }
+    
+    .news-search-form .search-field {
+        width: 90%;
+        font-size: 1em;
+    }
+}
+    
 
 @media (max-width: 375px) {
     
@@ -4933,6 +5213,7 @@ footer.footer-custom {
         margin: 0 auto;
         height: 50px;
         width: 258px;
+        margin-right: 4px;
     }
     
     .header-image .title-area {
@@ -5025,9 +5306,8 @@ footer.footer-custom {
         display: block;
     }
     
-    .call-now span.dashicons, 
-    .call-now span.dashicons-before:before {
-        margin: 0px 10px 0px 0px;
+    .call-now i {
+        margin-left: 0px;
     }
     
     .contact-tel, .contact-mob, .contact-left, .contact-right {
@@ -5258,11 +5538,21 @@ footer.footer-custom {
     }
     
     .page-template-page-news .site-inner {
-        margin-top: 90px;
+        margin-top: 120px;
     }
     
     .single-news .site-inner {
         margin-top: 72px;
+    }
+    
+    .news-page-title h1 {
+        margin: -30px auto 20px;
+        font-size: 2em;
+    }
+    
+    .news-landing-title {
+        line-height: 1.2em;
+        font-size: 1.6em;
     }
 /*
     .overlay {
@@ -5277,6 +5567,15 @@ footer.footer-custom {
     }
 */
     
+    .search-results-item .read-more,
+    .archive-item .read-more {
+        margin: 20px auto;
+    }
+    
+    .search-sidebar-container .expanding-archives-title {
+        font-size: 1em;
+    }
+    
 }
 
 @media (max-width: 960px) {
@@ -5286,6 +5585,10 @@ footer.footer-custom {
 }
 
 @media (max-width: 320px) {
+    
+    .header-image .site-title > a {
+        margin-right: -20px;
+    }
     
     /*-- Homepage - Slideshow --*/
     
