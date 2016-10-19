@@ -249,6 +249,13 @@ genesis_register_sidebar( array(
 ) );
 
 
+function filter_by_category( $query ) {
+    if ( $query->is_archive() && $query->is_main_query() ) {
+        $query->set( 'category_name', 'news' );
+    }
+}
+add_action( 'pre_get_posts', 'filter_by_category' );
+
 //* Search Results Page Widget Areas
 function archive_widgets_init() {
 
@@ -263,3 +270,4 @@ function archive_widgets_init() {
 
 }
 add_action( 'widgets_init', 'archive_widgets_init' );
+
