@@ -83,7 +83,7 @@ get_header('custom');
 
         <div class="related-news">
             <div class="related-news-header">
-                <h2><?php echo $cat->name; ?></h2>
+                <p><?php echo $cat->name; ?></p>
             </div>
             <div class="related-news-container">
                 <?php
@@ -101,11 +101,11 @@ get_header('custom');
                    rgba(255,255,255,0.85),
                    rgba(255,255,255,0.85)), 
                    url(<?php echo $rel_img_url[0];?>) no-repeat center center; background-size: cover">
-                    <h3>
+                    <h2 class="inner-title">
                         <a href="<?php the_permalink();?>">
                             <?php echo the_title(); ?>
                         </a>
-                    </h3>
+                    </h2>
                     <div class="related-news-excerpt">
                         <?php the_excerpt(); ?>
                     </div>

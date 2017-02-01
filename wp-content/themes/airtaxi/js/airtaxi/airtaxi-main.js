@@ -12,15 +12,15 @@ jQuery(function( $ ){
 //            $('.site-header').fadeOut(400);
 //            if(st >= 70) {
 //                if(screenWidth <= 375) {
-//                    $('#home-section-0').css('margin-top','0px');
+//                    $('#home').css('margin-top','0px');
 //                }
-//                $('#home-section-0').css('margin-top','-70px');
+//                $('#home').css('margin-top','-70px');
 //            }
 //        } else {
 //            if ( screenWidth > 375 ) {
-//                $('#home-section-0').css('margin-top','30px');
+//                $('#home').css('margin-top','30px');
 //            } else {
-//                $('#home-section-0').css('margin-top','0px');
+//                $('#home').css('margin-top','0px');
 //            }
 //            $('.site-header').fadeIn(400);
 //        }
@@ -55,6 +55,9 @@ jQuery(function( $ ){
     //-- Homepage - Menu Link - Smooth Scroll --//
     
     $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a, .expanding-archives-section a)').click(function() {
+        if($('.responsive-menu-icon').css('display') == 'block') {
+            $('.genesis-nav-menu.responsive-menu').slideUp(200);
+        }
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -92,15 +95,15 @@ jQuery(function( $ ){
             verticalCentered: false,
             scrollBar: true,
             fitToSection: false,
-            normalScrollElements: '#home-section-6.wrap',
+            normalScrollElements: '#airplane-rates.wrap',
         });
     }
     
     //-- Homepage - Base Locations - Image Map Hover --//
     
-    if($('#home-section-2').length) {
+    if($('#locations').length) {
         
-        $('#home-section-2').ready(function() {
+        $('#locations').ready(function() {
 
             //-- Homepage - Base Locations - Responsive Map --//
 
@@ -278,9 +281,6 @@ jQuery(function( $ ){
         });
     }
     
-    
-    
-    
     //-- Homepage - Contact Us - Location Map Tabs --//
     
     $('.contact-tabs .contact-tab-links a').on('click', function(e)  {
@@ -431,6 +431,35 @@ jQuery(function( $ ){
         
     });
     
+    //-- Airplane Rates Page - Contact Form - Popup --//
+    
+    $('.ap-inquire').on('click', function() {
+        
+        $origin = '';
+        $destination = '';
+        $aircraft = '';
+        
+        if($(this).parents('div.ap-details').find('span.ap-from')) {
+            $origin = $(this).parents('div.ap-details').find('span.ap-from').text();
+            $destination = $(this).parents('div.ap-details').find('span.ap-to').text();
+            $aircraft = $(this).parents('div.ap-box').find('div.ap-title h3').text();
+        }
+        
+//        $origin = $(this).parents('div.ap-details').find('span.ap-from').val();
+//        console.log($origin);
+        
+        $('input[name="your-subject"]').attr('value', 'Aircraft Charter Inquiry: '+$origin+' to '+$destination+', '+$aircraft);
+        
+        $('.pop-email').removeClass('hidden').hide().fadeIn(400);
+        $('.overlay').removeClass('hidden');
+        
+        $('#pop-email-close').on('click', function(){
+                $('.overlay').addClass('hidden');
+                $('.pop-email').addClass('hidden').hide();
+        });
+        
+    });
+    
     
     //-- Slick JS --//
     
@@ -548,7 +577,7 @@ jQuery(function( $ ){
         var currentAttrValue = $(this).attr('href');
         
         var tablink = $('.'+classname+'-tab');
-        console.log(tablink);
+        //console.log(tablink);
 
         // Show/Hide Tabs
         $('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
@@ -668,28 +697,47 @@ jQuery(function( $ ){
         //testserver
 //        $url = '' + base + 'wp-json/wp/v2/posts/' + $postID;
         
-        console.log('Post ID: ' + $postID);
+        //console.log('Post ID: ' + $postID);
         
         $.ajax({
             url: $url,
             method: 'GET',
             crossDomain: true,            
             success: function(data, status) {
-                console.log('URL: ' + $url);
-                console.log(data);
+                //console.log('URL: ' + $url);
+                //console.log(data);
                 if(!data) {
-                    console.log('no data found');
+                    //console.log('no data found');
                 } else {
-                    console.log('data found');
+                    //console.log('data found');
                     $this.parents('article').find('.news-landing-content').hide();
-                    $this.parents('article').find('.news-landing-content').html(data.content.rendered + '<div class="news-item-close"><button type="button" class="news-close-btn">Close Full Story</button></div>');
+                    $this.parents('article').find('.news-landing-content').html(data.content.rendered + '<div class="news-item-close"><a href="#news-' + $postID + '" class="news-close-btn, read-more">Close Full Story</a></div>');
                     $this.parents('article').find('.news-landing-content').fadeIn();
                     $this.parents('.news-landing-excerpt').fadeOut().hide();
                     
                     $('.news-item-close').click(function() {
+                        var pathname = $(this).find('a')[0].href.split('/'),
+                        l = pathname.length;
+                        pathname = pathname[l-1] || pathname[l-2];
+                        window.location.hash = "#!" + pathname;
+                        
+                        alert(pathname);
+                        
+                        if (location.pathname == pathname) {
+                            alert(hello);
+                            var target = $(this.hash);
+                            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                            if (target.length) {
+                                $('html, body').animate({
+                                    scrollTop: target.offset().top-40
+                                }, 1200);
+                                return false;
+                            }
+                        }
                         $(this).parents('.news-landing-content').fadeOut().hide();
                         $(this).parents('article').find('.news-landing-excerpt').fadeIn();
                         $(this).parents('.news-landing-content').html('');
+                        
                     });
                 }
             }
@@ -723,7 +771,7 @@ jQuery(function( $ ){
             categories: cat
         };
         
-        console.log($params);
+        //console.log($params);
         var addCount = 6;
         
         if(next_page <= 1) {
@@ -736,12 +784,12 @@ jQuery(function( $ ){
             data: $params,
             crossDomain: true,            
             success: function(data, status) {
-                console.log('URL: ' + $url);
-                console.log(data);
+                //console.log('URL: ' + $url);
+                //console.log(data);
                 if(!data) {
-                    console.log('no data found');
+                    //console.log('no data found');
                 } else {
-                    console.log('data found');
+                    //console.log('data found');
                     $.each(data, function(key, post){
                         
                         var imageURL = '';
@@ -778,20 +826,20 @@ jQuery(function( $ ){
                 
             totalEntries  = parseInt( jqXHR.getResponseHeader('X-WP-Total'), 10 );
             totalPages  = parseInt( jqXHR.getResponseHeader('X-WP-TotalPages'), 10 );
-            console.log('total pages: ' + totalPages);
-            console.log('total entries: ' + totalEntries);
+            //console.log('total pages: ' + totalPages);
+            //console.log('total entries: ' + totalEntries);
             
             if ( currentPage === totalPages ) {
-                console.log('current == total');
+                //console.log('current == total');
                 if($('.news-load-btn')) {
-                    console.log('.news-load-btn found');
+                    //console.log('.news-load-btn found');
                     $('.news-load-btn').remove();
                     $('.news-load-more').remove();
                 } else {
-                    console.log('.news-load-btn not found');
+                    //console.log('.news-load-btn not found');
                 }
             } else if ( currentPage < totalPages ) {
-                console.log('current < total');
+                //console.log('current < total');
                 $('.news-load-btn').remove();
                 $('.news-load-more').remove();
                 $('.news-landing-container').append('<div class="news-load-more"><button type="button" class="news-load-btn" data-next-page="'+(currentPage+1)+'" data-next-cat="'+cat+'">View More Posts</button></div>');
@@ -807,5 +855,7 @@ jQuery(function( $ ){
             
         });//end of next_news.done
     }
+    
+    $('.ap-image img').centerImage();
     
 });

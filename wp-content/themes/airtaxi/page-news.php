@@ -7,6 +7,13 @@
  * @subpackage 
  */
 
+add_action( 'wp_enqueue_scripts', 'news_enqueue_scripts_styles' );
+function news_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/news.min.js', array( 'jquery' ), '1.0.0' );
+    
+}
+
 get_header('custom');
 
 ?>
@@ -43,7 +50,7 @@ foreach($cats as $c) :
     ?>
     
     <div class="related-news-header top">
-        <h2><?php echo $cat->name; ?></h2>
+        <p><?php echo $cat->name; ?></p>
     </div>
     
     <?php
@@ -63,7 +70,7 @@ foreach($cats as $c) :
         $news_row = '';
     }
 ?>    
-    <div class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
+    <div id="news-<?php echo $post->ID; ?>" class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>
@@ -104,7 +111,7 @@ foreach($cats as $c) :
 
     <div class="related-news" data-news-cat="<?php echo $c['category']; ?>">
         <div class="related-news-header bottom">
-            <h2>Other <?php echo $cat->name; ?></h2>
+            <p>Other articles about AirTaxi.PH</p>
         </div>
         <div class="related-news-container">
             <?php
@@ -122,7 +129,7 @@ foreach($cats as $c) :
                rgba(255,255,255,0.85),
                rgba(255,255,255,0.85)), 
                url(<?php echo $rel_img_url[0];?>) no-repeat center center; background-size: cover">
-                <h3>
+                <h3 class="inner-title">
                     <a href="<?php the_permalink();?>">
                         <?php echo the_title(); ?>
                     </a>

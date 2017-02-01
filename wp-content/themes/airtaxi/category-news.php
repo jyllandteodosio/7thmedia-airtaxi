@@ -7,14 +7,32 @@
  * @subpackage 
  */
 
+
+add_action( 'wp_enqueue_scripts', 'category_news_enqueue_scripts_styles' );
+function category_news_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/news.min.js', array( 'jquery' ), '1.0.0' );
+    
+}
+
 get_header('custom');
 
 //get order of news categories
-$cat = $wp_query->get_queried_object();
+$cats = get_the_category();
+$cat = array();
+
+foreach($cats as $c) {
+    if($c->slug != 'news') {
+        $cat = $c;
+    }
+}
 
 ?>
 <div class="news-page-title">
-    <h1><?php echo $cat->name; ?></h1>
+   <div class="news-header-container">
+       <h1><?php echo $cat->name; ?></h1>
+       <?php include('searchform-dynamic.php'); ?>
+   </div>
 </div>
 
 <div class="news-landing-container">
@@ -47,7 +65,7 @@ if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_q
     }
     
 ?>
-    <div class="news-landing-item" data-news-id="<?php echo $post->ID; ?>">
+    <div id="news-<?php echo $post->ID; ?>" class="news-landing-item" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>

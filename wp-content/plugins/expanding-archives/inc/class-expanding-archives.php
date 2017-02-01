@@ -226,13 +226,16 @@ class NG_Expanding_Archives {
 			$year  = date( 'Y' );
 			$month = date( 'm' );
 
+            // Get category ID by name
+            $cat = get_cat_ID('news');
+            
 			// Query the posts.
 			$archives = get_posts( array(
 				'posts_per_page' => - 1,
 				'nopaging'       => true,
 				'year'           => intval( $year ),
 				'monthnum'       => intval( $month ),
-                'category_name'  => 'news'
+                'category'       => $cat
 			) );
 
 			// If we have results, add each one to a list.
@@ -268,6 +271,9 @@ class NG_Expanding_Archives {
 
 		$month = strip_tags( $_POST['month'] );
 		$year  = strip_tags( $_POST['year'] );
+        
+        // Get category ID by name
+        $cat = get_cat_ID('news');
 
 		// Query for posts in the given month/year.
 		$archives = get_posts( array(
@@ -275,14 +281,14 @@ class NG_Expanding_Archives {
 			'nopaging'       => true,
 			'year'           => intval( $year ),
 			'monthnum'       => intval( $month ),
-            'category_name'  => 'news'
+            'category'       => $cat
 		) );
 
 		// If we have results, add each one to our list.
 		if ( $archives ) {
 			$result = '<ul>';
 			foreach ( $archives as $archive ) {
-				$result .= '<li><a href="' . get_permalink( $archive ) . '">' . get_the_title( $archive ) . '</a></li>';
+				$result .= '<li>Cat:<a href="' . get_permalink( $archive ) . '">' . get_the_title( $archive ) . '</a></li>';
 			}
 			$result .= '</ul>';
 			wp_send_json_success( $result );

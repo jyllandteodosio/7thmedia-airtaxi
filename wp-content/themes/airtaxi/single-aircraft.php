@@ -10,6 +10,19 @@
 * @since  
 */
 
+add_action( 'wp_enqueue_scripts', 'rates_location_enqueue_scripts_styles' );
+function rates_location_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'rates-location', get_bloginfo( 'stylesheet_directory' ) . '/js/aircraft.min.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), '1.6.0' );
+    
+    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  '1.6.0' );
+    
+    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  '1.6.0' );
+    
+}
+
 get_header('custom'); ?>
 
 

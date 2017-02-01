@@ -7,6 +7,19 @@
  * @subpackage 
  */
 
+add_action( 'wp_enqueue_scripts', 'rates_location_enqueue_scripts_styles' );
+function rates_location_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'rates-location', get_bloginfo( 'stylesheet_directory' ) . '/js/rates-location.min.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), '1.6.0' );
+    
+    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  '1.6.0' );
+    
+    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  '1.6.0' );
+    
+}
+
 get_header('custom');
 $page_title = strtolower(get_the_title());
 
@@ -14,6 +27,8 @@ $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
 $disclaimer_1 = get_category_by_slug('drop-off-rates')->description;
 $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
+
+$term_value = get_term_by('slug', 'rates-'.$page_title, 'location-rates' );
 
 ?>
 
@@ -26,9 +41,9 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
 <!--        <div class="tabs">-->
             <div class="tab-links-container">
                 <ul class="tab-links">
-                    <li class="active one-third first"><a class="drop-off" href="#tab1">Drop-off or Pick-up</a></li>
-                    <li class="one-third"><a class="aerial-tours" href="#tab2">Aerial Tours</a></li>
-                    <li class="one-third"><a class="destinations" href="#tab3">Destination Tour Packages</a></li>
+                    <li id="drop-off-link" class="active one-third first"><h2><a class="drop-off" href="#tab1">Drop-off or Pick-up</a></h2></li>
+                    <li id="aerial-tours-link" class="one-third"><h2><a class="aerial-tours" href="#tab2">Aerial Tours</a></h2></li>
+                    <li id="destinations-link" class="one-third"><h2><a class="destinations" href="#tab3">Destination Tour Packages</a></h2></li>
                 </ul>
             </div>
             <div class="tab-content">
@@ -39,13 +54,6 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         $args = array(
                             'posts_per_page'   => -1,
                             'category_name'    => 'drop-off-rates',
-                            'tax_query'        => array(
-                                array(
-                                    'taxonomy' => 'location-rates',
-                                    'field'    => 'slug',
-                                    'terms'    => array('rates-'.$page_title)
-                                )
-                            ),
                             'orderby'          => 'date',
                             'order'            => 'ASC',
                             'post_type'        => 'rates',
@@ -54,8 +62,10 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         );
                         $posts_array = get_posts( $args ); 
 
-
                         foreach ( $posts_array as $post ) :
+                        
+                        if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                        
                         ?>
                         <div class="rates-box">
                             <div class="rates-box-title">
@@ -74,7 +84,7 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                                <tr class="rates-box-item">
                                    <td>
                                        <div class="item-capacity">
-                                           <?php the_sub_field('capacity'); ?> PAX
+                                           <?php the_sub_field('capacity'); ?> Passengers
                                        </div>
                                        <div class="item-aircraft">
                                            <?php the_sub_field('aircraft_model'); ?>
@@ -82,7 +92,7 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                                    </td>
                                    <td>
                                        <div class="item-price">
-                                           P <?php the_sub_field('price'); ?>
+                                           &#8369; <?php the_sub_field('price'); ?>
                                        </div>
                                    </td>
                                </tr>
@@ -93,6 +103,8 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                            </table>
                         </div>
                         <?php
+                        endif;
+                        
                         endforeach;
                         ?>
                     </div>
@@ -110,13 +122,6 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         $args = array(
                             'posts_per_page'   => -1,
                             'category_name'    => 'aerial-tours',
-                            'tax_query'        => array(
-                                array(
-                                    'taxonomy' => 'location-rates',
-                                    'field'    => 'slug',
-                                    'terms'    => array('rates-'.$page_title)
-                                )
-                            ),
                             'orderby'          => 'date',
                             'order'            => 'ASC',
                             'post_type'        => 'rates',
@@ -125,8 +130,10 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         );
                         $posts_array = get_posts( $args ); 
 
-
                         foreach ( $posts_array as $post ) :
+                        
+                        if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                        
                         ?>
                         <div class="rates-box">
                             <div class="rates-box-row">
@@ -160,7 +167,7 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                                    </td>
                                    <td>
                                        <div class="item-price">
-                                           P <?php the_sub_field('price'); ?>
+                                           &#8369; <?php the_sub_field('price'); ?>
                                        </div>
                                    </td>
                                </tr>
@@ -171,6 +178,9 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                            </table>
                         </div>
                         <?php
+                       
+                        endif;
+                       
                         endforeach;
                         ?>
                     </div>
@@ -188,13 +198,6 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         $args = array(
                             'posts_per_page'   => -1,
                             'category_name'    => 'destination-tour-packages',
-                            'tax_query'        => array(
-                                array(
-                                    'taxonomy' => 'location-rates',
-                                    'field'    => 'slug',
-                                    'terms'    => array('rates-'.$page_title)
-                                )
-                            ),
                             'orderby'          => 'date',
                             'order'            => 'ASC',
                             'post_type'        => 'rates',
@@ -203,13 +206,12 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                         );
                         $posts_array = get_posts( $args ); 
 
-
                         foreach ( $posts_array as $post ) :
+                        
+                        if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                       
                         ?>
                         <div class="destinations-box">
-<!--
-                            
--->
                             <div class="destinations-box-text">
                                 <div class="destinations-box-row">
                                     <div class="destinations-box-title">
@@ -232,7 +234,7 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                                                <?php the_sub_field('capacity'); ?> PAX
                                            </div>  
                                            <div class="item-price">
-                                               P <?php the_sub_field('price'); ?>
+                                               &#8369; <?php the_sub_field('price'); ?>
                                            </div>
                                        </li>
                                        <li>
@@ -291,6 +293,9 @@ $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
                             </div>
                         </div>
                         <?php
+                       
+                        endif;
+                       
                         endforeach;
                         ?>
                     </div>

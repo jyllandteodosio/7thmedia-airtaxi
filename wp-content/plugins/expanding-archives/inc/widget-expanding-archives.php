@@ -57,7 +57,7 @@ class NG_Expanding_Archives_Widget extends WP_Widget {
 
 		$year_prev = null;
 		$months    = expanding_archives_get_months();
-
+        
 		foreach ( $months as $month ) {
 
 			$year_current = $month->year;

@@ -60,7 +60,7 @@ class Custom_Contact_Us extends WP_Widget {
         
         // Check if title is set
         if ( $title ) {
-            echo $before_title . $title . $after_title;
+            echo "<h4 class='widget-title widgettitle'>" . $title . "</h4>";
         }
         
         if ( $text ) {
@@ -85,7 +85,7 @@ class Custom_Contact_Us extends WP_Widget {
         $posts_array = get_posts( $post_args ); 
         
         echo '<div class="map two-thirds">';
-        echo '<h1>Locations</h1>';
+        echo '<h4>Locations</h4>';
         echo '<div class="contact-tabs">';
         echo '<div class="contact-tab-links-container">';
         echo '<ul class="contact-tab-links">';
@@ -145,7 +145,7 @@ class Custom_Contact_Us extends WP_Widget {
             echo '<div class="map-details">';
         
             // Hangar Name
-            echo '<div class="map-name"><h3>'.get_field('hangar_name').'</h3></div>';
+            echo '<div class="map-name"><h4>'.get_field('hangar_name').'</h4></div>';
         
             // Hangar Address
             echo '<div class="map-address"><p>'.get_field('hangar_address').'</p></div>';
@@ -182,7 +182,7 @@ class Custom_Contact_Us extends WP_Widget {
         echo '</div>';  // .contact-tabs
         
         echo '<div class="contact-apply">';
-        echo $inquire;
+        echo '<h4>' . $inquire . '</h4>';
         echo '<button type="button" href="" class="map-inquire" target="_top">Inquire Now</button>';
         echo '</div>';  // .contact-apply
         
