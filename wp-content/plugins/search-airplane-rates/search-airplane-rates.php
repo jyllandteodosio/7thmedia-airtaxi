@@ -141,3 +141,29 @@ function fjarrett_custom_taxonomy_dropdown( $taxonomy, $selected ) {
 		print( '</select>' );
 	}
 }
+
+function flight_time_converter ( $decimal_hours ) {
+    $formatted_hours = '';
+    $hour = floor($decimal_hours);
+    $minute = $decimal_hours - $hour;
+    $min_con = '';
+    
+    if($hour == 1) {
+        $formatted_hours = $hour . ' hour ';
+    } else if ($hour > 1) {
+        $formatted_hours = $hour . ' hours ';
+    }
+    
+    switch ($minute) {
+        case 0.10: $min_con = '5 minutes'; break;
+        case 0.20: $min_con = '10 minutes'; break;
+        case 0.25: $min_con = '15 minutes'; break;
+        case 0.50: $min_con = '30 minutes'; break;
+        case 0.75: $min_con = '45 minutes'; break;
+        default: break;
+    }
+    
+    $formatted_hours .= $min_con;
+    
+    return $formatted_hours;
+}

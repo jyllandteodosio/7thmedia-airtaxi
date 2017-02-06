@@ -210,7 +210,7 @@ jQuery(function( $ ){
                             break;
 
                             case '2':
-                            case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x300.jpg);\"><\div>");
+                            case '3': label.html("<div class=\"location-hover\" style=\"background-image: url(" + baseURL + "/wp-content/uploads/2016/09/AAC-M2-VIP-Manila-300x225.jpg);\"><\div>");
                             break;
 
                             case '4':

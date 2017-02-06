@@ -39,6 +39,7 @@ function redirect_after_logout(){
 }
 
 add_image_size( 'featured-news', 1920, 800, true );
+add_image_size( 'airplane-rates', 550, 240, true );
 
 function new_subcategory_hierarchy() { 
     $category = get_queried_object();

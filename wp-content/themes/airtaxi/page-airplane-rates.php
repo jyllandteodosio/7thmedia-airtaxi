@@ -35,7 +35,7 @@ $disclaimer = get_field('disclaimer');
 
 //display search bar here
 ?>
-<div class="wrap">
+<div class="airplane-rates-wrap wrap">
     <div class="rates-search-bar">
         <div class="search-airplane-rates">
             <form role="search" method="get" id="search-airplane-rates" action="<?php echo get_bloginfo('url');?>/airplane-rates/" autocomplete="off" class="rates-search-form">
@@ -91,7 +91,7 @@ $disclaimer = get_field('disclaimer');
                         <h3><?php echo $aircraft->post_title; ?></h3>
                     </div>
                     <div class="ap-image">
-                        <?php echo get_the_post_thumbnail($aircraft->ID, 'large'); ?>
+                        <?php echo get_the_post_thumbnail($aircraft->ID, 'airplane-rates'); ?>
                     </div>
                     <div class="ap-details">
                         <table class="ap-details-table">
@@ -102,7 +102,13 @@ $disclaimer = get_field('disclaimer');
                                 </tr>
                                 <tr>
                                     <td><span class="ap-flight-label">Flight time per way</span></td>
-                                    <td><span class="ap-flight"><?php the_field('flight_time_per_way'); ?></span></td>
+                                    <td><span class="ap-flight">
+                                    <?php 
+                                        $flight_time_original = get_field('flight_time_per_way'); 
+                                        $flight_time = flight_time_converter($flight_time_original);
+                                        echo $flight_time;
+                                    ?>
+                                    </span></td>
                                 </tr>
                                 <tr>
                                     <td><span class="ap-from-label">From</span></td>
@@ -129,7 +135,12 @@ $disclaimer = get_field('disclaimer');
                     </div>
                 </div>
                 <?php
-            endwhile; endif;
+            endwhile; 
+            else:
+            echo '<div class="ap-box-none">';
+            the_field('no_rates_text');
+            echo '</div>';
+            endif;
             wp_reset_query();
             ?>
         </div>
