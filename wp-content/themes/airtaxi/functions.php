@@ -30,35 +30,17 @@ function parallax_enqueue_scripts_styles() {
 
 	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
     
-    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), '1.6.0' );
+    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js', array( 'jquery' ), '1.0.0' );
     
-    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js', array( 'jquery' ), '', true );
     
-    wp_enqueue_script( 'jvectormap', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-2.0.3.min.js', array( 'jquery' ), '2.0.3' );
-    
-    wp_enqueue_script( 'jvectormap-ph', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-ph-custom.js', array( 'jquery' ), '1.0.0' );
-    
-    wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVwnNpcIWP1hUr4mGUsCL1tHo12FLFOOs', array(), '3', true );
-    
-	wp_enqueue_script( 'google-map-init', get_stylesheet_directory_uri() . '/js/maps/google-maps.js', array('google-map', 'jquery'), '0.1', true );
-    
-    wp_enqueue_script( 'fullpage-scrolloverflow', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/vendors/scrolloverflow.min.js', array( 'jquery' ), '1.0.0' );
-    
-    wp_enqueue_script( 'fullpage', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/jquery.fullPage.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), CHILD_THEME_VERSION );
 
 	wp_enqueue_style( 'dashicons' );
     
     wp_enqueue_style( 'fontawesome', get_bloginfo( 'stylesheet_directory' ) . '/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
     
 	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script|Lato', array(), CHILD_THEME_VERSION );
-    
-    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  '1.6.0' );
-    
-    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  '1.6.0' );
-    
-    wp_enqueue_style( 'jvectormap-css', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-2.0.3.css', array(),  '2.0.3' );
-    
-    wp_enqueue_style( 'fullpage-css', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/jquery.fullPage.css', array(), CHILD_THEME_VERSION );
 
 }
 
@@ -206,6 +188,16 @@ add_theme_support( 'genesis-after-entry-widget-area' );
 remove_action( 'genesis_after_entry', 'genesis_after_entry_widget_area' );
 add_action( 'genesis_after_entry', 'genesis_after_entry_widget_area', 5 );
 
+
+//* Changed widget title markup from h4 to h2
+add_filter( 'genesis_register_sidebar_defaults', 'custom_register_sidebar_defaults' );
+
+function custom_register_sidebar_defaults( $defaults ) {
+	$defaults['before_title'] = '<h2 class="widget-title widgettitle">';
+	$defaults['after_title'] = '</h2>';
+	return $defaults;
+}
+
 //* Register widget areas
 genesis_register_sidebar( array(
 	'id'          => 'home-section-0',
@@ -247,21 +239,31 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Home Section 7', 'parallax' ),
 	'description' => __( 'This is the home section 7 section.', 'parallax' ),
 ) );
-
-//* News Page Widget Areas
 genesis_register_sidebar( array(
-	'id'          => 'news-featured',
-	'name'        => __( 'Featured News', 'parallax' ),
-	'description' => __( 'Featured News Widget Area', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'news-related-post',
-	'name'        => __( 'Related News Posts', 'parallax' ),
-	'description' => __( 'Related News Widget Area', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'news-recent-post',
-	'name'        => __( 'Recent News Posts', 'parallax' ),
-	'description' => __( 'Recent News Widget Area', 'parallax' ),
+	'id'          => 'home-section-8',
+	'name'        => __( 'Home Section 8', 'parallax' ),
+	'description' => __( 'This is the home section 8 section.', 'parallax' ),
 ) );
 
+
+function filter_by_category( $query ) {
+    if ( $query->is_archive() && $query->is_main_query() ) {
+        $query->set( 'category_name', 'news' );
+    }
+}
+add_action( 'pre_get_posts', 'filter_by_category' );
+
+//* Search Results Page Widget Areas
+function archive_widgets_init() {
+
+    register_sidebar( array(
+        'name'          => 'Search Results Sidebar',
+        'id'            => 'search-results-sidebar',
+        'before_widget' => '<div class="search-sidebar-container">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ) );
+
+}
+add_action( 'widgets_init', 'archive_widgets_init' );

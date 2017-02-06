@@ -7,8 +7,15 @@
  * @subpackage 
  */
 
+add_action( 'wp_enqueue_scripts', 'membership_enqueue_scripts_styles' );
+function membership_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'membership', get_bloginfo( 'stylesheet_directory' ) . '/js/membership.min.js', array( 'jquery' ), '1.0.0' );
+}
+
 get_header('custom');
-$page_title = strtolower(get_the_title());
+$title = get_the_title();
+$page_title = strtolower($title);
 ?>
 <div id="perks" class="m-panel">
     <div class="m-panel-title">
@@ -31,9 +38,9 @@ $page_title = strtolower(get_the_title());
     ?>
 
     <div class="m-panel-content mperks">
-        <div class="m-panel-header">
+        <h2 class="m-panel-header">
             <?php the_title(); ?>
-        </div>
+        </h2>
 
         <div class="m-panel-table">
             <?php
@@ -63,9 +70,9 @@ $page_title = strtolower(get_the_title());
     ?>
 
     <div id="rates" class="m-panel-content mrates" style="background-image: url('<?php echo get_bloginfo( 'stylesheet_directory' ).'/images/bg-5.jpg'; ?>')">
-        <div class="m-panel-header">
+        <h2 class="m-panel-header">
             <?php the_title(); ?>
-        </div>
+        </h2>
 
         <div class="m-panel-table">
             <?php

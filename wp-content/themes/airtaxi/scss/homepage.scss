@@ -1,0 +1,387 @@
+/* Homepage Section - Slideshow
+--------------------------------------------- */
+
+#meteor-slides-widget-3 {
+    display: none;
+}
+
+.widget_meteor-slides-widget {
+    font-size: 2em;
+}
+
+#meteor-slides-widget-2,
+#meteor-slides-widget-3,
+.aircraft-slideshow {
+    .meteor-buttons {
+        box-sizing: initial;
+
+        width: 100%;
+        height: 9px;
+
+        left: 10px;
+        right: 0;
+        bottom: 15px;
+
+        margin: 0 auto 40px !important;
+        padding: 6px 0 0;
+
+        z-index: 999;    
+    }
+    
+    .meteor-slides .meteor-buttons a {
+        float: none;
+        width: 16px;
+        height: 16px;
+
+        text-indent: -9999px;
+        margin: 0 20px 0 0 !important;
+
+        border-radius: 16px;
+        box-shadow: none;
+        outline: none;
+        transition: all 0s ease 0s; 
+
+        background: #f3f3f3;
+
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                    0 3px 1px -2px rgba(0,0,0,.2),
+                    0 1px 5px 0 rgba(0,0,0,.12);
+        
+        display: inline-block;
+    }
+}
+
+.meteor-buttons {
+    position: absolute;
+    text-align: center;
+    
+    a.activeSlide {
+        background: #4ec5cd !important; 
+    }
+}
+
+div.meteor-slides.navpaged,
+div.meteor-slides.navboth {
+    margin-bottom: 0px !important;
+}
+
+.meteor-slides {
+    p {
+        font-family: 'Dancing Script', cursive;
+        top: 60px;
+        left: 0;
+        right: 0;
+
+        width: 96%;
+
+        font-size: 1.8em;
+        line-height: 1.3em;
+
+        margin: 0 auto;
+        padding: 2%;
+
+        position: relative;
+        text-shadow: 2px 1px 2px rgba(0,0,0,0.6);
+        color: #fff;
+        
+        &.slide-main-text {
+            margin-top: 40px;
+        }
+        
+        &.slide-button-title {
+            font-size: 1.3em;
+            line-height: 1em;
+            padding: 10px 0px;
+        }
+        
+        &.slide-button-links {
+            padding: 10px 0px;
+        }
+    }
+    
+    .mslide a.slide-buttons {
+        font-family: 'Lato', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+
+        line-height: 20px;
+        letter-spacing: 1.5px;
+
+        text-transform: uppercase;
+        text-decoration: none;
+        text-shadow: none;
+        text-align: center;
+
+        padding: 20px;
+
+        min-width: 200px;
+        min-height: 60px;
+
+        background: rgba(78,197,205,0.8);
+        border: 3px solid #fff;
+        color: #fff;
+        
+        &:hover {
+            background: rgba(52,168,176,0.8);
+        }
+    }
+}
+
+.slide-container {
+    top: 0px;
+    width: 100%;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(31,31,31,0.4) 0%,rgba(31,31,31,0) 100%);
+    height: 860px;
+    max-height: 100%;
+    display: block;
+    position: absolute;
+    text-align: center;
+}
+
+.slide-text-container {
+    position: relative;
+    text-shadow: 2px 1px 2px rgba(0,0,0,0.6);
+    color: #fff;
+    display: block;
+}
+
+.slide-buttons {
+    display: inline-block;
+    
+    &:hover {
+        background: #fff;
+    }
+}
+
+/* Homepage Section - About Us
+--------------------------------------------- */
+
+.home-section-1 {
+    padding-bottom: 0;
+    margin-bottom: -14px;
+    
+    .textwidget {
+        text-align: left;
+    }
+}
+
+/* Homepage Section - Base Locations
+--------------------------------------------- */
+
+.base-locations-container {
+    margin-bottom: -8%;
+    overflow: hidden;
+}
+
+.base-locations-header {
+    color: #212121;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.base-locations-subheader {
+    color: #4ec5cd;
+    font-family: 'Dancing Script', cursive;
+    padding: 20px;
+    font-size: 56px;
+    line-height: 56px;
+}
+
+.location-images {
+    display: none;
+}
+
+.location-hover {
+    height: 210px;
+    width: 300px;
+    overflow: hidden;
+    border: 4px solid #4ec5cd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin-left: 50%;
+    margin-bottom: -10px;
+    position: relative;
+    
+    img {
+        height: auto;
+        width: 200px;
+    }
+}
+
+.jvectormap-tip {
+    border: none !important; 
+    border-radius: 0px !important; 
+    background: transparent !important; 
+}
+
+#base-locations {
+    margin: 0 37%;
+}
+
+.legend {
+    width: 0; 
+    height: 0; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto -5px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #000;
+}
+
+/* Homepage Section - Aircraft Fleet
+--------------------------------------------- */
+
+#gallery-2 {
+    color: transparent;
+    
+    figcaption {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+    
+    .gallery-item {
+        padding: 4px 20px;
+        margin: 10px 0px;
+        color: #212121;
+        border: 3px solid transparent;
+        transition: border .25s ease-in-out;
+       -moz-transition: border .25s ease-in-out;
+       -webkit-transition: border .25s ease-in-out;
+        
+        &:hover {
+            border: 3px solid #dfdfdf;
+        }
+        
+        .gallery-icon {
+            height: 100px;
+            text-align: center;
+        }
+    }
+}
+
+/* Homepage Section - Quote/Callouts
+--------------------------------------------- */
+
+.quote {
+    font-size: 36px;
+    height: 146px;
+    line-height: 146px;
+    margin: 0 auto;
+}
+
+.call-now {
+    font-weight: 700;
+    font-size: 20px;
+    height: 90px;
+    margin: 0px auto;
+    line-height: 90px;
+    
+    label {
+        margin: 0px 30px 0px 60px;
+    }
+    
+    a:hover {
+        color: #686868;
+    }
+    
+    i {
+    margin-left: 20px;
+}
+}
+
+.quote,
+.call-now {
+    background: #4ec5cd;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    color: #fff;
+    
+    a {
+        color: #fff;
+    }
+}
+
+.call-tel,
+.call-mob {
+    display: inline-block;
+}
+
+/* Homepage Section - Membership - Membership Table
+--------------------------------------------- */
+
+.home-section-4 {
+    background-size: cover;
+    background-position: center;
+    
+    h2.widgettitle {
+        font-size: 36px;
+        margin-bottom: 0px;
+        color: #fff;
+    }
+    
+}
+
+.membership-table {
+    overflow: auto;
+    
+    .one-third {
+        background: rgba(78, 197, 207, 0.9);
+        border: 1px solid #238f96;
+        padding: 20px 30px;
+        font-size: 1em;
+        line-height: 1.4em;
+        min-height: 290px;
+        color: #fff;
+    }
+    
+    .inner-title {
+        font-family: "Lato", sans-serif;
+        font-weight: 800;
+        font-size: 1.6em !important;
+        color: #fff;
+    }
+}
+
+.learn-more-button,
+.ap-promo-button {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: none;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 3px solid #fff;
+    color: #fff;
+}
+
+a.learn-more-button,
+a.ap-promo-button {
+    &:hover {
+        color: #fff;
+        background: rgba(52,168,176,0.8);
+    }
+}
+
+/* Homepage Section - Rates
+--------------------------------------------- */
+
+.rates-table {
+    >div {
+    background: #fff;
+    margin-bottom: 40px;
+}
+}

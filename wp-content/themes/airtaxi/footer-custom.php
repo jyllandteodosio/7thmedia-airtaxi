@@ -15,12 +15,14 @@ genesis_structural_wrap( 'site-inner', 'close' );
 echo '</div>'; //* end .site-inner or #inner
 
 do_action( 'genesis_before_footer' );
+$image = get_field('footer_logo', 'option');
 ?>
 <footer class="footer-custom">
     <div class="footer-container">
         <div class="footer-logo left">
-            <img width="200px" src="http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/AIRTAXI.png" alt="AirTaxi.PH"/>
-            <small>© Copyright 2016. All Rights Reserved. Designed and Developed by 7th Media</small>
+            <img width="200px" src="<?php echo $image['url']; ?>" alt="AirTaxi.PH"/>
+            <small>© Copyright 2017. All Rights Reserved. Web Design and Development by <a href="http://7thmedia.com/" title="7th Media Digital Studio Inc." target="_blank">7th Media</a>
+            </small>
         </div>
 
         <div class="footer-links right">

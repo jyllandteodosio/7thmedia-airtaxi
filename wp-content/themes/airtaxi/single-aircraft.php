@@ -10,6 +10,19 @@
 * @since  
 */
 
+add_action( 'wp_enqueue_scripts', 'rates_location_enqueue_scripts_styles' );
+function rates_location_enqueue_scripts_styles() {
+    
+    wp_enqueue_script( 'rates-location', get_bloginfo( 'stylesheet_directory' ) . '/js/aircraft.min.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), '1.6.0' );
+    
+    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  '1.6.0' );
+    
+    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  '1.6.0' );
+    
+}
+
 get_header('custom'); ?>
 
 
@@ -34,7 +47,15 @@ get_header('custom'); ?>
                    <li><label class="detail-label">Capacity:</label></li>
                    <li>
                        <?php for($i=0;$i<$capacity;$i++): ?>
-                           <span class="dashicons dashicons-admin-users"></span>
+                           <?php if($capacity >= 8): ?>
+                               <span class="dashicons dashicons-admin-users"></span>
+                               <?php if(($i+1) == ($capacity/2)): ?>
+                                   &nbsp;
+                                   &nbsp;
+                               <?php endif; ?>
+                           <?php else: ?>
+                               <span class="dashicons dashicons-admin-users"></span>
+                           <?php endif; ?>
                        <?php endfor; ?>
                    </li>
                    <li>
@@ -148,24 +169,21 @@ get_header('custom'); ?>
        <div class="gallery-slider">
             <?php
                 $args = array(
-                    'post_type'   => 'attachment',
-                    'post_status' => 'any',
-                    'posts_per_page' => '-1',
-                    'tax_query'   => array(
-                        array(
-                            'taxonomy' => 'media_category', // your taxonomy
-                            'field'    => 'id',
-                            'terms'    => 9 // term id (id of the media category)
-                        )
-                    )
+                    'post_type'     => 'aircraft',
+                    'post_status'   => 'any',
+                    'posts_per_page'=> '-1',
+                    'meta_key'      => 'gallery_order',
+                    'orderby'       => 'meta_key',
+                    'order'         => 'ASC'
                 );
                 $the_query = new WP_Query( $args );
                 $posts = $the_query->get_posts();
                 // get aircraft gallery vectors
                 if ( $the_query->have_posts() ) {
                     foreach ( $posts as $post ) {
-                        $url = get_field('_gallery_link_url');
-                        $alt = get_field('_wp_attachment_image_alt');
+                        $image = get_field('aircraft_vector');
+                        $url = get_permalink();
+                        $alt = $image['alt'];
                         
                         //marks the displayed image in the gallery
                         if( $model == $alt ){
@@ -183,14 +201,18 @@ get_header('custom'); ?>
                         <div class="gallery-image-container">
                             <?php 
                             // displays image
-                            echo wp_get_attachment_image( get_the_ID(), 'medium' ); 
+                            echo wp_get_attachment_image( $image['id'], 'medium' ); 
                             ?>
                         </div><!-- gallery-image-container -->
-
-                        <?php
-                        // displays image caption
-                        echo the_excerpt();
                         
+                       <!--displays image caption-->
+                        <p>
+                            <?php echo get_field('aircraft_name'); ?>
+                            <br/>
+                            <strong><?php echo get_field('model'); ?></strong>
+                        </p>
+                        
+                        <?php
                         echo '</div></a>'; //gallery-slider-item
                     }
                 } else {
@@ -203,9 +225,7 @@ get_header('custom'); ?>
    </div><!-- gallery-container -->
 </div><!-- aircraft-fleet-gallery -->
 
-
     <?php endwhile; // end of the loop. ?>
-
 
 
 <?php get_footer('custom'); ?>
