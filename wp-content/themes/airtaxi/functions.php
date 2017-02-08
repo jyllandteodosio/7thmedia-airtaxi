@@ -28,11 +28,11 @@ define( 'CHILD_THEME_VERSION', '1.0' );
 add_action( 'wp_enqueue_scripts', 'parallax_enqueue_scripts_styles' );
 function parallax_enqueue_scripts_styles() {
 
-	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
+	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js#asyncload', array( 'jquery' ), '1.0.0' );
     
-    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), '1.0.0' );
     
-    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js', array( 'jquery' ), '', true );
+    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), '', true );
     
     wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), CHILD_THEME_VERSION );
 
@@ -267,3 +267,15 @@ function archive_widgets_init() {
 
 }
 add_action( 'widgets_init', 'archive_widgets_init' );
+
+//* Adds async attribute to scripts
+function ikreativ_async_scripts($url)
+{
+    if ( strpos( $url, '#asyncload') === false )
+        return $url;
+    else if ( is_admin() )
+        return str_replace( '#asyncload', '', $url );
+    else
+	return str_replace( '#asyncload', '', $url )."' async='async"; 
+    }
+add_filter( 'clean_url', 'ikreativ_async_scripts', 11, 1 );

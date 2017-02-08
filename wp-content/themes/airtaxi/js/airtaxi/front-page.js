@@ -56,9 +56,9 @@ jQuery(function( $ ){
     
     //-- Homepage - Base Locations - Image Map Hover --//
     
-    if($('#locations').length) {
+    if($('.home-section-2').length) {
         
-        $('#locations').ready(function() {
+        $('.home-section-2').ready(function() {
 
             //-- Homepage - Base Locations - Responsive Map --//
 
@@ -380,11 +380,17 @@ jQuery(function( $ ){
         $('.overlay').removeClass('hidden');
         
         $('#pop-join-close').on('click', function(){
-                $('.overlay').addClass('hidden');
-                $('.pop-join').addClass('hidden').hide();
+            close_inquiry_form();
+//            $('.overlay').addClass('hidden');
+//            $('.pop-join').addClass('hidden').hide();
         });
         
     });
+    
+    function close_inquiry_form () {
+        $('.overlay').addClass('hidden');
+        $('.pop-join').addClass('hidden').hide();
+    };
     
     //-- Homepage Links for Rates Page Tabs --//
 
