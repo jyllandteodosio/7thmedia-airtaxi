@@ -34,6 +34,10 @@ function parallax_enqueue_scripts_styles() {
     
     wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), '', true );
     
+//    wp_enqueue_style( 'main-homepage', get_bloginfo( 'stylesheet_directory' ) . '/scss/homepage.css', array(), CHILD_THEME_VERSION );
+//    
+//    wp_enqueue_style( 'main-custom', get_bloginfo( 'stylesheet_directory' ) . '/scss/custom.css', array(), CHILD_THEME_VERSION );
+    
     wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), CHILD_THEME_VERSION );
 
 	wp_enqueue_style( 'dashicons' );
