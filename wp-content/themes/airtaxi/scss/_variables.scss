@@ -1,0 +1,36 @@
+$font-main: 'Dancing Script', cursive;
+$font-secondary: 'Lato', sans-serif;
+
+$teal: #4ec5cd;
+$darkteal: #34a8b0;
+$gray: #f3f3f3;
+$dirtygray: #eaeaea;
+$darkgray: #686868;
+$darkergray: #999;
+$mediumblack: #212121;
+$black: #000;
+$white: #fff;
+$emerald: #056029;
+$sapphire: #205f95;
+$diamond: #989798;
+
+$breakpoints: (
+	xlarge-device	: 1920px,
+	laptop-large	: 1440px,
+	large-device 	: 1200px,
+	laptop				: 1024px,
+	tablet				: 768px,
+	mobile-large	: 425px,
+	mobile-medium	: 375px,
+	mobile-small	: 320px
+);
+
+@mixin mq($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpoint: map-get($breakpoints, $breakpoint);
+	}
+
+	@media screen and (max-width: $breakpoint) {
+		@content;
+	}
+}
