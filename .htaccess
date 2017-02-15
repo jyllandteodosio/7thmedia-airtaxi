@@ -15,14 +15,10 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /
-# RewriteBase /Projects/airtaxi/
+RewriteBase /Projects/airtaxi/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !(/$|\.) 
-RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
-RewriteRule . /index.php [L]
 # RewriteRule . /Projects/airtaxi/index.php [L]
 </IfModule>
 
