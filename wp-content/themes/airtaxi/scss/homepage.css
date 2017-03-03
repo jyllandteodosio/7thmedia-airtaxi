@@ -48,6 +48,7 @@ dfn {
   font-style: italic; }
 
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -122,6 +123,8 @@ input[type=checkbox], input[type=radio] {
 
 input[type=search] {
   -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box; }
 
 input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
@@ -143,6 +146,8 @@ table {
 --------------------------------------------- */
 *,
 input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 /* Float Clearing
@@ -203,6 +208,9 @@ input[type="submit"],
 textarea:focus,
 .button {
   -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out; }
 
 ::-moz-selection {
@@ -902,6 +910,9 @@ Site Navigation
   opacity: 0;
   position: absolute;
   -webkit-transition: opacity .4s ease-in-out;
+  -moz-transition: opacity .4s ease-in-out;
+  -ms-transition: opacity .4s ease-in-out;
+  -o-transition: opacity .4s ease-in-out;
   transition: opacity .4s ease-in-out;
   width: 200px;
   z-index: 99; }
@@ -952,7 +963,7 @@ Site Navigation
 --------------------------------------------- */
 .site-header .sub-menu {
   background-color: #43bdc5;
-  border: 2px solid #fff
+  border: 2px solid #fff;
   /*    border-top: none;*/ }
 
 /* Primary Navigation
@@ -1048,6 +1059,8 @@ Content Area
   background-color: #fff;
   background-position: 50% 0px;
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
   background-size: cover; }
 
 .home-section-6, .home-section-6.home-odd .widget-title {
@@ -1065,6 +1078,9 @@ Content Area
   margin: -40px -40px 40px;
   padding: 40px;
   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 
 .pricing-table .one-third {
@@ -1417,6 +1433,8 @@ Media Queries
   .home-section-5 {
     background-attachment: scroll;
     background-position: top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
     background-size: cover; }
 
   .content {
@@ -1433,7 +1451,7 @@ Media Queries
     max-width: none; }
 
   .site-header {
-    padding-bottom: 10px
+    padding-bottom: 10px;
     /*		position: static;*/ }
 
   .content,
@@ -1526,7 +1544,7 @@ Media Queries
   .genesis-nav-menu.responsive-menu li a:hover {
     border: none;
     display: block;
-    padding: 20px
+    padding: 20px;
     /*		text-transform: none;*/ }
 
   .genesis-nav-menu.responsive-menu .menu-item-has-children {
@@ -1556,6 +1574,9 @@ Media Queries
     left: auto;
     opacity: 1;
     position: relative;
+    -moz-transition: opacity .4s ease-in-out;
+    -ms-transition: opacity .4s ease-in-out;
+    -o-transition: opacity .4s ease-in-out;
     -webkit-transition: opacity .4s ease-in-out;
     transition: opacity .4s ease-in-out;
     width: 100%;

@@ -15,74 +15,39 @@ function membership_enqueue_scripts_styles() {
 
 get_header('custom');
 $title = get_the_title();
-$page_title = strtolower($title);
+
 ?>
-<div id="perks" class="m-panel">
-    <div class="m-panel-title">
-        <h1>Membership</h1>
-    </div>
-    <?php
-        //* Get all membership page posts 
-        $args = array(
-            'posts_per_page'   => 1,
-            'category_name'    => 'membership+perks',
-            'orderby'          => 'date',
-            'order'            => 'ASC',
-            'post_type'        => 'post',
-            'post_status'      => 'publish',
-            'suppress_filters' => true 
-        );
-        $posts_array = get_posts( $args ); 
-
-        foreach ( $posts_array as $post ) :
-    ?>
-
-    <div class="m-panel-content mperks">
-        <h2 class="m-panel-header">
-            <?php the_title(); ?>
-        </h2>
-
-        <div class="m-panel-table">
-            <?php
-                $content = $post->post_content;
-                echo apply_filters( 'the_content',$content );
-            ?>
-        </div>
-    </div>
-
-    <?php
-    
-        endforeach; 
-    
-        //* Get all membership page posts 
-        $args = array(
-            'posts_per_page'   => 1,
-            'category_name'    => 'membership+rates',
-            'orderby'          => 'date',
-            'order'            => 'ASC',
-            'post_type'        => 'post',
-            'post_status'      => 'publish',
-            'suppress_filters' => true 
-        );
-        $posts_array = get_posts( $args ); 
-
-        foreach ( $posts_array as $post ) :
-    ?>
-
-    <div id="rates" class="m-panel-content mrates" style="background-image: url('<?php echo get_bloginfo( 'stylesheet_directory' ).'/images/bg-5.jpg'; ?>')">
-        <h2 class="m-panel-header">
-            <?php the_title(); ?>
-        </h2>
-
-        <div class="m-panel-table">
-            <?php
-                $content = $post->post_content;
-                echo apply_filters( 'the_content',$content );
-            ?>
-        </div>
-    </div>
-
-    <?php endforeach; ?>
+<div class="m-panel-title">
+    <h1><?php echo $title; ?></h1>
 </div>
+<?php
 
-<?php get_footer('custom'); ?>
+$bg_image = '';
+$bg_color = 'transparent';
+
+if( have_rows('section') ) :
+while( have_rows('section') ) : the_row();
+
+if( get_sub_field('section_background') == 'image' ):
+$bg_image = get_sub_field('background_image');
+elseif( get_sub_field('section_background') == 'color' ):
+$bg_color = get_sub_field('background_color');
+endif;
+
+?>
+<div id="<?php the_sub_field('section_id');?>" class="m-panel" style="background-image: url('<?php echo $bg_image; ?>');background-color: <?php echo $bg_color; ?>;">
+    <div class="m-panel-content">
+        <h2 class="m-panel-header">
+            <?php the_sub_field('section_title'); ?>
+        </h2>
+        <div class="m-panel-table">
+            <?php the_sub_field('content'); ?>
+        </div>
+    </div>
+</div>
+<?php
+endwhile;
+else:
+endif;
+
+get_footer('custom'); ?>

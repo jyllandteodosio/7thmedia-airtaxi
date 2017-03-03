@@ -10,7 +10,7 @@
 add_action( 'wp_enqueue_scripts', 'news_enqueue_scripts_styles' );
 function news_enqueue_scripts_styles() {
     
-    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/news.min.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi/news.js', array( 'jquery' ), '1.0.0' );
     
 }
 

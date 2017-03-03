@@ -999,7 +999,7 @@ Site Navigation
 	display: block;
 	font-family: Lato, sans-serif;
     letter-spacing: 1px;
-	padding: 30px 20px;
+	padding: 30px 10px;
 }
 
 .genesis-nav-menu a:hover,
@@ -3040,8 +3040,8 @@ a.map-inquire:hover {
 
 /*----- Membership Page Content -----*/
 
-.m-panel {
-    margin-top: -40px;
+.m-panel:nth-child(3) {
+    padding-top: 40px;
 }
 
 .m-panel-title,
@@ -4523,6 +4523,114 @@ table.destinations-box-itinerary {
     text-align: center;
 }
 
+/* Air Ambulance Page
+--------------------------------------------- */
+
+.ambulance-page-title {
+	.ambulance-header-container {
+	    max-width: 1140px;
+	    padding: 0px 20px;
+	    margin: 0 auto;
+	    text-align: center;
+	}
+}
+
+.ambulance-banner {
+	width: 100%;
+	margin: 60px 0 0 0;
+	img {
+		width: 100%;
+		padding: 0; margin: 0;
+	}
+}
+
+.ambulance-section-gray {
+	background-color: #f3f3f3;
+	margin-top: -10px;
+}
+
+.ambulance-section-white {
+	background-color: #fff;
+	margin-top: -10px;
+	height: 500px;
+}
+
+.ambulance-landing-container, .emergency-landing-container {
+    max-width: 1140px;
+    padding: 80px 20px 5px 20px;
+    margin: 0 auto;
+
+	@media (min-width: 769px) and (max-width: 1920px) {
+	    img {
+	    	width: 50%;
+	    	padding: 10px;
+	    }
+	}
+
+	@media only screen and (max-width: 768px){
+	    img {
+	    	width: 100%;
+	    	padding: 20px;
+	    }
+	}
+}
+
+
+@media (min-width: 769px) and (max-width: 1920px) {
+	.emergency-section-white .emergency-logos .logo {
+		width: 20%;
+		height: 150px;
+		float: left;
+		img {
+			width: 95%;
+			display: block;
+			margin: 0 auto;
+			vertical-align: middle;
+		}
+	}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+	.emergency-section-white .emergency-logos .logo {
+		width: 50%;
+		height: 100%;
+		float: left;
+		img {
+			width: 70%;
+			display: block;
+			margin: 0 auto;
+			vertical-align: middle;
+		}
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.emergency-section-white .emergency-logos .logo {
+		width: 100%;
+		float: left;
+		img {
+			width: 70%;
+			display: block;
+			margin: 0 auto;
+			vertical-align: middle;
+		}
+	}
+}
+
+
+
+/* 404 Page
+--------------------------------------------- */
+
+.error404 .article {
+    text-align: center;
+    
+    .form.search-form {
+        margin: 0 auto;
+    }
+    
+}
+
 
 /* Footer
 --------------------------------------------- */
@@ -4599,7 +4707,7 @@ footer.footer-custom {
 }
 
 .home-section-8 .wrap {
-    height: 280px;
+    height: auto;
 }
 
 
@@ -4835,7 +4943,7 @@ footer.footer-custom {
     }
     
     .home-section-5 .wrap {
-        min-height: 700px;
+        min-height: 640px;
     }
     
 /*

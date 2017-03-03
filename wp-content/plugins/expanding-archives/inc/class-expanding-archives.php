@@ -201,7 +201,7 @@ class NG_Expanding_Archives {
 		wp_enqueue_style( $this->_token );
 
 		// Load our JavaScript.
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/expanding-archives' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version, true );
+		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/expanding-archives' . $this->script_suffix . '.js#deferload', array( 'jquery' ), $this->_version, true );
 		wp_enqueue_script( $this->_token . '-frontend' );
 		$data = array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),

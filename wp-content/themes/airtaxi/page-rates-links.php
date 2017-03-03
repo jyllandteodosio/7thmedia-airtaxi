@@ -47,9 +47,9 @@
                 if( $list_bool == "Links" ):
                     if( have_rows('links') ):
                         while ( have_rows('links') ) : the_row();
-                            echo '<li><a href="'.get_sub_field('drop-off_or_pick-up').'?selectedTab=drop-off"><div class="rates-table-link">Drop off or Pick Up</div></a></li>';
-                            echo '<li><a href="'.get_sub_field('aerial_tours').'?selectedTab=aerial-tours"><div class="rates-table-link">Aerial Tours</div></a></li>';
-                            echo '<li><a href="'.get_sub_field('destination_tours_and_packages').'?selectedTab=destination-tours"><div class="rates-table-link">Destination Tour Packages</div></a></li>';
+                            echo '<li><a href="'.get_sub_field('drop-off_or_pick-up').'?selectedTab=drop-off/"><div class="rates-table-link">Drop off or Pick Up</div></a></li>';
+                            echo '<li><a href="'.get_sub_field('aerial_tours').'?selectedTab=aerial-tours/"><div class="rates-table-link">Aerial Tours</div></a></li>';
+                            echo '<li><a href="'.get_sub_field('destination_tours_and_packages').'?selectedTab=destination-tours/"><div class="rates-table-link">Destination Tour Packages</div></a></li>';
                         endwhile;
                     else:
                     endif;

@@ -24,12 +24,13 @@ class UpdraftPlus_Options {
 	}
 
 	public static function get_updraft_option($option, $default = null) {
-		return get_option($option, $default);
+		$ret = get_option($option, $default);
+		return apply_filters('updraftplus_get_option', $ret, $option, $default);
 	}
 
 	// The apparently unused parameter is used in the alternative class in the Multisite add-on
 	public static function update_updraft_option($option, $value, $use_cache = true) {
-		return update_option($option, $value);
+		return update_option($option, apply_filters('updraftplus_update_option', $value, $option, $use_cache));
 	}
 
 	public static function delete_updraft_option($option) {
@@ -125,7 +126,7 @@ class UpdraftPlus_Options {
 		register_setting('updraft-options-group', 'updraft_googlecloud', array($updraftplus, 'googlecloud_checkchange'));
 
 		register_setting('updraft-options-group', 'updraft_sftp_settings');
-		register_setting('updraft-options-group', 'updraft_webdav_settings', array($updraftplus, 'replace_http_with_webdav'));
+		register_setting('updraft-options-group', 'updraft_webdav_settings', array($updraftplus, 'construct_webdav_url'));
 
 		register_setting('updraft-options-group', 'updraft_ssl_nossl', 'absint');
 		register_setting('updraft-options-group', 'updraft_log_syslog', 'absint');

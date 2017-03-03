@@ -106,18 +106,20 @@ function wpseo_kill_blocking_files() {
 		foreach ( $options['blocking_files'] as $file ) {
 			if ( is_file( $file ) ) {
 				if ( ! @unlink( $file ) ) {
-					$errors[] = __(
-						sprintf( 'The file "%s" could not be removed. Please remove it via FTP.', $file ),
-						'wordpress-seo'
+					$errors[] = sprintf(
+						/* translators: %s expands to the file path and name. */
+						__( 'The file %s could not be removed. Please remove it via FTP.', 'wordpress-seo' ),
+						'<code>' . $file . '</code>'
 					);
 				}
 			}
 
 			if ( is_dir( $file ) ) {
 				if ( ! @ rmdir( $file ) ) {
-					$errors[] = __(
-						sprintf( 'The directory "%s" could not be removed. Please remove it via FTP.', $file ),
-						'wordpress-seo'
+					$errors[] = sprintf(
+						/* translators: %s expands to the directory path and name. */
+						__( 'The directory %s could not be removed. Please remove it via FTP.', 'wordpress-seo' ),
+						'<code>' . $file . '</code>'
 					);
 				}
 			}
@@ -126,9 +128,12 @@ function wpseo_kill_blocking_files() {
 
 	if ( $errors ) {
 		$message = implode( '<br />', $errors );
+		wp_send_json_error( array( 'message' => $message ) );
 	}
-
-	die( $message );
+	else {
+		$message = __( 'Files successfully removed.', 'wordpress-seo' );
+		wp_send_json_success( array( 'message' => $message ) );
+	}
 }
 
 add_action( 'wp_ajax_wpseo_kill_blocking_files', 'wpseo_kill_blocking_files' );
@@ -207,7 +212,7 @@ function wpseo_upsert_meta( $post_id, $new_meta_value, $orig_meta_value, $meta_k
 	$upsert_results = array(
 		'status'                 => 'success',
 		'post_id'                => $post_id,
-		"new_{$return_key}"      => $new_meta_value,
+		"new_{$return_key}"      => $sanitized_new_meta_value,
 		"original_{$return_key}" => $orig_meta_value,
 	);
 
@@ -317,22 +322,6 @@ function wpseo_upsert_new( $what, $post_id, $new, $original ) {
 
 	return wpseo_upsert_meta( $post_id, $new, $original, $meta_key, $what );
 }
-
-/**
- * Create an export and return the URL
- */
-function wpseo_get_export() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		die( '-1' );
-	}
-
-	$include_taxonomy = ( filter_input( INPUT_POST, 'include_taxonomy' ) === 'true' );
-	$export           = new WPSEO_Export( $include_taxonomy );
-
-	wpseo_ajax_json_echo_die( $export->get_results() );
-}
-
-add_action( 'wp_ajax_wpseo_export', 'wpseo_get_export' );
 
 /**
  * Handles the posting of a new FB admin.
@@ -449,3 +438,17 @@ new WPSEO_Taxonomy_Columns();
 
 // Setting the notice for the recalculate the posts.
 new Yoast_Dismissable_Notice_Ajax( 'recalculate', Yoast_Dismissable_Notice_Ajax::FOR_SITE );
+
+/********************** DEPRECATED METHODS **********************/
+
+/**
+ * Create an export and return the URL
+ *
+ * @deprecated 3.3.2
+ * @codeCoverageIgnore
+ */
+function wpseo_get_export() {
+	_deprecated_function( __FUNCTION__, 'WPSEO 3.3.2', 'This method is deprecated.' );
+
+	wpseo_ajax_json_echo_die( '' );
+}

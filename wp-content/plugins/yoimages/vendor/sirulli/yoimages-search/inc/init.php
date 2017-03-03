@@ -73,4 +73,5 @@ if (is_admin () || php_sapi_name () == 'cli') {
 		require_once (YOIMG_SEARCH_PATH . '/media-template.php');
 		require_once (YOIMG_SEARCH_PATH . '/image-uploader.php');
 	}
+	require_once (YOIMG_SEARCH_PATH . '/extend-yoimg-settings.php');
 }

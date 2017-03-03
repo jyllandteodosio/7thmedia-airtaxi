@@ -9,22 +9,54 @@ jQuery(function( $ ){
     
     //-- Homepage - Menu Link - Smooth Scroll --//
     
-    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a, .expanding-archives-section a)').click(function() {
-        if($('.responsive-menu-icon').css('display') == 'block') {
-            $('.genesis-nav-menu.responsive-menu').slideUp(200);
-        }
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top-40
-                }, 1200);
-                return false;
-            }
-        }
+    var $root = $('html, body');
+    
+    $('.genesis-nav-menu a').click(function() {
+        var hash = $.attr(this, 'href');
+        var href = $(this).attr('href').split('#')[1];
+        console.log(href);
+        $root.animate({
+            scrollTop: $('#'+href).offset().top
+        }, 1000, function () {
+            window.location.hash = href;
+        });
+        return false;
     });
     
+    // change hash on scroll
+    $(document).on('scroll',function(e){
+//        console.log('scrolled');
+        $('.sections .section').each(function(){
+            if (
+            $(this).offset().top < window.pageYOffset
+            //begins before top
+            && $(this).offset().top + $(this).height() > window.pageYOffset
+            //but ends in visible area
+            //+ 10 allows you to change hash before it hits the top border
+            ) {
+//                console.log($(this).attr('id'));
+                window.location.hash = $(this).attr('id');
+            }
+        });
+    });
+    
+    
+    if(screenWidth > 1024) {
+        
+        $('.sections').fullpage({
+            verticalCentered: false,
+            scrollBar: true,
+            fitToSection: false,
+            normalScrollElements: '#airplane-rates.wrap',
+        });
+    }
+    
+    
+    // Change site title tag from h1 to p
+    $('.site-title').contents().unwrap().wrap('<p class="site-title" itemprop="headline"></p>');
+    
+    // Change about section title's tag from h2 to h1
+    $('#about h2, #about-us h2').contents().unwrap().wrap('<h1 class="widget-title widgettitle"></h1>');
     
     //-- Homepage - Auto Scroll --//
     
@@ -43,17 +75,6 @@ jQuery(function( $ ){
         $('#gallery-2').removeClass('gallery-columns-2');
         $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-4');
     }
-    
-    if(screenWidth > 1024) {
-        
-        $('.sections').fullpage({
-            verticalCentered: false,
-            scrollBar: true,
-            fitToSection: false,
-            normalScrollElements: '#airplane-rates.wrap',
-        });
-    }
-    
     //-- Homepage - Base Locations - Image Map Hover --//
     
     if($('.home-section-2').length) {
