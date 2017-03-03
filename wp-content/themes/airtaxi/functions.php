@@ -250,13 +250,6 @@ genesis_register_sidebar( array(
 ) );
 
 
-function filter_by_category( $query ) {
-    if ( $query->is_archive() && $query->is_main_query() ) {
-        $query->set( 'category_name', 'news' );
-    }
-}
-add_action( 'pre_get_posts', 'filter_by_category' );
-
 //* Search Results Page Widget Areas
 function archive_widgets_init() {
 
@@ -273,13 +266,64 @@ function archive_widgets_init() {
 add_action( 'widgets_init', 'archive_widgets_init' );
 
 //* Adds async attribute to scripts
-function ikreativ_async_scripts($url)
-{
+function ikreativ_async_scripts($url) {
     if ( strpos( $url, '#asyncload') === false )
         return $url;
     else if ( is_admin() )
         return str_replace( '#asyncload', '', $url );
     else
 	return str_replace( '#asyncload', '', $url )."' async='async"; 
-    }
+}
 add_filter( 'clean_url', 'ikreativ_async_scripts', 11, 1 );
+
+//* Adds defer attribute to scripts
+function ikreativ_defer_scripts($url) {
+    if ( strpos( $url, '#deferload') === false )
+        return $url;
+    else if ( is_admin() )
+        return str_replace( '#deferload', '', $url );
+    else
+	return str_replace( '#deferload', '', $url )."' defer='defer"; 
+}
+add_filter( 'clean_url', 'ikreativ_defer_scripts', 11, 1 );
+
+/**
+ * Adds a title attribute to genesis logo
+ *
+ */
+remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
+add_action( 'genesis_site_title', 'custom_header_attribute' );
+/**
+ * Echo the site title into the header.
+ *
+ * Depending on the SEO option set by the user, this will either be wrapped in an `h1` or `p` element.
+ *
+ * Applies the `genesis_seo_title` filter before echoing.
+ *
+ * @since 1.1.0
+ *
+ * @uses genesis_get_seo_option() Get SEO setting value.
+ * @uses genesis_html5()          Check or HTML5 support.
+ */
+function custom_header_attribute() {
+    //* Set what goes inside the wrapping tags
+	$inside = sprintf( '<a href="%s">%s</a>', trailingslashit( home_url() ), get_bloginfo( 'name' ) );
+    
+    /**
+	 * Site title wrapping element
+	 *
+	 * The wrapping element for the site title.
+	 *
+	 * @since 2.2.3
+	 *
+	 * @param string $wrap The wrapping element (h1, h2, p, etc.).
+	 */
+	$wrap = 'p';
+
+	//* Build the title
+	$title  = genesis_html5() ? sprintf( "<{$wrap} %s title='%s'>", genesis_attr( 'site-title' ), "AirTaxi.PH - Premier Helicopter and Jet Charter Services in the Philippines" ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
+	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
+    
+    //* Echo (filtered)
+	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
+}

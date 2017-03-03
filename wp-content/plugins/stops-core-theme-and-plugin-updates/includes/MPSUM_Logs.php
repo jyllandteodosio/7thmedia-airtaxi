@@ -20,6 +20,24 @@ class MPSUM_Logs {
 	private static $instance = null;
 	
 	/**
+	 * Holds the class instance.
+	 *
+	 * @since 6.2.9
+	 * @access private
+	 * @var stdClass plugins
+	 */
+	private $plugins_cache = null;
+	
+	/**
+	 * Holds the class instance.
+	 *
+	 * @since 6.2.9
+	 * @access private
+	 * @var stdClass $themes
+	 */
+	private $themes_cache = null;
+	
+	/**
 	* Holds version number of the table
 	*
 	* @since 6.0.0
@@ -58,6 +76,10 @@ class MPSUM_Logs {
 			$this->build_table();
 			update_site_option( 'mpsum_log_table_version', $this->version );
 		}
+		
+		// Set plugin/theme variables for log error checking
+		$this->plugins_cache = get_site_transient( 'update_plugins' );
+		$this->themes_cache = get_site_transient( 'update_themes' );
 		
 		add_action( 'automatic_updates_complete', array( $this, 'automatic_updates' ) );
 		add_action( 'upgrader_process_complete', array( $this, 'manual_updates' ), 5, 2 );
@@ -232,7 +254,6 @@ class MPSUM_Logs {
 		$tablename = $wpdb->base_prefix . 'eum_logs';
 		$user_id = get_current_user_id();
 		if ( 0 == $user_id ) return; // If there is no user, this is not a manual update
-		
 		switch( $options[ 'type' ] ) {
 			case 'core':
 				 include( ABSPATH . WPINC . '/version.php' );
@@ -265,13 +286,16 @@ class MPSUM_Logs {
 				}
 				$plugins_from_cache = get_site_transient( 'update_plugins' );
 				wp_clean_plugins_cache();
+				if ( false === $plugins_from_cache ) {
+					$plugins_from_cache = $this->plugins_cache;	
+				}
 				$plugins = get_plugins();
 				if ( !empty( $plugins ) && isset( $options[ 'plugins' ] ) && !empty( $options[ 'plugins' ] ) ) {
 					foreach( $options[ 'plugins' ] as $plugin ) {
 						$plugin_data = isset( $plugins[ $plugin ] ) ? $plugins[ $plugin ] : false;
-						$plugins_from_cache = isset( $plugins_from_cache->checked[ $plugin ] ) ? $plugins_from_cache->checked[ $plugin ] : false;
-						if ( false !== $plugin_data && false !== $plugins_from_cache ) {
-							$status = ( $plugin_data[ 'Version' ] == $plugins_from_cache ) ? 0 : 1;
+						$current_plugin = isset( $plugins_from_cache->checked[ $plugin ] ) ? $plugins_from_cache->checked[ $plugin ] : false;
+						if ( false !== $plugin_data && false !== $current_plugin ) {
+							$status = ( $plugin_data[ 'Version' ] == $current_plugin ) ? 0 : 1;
 							$wpdb->insert( 
 								 $tablename,
 								 array(
@@ -299,13 +323,15 @@ class MPSUM_Logs {
 				break;
 			case 'theme':
 				if ( isset( $options[ 'themes' ] ) && !empty( $options[ 'themes' ] ) ) {
+
 					$theme_data_from_cache = get_site_transient( 'update_themes' );
 					wp_clean_themes_cache();
+					if ( false === $theme_data_from_cache ) {
+						$theme_data_from_cache = $this->themes_cache;	
+					}
 					foreach( $options[ 'themes' ] as $theme ) {
 						$theme_data = wp_get_theme( $theme );
 						$theme_from_cache_version = isset( $theme_data_from_cache->checked[ $theme ] ) ? $theme_data_from_cache->checked[ $theme ] : false;
-						error_log( $theme_from_cache_version );
-						error_log( $theme_data->get( 'Version' ) );
 						if ( $theme_data->exists() && false !== $theme_from_cache_version ) {
 							$status = ( $theme_from_cache_version == $theme_data->get( 'Version' ) ) ? 0 : 1;
 							$wpdb->insert( 

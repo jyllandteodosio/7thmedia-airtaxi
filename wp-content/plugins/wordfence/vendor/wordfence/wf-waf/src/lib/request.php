@@ -4,6 +4,8 @@ interface wfWAFRequestInterface {
 
 	public function getBody();
 	
+	public function getRawBody();
+	
 	public function getMd5Body();
 
 	public function getQueryString();
@@ -21,6 +23,9 @@ interface wfWAFRequestInterface {
 	public function getHost();
 
 	public function getURI();
+	
+	public function setMetadata($metadata);
+	public function getMetadata();
 
 	public function getPath();
 
@@ -73,10 +78,19 @@ class wfWAFRequest implements wfWAFRequestInterface {
 		$request->setMd5QueryString(array());
 		$request->setTimestamp('');
 		$request->setURI('');
+		$request->setMetadata(array());
 
 		list($headersString, $bodyString) = explode("\n\n", $requestString, 2);
 		$headersString = trim($headersString);
 		$bodyString = trim($bodyString);
+		
+		if (defined('WFWAF_DISABLE_RAW_BODY') && WFWAF_DISABLE_RAW_BODY) {
+			$request->setRawBody('');
+		}
+		else {
+			$request->setRawBody($bodyString);
+		}
+		
 		$headers = explode("\n", $headersString);
 		// Assume first is method
 		if (preg_match('/^([a-z]+) (.*?) HTTP\/1.[0-9]/i', $headers[0], $matches)) {
@@ -241,8 +255,16 @@ class wfWAFRequest implements wfWAFRequestInterface {
 		$request->setProtocol('');
 		$request->setTimestamp('');
 		$request->setURI('');
+		$request->setMetadata(array());
 
 		$request->setBody(wfWAFUtils::stripMagicQuotes($_POST));
+		if (defined('WFWAF_DISABLE_RAW_BODY') && WFWAF_DISABLE_RAW_BODY) {
+			$request->setRawBody('');
+		}
+		else {
+			$request->setRawBody(wfWAFUtils::rawPOSTBody());
+		}
+		
 		$request->setQueryString(wfWAFUtils::stripMagicQuotes($_GET));
 		$request->setCookies(wfWAFUtils::stripMagicQuotes($_COOKIE));
 		$request->setFiles(wfWAFUtils::stripMagicQuotes($_FILES));
@@ -318,6 +340,7 @@ class wfWAFRequest implements wfWAFRequestInterface {
 
 	private $auth;
 	private $body;
+	private $rawBody;
 	private $md5Body;
 	private $cookies;
 	private $fileNames;
@@ -332,6 +355,7 @@ class wfWAFRequest implements wfWAFRequestInterface {
 	private $md5QueryString;
 	private $timestamp;
 	private $uri;
+	private $metadata;
 
 	private $highlightParamFormat;
 	private $highlightMatchFormat;
@@ -363,6 +387,10 @@ class wfWAFRequest implements wfWAFRequestInterface {
 			return $this->_arrayValueByKeys($this->body, $args);
 		}
 		return $this->body;
+	}
+	
+	public function getRawBody() {
+		return $this->rawBody;
 	}
 	
 	public function getMd5Body() {
@@ -467,6 +495,14 @@ class wfWAFRequest implements wfWAFRequestInterface {
 	public function getURI() {
 		return $this->uri;
 	}
+	
+	public function getMetadata() {
+		if (func_num_args() > 0) {
+			$args = func_get_args();
+			return $this->_arrayValueByKeys($this->metadata, $args);
+		}
+		return $this->metadata;
+	}
 
 	public function getPath() {
 		return $this->path;
@@ -512,8 +548,8 @@ class wfWAFRequest implements wfWAFRequestInterface {
 	                                      $highlightMatchFormat = '[match]%s[/match]') {
 		$highlights = array();
 
-		// Cap at 50kb
-		$maxRequestLen = 1024 * 50;
+		// Cap at 47.5kb
+		$maxRequestLen = 1024 * 47.5;
 
 		$this->highlightParamFormat = $highlightParamFormat;
 		$this->highlightMatchFormat = $highlightMatchFormat;
@@ -611,19 +647,7 @@ class wfWAFRequest implements wfWAFRequestInterface {
 		$body = $this->getBody();
 		$contentType = $this->getHeaders('Content-Type');
 		if (is_array($body)) {
-			if (wfWAFUtils::stripos($contentType, 'application/x-www-form-urlencoded') === 0) {
-				$body = http_build_query($body, null, '&');
-				if (!empty($highlights['body'])) {
-					foreach ($highlights['body'] as $matches) {
-						if (!empty($matches['param'])) {
-							$this->highlightMatches = $matches['match'];
-							$body = preg_replace_callback('/(&|^)(' . preg_quote(urlencode($matches['param']), '/') . ')=(.*?)(&|$)/', array(
-								$this, 'highlightParam',
-							), $body);
-						}
-					}
-				}
-			} else if (preg_match('/^multipart\/form\-data; boundary=(.*?)$/i', $contentType, $boundaryMatches)) {
+			if (preg_match('/^multipart\/form\-data;(?:\s*(?!boundary)(?:[^\x00-\x20\(\)<>@,;:\\"\/\[\]\?\.=]+)=[^;]+;)*\s*boundary=([^;]*)(?:;\s*(?:[^\x00-\x20\(\)<>@,;:\\"\/\[\]\?\.=]+)=[^;]+)*$/i', $contentType, $boundaryMatches)) {
 				$boundary = $boundaryMatches[1];
 				$bodyArray = array();
 				foreach ($body as $key => $value) {
@@ -699,6 +723,19 @@ FORM;
 
 				if ($body) {
 					$body .= "--$boundary--\n";
+				}
+			}
+			else { //Assume application/x-www-form-urlencoded and re-encode the body
+				$body = http_build_query($body, null, '&');
+				if (!empty($highlights['body'])) {
+					foreach ($highlights['body'] as $matches) {
+						if (!empty($matches['param'])) {
+							$this->highlightMatches = $matches['match'];
+							$body = preg_replace_callback('/(&|^)(' . preg_quote(urlencode($matches['param']), '/') . ')=(.*?)(&|$)/', array(
+								$this, 'highlightParam',
+							), $body);
+						}
+					}
 				}
 			}
 		}
@@ -810,6 +847,10 @@ FORM;
 		$this->setMd5Body($this->md5EncodeKeys($body));
 	}
 	
+	public function setRawBody($rawBody) {
+		$this->rawBody = $rawBody;
+	}
+	
 	/**
 	 * @param mixed $md5Body
 	 */
@@ -907,6 +948,13 @@ FORM;
 	 */
 	public function setUri($uri) {
 		$this->uri = $uri;
+	}
+	
+	/**
+	 * @param array $metadata
+	 */
+	public function setMetadata($metadata) {
+		$this->metadata = $metadata;
 	}
 }
 

@@ -41,38 +41,8 @@ function redirect_after_logout(){
 add_image_size( 'featured-news', 1920, 800, true );
 add_image_size( 'airplane-rates', 550, 240, true );
 
-function new_subcategory_hierarchy() { 
-    $category = get_queried_object();
-
-    $parent_id = $category->category_parent;
-
-    $templates = array();
-
-    if ( $parent_id == 0 ) {
-        // Use default values from get_category_template()
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-        $templates[] = 'category.php';     
-    } else {
-        // Create replacement $templates array
-        $parent = get_category( $parent_id );
-
-        // Current first
-        $templates[] = "category-{$category->slug}.php";
-        $templates[] = "category-{$category->term_id}.php";
-
-        // Parent second
-        $templates[] = "category-{$parent->slug}.php";
-        $templates[] = "category-{$parent->term_id}.php";
-        $templates[] = 'category.php'; 
-    }
-    return locate_template( $templates );
-}
-
-add_filter( 'category_template', 'new_subcategory_hierarchy' );
 
 //add thumbnail url to wp api query for people post type
-
 add_action( 'rest_api_init', 'insert_thumbnail_url' );
 function insert_thumbnail_url() {
     register_rest_field( 'post',
@@ -106,6 +76,24 @@ function custom_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'custom_excerpt_length');
 
+remove_filter( 'map_meta_cap', 'flamingo_map_meta_cap' );
+function mycustom_flamingo_map_meta_cap( $caps, $cap, $user_id, $args ) {
+    $meta_caps = array(
+        'flamingo_edit_contacts' => 'edit_posts',
+        'flamingo_edit_contact' => 'edit_posts',
+        'flamingo_delete_contact' => 'edit_posts',
+        'flamingo_edit_inbound_messages' => 'publish_posts',
+        'flamingo_delete_inbound_message' => 'publish_posts',
+        'flamingo_delete_inbound_messages' => 'publish_posts',
+        'flamingo_spam_inbound_message' => 'publish_posts',
+        'flamingo_unspam_inbound_message' => 'publish_posts' );
 
+    $caps = array_diff( $caps, array_keys( $meta_caps ) );
 
+    if ( isset( $meta_caps[$cap] ) )
+        $caps[] = $meta_caps[$cap];
+
+    return $caps;
+}
+add_filter( 'map_meta_cap', 'mycustom_flamingo_map_meta_cap', 9, 4 );
 ?>

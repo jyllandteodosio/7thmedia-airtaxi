@@ -7,22 +7,37 @@ jQuery(function( $ ){
     }
     
     //-- Homepage - Menu Link - Smooth Scroll --//
+    var $root = $('html, body');
     
-    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a, .expanding-archives-section a)').click(function() {
-        if($('.responsive-menu-icon').css('display') == 'block') {
-            $('.genesis-nav-menu.responsive-menu').slideUp(200);
-        }
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top-40
-                }, 1200);
-                return false;
-            }
-        }
+    $('.genesis-nav-menu a').click(function() {
+        var hash = $.attr(this, 'href');
+        var href = $(this).attr('href').split('#')[1];
+        console.log(href);
+        $root.animate({
+            scrollTop: $('#'+href).offset().top-140
+        }, 1000, function () {
+            window.location.hash = href;
+        });
+        return false;
     });
+    
+    // change hash on scroll
+//    $(document).bind('scroll',function(e){
+////        console.log('scrolled');
+//        $('.news-landing-item').each(function(){
+//            if (
+//            $(this).offset().top < window.pageYOffset + 10
+//            //begins before top
+//            && $(this).offset().top + $(this).height() > window.pageYOffset + 10
+//            //but ends in visible area
+//            //+ 10 allows you to change hash before it hits the top border
+//            ) {
+////                console.log($(this).attr('id'));
+////                window.location.hash = $(this).find('.news-item-image').attr('href');
+//                window.location.hash = $(this).attr('id');
+//            }
+//        });
+//    });
     
     //News Landing Page
     //Removes images from excerpts
@@ -38,6 +53,9 @@ jQuery(function( $ ){
         
         $this = $(this);
         $postID = $(this).parents('.news-landing-item').attr('data-news-id');
+        $postURL = $(this).attr('href');
+        
+        window.history.pushState("", "Title", $postURL);
         
         //local
         var base = window.location.protocol + "//" + window.location.host + window.location.pathname.replace('news/','');
@@ -68,21 +86,16 @@ jQuery(function( $ ){
                     $this.parents('.news-landing-excerpt').fadeOut().hide();
                     
                     $('.news-item-close').click(function() {
-                        var pathname = $(this).find('a')[0].href.split('/'),
-                        l = pathname.length;
-                        pathname = pathname[l-1] || pathname[l-2];
-                        window.location.hash = "#!" + pathname;
-                        
-                        if (location.pathname == pathname) {
-                            var target = $(this.hash);
-                            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                            if (target.length) {
-                                $('html, body').animate({
-                                    scrollTop: target.offset().top-40
-                                }, 1200);
-                                return false;
-                            }
+                        var target = $(this).parents('.news-landing-item');
+                        target = target.length;
+                        if (target.length) {
+                            $('html, body').animate({
+                                scrollTop: target.offset().top-40
+                            }, 1200);
+                            return false;
                         }
+                        window.history.back();
+                        
                         $(this).parents('.news-landing-content').fadeOut().hide();
                         $(this).parents('article').find('.news-landing-excerpt').fadeIn();
                         $(this).parents('.news-landing-content').html('');

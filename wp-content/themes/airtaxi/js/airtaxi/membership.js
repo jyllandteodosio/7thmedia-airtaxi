@@ -1,22 +1,38 @@
 jQuery(function( $ ){
     
     //-- Homepage - Menu Link - Smooth Scroll --//
-    $('a[href*="#"]:not([href="#"]):not(.contact-map, .tab-links a, .expanding-archives-section a)').click(function() {
-        if($('.responsive-menu-icon').css('display') == 'block') {
-            $('.genesis-nav-menu.responsive-menu').slideUp(200);
-        }
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top-40
-                }, 1200);
-                return false;
-            }
-        }
+    var $root = $('html, body');
+    
+    $('.genesis-nav-menu a').click(function() {
+        var hash = $.attr(this, 'href');
+        var href = $(this).attr('href').split('#')[1];
+        console.log(href);
+        $root.animate({
+            scrollTop: $('#'+href).offset().top-140
+        }, 1000, function () {
+            window.location.hash = href;
+        });
+        return false;
     });
     
+    
+    //Check if URL is /membership/ then change URL to /membership/#perks
+    var lastPart = getLastPart(window.location.href);
+    
+    if(lastPart == "membership") {
+        window.location.href = window.location.href + "#perks"
+    }
+    
+    function getLastPart(url) {
+        var parts = url.split("/");
+        return (url.lastIndexOf('/') !== url.length - 1 
+           ? parts[parts.length - 1]
+           : parts[parts.length - 2]);
+    }
+    
+    console.log(lastPart);
+    
+    // Membership page tables
     var border2px = "2px solid";
     var border4px = "4px solid";
     var emerald = "#056029";

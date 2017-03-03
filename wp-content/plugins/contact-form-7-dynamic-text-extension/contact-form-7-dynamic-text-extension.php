@@ -36,7 +36,7 @@ function wpcf7dtx_init(){
 
 
 function wpcf7dtx_add_shortcode_dynamictext() {
-	wpcf7_add_shortcode(
+	wpcf7_add_form_tag(
 		array( 'dynamictext' , 'dynamictext*' , 'dynamichidden' ),
 		'wpcf7dtx_dynamictext_shortcode_handler', true );
 }

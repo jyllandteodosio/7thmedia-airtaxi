@@ -235,14 +235,6 @@ h3 .thank-you {
 	clear:left;
 }
 
-a .udp-logo {
-	border: 0px;
-	float: right; 
-	height: 150px;
-	width: 150px;
-	margin: 20px 15px 15px 35px;
-}
-
 .dismiss-dash-notice {
 	float: right;
 	position: relative;
@@ -328,20 +320,50 @@ a .udp-logo {
 		min-width: 300px;
 		vertical-align: bottom;
 	}
+	
+	#updraft_webdav_host_error {
+		color: red;
+	}
+	/* More files jstree styles */
+	#updraft_more_files_container {
+		position: relative;
+		display: none;
+		height:300px;
+		width:100%;
+		border: 1px dotted;
+		margin-bottom: 5px;
+	}
+
+	#updraft_jstree_buttons {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	#updraft_jstree_container {
+		height:100%;
+		width:100%;
+		overflow: auto;
+	}
+
+	#updraft_more_files_container button {
+		height:22px;
+		line-height: 20px;
+	}
+
+	#updraft_jstree_confirm, #updraft_jstree_cancel {
+		display: none;
+	}
+	
 	.updraftplus-morefiles-row-delete {
 		cursor: pointer;
 		color: red;
-		font-size: 100%;
-		font-weight: bold;
-		border: 0px;
-		border-radius: 3px;
-		padding: 2px;
-		margin: 0 6px;
+		font-size: 23px !important;
 	}
-	.updraftplus-morefiles-row-delete:hover {
+
+	.updraftplus-morefiles-row-edit {
 		cursor: pointer;
-		color: white;
-		background: red;
+		font-size: 24px !important;
 	}
 
 	#updraft-wrap .form-table th {
@@ -436,7 +458,29 @@ a .udp-logo {
 		border: 1px solid black;
 		border-collapse: collapse;
 		font-size: 120%;
-		background-color: white;
+		background-color: white; 
+		text-align: center;
+	}
+	.updraft_feat_table p {
+		padding: 0px 10px;
+		margin: 5px 0px;
+		font-size: 16px;
+	}
+	.updraft_feat_table h4 {
+		margin: 5px 0px;
+	}
+	.updraft_feat_table .dashicons {
+		width: 25px;
+		height: 25px;
+		font-size: 25px;
+		line-height: 1;
+	}
+	.updraft_feat_table .dashicons-yes, .updraft_feat_table .updraft-yes {
+		color:green;
+	}
+
+	.updraft_feat_table .dashicons-no-alt, .updraft_feat_table .updraft-no {
+		color:red;
 	}
 	.updraft_tick_cell{
 		text-align: center;
@@ -485,6 +529,19 @@ a .udp-logo {
 		clear:left;
 	}
 
+	.udp-premium-image {
+		display: none;
+		
+	}
+
+	@media screen and (min-width: 720px) {
+		.udp-premium-image {
+			display: block;
+			float: left;
+			padding-right: 5px;
+		}
+	}
+
 /* End stuff already in admin.php */
 	
 #plupload-upload-ui2 { 
@@ -497,13 +554,6 @@ a .udp-logo {
 
 .backup-restored span { 
 	font-size: 120% 
-}
-
-.word-shell-advert {
-	max-width: 800px; 
-	font-size: 140%; 
-	line-height: 140%; 
-	padding: 14px;
 }
 
 .memory-limit { 
@@ -596,10 +646,15 @@ a .udp-logo {
 	font-size: 120%;
 }
 
-input #backupnow_includefiles_moreoptions {
+#backupnow_includefiles_moreoptions, #backupnow_database_moreoptions {
 	margin: 4px 16px 6px; 
 	border: 1px dotted; 
 	padding: 6px 10px;
+}
+
+#backupnow_database_moreoptions {
+	max-height: 250px;
+	overflow: auto;
 }
 
 .form-table #updraft_activejobsrow .minimum-height{
@@ -711,6 +766,15 @@ input #backupnow_includefiles_moreoptions {
 	padding: 4px;
 }
 
+#updraft-authenticate-modal {
+	text-align: center;
+	font-size: 16px !important;
+}
+
+#updraft-authenticate-modal p {
+	font-size: 16px;
+}
+
 #updraft_delete_form p {
 	margin-top: 3px; 
 	padding-top: 0;
@@ -753,17 +817,6 @@ input #backupnow_includefiles_moreoptions {
 .uncompressed-data {
 	clear: left;
 	max-width: 600px;
-}
-
-.immediate-run {
-	clear: left; 
-	padding-top: 20px;
-	max-width: 600px;
-	margin:0;
-}
-
-.debug-table {
-	border: none;
 }
 
 .delete-old-directories {
@@ -833,16 +886,6 @@ input #backupnow_includefiles_moreoptions {
 .directory-permissions {
 	font-size: 110%;
 	font-weight: bold;
-}
-
-.wordshell-advert {
-	margin: 10px 0; 
-	padding: 10px; 
-	font-size: 140%; 
-	background-color: lightYellow; 
-	border-color: #E6DB55; 
-	border: 1px solid; 
-	border-radius: 4px;
 }
 
 .double-warning {
@@ -1472,3 +1515,82 @@ a.btn-get-started {
 	}*/
 }
 /* End Automation Backup Advert by B */
+/* New Responsive Pretty Advanced Settings */
+.expertmode .advanced_settings_container {
+	height: auto;
+	overflow: hidden;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu {
+	float: none;
+	border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.expertmode .advanced_settings_container .advanced_settings_content {
+	padding-top: 5px;
+	float: none;
+	width:auto;
+	overflow: auto;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_content h3 {
+	margin-top: 5px !important;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_content .advanced_tools {
+	display: none;
+}
+.expertmode .advanced_settings_container .advanced_settings_content .site_info {
+	display: block;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button {
+	display: inline-block;
+	cursor: pointer;
+	padding: 5px;
+	color: #000000;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_text {
+	font-size: 16px;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button:hover {
+	background-color: #eaeaea;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu .active {
+	background-color: #3498db;
+	color:#ffffff;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_menu .active:hover {
+	background-color: #72c5fd;
+	color: #ffffff;
+}
+
+.expertmode .advanced_settings_container .advanced_settings_content input#import_settings {
+	height:auto !important;
+}
+
+div#updraft-wrap a {
+	cursor: pointer !important;
+}
+
+@media screen and (min-width: 670px) {
+	.expertmode .advanced_settings_container .advanced_settings_menu {
+		float: left;
+		width: 215px;
+		border-right: 1px solid rgb(204, 204, 204);
+		border-bottom: none;
+	}
+
+	.expertmode .advanced_settings_container .advanced_settings_content {
+		padding-left: 10px;
+		padding-top: 0px;
+	}
+
+	.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button {
+		display: block;
+	}
+}
