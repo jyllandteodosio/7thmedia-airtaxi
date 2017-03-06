@@ -64,7 +64,11 @@ $term_value = get_term_by('slug', 'rates-'.$page_title, 'location-rates' );
 
                         foreach ( $posts_array as $post ) :
                         
-                        if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                        $location_rates_value = get_field('location_rates');
+                        
+                        if($location_rates_value != ''):
+                        
+                        if( in_array( $term_value->term_id ,$location_rates_value ) ):
                         
                         ?>
                         <div class="rates-box">
@@ -98,12 +102,13 @@ $term_value = get_term_by('slug', 'rates-'.$page_title, 'location-rates' );
                                </tr>
                             <?php
                                 endwhile;
-                            endif;
+                            endif;//if( have_rows('rates') ):
                             ?>
                            </table>
                         </div>
                         <?php
-                        endif;
+                        endif;//if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                        endif;//if($location_rates_value != ''):
                         
                         endforeach;
                         ?>
