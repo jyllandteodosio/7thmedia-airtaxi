@@ -45,6 +45,8 @@ function parallax_enqueue_scripts_styles() {
     wp_enqueue_style( 'fontawesome', get_bloginfo( 'stylesheet_directory' ) . '/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
     
 	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script|Lato', array(), CHILD_THEME_VERSION );
+    
+    wp_dequeue_style( 'expanding-archives' );
 
 }
 
@@ -327,3 +329,4 @@ function custom_header_attribute() {
     //* Echo (filtered)
 	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
 }
+

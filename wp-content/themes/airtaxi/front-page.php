@@ -28,6 +28,8 @@ function parallax_home_genesis_meta() {
             
             wp_enqueue_script( 'front-page', get_bloginfo( 'stylesheet_directory' ) . '/js/front-page.min.js#asyncload', array( 'jquery' ), '1.0.0' );
             
+            wp_enqueue_script( 'front-page-2', get_bloginfo( 'stylesheet_directory' ) . '/js/front-page-2.min.js#deferload', array( 'jquery' ), '1.0.0' );
+            
             wp_enqueue_script( 'jvectormap', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-2.0.3.min.js#deferload', array( 'jquery' ), '2.0.3' );
     
             wp_enqueue_script( 'jvectormap-ph', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-ph-custom.js#deferload', array( 'jquery' ), '1.0.0');
