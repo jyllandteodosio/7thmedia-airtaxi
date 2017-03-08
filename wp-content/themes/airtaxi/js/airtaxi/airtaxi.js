@@ -4,11 +4,11 @@ jQuery(function( $ ){
         var redirects = [
             ['#home-section-0', '#home'],
             ['#home-section-1', '#about-us'],
-//            ['#home-section-2', '#locations'],
-//            ['#home-section-3', '#aircraft-fleet'],
-//            ['#home-section-4', '#membership'],
-//            ['#home-section-5', '#helicopter-rates'],
-//            ['#home-section-6', '#airplane-rates'],
+            ['#home-section-2', '#base-locations'],
+            ['#home-section-3', '#aircraft-fleet'],
+            ['#home-section-4', '#membership'],
+            ['#home-section-5', '#helicopter-rates-philippines'],
+            ['#home-section-6', '#private-charter-plane-rates-philippines'],
             ['#home-section-7', '#contact-us'],
         ]
 
