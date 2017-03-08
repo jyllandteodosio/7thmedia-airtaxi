@@ -89,12 +89,12 @@ function parallax_homepage_widgets() {
 	) );
 
 	genesis_widget_area( 'home-section-1', array(
-		'before' => '<div id="about" class="home-even home-section-1 widget-area section fp-auto-height"><div class="wrap">',
+		'before' => '<div id="about-us" class="home-even home-section-1 widget-area section fp-auto-height"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
 
 	genesis_widget_area( 'home-section-2', array(
-		'before' => '<div id="locations" class="home-odd home-section-2 widget-area section fp-auto-height"><div class="wrap">',
+		'before' => '<div id="base-locations" class="home-odd home-section-2 widget-area section fp-auto-height"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
 
@@ -109,12 +109,12 @@ function parallax_homepage_widgets() {
 	) );
     
     genesis_widget_area( 'home-section-5', array(
-		'before' => '<div id="helicopter-rates" class="home-even home-section-5 widget-area section fp-auto-height"><div class="wrap">',
+		'before' => '<div id="helicopter-rates-philippines" class="home-even home-section-5 widget-area section fp-auto-height"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
     
     genesis_widget_area( 'home-section-6', array(
-		'before' => '<div id="airplane-rates" class="home-odd home-section-6 widget-area section fp-auto-height"><div class="wrap">',
+		'before' => '<div id="private-charter-plane-rates-philippines" class="home-odd home-section-6 widget-area section fp-auto-height"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
     

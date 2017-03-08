@@ -39,8 +39,8 @@ jQuery(function( $ ){
             var markerDavao = baseURL + "/wp-content/uploads/2016/09/Davao.png";
 
             if( screenWidth <= 375 ) {
-                $('#base-locations').css('height', '420px');
-                $('#base-locations').css('width', '420px');
+                $('#locations-map').css('height', '420px');
+                $('#locations-map').css('width', '420px');
 
                 markerManila = baseURL + "/wp-content/uploads/2016/09/Manila_2.png";
                 markerClark = baseURL + "/wp-content/uploads/2016/09/Clark_2.png";
@@ -54,7 +54,7 @@ jQuery(function( $ ){
 
             margin = (screenWidth <= 375 ? 5 : 0);
 
-            $('#base-locations').vectorMap({
+            $('#locations-map').vectorMap({
                 map: 'ph_mill_en',
                 backgroundColor: '#ffffff',
                 hoverOpacity: 1,
@@ -200,8 +200,8 @@ jQuery(function( $ ){
                 }
             });
 
-            $('#base-locations .jvectormap-zoomin').hide();
-            $('#base-locations .jvectormap-zoomout').hide();
+            $('#locations-map .jvectormap-zoomin').hide();
+            $('#locations-map .jvectormap-zoomout').hide();
 
         });
     }
