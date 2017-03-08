@@ -1,5 +1,11 @@
 <?php
 
+add_action( 'wp_enqueue_scripts', 'archive_enqueue_scripts_styles' );
+function archive_enqueue_scripts_styles() {
+    
+    wp_enqueue_style( 'expanding-archives' );
+}
+
 get_header('custom');
 
 ?>
