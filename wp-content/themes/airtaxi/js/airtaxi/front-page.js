@@ -23,59 +23,15 @@ jQuery(function( $ ){
         return false;
     });
     
-    // change hash on scroll
-    $scrolledSections = new Array();
-    
-    $(document).on('scroll',function(e){
-        
-        console.log('header top:' + $('.site-header').offset().top);
-
-        $header = $('.site-header').offset().top + $('.site-header').outerHeight(true);
-
-        console.log('header bottom:' + $header);
-        
-        $('.sections .section').each(function(){
-            
-            if(isScrolledIntoView($(this))) {
-                console.log('section top:' + $(this).offset().top);
-                //if($(this).offset().top ) {
-                    if (
-                    $(this).offset().top - 10 <= $header
-                    //$(this).offset().top < window.pageYOffset
-                    //begins before top
-                    //&& $(this).offset().top + $(this).height() > window.pageYOffset
-                    //but ends in visible area
-                    //+ 10 allows you to change hash before it hits the top border
-                    ) {
-                        if( jQuery.inArray($(this).attr('id'), $scrolledSections) < 0) {
-                            $scrolledSections.push($(this).attr('id'));
-                        }
-                        console.log('scrolling on ' + $(this).attr('id'));
-    //                    window.location.hash = $(this).attr('id');
-                    }
-                //}
-            }
-        });
-    });
-    
-    function isScrolledIntoView(elem) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
-
-        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-    }
-    
-    
     if(screenWidth > 1024) {
         
         $('.sections').fullpage({
-            verticalCentered: false,
-            scrollBar: true,
+            anchors:['', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'social-media'],
             fitToSection: false,
-            normalScrollElements: '#airplane-rates.wrap',
+            scrollBar: true,
+            normalScrollElements: '.base-locations-container, .widget.custom_contact_us, .fleet-gallery, .widget.contact_details_banner',
+            verticalCentered: false,
+            fixedElements: '#footer',
         });
     }
     
