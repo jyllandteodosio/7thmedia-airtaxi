@@ -29,7 +29,7 @@ jQuery(function( $ ){
             anchors:['', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'social-media'],
             fitToSection: false,
             scrollBar: true,
-            normalScrollElements: '.base-locations-container, .widget.custom_contact_us, .fleet-gallery, .widget.contact_details_banner',
+            normalScrollElements: '.base-locations-wrap, .fleet-gallery, .contact_details_banner, .contact-us-wrap',
             verticalCentered: false,
             fixedElements: '#footer',
         });

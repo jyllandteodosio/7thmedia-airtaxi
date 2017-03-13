@@ -94,12 +94,12 @@ function parallax_homepage_widgets() {
 	) );
 
 	genesis_widget_area( 'home-section-2', array(
-		'before' => '<div class="home-odd home-section-2 widget-area section fp-auto-height"><div class="wrap">',
-		'after'  => '</div></div>',
+		'before' => '<div class="home-odd home-section-2 widget-area section fp-auto-height"><div class="base-locations-wrap"><div class="wrap">',
+		'after'  => '</div></div></div>',
 	) );
 
 	genesis_widget_area( 'home-section-3', array(
-		'before' => '<div class="home-even home-section-3 widget-area section fp-auto-height"><div class="wrap"><div class="fleet-gallery">',
+		'before' => '<div class="home-even home-section-3 widget-area section fp-auto-height"><div class="fleet-gallery"><div class="wrap">',
 		'after'  => '</div></div></div>',
 	) );
 
@@ -119,8 +119,8 @@ function parallax_homepage_widgets() {
 	) );
     
     genesis_widget_area( 'home-section-7', array(
-		'before' => '<div class="home-even home-section-7 widget-area section fp-auto-height"><div class="wrap">',
-		'after'  => '</div></div>',
+		'before' => '<div class="home-even home-section-7 widget-area section fp-auto-height"><div class="contact-us-wrap"><div class="wrap">',
+		'after'  => '</div></div></div>',
 	) );
     
     genesis_widget_area( 'home-section-8', array(
