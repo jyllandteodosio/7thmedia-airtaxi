@@ -26,7 +26,7 @@ jQuery(function( $ ){
     if(screenWidth > 1024) {
         
         $('.sections').fullpage({
-            anchors:['', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'social-media'],
+            anchors:['', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'copyright'],
             fitToSection: false,
             scrollBar: true,
             normalScrollElements: '.base-locations-wrap, .fleet-gallery, .contact_details_banner, .contact-us-wrap',
