@@ -26,7 +26,7 @@ jQuery(function( $ ){
     if(screenWidth > 1024) {
         
         $('.sections').fullpage({
-            anchors:['', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'copyright'],
+            anchors:['home', 'about-us', 'base-locations', 'aircraft-fleet', 'membership', 'helicopter-rates-philippines', 'private-charter-plane-rates-philippines', 'contact-us', 'copyright'],
             fitToSection: false,
             scrollBar: true,
             normalScrollElements: '.base-locations-wrap, .fleet-gallery, .contact_details_banner, .contact-us-wrap',
@@ -34,6 +34,13 @@ jQuery(function( $ ){
             fixedElements: '#footer',
         });
     }
+    
+    $(document).scroll(function () {
+        console.log(window.location.hash);
+        if(window.location.hash == '#home') {
+            window.history.pushState('', '', window.location.pathname);
+        }
+    });
     
     
     // Change site title tag from h1 to p
