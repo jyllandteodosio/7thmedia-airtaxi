@@ -14,7 +14,7 @@ jQuery(function( $ ){
     $('.genesis-nav-menu a').click(function() {
         var hash = $.attr(this, 'href');
         var href = $(this).attr('href').split('#')[1];
-        console.log(href);
+//        console.log(href);
         $root.animate({
             scrollTop: $('#'+href).offset().top
         }, 1000, function () {
@@ -36,7 +36,7 @@ jQuery(function( $ ){
     }
     
     $(document).scroll(function () {
-        console.log(window.location.hash);
+//        console.log(window.location.hash);
         if(window.location.hash == '#home') {
             window.history.pushState('', '', window.location.pathname);
         }

@@ -70,7 +70,7 @@ foreach($cats as $c) :
         $news_row = '';
     }
 ?>    
-    <div id="news-<?php echo $post->ID; ?>" class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
+    <div class="news-landing-item <?php echo $news_row; ?>" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>

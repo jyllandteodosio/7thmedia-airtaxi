@@ -1,13 +1,4 @@
 <?php
-/**
- * Template Name: News Page
- *
- * @author 
- * @package 
- * @subpackage 
- */
-
-
 add_action( 'wp_enqueue_scripts', 'category_news_enqueue_scripts_styles' );
 function category_news_enqueue_scripts_styles() {
     
@@ -30,19 +21,19 @@ foreach($cats as $c) {
 ?>
 <div class="news-page-title">
    <div class="news-header-container">
-       <h1><?php echo $cat->name; ?></h1>
+       <h1>News Article</h1>
        <?php include('searchform-dynamic.php'); ?>
    </div>
 </div>
 
 <div class="news-landing-container">
 <?php
-$cat_args = 'news+'.$cat->slug;
+$cat_args = $cat->slug;
 
 $args = array(
     'post_type'     => 'post',
     'post_status'   => 'published',
-    'category_name' => $cat_args,
+    'category_name' => 'news-article',
     'posts_per_page'=> '6',
     'paged'         => '1',
     'orderby'       => 'date',
@@ -65,7 +56,7 @@ if ( $news_query->have_posts() ) : while ( $news_query->have_posts() ) : $news_q
     }
     
 ?>
-    <div id="news-<?php echo $post->ID; ?>" class="news-landing-item" data-news-id="<?php echo $post->ID; ?>">
+    <div class="news-landing-item" data-news-id="<?php echo $post->ID; ?>">
         <article>
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>

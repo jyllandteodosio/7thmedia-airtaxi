@@ -81,7 +81,7 @@ jQuery(function( $ ){
                 } else {
                     //console.log('data found');
                     $this.parents('article').find('.news-landing-content').hide();
-                    $this.parents('article').find('.news-landing-content').html(data.content.rendered + '<div class="news-item-close"><a href="#news-' + $postID + '" class="news-close-btn, read-more">Close Full Story</a></div>');
+                    $this.parents('article').find('.news-landing-content').html(data.content.rendered + '<div class="news-item-close"><a href="' + $postURL + '" class="news-close-btn, read-more">Close Full Story</a></div>');
                     $this.parents('article').find('.news-landing-content').fadeIn();
                     $this.parents('.news-landing-excerpt').fadeOut().hide();
                     
