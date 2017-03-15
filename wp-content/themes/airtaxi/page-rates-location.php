@@ -28,13 +28,16 @@ $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 $disclaimer_1 = get_category_by_slug('drop-off-rates')->description;
 $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
 
-$term_value = get_term_by('slug', 'rates-'.$page_title, 'location-rates' );
+$term_value = get_field('location_rates_category');
 
 ?>
 
 <div class="rates-panel">
     <div class="rates-panel-title">
         <h1><?php the_title(); ?></h1>
+        <div class="wrap">
+            <?php the_content(); ?>
+        </div>
     </div>
     <div class="rates-panel-tabs">
         <div class="tabs" style="background-image: url('<?php echo $feat_image;?>')">
