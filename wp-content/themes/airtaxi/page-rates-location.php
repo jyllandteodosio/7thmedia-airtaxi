@@ -21,13 +21,10 @@ function rates_location_enqueue_scripts_styles() {
 }
 
 get_header('custom');
-$page_title = strtolower(get_the_title());
 
 $feat_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-
 $disclaimer_1 = get_category_by_slug('drop-off-rates')->description;
 $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
-
 $term_value = get_field('location_rates_category');
 
 ?>

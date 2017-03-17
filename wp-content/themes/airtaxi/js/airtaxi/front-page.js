@@ -38,7 +38,7 @@ jQuery(function( $ ){
     $(document).scroll(function () {
 //        console.log(window.location.hash);
         if(window.location.hash == '#home') {
-            window.history.pushState('', '', window.location.pathname);
+            window.history.pushState('/', '', window.location.pathname);
         }
     });
     
