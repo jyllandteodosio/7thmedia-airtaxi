@@ -27,8 +27,6 @@ $disclaimer_1 = get_category_by_slug('drop-off-rates')->description;
 $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
 $term_value = get_field('location_rates_category');
 
-print_r(get_field(('location_rates')));
-
 ?>
 
 <div class="rates-panel">

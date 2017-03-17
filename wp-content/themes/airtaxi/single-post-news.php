@@ -58,12 +58,12 @@ get_header('custom');
         $news_cat = get_term_by($field='slug', $value='news', $taxonomy='category');
         
         foreach($cats as $c) {
-            if($c->slug != 'news' && $c->parent == $news_cat->term_id) {
+            if($c->slug != 'news') {
                 $cat = $c;
             }
         }
         
-        $cat_args = 'news+'.$cat->slug;
+        $cat_args = $cat->slug;
 
         //get next set of posts for related page
         $related_args = array(
