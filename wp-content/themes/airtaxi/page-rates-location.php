@@ -27,6 +27,8 @@ $disclaimer_1 = get_category_by_slug('drop-off-rates')->description;
 $disclaimer_2 = get_category_by_slug('aerial-tours')->description;
 $term_value = get_field('location_rates_category');
 
+print_r(get_field(('location_rates')));
+
 ?>
 
 <div class="rates-panel">
@@ -136,7 +138,9 @@ $term_value = get_field('location_rates_category');
                         $posts_array = get_posts( $args ); 
 
                         foreach ( $posts_array as $post ) :
-                        
+                       
+                        $location_rates_value = get_field('location_rates');
+                        if($location_rates_value != ''):
                         if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
                         
                         ?>
@@ -184,7 +188,7 @@ $term_value = get_field('location_rates_category');
                         </div>
                         <?php
                        
-                        endif;
+                        endif;endif;
                        
                         endforeach;
                         ?>
@@ -207,13 +211,15 @@ $term_value = get_field('location_rates_category');
                             'order'            => 'ASC',
                             'post_type'        => 'rates',
                             'post_status'      => 'publish',
-                            'suppress_filters' => true 
+                            'suppress_filters' => true,
                         );
                         $posts_array = get_posts( $args ); 
-
+                       
                         foreach ( $posts_array as $post ) :
-                        
-                        if( in_array( $term_value->term_id ,get_field('location_rates') ) ):
+                       
+                        $location_rates_value = get_field('location_rates');
+                        if($location_rates_value != ''):
+                        if( in_array( $term_value->term_id, get_field('location_rates') ) ):
                        
                         ?>
                         <div class="destinations-box">
@@ -299,7 +305,7 @@ $term_value = get_field('location_rates_category');
                         </div>
                         <?php
                        
-                        endif;
+                        endif;endif;
                        
                         endforeach;
                         ?>
