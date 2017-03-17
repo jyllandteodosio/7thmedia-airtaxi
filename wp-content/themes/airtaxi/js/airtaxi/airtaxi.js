@@ -2,8 +2,9 @@ jQuery(function( $ ){
     
     $(document).ready(function() {
         var redirects = [
-            ['#home', ''],
-            ['#home-section-0', ''],
+            ['', '/'],
+            ['#home', '/'],
+            ['#home-section-0', '/'],
             ['#home-section-1', '#about-us'],
             ['#home-section-2', '#base-locations'],
             ['#home-section-3', '#aircraft-fleet'],
