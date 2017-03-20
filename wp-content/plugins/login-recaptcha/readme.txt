@@ -2,8 +2,8 @@
 Contributors: robertpeake, robert.peake
 Tags: google,nocaptcha,recaptcha,security,login,bots
 Requires at least: 3.0.0
-Tested up to: 4.7
-Stable tag: 1.1.9
+Tested up to: 4.7.1
+Stable tag: 1.1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,10 @@ The No Captcha is a very simple, Google-supported test to quickly deny access to
 
 I've gone to great lengths to try to make sure this plugin is easy to use and install, that it is compatible with different Wordpress configurations, supports multiple languages, and that you won't accidentally lock yourself out of the admin by using it. I use it myself on my own sites as well. So far, it just works.
 
+= Can I help? =
+
+Yes, please. Submit pull requests on <a href="https://github.com/cyberscribe/login-recaptcha">github</a>.
+
 = I am having trouble with the reCAPTCHA in Internet Explorer =
 
 Please see <a href="https://support.google.com/recaptcha/answer/6223838?hl=en">this page</a> for help from Google.
@@ -51,6 +55,10 @@ This plugin is not affiliated with or endorsed by Google in any way. Google is a
 2. Login screen once configured
 
 == Changelog ==
+
+= 1.1.10 =
+
+ * Minor bugfix for error reporting
 
 = 1.1.7 =
 

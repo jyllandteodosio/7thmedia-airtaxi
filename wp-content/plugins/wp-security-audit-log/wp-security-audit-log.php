@@ -4,7 +4,7 @@ Plugin Name: WP Security Audit Log
 Plugin URI: http://www.wpsecurityauditlog.com/
 Description: Identify WordPress security issues before they become a problem. Keep track of everything happening on your WordPress including WordPress users activity. Similar to Windows Event Log and Linux Syslog, WP Security Audit Log generates a security alert for everything that happens on your WordPress blogs and websites. Use the Audit Log Viewer included in the plugin to see all the security alerts.
 Author: WP White Security
-Version: 2.6
+Version: 2.6.1
 Text Domain: wp-security-audit-log
 Author URI: http://www.wpsecurityauditlog.com/
 License: GPL2
@@ -125,6 +125,18 @@ class WpSecurityAuditLog {
         require_once('classes/Models/Query.php');
         require_once('classes/Models/OccurrenceQuery.php');
         require_once('classes/Models/Option.php');
+
+        // Use WP_Session (default)
+        if (!defined('WP_SESSION_COOKIE')) {
+            define('WP_SESSION_COOKIE', 'wsal_wp_session');
+        }
+        if (!class_exists('Recursive_ArrayAccess')) {
+            require_once('classes/Lib/class-recursive-arrayaccess.php');
+        }
+        if (!class_exists('WP_Session')) {
+            require_once('classes/Lib/class-wp-session.php');
+            require_once('classes/Lib/wp-session.php');
+        }
         
         // load autoloader and register base paths
         require_once('classes/Autoloader.php');
@@ -684,6 +696,7 @@ class WpSecurityAuditLog {
         $this->options = new WSAL_Models_Option();
         return $this->options->SetOptionValue($option, $value);
     }
+
     // </editor-fold>
 }
 

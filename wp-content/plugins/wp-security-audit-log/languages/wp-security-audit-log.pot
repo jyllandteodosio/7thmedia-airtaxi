@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WP Security Audit Log package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Security Audit Log 2.6\n"
+"Project-Id-Version: WP Security Audit Log 2.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-security-audit-"
 "log\n"
-"POT-Creation-Date: 2017-02-08 07:06:17+00:00\n"
+"POT-Creation-Date: 2017-03-09 06:08:43+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,97 +13,97 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: classes/AuditLogListView.php:40
+#: classes/AuditLogListView.php:36
 msgid "No events so far."
 msgstr ""
 
-#: classes/AuditLogListView.php:46
+#: classes/AuditLogListView.php:42
 msgid "Other"
 msgstr ""
 
-#: classes/AuditLogListView.php:53
+#: classes/AuditLogListView.php:49
 msgid "Show "
 msgstr ""
 
-#: classes/AuditLogListView.php:63
+#: classes/AuditLogListView.php:59
 msgid " Items"
 msgstr ""
 
-#: classes/AuditLogListView.php:76 classes/Views/AuditLog.php:103
+#: classes/AuditLogListView.php:72 classes/Views/AuditLog.php:99
 msgid "All Sites"
 msgstr ""
 
-#: classes/AuditLogListView.php:96
+#: classes/AuditLogListView.php:93
 msgid "Live Database"
 msgstr ""
 
-#: classes/AuditLogListView.php:97
+#: classes/AuditLogListView.php:94
 msgid "Archive Database"
 msgstr ""
 
-#: classes/AuditLogListView.php:138 classes/AuditLogListView.php:155
+#: classes/AuditLogListView.php:135 classes/AuditLogListView.php:152
 #: classes/Views/ToggleAlerts.php:75
 msgid "Code"
 msgstr ""
 
-#: classes/AuditLogListView.php:139 classes/AuditLogListView.php:158
+#: classes/AuditLogListView.php:136 classes/AuditLogListView.php:155
 #: classes/Views/ToggleAlerts.php:76
 msgid "Type"
 msgstr ""
 
-#: classes/AuditLogListView.php:140 classes/AuditLogListView.php:161
+#: classes/AuditLogListView.php:137 classes/AuditLogListView.php:158
 msgid "Date"
 msgstr ""
 
-#: classes/AuditLogListView.php:141 classes/AuditLogListView.php:164
+#: classes/AuditLogListView.php:138 classes/AuditLogListView.php:161
 msgid "Username"
 msgstr ""
 
-#: classes/AuditLogListView.php:142 classes/AuditLogListView.php:167
+#: classes/AuditLogListView.php:139 classes/AuditLogListView.php:164
 msgid "Source IP"
 msgstr ""
 
-#: classes/AuditLogListView.php:145 classes/AuditLogListView.php:170
+#: classes/AuditLogListView.php:142 classes/AuditLogListView.php:167
 msgid "Site"
 msgstr ""
 
-#: classes/AuditLogListView.php:147 classes/AuditLogListView.php:173
+#: classes/AuditLogListView.php:144 classes/AuditLogListView.php:170
 msgid "Message"
 msgstr ""
 
-#: classes/AuditLogListView.php:211
+#: classes/AuditLogListView.php:208
 msgid "Click to toggle."
 msgstr ""
 
-#: classes/AuditLogListView.php:214
+#: classes/AuditLogListView.php:211
 msgid "Disable this type of alerts."
 msgstr ""
 
-#: classes/AuditLogListView.php:219
+#: classes/AuditLogListView.php:216
 msgid "Unknown error code."
 msgstr ""
 
-#: classes/AuditLogListView.php:250
+#: classes/AuditLogListView.php:247
 msgid "Unknown"
 msgstr ""
 
-#: classes/AuditLogListView.php:254
+#: classes/AuditLogListView.php:251
 msgid "Plugin"
 msgstr ""
 
-#: classes/AuditLogListView.php:258
+#: classes/AuditLogListView.php:255
 msgid "Plugins"
 msgstr ""
 
-#: classes/AuditLogListView.php:262
+#: classes/AuditLogListView.php:259
 msgid "Website Visitor"
 msgstr ""
 
-#: classes/AuditLogListView.php:266
+#: classes/AuditLogListView.php:263
 msgid "System"
 msgstr ""
 
-#: classes/AuditLogListView.php:294
+#: classes/AuditLogListView.php:291
 msgid "Alert Data Inspector"
 msgstr ""
 
@@ -240,33 +240,33 @@ msgstr ""
 msgid "Professional WordPress security services provided by WP White Security"
 msgstr ""
 
-#: classes/Views/AuditLog.php:39
+#: classes/Views/AuditLog.php:35
 msgid "Upgrade to Premium"
 msgstr ""
 
-#: classes/Views/AuditLog.php:40
+#: classes/Views/AuditLog.php:36
 msgid ""
 "and add Email Alerts, Reports, Search and Users Login and Session Management."
 msgstr ""
 
-#: classes/Views/AuditLog.php:41
+#: classes/Views/AuditLog.php:37
 msgid "Upgrade Now!"
 msgstr ""
 
-#: classes/Views/AuditLog.php:55 classes/Views/AuditLog.php:65
+#: classes/Views/AuditLog.php:51 classes/Views/AuditLog.php:61
 msgid "Audit Log Viewer"
 msgstr ""
 
-#: classes/Views/AuditLog.php:81 classes/Views/Licensing.php:34
+#: classes/Views/AuditLog.php:77 classes/Views/Licensing.php:34
 #: classes/Views/Settings.php:111 classes/Views/ToggleAlerts.php:30
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: classes/Views/AuditLog.php:102
+#: classes/Views/AuditLog.php:98
 msgid "Please enter the number of alerts you would like to see on one page:"
 msgstr ""
 
-#: classes/Views/AuditLog.php:104
+#: classes/Views/AuditLog.php:100
 msgid "No Results"
 msgstr ""
 
@@ -797,7 +797,7 @@ msgstr ""
 
 #: classes/Views/Settings.php:476
 msgid ""
-"Select which timestamp should the alerts have in the Audit Log viewer. Note "
+"Select which timestamp the alerts should have in the Audit Log viewer. Note "
 "that the WordPress' timezone might be different from that of the server."
 msgstr ""
 
@@ -2932,7 +2932,7 @@ msgstr ""
 msgid "%Status% guest checkout in WooCommerce."
 msgstr ""
 
-#: wp-security-audit-log.php:281
+#: wp-security-audit-log.php:293
 msgid ""
 "You are using a version of PHP that is older than %s, which is no longer "
 "supported.<br/>Contact us on <a href=\"mailto:plugins@wpwhitesecurity.com"
@@ -2944,9 +2944,9 @@ msgstr ""
 msgid "WP Security Audit Log"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (WP Security Audit Log 2.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (WP Security Audit Log 2.6.1)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  plugin.pot (WP Security Audit Log 2.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (WP Security Audit Log 2.6.1)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wpsecurityauditlog.com/"
 msgstr ""
