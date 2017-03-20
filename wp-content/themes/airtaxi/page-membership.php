@@ -11,6 +11,8 @@ add_action( 'wp_enqueue_scripts', 'membership_enqueue_scripts_styles' );
 function membership_enqueue_scripts_styles() {
     
     wp_enqueue_script( 'membership', get_bloginfo( 'stylesheet_directory' ) . '/js/membership.min.js', array( 'jquery' ), '1.0.0' );
+    
+    wp_enqueue_style( 'wpsm-comptable-styles' );
 }
 
 get_header('custom');
