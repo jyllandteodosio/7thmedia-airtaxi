@@ -46,6 +46,11 @@ function parallax_home_genesis_meta() {
     
             wp_enqueue_style( 'fullpage-css', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/jquery.fullPage.css', array(), CHILD_THEME_VERSION );
             
+            wp_dequeue_style( 'wpsm-comptable-styles' );
+            wp_dequeue_style( 'contact-form-7' );
+            wp_dequeue_style( 'dashicons' );
+            wp_dequeue_style( 'accordion_archives' );
+            
 		}
 
 		//* Add parallax-home body class

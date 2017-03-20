@@ -330,3 +330,31 @@ function custom_header_attribute() {
 	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
 }
 
+//add_action( 'wp_print_scripts', 'wsds_detect_enqueued_scripts' );
+//function wsds_detect_enqueued_scripts() {
+//	global $wp_styles;
+//	foreach( $wp_styles->queue as $handle ) :
+//		echo $handle . ' | ';
+//	endforeach;
+//}
+
+add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+function wsds_defer_scripts( $tag, $handle, $src ) {
+
+	// The handles of the enqueued scripts we want to defer
+	$defer_scripts = array( 
+		'jquery',
+		'jquery-migrate',
+		'jquery-cycle',
+		'jquery-metadata',
+		'jquery-touchwipe',
+		'fullpage',
+	);
+
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+    }
+    
+    return $tag;
+} 
+
