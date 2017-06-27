@@ -6012,6 +6012,9 @@ HOMEPAGE NEW CSS
     .home-section {
         padding: 60px 40px;
         text-align: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         
         .flex-container {
             display: flex;
@@ -6258,6 +6261,7 @@ HOMEPAGE NEW CSS
         
         .flex-container {
             max-width: 90%;
+            margin-bottom: 0;
         }
         
         .flex-box {
@@ -6288,6 +6292,42 @@ HOMEPAGE NEW CSS
             height: 500px;
             position: relative;
             overflow: hidden;
+        }
+        
+        .map-title {
+            float: right;
+            text-align: center;
+            margin-top: -40px;
+            
+            h3 {
+                color: #4ec5cd;
+                font-family: 'Lato', sans-serif;
+                font-weight: 400;
+                text-transform: uppercase;
+                font-size: 18px;
+                margin: 0;
+            }
+            
+            .flex-content {
+                font-size: 16px;
+                font-weight: 300;
+            }
+        }
+        
+        .client-logos {
+            width: 530px;
+            height: 130px;
+            max-width: 100%;
+            
+            .logo {
+                text-align: center;
+                padding: 4px;
+                
+                img {
+                    height: 90px;
+                    width: auto;
+                }
+            }
         }
     }
 }

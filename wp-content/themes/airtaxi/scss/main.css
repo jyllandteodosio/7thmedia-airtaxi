@@ -4896,7 +4896,10 @@ HOMEPAGE NEW CSS
             transform: translateY(-50%); }
 .page-template-front-page-2 .home-section {
   padding: 60px 40px;
-  text-align: center; }
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
   .page-template-front-page-2 .home-section .flex-container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -5065,7 +5068,8 @@ HOMEPAGE NEW CSS
   color: #fff;
   font-size: 48px; }
 .page-template-front-page-2 .home-about .flex-container {
-  max-width: 90%; }
+  max-width: 90%;
+  margin-bottom: 0; }
 .page-template-front-page-2 .home-about .flex-box {
   -webkit-flex-basis: 50%;
       -ms-flex-preferred-size: 50%;
@@ -5090,6 +5094,30 @@ HOMEPAGE NEW CSS
   height: 500px;
   position: relative;
   overflow: hidden; }
+.page-template-front-page-2 .home-about .map-title {
+  float: right;
+  text-align: center;
+  margin-top: -40px; }
+  .page-template-front-page-2 .home-about .map-title h3 {
+    color: #4ec5cd;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0; }
+  .page-template-front-page-2 .home-about .map-title .flex-content {
+    font-size: 16px;
+    font-weight: 300; }
+.page-template-front-page-2 .home-about .client-logos {
+  width: 530px;
+  height: 130px;
+  max-width: 100%; }
+  .page-template-front-page-2 .home-about .client-logos .logo {
+    text-align: center;
+    padding: 4px; }
+    .page-template-front-page-2 .home-about .client-logos .logo img {
+      height: 90px;
+      width: auto; }
 
 .map-hover {
   border: none;

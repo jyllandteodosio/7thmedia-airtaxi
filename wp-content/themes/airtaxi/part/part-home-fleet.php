@@ -1,10 +1,10 @@
 <?php if(get_field('fleet_section_background') == 'Color'): ?>
 
-<section class="home-fleet home-section" style="background: <?php echo get_field('fleet_section_background_color'); ?>');">
+<section class="home-fleet home-section" style="background-color: <?php echo get_field('fleet_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section class="home-fleet home-section" style="background: url('<?php echo get_field('fleet_section_background_image'); ?>');">
+<section class="home-fleet home-section" style="background-image: url('<?php echo get_field('fleet_section_background_image'); ?>');">
 
 <?php endif; ?>
    

@@ -5,19 +5,21 @@ jQuery(function( $ ){
             
             var newMarkers = [];
             
-            newMarkers = [
-                {
-                    coords: [102,185],
-                    name: 'Clark',
+            $('.marker').each(function() {
+                var marker = {
+                    coords: [$(this).attr('data-lat'),$(this).attr('data-long')],
+                    name: $(this).attr('data-name'),
                     style: {
                         fill: '#55dfe8',
                         stroke: '#45b9c1',
                         "stroke-width": 2,
                         r: 7
                     },
-                    imgsrc: 'http://localhost/Projects/airtaxi/wp-content/uploads/2016/09/C3-Gulfstream-2-Clark-300x225.jpg'
-                }
-            ];
+                    imgsrc: $(this).attr('data-image')
+                };
+
+                newMarkers.push(marker);
+            });
             
             $('.about-map').vectorMap({
                 map: 'ph_mill_en',
@@ -62,7 +64,6 @@ jQuery(function( $ ){
             });
             $('.about-map .jvectormap-zoomin').hide();
             $('.about-map .jvectormap-zoomout').hide();
-            
         });
     }
 });
