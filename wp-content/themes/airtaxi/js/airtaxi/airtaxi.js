@@ -11,6 +11,13 @@ jQuery(function( $ ){
             ['#home-section-5', '#helicopter-rates-philippines'],
             ['#home-section-6', '#private-charter-plane-rates-philippines'],
             ['#home-section-7', '#contact-us'],
+            ['#about-us/', '#about-us'],
+            ['#base-locations/', '#base-locations'],
+            ['#aircraft-fleet/', '#aircraft-fleet'],
+            ['#membership/', '#membership'],
+            ['#helicopter-rates-philippines/', '#helicopter-rates-philippines'],
+            ['#private-charter-plane-rates-philippines/', '#private-charter-plane-rates-philippines'],
+            ['#contact-us/', '#contact-us'],
         ]
 
         for (var i=0; i<redirects.length; i++) {

@@ -44,12 +44,13 @@ function parallax_home_genesis_meta() {
             
             wp_enqueue_style( 'jvectormap-css', get_bloginfo( 'stylesheet_directory' ) . '/js/jvectormap/jquery-jvectormap-2.0.3.css', array(),  '2.0.3' );
     
-            wp_enqueue_style( 'fullpage-css', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/jquery.fullPage.css', array(), CHILD_THEME_VERSION );
+//            wp_enqueue_style( 'fullpage-css', get_bloginfo( 'stylesheet_directory' ) . '/js/fullpage/jquery.fullPage.css', array(), CHILD_THEME_VERSION );
             
             wp_dequeue_style( 'wpsm-comptable-styles' );
             wp_dequeue_style( 'contact-form-7' );
             wp_dequeue_style( 'dashicons' );
             wp_dequeue_style( 'accordion_archives' );
+            wp_dequeue_style( 'meteor-slides' );
             
 		}
 
@@ -82,6 +83,25 @@ function parallax_home_genesis_meta() {
 
 //* Add markup for homepage widgets
 function parallax_homepage_widgets() {
+    
+    ?>
+    <style type="text/css" title="meteor-slides-front">
+        div.meteor-slides{clear:both;float:none;height:auto!important;line-height:0;margin:0;max-width:100%;overflow:visible!important;padding:0;position:relative;z-index:1}div.meteor-slides.meteor-left{clear:none;float:left;margin:0 20px 20px 0}div.meteor-slides.meteor-right{clear:none;float:right;margin:0 0 20px 20px}div.meteor-slides.meteor-center{margin:0 auto}div.meteor-slides.navboth,div.meteor-slides.navpaged{margin-bottom:20px}.meteor-slides .meteor-clip{line-height:0;margin:0;overflow:hidden;padding:0;position:relative;width:100%}.meteor-slides .meteor-shim,.meteor-slides .mslide img{border:0;height:auto!important;max-width:100%;width:auto\9}.meteor-slides .meteor-shim{margin:0;padding:0}.meteor-slides a:focus{outline:0}.meteor-slides .mslide{display:none;height:auto!important;margin:0;max-width:100%;padding:0}.single-slide .mslide{display:block}.meteor-slides .mslide a{border:0;margin:0;padding:0}.meteor-slides .mslide img{box-shadow:none!important;display:block;margin:auto!important;padding:0!important}.meteor-slides .mslide img[src$='.png']{-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)";filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);zoom:1}.meteor-slides ul.meteor-nav{display:none;list-style:none;height:auto;margin:0!important;padding:0}.meteor-slides.navhover ul.meteor-nav{display:inline}ul.meteor-nav li{display:inline;height:auto;list-style:none;margin:0;padding:0}.meteor-slides .meteor-buttons a,.meteor-slides .meteor-nav a{border:none;box-shadow:none;display:block;outline:0;text-indent:-9999px;transition:all 0s ease 0s}.meteor-nav .prev a{left:0;background:url(../images/prev.png) center right no-repeat}.meteor-slides .meteor-nav a{position:absolute;width:27px;height:100%;z-index:998}.meteor-nav .prev a:hover{background:url(../images/prev.png) center left no-repeat}.meteor-nav .next a{right:0;background:url(../images/next.png) center left no-repeat}.meteor-nav .next a:hover{background:url(../images/next.png) center right no-repeat}* html .meteor-nav .prev a{background:url(../images/prev.gif) center right no-repeat}* html .meteor-nav .prev a:hover{background:url(../images/prev.gif) center left no-repeat}* html .meteor-nav .next a{background:url(../images/next.gif) center left no-repeat}* html .meteor-nav .next a:hover{background:url(../images/next.gif) center right no-repeat}.meteor-slides .meteor-buttons{bottom:-15px;box-sizing:initial;height:9px;left:0;margin:0;padding:6px 0 0;position:absolute;width:100%;z-index:999}header#branding .meteor-buttons{left:5px}.meteor-slides .meteor-buttons a{background:url(../images/buttons.png) bottom left no-repeat;float:left;width:9px;height:9px;margin:0 3px 0 0!important}.meteor-buttons a.activeSlide,.meteor-buttons a:hover{background:url(../images/buttons.png) bottom right no-repeat}* html .meteor-buttons a{background:url(../images/buttons.gif) bottom left no-repeat}* html .meteor-buttons a.activeSlide,* html .meteor-buttons a:hover{background:url(../images/buttons.gif) bottom right no-repeat}
+    </style>
+    <style type="text/css" title="fullpage-front">
+        .fp-auto-height.fp-section,
+        .fp-auto-height .fp-slide,
+        .fp-auto-height .fp-tableCell{
+            height: auto !important;
+        }
+
+        .fp-responsive .fp-auto-height-responsive.fp-section,
+        .fp-responsive .fp-auto-height-responsive .fp-slide,
+        .fp-responsive .fp-auto-height-responsive .fp-tableCell {
+            height: auto !important;
+        }
+    </style>
+    <?php
     
     $base_url = get_site_url();
     $image = get_field('footer_logo', 'option');

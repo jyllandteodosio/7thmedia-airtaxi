@@ -20,7 +20,7 @@ get_header('custom');
 
 <div class="ambulance-page-title">
 	<div class="ambulance-header-container">
-		<h1>Air Ambulance</h1>
+		<h1><?php the_title(); ?></h1>
 	</div>
 </div>
 
