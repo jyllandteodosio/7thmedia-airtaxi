@@ -42,7 +42,7 @@ class Search_Airplane_Rates extends WP_Widget {
             <form role="search" method="get" id="search-airplane-rates" action="<?php echo get_bloginfo('url');?>/airplane-rates/" autocomplete="off" class="rates-search-form">
                 <label for="origin">Fly from</label>
                 <?php fjarrett_custom_taxonomy_dropdown( 'origin', $origin ); ?>
-                <label for="origin">To</label>
+                <label for="destination">To</label>
                 <?php fjarrett_custom_taxonomy_dropdown( 'destination', $destination ); ?>
                 <input type="submit" id="rates-search-submit" value="Check Rates" class="rates-search-submit"/>
             </form>
@@ -90,7 +90,7 @@ class Search_Airplane_Rates extends WP_Widget {
                 name="<?php echo $this->get_field_name('destination'); ?>" type="text">
                     <?php
                         foreach ( $terms_destination as $term_destination ) {
-                            if($term_destination->slug == $origin) {
+                            if($term_destination->slug == $destination) {
                                 printf( '<option value="%s" selected>%s</option>', esc_attr( $term_destination->slug ), esc_html( $term_destination->name ) );
                             } else {
                                 printf( '<option value="%s">%s</option>', esc_attr( $term_destination->slug ), esc_html( $term_destination->name ) );

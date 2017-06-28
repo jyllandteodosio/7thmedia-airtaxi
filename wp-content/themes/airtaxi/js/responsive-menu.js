@@ -12,13 +12,16 @@ jQuery(function( $ ){
 			$(".responsive-menu > .menu-item").removeClass("menu-open");
 		}
 	});
-
-	$(".responsive-menu > .menu-item").click(function(event){
-		if (event.target !== this)
-		return;
-			$(this).find(".sub-menu:first").slideToggle(function() {
-			$(this).parent().toggleClass("menu-open");
-		});
-	});
-
+    
+    var screenWidth = $(window).width();
+    
+    if(screenWidth < 1024) {
+        $(".responsive-menu > .menu-item").click(function(event){
+            if (event.target !== this)
+            return;
+                $(this).find(".sub-menu:first").slideToggle(function() {
+                $(this).parent().toggleClass("menu-open");
+            });
+        });
+    }
 });

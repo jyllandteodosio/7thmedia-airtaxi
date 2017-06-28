@@ -11,11 +11,11 @@
     $video_url = get_field('banner_video');
     $placeholder_image = get_field('banner_placeholder_image');
     $fallback_image = $placeholder_image;
-    
+
     if($video_url && $placeholder_image && $fallback_image):
-    
+
     echo "<div class='video' data-src='".$fallback_image."' data-video='".$video_url."' data-placeholder='".$placeholder_image."'></div>";
-    
+
     endif;
     ?>
     </div>
