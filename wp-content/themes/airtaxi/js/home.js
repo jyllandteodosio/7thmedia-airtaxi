@@ -12,6 +12,17 @@ jQuery(function( $ ){
         pagination: '.swiper-pagination',
         slidesPerView: 2,
         autoplay: 4000,
+        breakpoints: {
+            1024: {
+                slidesPerView: 1
+            },
+            768: {
+                slidesPerView: 2
+            },
+            425: {
+                slidesPerView: 1
+            },
+        }
     });
     
     //* Contact Locations Map

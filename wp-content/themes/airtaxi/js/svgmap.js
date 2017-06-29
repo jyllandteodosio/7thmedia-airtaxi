@@ -1,4 +1,6 @@
 jQuery(function( $ ){
+    var screenWidth = $(window).width();
+    
     if($('.home-about').length) {
         
         $('.home-about').ready(function() {

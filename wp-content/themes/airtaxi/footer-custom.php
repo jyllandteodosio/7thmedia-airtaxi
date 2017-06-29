@@ -19,13 +19,13 @@ $image = get_field('footer_logo', 'option');
 ?>
 <footer class="footer-custom">
     <div class="footer-container">
-        <div class="footer-box">
+        <div class="footer-box footer-logo-wrap">
             <div class="footer-logo">
                 <img width="160px" src="<?php echo $image['url']; ?>" alt="AirTaxi.PH"/>
             </div>
         </div>
 
-        <div class="footer-box">
+        <div class="footer-box footer-links-wrap">
             <div class="footer-links">
                 <?php if(have_rows('account', 'option')): while(have_rows('account', 'option')): the_row(); ?>
                 <a href="<?php echo get_sub_field('link'); ?>" class="footer-link"><?php echo get_sub_field('icon'); ?></a>

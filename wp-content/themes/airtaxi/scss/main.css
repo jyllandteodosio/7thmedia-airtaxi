@@ -2401,13 +2401,16 @@ a.map-inquire:hover {
   margin-top: 20px; }
 
 .pop-dir-close {
-  height: 30px;
+  height: 40px;
   color: #212121;
   text-align: right;
   font-family: 'Dashicons';
-  font-size: 24px;
+  font-size: 32px;
   position: absolute;
-  right: 30px; }
+  right: 0;
+  top: 0;
+  background: #e8e8e8;
+  margin: -5px auto; }
 
 .overlay {
   height: 100%;
@@ -2756,8 +2759,7 @@ div.mrates-diamond-header {
   font-size: 48px; }
 
 .page-template-page-rates-location .site-inner {
-  margin-top: 60px;
-  margin-bottom: -20px; }
+  margin-top: 60px; }
 
 #gallery-2 .gallery-item .gallery-icon {
   height: 100px;
@@ -3902,7 +3904,6 @@ table.destinations-box-itinerary {
   .contact-tel, .contact-mob, .contact-left, .contact-right {
     display: block;
     float: none;
-    text-align: center;
     width: 100%; } }
 @media (min-width: 1281px) and (max-width: 1366px) {
   .home-even,
@@ -4855,6 +4856,9 @@ HOMEPAGE NEW CSS
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
             transform: translateY(-50%); }
+  .page-template-front-page-2 .home-banner .video-element {
+    background-size: cover;
+    height: 100%; }
 .page-template-front-page-2 .home-section {
   padding: 60px 40px;
   text-align: center;
@@ -4892,11 +4896,7 @@ HOMEPAGE NEW CSS
 .page-template-front-page-2 .home-membership {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-membership h2 {
-    margin-bottom: 0; }
-  .page-template-front-page-2 .home-membership .sub-title {
     font-size: 48px;
-    font-family: 'Dancing Script', cursive;
-    font-weight: bold;
     color: #686868; }
   .page-template-front-page-2 .home-membership .flex-container {
     margin-bottom: 40px;
@@ -4925,6 +4925,7 @@ HOMEPAGE NEW CSS
   font-size: 16px;
   line-height: 1.8;
   width: 800px;
+  max-width: 100%;
   display: inline-block; }
 .page-template-front-page-2 .home-destination .flex-container {
   max-width: 80%; }
@@ -4956,6 +4957,16 @@ HOMEPAGE NEW CSS
   display: inline-block; }
   .page-template-front-page-2 .home-destination .inquire-button:hover {
     background-color: #12a8b2; }
+.page-template-front-page-2 .home-destination .text-overlay {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(104, 104, 104, 0.8); }
+  .page-template-front-page-2 .home-destination .text-overlay span {
+    display: table-cell;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding: 0 20px; }
 .page-template-front-page-2 .home-call {
   padding: 30px; }
   .page-template-front-page-2 .home-call .flex-container {
@@ -4988,6 +4999,7 @@ HOMEPAGE NEW CSS
     font-size: 16px;
     line-height: 1.8;
     width: 800px;
+    max-width: 100%;
     display: inline-block; }
   .page-template-front-page-2 .home-fleet .flex-container {
     -webkit-flex-wrap: wrap;
@@ -5105,10 +5117,10 @@ HOMEPAGE NEW CSS
     margin: 10px 0 15px; }
     .page-template-front-page-2 .home-contact .flex-content p {
       line-height: 1.5; }
-  .page-template-front-page-2 .home-contact .about-text-panel,
+  .page-template-front-page-2 .home-contact .contact-form-panel,
   .page-template-front-page-2 .home-contact .join-us-panel {
     background-color: #fff; }
-  .page-template-front-page-2 .home-contact .about-text-panel {
+  .page-template-front-page-2 .home-contact .contact-form-panel {
     -webkit-flex-basis: 40%;
         -ms-flex-preferred-size: 40%;
             flex-basis: 40%;
@@ -5317,3 +5329,206 @@ footer {
     font-size: 36px; }
   footer small {
     font-size: 12px; }
+
+@media only screen and (max-width: 1024px) {
+  .page-template-front-page-2 .home-section,
+  .page-template-front-page-2 .home-section .section-wrap,
+  .page-template-front-page-2 .home-banner .text-container {
+    max-width: 100%; }
+  .page-template-front-page-2 .home-membership .flex-container,
+  .page-template-front-page-2 .home-destination .flex-container,
+  .page-template-front-page-2 .home-about .flex-container,
+  .page-template-front-page-2 .home-fleet .flex-container,
+  .page-template-front-page-2 .home-contact .flex-container {
+    max-width: 100%; }
+  .page-template-front-page-2 .home-banner,
+  .page-template-front-page-2 .home-banner .video {
+    height: 570px; }
+  .page-template-front-page-2 .home-banner .text-container {
+    padding: 0 100px; }
+  .page-template-front-page-2 .home-about .client-logos {
+    width: 300px; }
+  .page-template-front-page-2 .home-about .about-map {
+    left: 80px; }
+  .page-template-front-page-2 .home-contact .contact-form-panel {
+    margin-right: 15px; }
+  .page-template-front-page-2 .home-contact .locations-text-panel {
+    margin-left: 15px; } }
+@media only screen and (max-width: 768px) {
+  .page-template-front-page-2 .home-section .flex-container {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+  .page-template-front-page-2 .home-banner,
+  .page-template-front-page-2 .home-banner .video {
+    height: 400px; }
+  .page-template-front-page-2 .home-banner .text-container span.text {
+    padding-bottom: 50px;
+    font-size: 40px; }
+  .page-template-front-page-2 .home-membership .flex-container {
+    margin-bottom: 10px; }
+  .page-template-front-page-2 .home-membership .flex-box,
+  .page-template-front-page-2 .home-destination .flex-box {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px; }
+  .page-template-front-page-2 .home-destination .flex-box:last-child {
+    margin-bottom: 0; }
+  .page-template-front-page-2 .home-call .flex-box {
+    -webkit-flex-basis: 28%;
+        -ms-flex-preferred-size: 28%;
+            flex-basis: 28%;
+    margin-bottom: 0; }
+    .page-template-front-page-2 .home-call .flex-box:first-child {
+      -webkit-flex-basis: 100%;
+          -ms-flex-preferred-size: 100%;
+              flex-basis: 100%;
+      max-width: 100%; }
+  .page-template-front-page-2 .home-about h2 {
+    text-align: center; }
+  .page-template-front-page-2 .home-about .flex-container {
+    margin-top: 0; }
+  .page-template-front-page-2 .home-about .flex-box {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 0; }
+  .page-template-front-page-2 .home-about .client-logos {
+    width: 560px; }
+  .page-template-front-page-2 .home-about .about-map {
+    left: 180px; }
+  .page-template-front-page-2 .home-text {
+    padding: 30px 140px; }
+  .page-template-front-page-2 .home-contact .flex-box {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%; }
+  .page-template-front-page-2 .home-contact .contact-form-panel {
+    margin: 0 0 20px 0; }
+  .page-template-front-page-2 .home-contact .locations-text-panel {
+    margin: 0; }
+
+  footer .footer-logo-wrap {
+    -webkit-flex-basis: 30%;
+        -ms-flex-preferred-size: 30%;
+            flex-basis: 30%; }
+  footer .footer-links-wrap {
+    -webkit-flex-basis: 70%;
+        -ms-flex-preferred-size: 70%;
+            flex-basis: 70%; } }
+@media only screen and (max-width: 425px) {
+  .page-template-front-page-2 .home-banner {
+    height: 500px; }
+    .page-template-front-page-2 .home-banner .text-container {
+      padding: 60px 20px; }
+      .page-template-front-page-2 .home-banner .text-container span.text {
+        font-size: 36px;
+        padding-bottom: 30px; }
+    .page-template-front-page-2 .home-banner .button-heading {
+      font-size: 24px; }
+  .page-template-front-page-2 .home-banner .video {
+    height: 500px; }
+  .page-template-front-page-2 .home-membership h2,
+  .page-template-front-page-2 .home-destination h2,
+  .page-template-front-page-2 .home-fleet h2,
+  .page-template-front-page-2 .home-about h2 {
+    font-size: 36px; }
+  .page-template-front-page-2 .home-text {
+    padding: 30px 20px; }
+  .page-template-front-page-2 .home-about .client-logos {
+    height: 160px; }
+  .page-template-front-page-2 .home-about .about-map {
+    left: 20px; }
+  .page-template-front-page-2 .home-about .map-title {
+    float: none;
+    margin-top: 0; }
+  .page-template-front-page-2 .home-call .flex-box,
+  .page-template-front-page-2 .home-contact .flex-box,
+  .page-template-front-page-2 .home-fleet .flex-box {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; }
+  .page-template-front-page-2 .home-contact .title {
+    font-size: 36px; }
+  .page-template-front-page-2 .home-contact .contact-num,
+  .page-template-front-page-2 .home-contact .join-us-panel h4,
+  .page-template-front-page-2 .home-contact .join-us-panel button {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; }
+  .page-template-front-page-2 .home-contact .flex-box h4,
+  .page-template-front-page-2 .home-contact .contact-num {
+    text-align: center; }
+  .page-template-front-page-2 .home-contact .flex-link {
+    min-height: 1px; }
+  .page-template-front-page-2 .home-contact .map-links-container,
+  .page-template-front-page-2 .home-contact .map-links-wrap ul {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    text-align: center; }
+  .page-template-front-page-2 .home-contact .map-links-label,
+  .page-template-front-page-2 .home-contact .map-links-wrap,
+  .page-template-front-page-2 .home-contact .map-links-wrap li {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    margin-left: 0;
+    margin-right: 0; }
+  .page-template-front-page-2 .home-contact .map-links-wrap li {
+    margin-top: 10px; }
+  .page-template-front-page-2 .home-contact .join-us-panel h4 {
+    margin-bottom: 10px; }
+  .page-template-front-page-2 .home-contact .contact-num-wrap,
+  .page-template-front-page-2 .home-contact .join-us-panel {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+
+  footer .footer-container {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+  footer .footer-logo-wrap,
+  footer .footer-links-wrap {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; }
+  footer .footer-logo,
+  footer .footer-links-wrap {
+    text-align: center; }
+  footer small {
+    display: inline-block;
+    line-height: 1.5; }
+
+  .jvectormap-tip {
+    left: 0 !important;
+    right: 0 !important; }
+
+  .map-hover {
+    margin: 0 auto;
+    height: 190px;
+    width: 320px; }
+    .map-hover::after {
+      border: none; } }
+@media only screen and (max-width: 375px) {
+  .page-template-front-page-2 .home-section {
+    padding: 60px 20px; }
+  .page-template-front-page-2 .home-about .about-map {
+    height: 500px;
+    width: 500px;
+    left: 40px; }
+  .page-template-front-page-2 .home-about .about-map-container {
+    height: 420px; } }
+@media only screen and (max-width: 320px) {
+  .page-template-front-page-2 .home-banner {
+    height: 440px; }
+  .page-template-front-page-2 .home-about .about-map {
+    height: 400px;
+    width: 400px; }
+  .page-template-front-page-2 .home-about .about-map-container {
+    height: 340px; } }

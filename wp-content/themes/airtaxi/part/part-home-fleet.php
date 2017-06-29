@@ -4,7 +4,7 @@
 
 <?php else: ?>
 
-<section class="home-fleet home-section" style="background-image: url('<?php echo get_field('fleet_section_background_image'); ?>');">
+<section id="<?php echo get_field('fleet_section_id'); ?>" class="home-fleet home-section" style="background-image: url('<?php echo get_field('fleet_section_background_image'); ?>');">
 
 <?php endif; ?>
    
