@@ -5282,6 +5282,9 @@ HOMEPAGE NEW CSS
         -ms-flex-preferred-size: 50%;
             flex-basis: 50%;
     margin-left: 0; }
+.page-template-front-page-2 .pop-dir, .page-template-front-page-2 .pop-email, .page-template-front-page-2 .pop-join {
+  text-align: center;
+  overflow: hidden; }
 
 .map-hover {
   border: none;

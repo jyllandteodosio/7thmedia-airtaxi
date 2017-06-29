@@ -6589,6 +6589,11 @@ HOMEPAGE NEW CSS
             margin-left: 0;
         }
     }
+    
+    .pop-dir, .pop-email, .pop-join {
+        text-align: center;
+        overflow: hidden;
+    }
 }
         
 .map-hover {
