@@ -6979,6 +6979,10 @@ footer {
              }
          }
     }
+    
+    .header-image .site-title > a {
+        margin-right: auto;
+    }
 }
 
 @media only screen and (max-width: 320px) {
@@ -6997,5 +7001,9 @@ footer {
                 height: 340px;
             }
         }
+    }
+    
+    .header-image .site-title > a {
+        margin-right: auto;
     }
 }

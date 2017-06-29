@@ -5535,7 +5535,10 @@ footer {
     width: 500px;
     left: 40px; }
   .page-template-front-page-2 .home-about .about-map-container {
-    height: 420px; } }
+    height: 420px; }
+
+  .header-image .site-title > a {
+    margin-right: auto; } }
 @media only screen and (max-width: 320px) {
   .page-template-front-page-2 .home-banner {
     height: 440px; }
@@ -5543,4 +5546,7 @@ footer {
     height: 400px;
     width: 400px; }
   .page-template-front-page-2 .home-about .about-map-container {
-    height: 340px; } }
+    height: 340px; }
+
+  .header-image .site-title > a {
+    margin-right: auto; } }
