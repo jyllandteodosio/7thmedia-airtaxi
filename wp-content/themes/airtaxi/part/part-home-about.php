@@ -4,7 +4,7 @@
 
 <?php else: ?>
 
-<section id="<?php echo get_field('about_section_id'); ?>" class="home-about home-section" style="background-image: url('<?php echo get_field('about_section_background_image'); ?>');">
+<section id="<?php echo get_field('about_section_id'); ?>" class="home-about home-section" style="background: linear-gradient(rgba(31,31,31,0.7),rgba(31,31,31,0.7)), url('<?php echo get_field('about_section_background_image'); ?>');">
 
 <?php endif; ?>
     

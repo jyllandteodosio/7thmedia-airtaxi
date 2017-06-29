@@ -4928,7 +4928,10 @@ HOMEPAGE NEW CSS
   max-width: 100%;
   display: inline-block; }
 .page-template-front-page-2 .home-destination .flex-container {
-  max-width: 80%; }
+  max-width: 80%;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
 .page-template-front-page-2 .home-destination .flex-box {
   padding: 0;
   background-color: #212121; }
@@ -5045,59 +5048,63 @@ HOMEPAGE NEW CSS
   font-weight: 300;
   font-size: 36px;
   color: #fff; }
-.page-template-front-page-2 .home-about h2 {
-  color: #fff;
-  font-size: 48px; }
-.page-template-front-page-2 .home-about .flex-container {
-  max-width: 90%; }
-.page-template-front-page-2 .home-about .flex-box {
-  -webkit-flex-basis: 50%;
-      -ms-flex-preferred-size: 50%;
-          flex-basis: 50%;
-  margin: 0 15px;
-  padding: 0;
-  background: none;
-  min-height: 280px;
-  color: #fff;
-  box-shadow: none;
-  text-align: left; }
-  .page-template-front-page-2 .home-about .flex-box p {
-    font-size: 16px;
-    line-height: 2;
-    margin-bottom: 30px; }
-.page-template-front-page-2 .home-about .about-map {
-  height: 600px;
-  width: 600px;
-  position: absolute;
-  left: 140px; }
-.page-template-front-page-2 .home-about .about-map-container {
-  height: 500px;
-  position: relative;
-  overflow: hidden; }
-.page-template-front-page-2 .home-about .map-title {
-  float: right;
-  text-align: center;
-  margin-top: -40px; }
-  .page-template-front-page-2 .home-about .map-title h3 {
-    color: #4ec5cd;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 18px;
-    margin: 0; }
-  .page-template-front-page-2 .home-about .map-title .flex-content {
-    font-size: 16px;
-    font-weight: 300; }
-.page-template-front-page-2 .home-about .client-logos {
-  width: 530px;
-  height: 130px;
-  max-width: 100%; }
-  .page-template-front-page-2 .home-about .client-logos .logo {
+.page-template-front-page-2 .home-about {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important; }
+  .page-template-front-page-2 .home-about h2 {
+    color: #fff;
+    font-size: 48px; }
+  .page-template-front-page-2 .home-about .flex-container {
+    max-width: 90%; }
+  .page-template-front-page-2 .home-about .flex-box {
+    -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+    margin: 0 15px;
+    padding: 0;
+    background: none;
+    min-height: 280px;
+    color: #fff;
+    box-shadow: none;
+    text-align: left; }
+    .page-template-front-page-2 .home-about .flex-box p {
+      font-size: 16px;
+      line-height: 2;
+      margin-bottom: 30px; }
+  .page-template-front-page-2 .home-about .about-map {
+    height: 600px;
+    width: 600px;
+    position: absolute;
+    left: 140px; }
+  .page-template-front-page-2 .home-about .about-map-container {
+    height: 500px;
+    position: relative;
+    overflow: hidden; }
+  .page-template-front-page-2 .home-about .map-title {
+    float: right;
     text-align: center;
-    padding: 4px; }
-    .page-template-front-page-2 .home-about .client-logos .logo img {
-      height: 90px;
-      width: auto; }
+    margin-top: -40px; }
+    .page-template-front-page-2 .home-about .map-title h3 {
+      color: #4ec5cd;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 18px;
+      margin: 0; }
+    .page-template-front-page-2 .home-about .map-title .flex-content {
+      font-size: 16px;
+      font-weight: 300; }
+  .page-template-front-page-2 .home-about .client-logos {
+    width: 530px;
+    height: 130px;
+    max-width: 100%; }
+    .page-template-front-page-2 .home-about .client-logos .logo {
+      text-align: center;
+      padding: 4px; }
+      .page-template-front-page-2 .home-about .client-logos .logo img {
+        height: 90px;
+        width: auto; }
 .page-template-front-page-2 .home-contact {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-contact p {
