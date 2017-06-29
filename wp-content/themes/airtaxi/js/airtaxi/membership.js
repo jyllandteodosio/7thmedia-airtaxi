@@ -3,18 +3,28 @@ jQuery(function( $ ){
     //-- Homepage - Menu Link - Smooth Scroll --//
     var $root = $('html, body');
     
-    $('.genesis-nav-menu a').click(function() {
-        var hash = $.attr(this, 'href');
-        var href = $(this).attr('href').split('#')[1];
-        console.log(href);
-        $root.animate({
-            scrollTop: $('#'+href).offset().top-140
-        }, 1000, function () {
-            window.location.hash = href;
-        });
-        return false;
-    });
+//    $('.genesis-nav-menu a').click(function() {
+//        var hash = $.attr(this, 'href');
+//        var href = $(this).attr('href').split('#')[1];
+//        console.log(href);
+//        $root.animate({
+//            scrollTop: $('#'+href).offset().top-140
+//        }, 1000, function () {
+//            window.location.hash = href;
+//        });
+//        return false;
+//    });
     
+    $('.genesis-nav-menu a').on('click',function (e) {
+        e.preventDefault();
+        var target = this.hash;
+        $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop':  $target.offset().top-140 //no need of parseInt here
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    });
     
     //Check if URL is /membership/ then change URL to /membership/#perks
     var lastPart = getLastPart(window.location.href);

@@ -19,15 +19,20 @@ $image = get_field('footer_logo', 'option');
 ?>
 <footer class="footer-custom">
     <div class="footer-container">
-        <div class="footer-logo left">
-            <img width="200px" src="<?php echo $image['url']; ?>" alt="AirTaxi.PH"/>
-            <small>© Copyright 2017. All Rights Reserved. Web Design and Development by <a href="http://7thmedia.com/" title="7th Media Digital Studio Inc." target="_blank">7th Media</a>
-            </small>
+        <div class="footer-box footer-logo-wrap">
+            <div class="footer-logo">
+                <img width="160px" src="<?php echo $image['url']; ?>" alt="AirTaxi.PH"/>
+            </div>
         </div>
 
-        <div class="footer-links right">
-            <a href="https://www.facebook.com/AirTaxiPH" class="footer-link facebook"><i class="fa fa-facebook-official fa-2x"></i></a>
-            <a href="https://www.instagram.com/airtaxi.ph/" class="footer-link instagram"><i class="fa fa-instagram fa-2x"></i></a>
+        <div class="footer-box footer-links-wrap">
+            <div class="footer-links">
+                <?php if(have_rows('account', 'option')): while(have_rows('account', 'option')): the_row(); ?>
+                <a href="<?php echo get_sub_field('link'); ?>" class="footer-link"><?php echo get_sub_field('icon'); ?></a>
+                <?php endwhile; endif; ?>
+            </div>
+            <small>© Copyright 2017. All Rights Reserved. Web Design and Development by <a href="http://7thmedia.com/" title="7th Media Digital Studio Inc." target="_blank">7th Media</a>
+            </small>
         </div>
     </div>
 </footer>

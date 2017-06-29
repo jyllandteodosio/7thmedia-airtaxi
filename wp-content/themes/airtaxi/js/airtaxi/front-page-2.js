@@ -7,7 +7,7 @@ jQuery(function( $ ){
         baseURL = baseURL + "/Projects/airtaxi"
     }
     
-    //-- Homepage - Auto Scroll --//
+    //-- Homepage - Auto Scroll --// - to be removed for new homepage
     
     if( screenWidth <= 375 ) {
         
@@ -24,7 +24,8 @@ jQuery(function( $ ){
         $('#gallery-2').removeClass('gallery-columns-2');
         $('#gallery-2').removeClass('gallery-columns-1').addClass('gallery-columns-4');
     }
-    //-- Homepage - Base Locations - Image Map Hover --//
+    
+    //-- Homepage - Base Locations - Image Map Hover --// - to be removed for new homepage
     
     if($('.home-section-2').length) {
         
