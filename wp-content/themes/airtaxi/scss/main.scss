@@ -6113,6 +6113,7 @@ HOMEPAGE NEW CSS
         
         .flex-container {
             max-width: 80%;
+            flex-wrap: wrap;
         }
         
         .flex-box {
@@ -6284,6 +6285,10 @@ HOMEPAGE NEW CSS
     }
     
     .home-about {
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-position: center !important;
+        
         h2 {
             color: #fff;
             font-size: 48px;
