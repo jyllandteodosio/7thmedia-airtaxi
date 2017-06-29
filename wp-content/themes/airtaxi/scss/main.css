@@ -5447,6 +5447,8 @@ footer {
     font-size: 36px; }
   .page-template-front-page-2 .home-text {
     padding: 30px 20px; }
+  .page-template-front-page-2 .home-about .flex-content {
+    text-align: center; }
   .page-template-front-page-2 .home-about .client-logos {
     height: 160px; }
   .page-template-front-page-2 .home-about .about-map {
@@ -5469,10 +5471,12 @@ footer {
         -ms-flex-preferred-size: 100%;
             flex-basis: 100%; }
   .page-template-front-page-2 .home-contact .flex-box h4,
-  .page-template-front-page-2 .home-contact .contact-num {
+  .page-template-front-page-2 .home-contact .contact-num,
+  .page-template-front-page-2 .home-contact .map-address {
     text-align: center; }
   .page-template-front-page-2 .home-contact .flex-link {
-    min-height: 1px; }
+    min-height: 1px;
+    font-size: 14px; }
   .page-template-front-page-2 .home-contact .map-links-container,
   .page-template-front-page-2 .home-contact .map-links-wrap ul {
     -webkit-flex-wrap: wrap;
