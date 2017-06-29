@@ -1,10 +1,10 @@
 <?php if(get_field('about_section_background') == 'Color'): ?>
 
-<section class="home-about home-section" style="background-color: <?php echo get_field('about_section_background_color'); ?>');">
+<section id="<?php echo get_field('about_section_id'); ?>" class="home-about home-section" style="background-color: <?php echo get_field('about_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section class="home-about home-section" style="background-image: url('<?php echo get_field('about_section_background_image'); ?>');">
+<section id="<?php echo get_field('about_section_id'); ?>" class="home-about home-section" style="background-image: url('<?php echo get_field('about_section_background_image'); ?>');">
 
 <?php endif; ?>
     

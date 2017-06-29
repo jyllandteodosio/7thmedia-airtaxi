@@ -2831,13 +2831,16 @@ a.map-inquire:hover {
 }
 
 .pop-dir-close {
-    height: 30px;
+    height: 40px;
     color: #212121;
     text-align: right;
     font-family: 'Dashicons';
-    font-size: 24px;
+    font-size: 32px;
     position: absolute;
-    right: 30px;
+    right: 0;
+    top: 0;
+    background: #e8e8e8;
+    margin: -5px auto;
 }
 
 .overlay {
@@ -3271,8 +3274,8 @@ div.mrates-diamond-header {
 
 .page-template-page-rates-location .site-inner {
     margin-top: 60px;
-    margin-bottom: -20px;
 }
+
 #gallery-2 .gallery-item .gallery-icon {
     height: 100px;
     display: table-cell;
@@ -4732,7 +4735,6 @@ table.destinations-box-itinerary {
     .contact-tel, .contact-mob, .contact-left, .contact-right {
         display: block;
         float: none;
-        text-align: center;
         width: 100%;
     }
 }
@@ -6008,6 +6010,11 @@ HOMEPAGE NEW CSS
             top: 50%;
             transform: translateY(-50%);
         }
+        
+        .video-element {
+            background-size: cover;
+            height: 100%;
+        }
     }
     
     .home-section {
@@ -6057,13 +6064,7 @@ HOMEPAGE NEW CSS
         background-attachment: fixed;
         
         h2 {
-            margin-bottom: 0;
-        }
-        
-        .sub-title {
             font-size: 48px;
-            font-family: 'Dancing Script', cursive;
-            font-weight: bold;
             color: #686868;
         }
         
@@ -6106,6 +6107,7 @@ HOMEPAGE NEW CSS
             font-size: 16px;
             line-height: 1.8;
             width: 800px;
+            max-width: 100%;
             display: inline-block;
         }
         
@@ -6152,6 +6154,20 @@ HOMEPAGE NEW CSS
             
             &:hover {
                 background-color: #12a8b2;
+            }
+        }
+        
+        .text-overlay {
+            display: table;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(104, 104, 104, 0.8);
+            
+            span {
+                display: table-cell;
+                vertical-align: middle;
+                text-transform: uppercase;
+                padding: 0 20px;
             }
         }
     }
@@ -6203,6 +6219,7 @@ HOMEPAGE NEW CSS
             font-size: 16px;
             line-height: 1.8;
             width: 800px;
+            max-width: 100%;
             display: inline-block;
         }
         
@@ -6377,12 +6394,12 @@ HOMEPAGE NEW CSS
             }
         }
         
-        .about-text-panel,
+        .contact-form-panel,
         .join-us-panel {
             background-color: #fff;
         }
         
-        .about-text-panel {
+        .contact-form-panel {
             flex-basis: 40%;
             margin-right: 30px;
         }
@@ -6635,21 +6652,338 @@ footer {
 
 // Homepage Media Queries
 @media only screen and (max-width: 1024px) {
-    
+    .page-template-front-page-2 {
+        .home-section,
+        .home-section .section-wrap,
+        .home-banner .text-container {
+            max-width: 100%;
+        }
+        
+        .home-membership,
+        .home-destination,
+        .home-about,
+        .home-fleet,
+        .home-contact {
+            .flex-container {
+                max-width: 100%;
+            }
+        }
+        
+        .home-banner,
+        .home-banner .video {
+            height: 570px;
+        }
+            
+        .home-banner .text-container {
+            padding: 0 100px;
+        }
+        
+        .home-about {
+            .client-logos {
+                width: 300px;
+            }
+            
+            .about-map {
+                left: 80px;
+            }
+        }
+        
+        .home-contact {
+            .contact-form-panel {
+                margin-right: 15px;
+            }
+            
+            .locations-text-panel {
+                margin-left: 15px;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {
+    .page-template-front-page-2 {
+        .home-section {
+            .flex-container {
+                flex-wrap: wrap;
+            }
+        }
+
+        .home-banner,
+        .home-banner .video {
+            height: 400px;
+        }
+        
+        .home-banner .text-container span.text {
+            padding-bottom: 50px;
+            font-size: 40px;
+        }
+        
+        .home-membership .flex-container {
+            margin-bottom: 10px;
+        }
+        
+        .home-membership,
+        .home-destination {
+            .flex-box {
+                flex-basis: 100%;
+                max-width: 400px;
+                margin: 0 auto 30px;
+            }
+        }
+        
+        .home-destination {
+            .flex-box {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        
+        .home-call .flex-box {
+            flex-basis: 28%;
+            margin-bottom: 0;
+            
+            &:first-child {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+        
+        .home-about {
+            h2 {
+                text-align: center;
+            }
+            
+            .flex-container {
+                margin-top: 0;
+            }
+            
+            .flex-box {
+                flex-basis: 100%;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .client-logos {
+                width: 560px;
+            }
+            
+            .about-map {
+                left: 180px;
+            }
+        }
+        
+        .home-text {
+            padding: 30px 140px;
+        }
+        
+        .home-contact {
+            .flex-box {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+            
+            .contact-form-panel {
+                margin: 0 0 20px 0;
+            }
+            
+            .locations-text-panel {
+                margin: 0;
+            }
+        }
+    }
     
+    footer {
+        .footer-logo-wrap {
+            flex-basis: 30%;
+        }
+        
+        .footer-links-wrap {
+            flex-basis: 70%;
+        }
+    }
 }
 
 @media only screen and (max-width: 425px) {
+    .page-template-front-page-2 {
+        .home-banner {
+            height: 500px;
+            
+            .text-container {
+                padding: 60px 20px;
+                
+                span.text {
+                    font-size: 36px;
+                    padding-bottom: 30px;
+                }
+            }
+            
+            .button-heading {
+                font-size: 24px;
+            }
+        }
+        
+        .home-banner .video {
+            height: 500px;
+        }
+        
+        .home-membership,
+        .home-destination,
+        .home-fleet,
+        .home-about {
+            h2 {
+                font-size: 36px;
+            }
+        }
+        
+        .home-text {
+            padding: 30px 20px;
+        }
+        
+        .home-about {
+            .client-logos {
+                height: 160px;
+            }
+            
+            .about-map {
+                left: 20px;
+            }
+            
+            .map-title {
+                float: none;
+                margin-top: 0;
+            }
+        }
+        
+        .home-call,
+        .home-contact,
+        .home-fleet {
+            .flex-box {
+                flex-basis: 100%;
+            }
+        }
+        
+        .home-contact {
+            .title {
+                font-size: 36px;
+            }
+            
+            .contact-num,
+            .join-us-panel h4,
+            .join-us-panel button {
+                flex-basis: 100%;
+            }
+            
+            .flex-box h4,
+            .contact-num {
+                text-align: center;
+            }
+            
+            .flex-link {
+                min-height: 1px;
+            }
+            
+            .map-links-container,
+            .map-links-wrap ul {
+                flex-wrap: wrap;
+                text-align: center;
+            }
+            
+            .map-links-label,
+            .map-links-wrap,
+            .map-links-wrap li {
+                flex-basis: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .map-links-wrap li {
+                margin-top: 10px;
+            }
+            
+            .join-us-panel h4 {
+                margin-bottom: 10px;
+            }
+            
+            .contact-num-wrap,
+            .join-us-panel {
+                flex-wrap: wrap;
+            }
+        }
+    }
     
+    footer {
+        .footer-container {
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo-wrap,
+        .footer-links-wrap {
+            flex-basis: 100%;
+        }
+        
+        .footer-logo,
+        .footer-links-wrap {
+            text-align: center;
+        }
+        
+        small {
+            display: inline-block;
+            line-height: 1.5;
+        }
+    }
+    
+    .jvectormap-tip {
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
+    .map-hover {
+        margin: 0 auto;
+        height: 190px;
+        width: 320px;
+        
+        &::after {
+            border: none;
+        }
+    }
 }
 
 @media only screen and (max-width: 375px) {
-    
+    .page-template-front-page-2 {
+        .home-section {
+            padding: 60px 20px;
+        }
+        
+        .home-about {
+             .about-map {
+                height: 500px;
+                width: 500px;
+                left: 40px;
+             }
+             
+             .about-map-container {
+                 height: 420px;
+             }
+         }
+    }
 }
 
 @media only screen and (max-width: 320px) {
-    
+    .page-template-front-page-2 {
+        .home-banner {
+             height: 440px;
+        }
+        
+        .home-about {
+            .about-map {
+                height: 400px;
+                width: 400px;
+            }
+            
+            .about-map-container {
+                height: 340px;
+            }
+        }
+    }
 }

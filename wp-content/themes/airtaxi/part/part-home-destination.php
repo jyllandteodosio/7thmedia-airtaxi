@@ -1,9 +1,9 @@
 <?php if(get_field('destination_section_background') == 'color'): ?>
-<section class="home-destination home-section" style="background-color: <?php echo get_field('destination_section_background_color'); ?>');">
+<section id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section" style="background-color: <?php echo get_field('destination_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section class="home-destination home-section" style="background-image: url('<?php echo get_field('destination_section_background_image'); ?>');">
+<section id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section" style="background-image: url('<?php echo get_field('destination_section_background_image'); ?>');">
 
 <?php endif; ?>
    
@@ -18,7 +18,15 @@
            <div class="flex-box">
 
                <?php if(get_sub_field('destination_image')): $icon = get_sub_field('destination_image'); ?>
-               <div class="flex-icon" style="background-image: url('<?php echo $icon['url']?>');"></div>
+               <div class="flex-icon" style="background-image: url('<?php echo $icon['url']?>');">
+                   <?php if(get_sub_field('text_or_button') == 'button'): ?>
+                       <?php if(get_sub_field('text_overlay')): ?>
+                       <div class="text-overlay">
+                           <span><?php echo get_sub_field('text_overlay'); ?></span>
+                       </div>
+                       <?php endif; ?>
+                   <?php endif; ?>
+               </div>
                <?php endif; ?>
 
                <?php if(get_sub_field('text_or_button') == 'text'): ?>
