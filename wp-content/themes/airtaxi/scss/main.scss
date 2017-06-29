@@ -6847,6 +6847,10 @@ footer {
         }
         
         .home-about {
+            .flex-content {
+                text-align: center;
+            }
+            
             .client-logos {
                 height: 160px;
             }
@@ -6881,12 +6885,14 @@ footer {
             }
             
             .flex-box h4,
-            .contact-num {
+            .contact-num,
+            .map-address {
                 text-align: center;
             }
             
             .flex-link {
                 min-height: 1px;
+                font-size: 14px;
             }
             
             .map-links-container,
