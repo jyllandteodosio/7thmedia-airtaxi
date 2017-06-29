@@ -4934,7 +4934,8 @@ HOMEPAGE NEW CSS
           flex-wrap: wrap; }
 .page-template-front-page-2 .home-destination .flex-box {
   padding: 0;
-  background-color: #212121; }
+  background-color: #212121;
+  margin-top: 30px; }
   .page-template-front-page-2 .home-destination .flex-box a {
     color: #fff; }
   .page-template-front-page-2 .home-destination .flex-box .flex-icon {
