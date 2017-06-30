@@ -28,8 +28,8 @@ define( 'CHILD_THEME_VERSION', '1.0' );
 add_action( 'wp_enqueue_scripts', 'parallax_enqueue_scripts_styles' );
 function parallax_enqueue_scripts_styles() {
 
-	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js#asyncload', array( 'jquery' ), '1.0.0' );
-    
+//	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js#asyncload', array( 'jquery' ), '1.0.0' );
+//    
     wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), '1.0.0' );
     
     wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), '', true );
@@ -88,14 +88,6 @@ genesis_unregister_layout( 'sidebar-sidebar-content' );
 //* Unregister secondary sidebar
 unregister_sidebar( 'sidebar-alt' );
 
-//* Add support for custom header
-add_theme_support( 'custom-header', array(
-	'width'           => 360,
-	'height'          => 70,
-	'header-selector' => '.site-title a',
-	'header-text'     => false,
-) );
-
 //* Add support for structural wraps
 add_theme_support( 'genesis-structural-wraps', array(
 	'header',
@@ -108,19 +100,14 @@ add_theme_support( 'genesis-structural-wraps', array(
 //* Modify the size of the Gravatar in the author box
 add_filter( 'genesis_author_box_gravatar_size', 'parallax_author_box_gravatar' );
 function parallax_author_box_gravatar( $size ) {
-
 	return 176;
-
 }
 
 //* Modify the size of the Gravatar in the entry comments
 add_filter( 'genesis_comment_list_args', 'parallax_comments_gravatar' );
 function parallax_comments_gravatar( $args ) {
-
 	$args['avatar_size'] = 120;
-
 	return $args;
-
 }
 
 //remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
@@ -190,7 +177,6 @@ add_theme_support( 'genesis-after-entry-widget-area' );
 remove_action( 'genesis_after_entry', 'genesis_after_entry_widget_area' );
 add_action( 'genesis_after_entry', 'genesis_after_entry_widget_area', 5 );
 
-
 //* Changed widget title markup from h4 to h2
 add_filter( 'genesis_register_sidebar_defaults', 'custom_register_sidebar_defaults' );
 
@@ -201,52 +187,51 @@ function custom_register_sidebar_defaults( $defaults ) {
 }
 
 //* Register widget areas
-genesis_register_sidebar( array(
-	'id'          => 'home-section-0',
-	'name'        => __( 'Home Section 0', 'parallax' ),
-	'description' => __( 'This is the home section 0 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-1',
-	'name'        => __( 'Home Section 1', 'parallax' ),
-	'description' => __( 'This is the home section 1 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-2',
-	'name'        => __( 'Home Section 2', 'parallax' ),
-	'description' => __( 'This is the home section 2 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-3',
-	'name'        => __( 'Home Section 3', 'parallax' ),
-	'description' => __( 'This is the home section 3 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-4',
-	'name'        => __( 'Home Section 4', 'parallax' ),
-	'description' => __( 'This is the home section 4 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-5',
-	'name'        => __( 'Home Section 5', 'parallax' ),
-	'description' => __( 'This is the home section 5 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-6',
-	'name'        => __( 'Home Section 6', 'parallax' ),
-	'description' => __( 'This is the home section 6 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-7',
-	'name'        => __( 'Home Section 7', 'parallax' ),
-	'description' => __( 'This is the home section 7 section.', 'parallax' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'home-section-8',
-	'name'        => __( 'Home Section 8', 'parallax' ),
-	'description' => __( 'This is the home section 8 section.', 'parallax' ),
-) );
-
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-0',
+//	'name'        => __( 'Home Section 0', 'parallax' ),
+//	'description' => __( 'This is the home section 0 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-1',
+//	'name'        => __( 'Home Section 1', 'parallax' ),
+//	'description' => __( 'This is the home section 1 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-2',
+//	'name'        => __( 'Home Section 2', 'parallax' ),
+//	'description' => __( 'This is the home section 2 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-3',
+//	'name'        => __( 'Home Section 3', 'parallax' ),
+//	'description' => __( 'This is the home section 3 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-4',
+//	'name'        => __( 'Home Section 4', 'parallax' ),
+//	'description' => __( 'This is the home section 4 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-5',
+//	'name'        => __( 'Home Section 5', 'parallax' ),
+//	'description' => __( 'This is the home section 5 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-6',
+//	'name'        => __( 'Home Section 6', 'parallax' ),
+//	'description' => __( 'This is the home section 6 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-7',
+//	'name'        => __( 'Home Section 7', 'parallax' ),
+//	'description' => __( 'This is the home section 7 section.', 'parallax' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'          => 'home-section-8',
+//	'name'        => __( 'Home Section 8', 'parallax' ),
+//	'description' => __( 'This is the home section 8 section.', 'parallax' ),
+//) );
 
 //* Search Results Page Widget Areas
 function archive_widgets_init() {
@@ -355,3 +340,4 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
     
     return $tag;
 } 
+

@@ -7,6 +7,22 @@ jQuery(function( $ ){
         baseURL = baseURL + "/Projects/airtaxi"
     }
     
+    //* Smooth Scroll
+    $('.genesis-nav-menu a').click(function() {
+        var hash = $.attr(this, 'href');
+        var href = $(this).attr('href').split('#')[1];
+        console.log(href);
+        
+        if(href) {
+            $('html, body').animate({
+                scrollTop: $('#'+href).offset().top-100
+            }, 1000, function () {
+                window.location.hash = href;
+            });
+            return false;
+        }
+    });
+    
     //* Client Logo Swiper
     var logoSwiper = new Swiper ('.client-logos', {
         pagination: '.swiper-pagination',

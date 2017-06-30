@@ -15,15 +15,30 @@ jQuery(function( $ ){
 //        return false;
 //    });
     
-    $('.genesis-nav-menu a').on('click',function (e) {
-        e.preventDefault();
-        var target = this.hash;
-        $target = $(target);
-        $('html, body').stop().animate({
-            'scrollTop':  $target.offset().top-140 //no need of parseInt here
-        }, 900, 'swing', function () {
-            window.location.hash = target;
-        });
+//    $('.genesis-nav-menu a').on('click',function (e) {
+//        e.preventDefault();
+//        var target = this.hash;
+//        $target = $(target);
+//        $('html, body').stop().animate({
+//            'scrollTop':  $target.offset().top-140 //no need of parseInt here
+//        }, 900, 'swing', function () {
+//            window.location.hash = target;
+//        });
+//    });
+    
+    $('.genesis-nav-menu a').click(function() {
+        var hash = $.attr(this, 'href');
+        var href = $(this).attr('href').split('#')[1];
+        console.log(href);
+        
+        if(href) {
+            $('html, body').animate({
+                scrollTop: $('#'+href).offset().top-140
+            }, 1000, function () {
+                window.location.hash = href;
+            });
+            return false;
+        }
     });
     
     //Check if URL is /membership/ then change URL to /membership/#perks
