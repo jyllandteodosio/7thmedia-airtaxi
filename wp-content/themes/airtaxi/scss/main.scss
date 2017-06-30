@@ -6692,13 +6692,12 @@ footer {
             padding: 0 100px;
         }
         
-        .home-fleet {
-            .flex-box {
-                flex: 1;
-                max-width: 50%;
-                min-width: 45%;
-            }
+        .home-fleet .flex-box {
+            flex: 1;
+            max-width: 50%;
+            min-width: 45%;
         }
+            
         
         .home-about {
             .client-logos {
@@ -6887,6 +6886,10 @@ footer {
             .flex-box {
                 flex-basis: 100%;
             }
+        }
+        
+        .home-fleet .flex-box {
+            max-width: 100%;
         }
         
         .home-contact {
