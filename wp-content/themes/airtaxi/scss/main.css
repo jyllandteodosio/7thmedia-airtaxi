@@ -866,9 +866,6 @@ Site Header
   padding: 20px 0;
   width: 200px; }
 
-.header-full-width .title-area {
-  width: 100%; }
-
 .site-title {
   font-family: Lato, sans-serif;
   font-size: 30px;
@@ -1501,8 +1498,7 @@ Media Queries
 
   .content,
   .sidebar,
-  .site-header .widget-area,
-  .title-area {
+  .site-header .widget-area {
     width: 100%; }
 
   .genesis-nav-menu,
@@ -4031,7 +4027,7 @@ table.destinations-box-itinerary {
     display: none; }
 
   .content, .sidebar,
-  .site-header .widget-area, .title-area {
+  .site-header .widget-area {
     width: 100%; }
 
   .genesis-nav-menu,
