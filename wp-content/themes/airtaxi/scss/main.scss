@@ -526,11 +526,11 @@ Structure and Layout
 
 .site-inner {
 	clear: both;
-	margin-top: 140px;
+	margin-top: 100px;
 }
 
 .parallax-home .site-inner {
-	margin-top: 70px;
+	margin-top: 100px;
 	max-width: 100%;
 }
 
@@ -886,7 +886,7 @@ Site Header
 	top: 0;
 	width: 100%;
 	z-index: 999;
-    box-shadow: 0px 2px #12a8b2;
+//    box-shadow: 0px 2px #12a8b2;
 }
 
 .admin-bar .site-header {
@@ -899,7 +899,7 @@ Site Header
 .title-area {
 	float: left;
 	padding: 20px 0;
-	width: 300px;
+	width: 200px;
 }
 
 .header-full-width .title-area {
@@ -922,15 +922,17 @@ Site Header
 }
 
 .header-image .title-area {
-        padding: 15px 0;
+    padding: 22px 0;
 }
 
 .header-image .site-title > a {
-	background-size: contain !important;
+	background-size: cover;
 	display: block;
-	height: 40px;
+	height: 56px;
 	text-indent: -9999px;
-	max-width: 360px;
+	max-width: 100%;
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
 }
 
 .site-description {
@@ -999,7 +1001,7 @@ Site Navigation
 	display: block;
 	font-family: Lato, sans-serif;
     letter-spacing: 1px;
-	padding: 30px 10px;
+	padding: 44px 10px;
 }
 
 .genesis-nav-menu a:hover,
@@ -3107,48 +3109,56 @@ div.mrates-diamond-header {
 /* Aircraft Page
 --------------------------------------------- */
 
-
-.aircraft-detail-page .aircraft-name h1 {
-    font-family: 'Lato', sans-serif;
-    font-size: 36px;
-    color: #686868;
-    margin-top: -30px;
-    margin-bottom: 40px;
-    text-align: center;
+.aircraft-detail-page {
+    padding-top: 40px;
+    
+    .aircraft-name h1 {
+        font-family: 'Lato', sans-serif;
+        font-size: 36px;
+        color: #686868;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .aircraft-slideshow {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .aircraft-details {
+        position: absolute;
+        z-index: 998;
+        background-color: rgba(33,33,33,0.8);
+        padding: 20px;
+        right: 0;
+        width: 25%;
+        max-width: 300px;
+        height: 100%;
+        font-size: 14px;
+    }
 }
 
 .aircraft-name {
     padding: 0px 20px;
 }
 
-.aircraft-detail-page .aircraft-slideshow {
-    position: relative;
-    overflow: hidden;
-}
-
-.aircraft-detail-page .aircraft-details {
-    position: absolute;
-    z-index: 998;
-    background-color: rgba(33,33,33,0.8);
-    padding: 20px;
-    right: 0;
-    width: 25%;
-    max-width: 300px;
-    height: 100%;
-    font-size: 14px;
-}
-
-.aircraft-slideshow .mslide p {
-    display: none;
-}
-
 .aircraft-slideshow {
     background-color: #212121;
+    
+    .mslide p {
+        display: none;
+    }
 }
 
-.aircraft-details .detail-label {
-    font-size: 16px;
-    font-weight: 900;
+.aircraft-details {
+    .detail-label {
+        font-size: 16px;
+        font-weight: 900;
+    }
+    
+     p {
+        margin-bottom: 16px;
+    }
 }
 
 .aircraft-details-responsive {
@@ -3157,30 +3167,25 @@ div.mrates-diamond-header {
 
 .detail-capacity {
     text-align: center;
+    
+    .detail-label {
+        text-align: left;
+        margin-bottom: 20px;
+        display: block;
+    }
 }
-
-.detail-capacity .detail-label {
-    text-align: left;
-    margin-bottom: 20px;
-    display: block;
-}
-
-.aircraft-details p {
-    margin-bottom: 16px;
-}
-
 
 .aircraft-fleet-gallery {
     padding-bottom: 60px;
-}
-
-.aircraft-fleet-gallery .gallery-label {
-    height: 60px;
-    line-height: 60px;
-    font-size: 24px;
-    font-weight: 700;
-    background-color: #4ec5cd;
-    padding: 0px 40px;
+    
+    .gallery-label {
+        height: 60px;
+        line-height: 60px;
+        font-size: 24px;
+        font-weight: 700;
+        background-color: #4ec5cd;
+        padding: 0px 40px;
+    }
 }
 
 .gallery-container {
@@ -3190,67 +3195,57 @@ div.mrates-diamond-header {
 
 .gallery-slider {
     padding: 20px;
-}
-
-.gallery-slider a {
-    color: #212121;
-}
-
-.gallery-slider .gallery-slider-item {
-    display: inline-block;
-    width: 300px;
-    max-height: 170px;
-    background-color: #f3f3f3;
-    border: 3px solid #dfdfdf;
-    padding: 10px 20px;
-    margin-right: 10px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.gallery-slider .gallery-slider-item:hover {
-    border: 3px solid #4ec5cd;
-}
-
-.gallery-slider .gallery-slider-item  .gallery-image-container {
-    height: 100px;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.gallery-slider .slick-prev, 
-.gallery-slider .slick-next {
-    background: #686868;
-    padding-top: 1px;
-    padding-left: 5px;
-    border-radius: 22px;
-    width: 30px;
-    height: 30px;
-}
-
-.gallery-slider .slick-prev:hover, 
-.gallery-slider .slick-next:hover,
-.gallery-slider .slick-prev:active, 
-.gallery-slider .slick-next:active,
-.gallery-slider .slick-prev:focus, 
-.gallery-slider .slick-next:focus {
-    background: #4ec5cd;
-    padding-top: 1px;
+    
+    a {
+        color: #212121;
+    }
+    
+    .gallery-slider-item {
+        display: inline-block;
+        width: 300px;
+        max-height: 170px;
+        background-color: #f3f3f3;
+        border: 3px solid #dfdfdf;
+        padding: 10px 20px;
+        margin-right: 10px;
+        text-align: center;
+        font-size: 14px;
+        
+        &:hover {
+            border: 3px solid #4ec5cd;
+        }
+        
+        .gallery-image-container {
+            height: 100px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    
+    .slick-prev, 
+    .slick-next {
+        background: #686868;
+        padding-top: 1px;
+        padding-left: 5px;
+        border-radius: 22px;
+        width: 30px;
+        height: 30px;
+        color: #fff;
+        
+        &:hover,
+        &:active,
+        &:focus {
+            background: #4ec5cd;
+            padding-top: 1px;
+            color: #fff;
+        }
+    }
 }
 
 .aircraft-detail-page .aircraft-details,
-.aircraft-fleet-gallery .gallery-label,
-.gallery-slider .slick-prev:hover, 
-.gallery-slider .slick-next:hover,
-.gallery-slider .slick-prev:active, 
-.gallery-slider .slick-next:active,
-.gallery-slider .slick-prev:focus, 
-.gallery-slider .slick-next:focus,
-.gallery-slider .slick-prev, 
-.gallery-slider .slick-next {
+.aircraft-fleet-gallery .gallery-label  {
     color: #fff;
 }
-
 
 
 /* Rates Page
@@ -3273,7 +3268,7 @@ div.mrates-diamond-header {
 }
 
 .page-template-page-rates-location .site-inner {
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 #gallery-2 .gallery-item .gallery-icon {
@@ -3715,7 +3710,7 @@ table.destinations-box-itinerary {
 }
 
 .page-template-page-news .site-inner {
-    margin-top: 74px;
+    margin-top: 100px;
 }
 
 .page-template-page-news .content,
@@ -4372,6 +4367,8 @@ table.destinations-box-itinerary {
 --------------------------------------------- */
 
 .ambulance-page-title {
+    padding-top: 40px;
+    
 	.ambulance-header-container {
 	    max-width: 1140px;
 	    padding: 0px 20px;
@@ -4382,10 +4379,11 @@ table.destinations-box-itinerary {
 
 .ambulance-banner {
 	width: 100%;
-	margin: 60px 0 0 0;
+	margin: 40px 0 0;
 	img {
 		width: 100%;
-		padding: 0; margin: 0;
+		padding: 0; 
+        margin: 0;
 	}
 }
 
@@ -4687,15 +4685,10 @@ table.destinations-box-itinerary {
 }
 
 @media (min-width: 1141px) and (max-width: 1440px) {
-    
     .site-header .widget-area {
         float: right;
         text-align: right;
         width: 900px;
-    }
-    
-    .title-area {
-        width: 210px;
     }
 }
 
@@ -5948,7 +5941,7 @@ HOMEPAGE NEW CSS
     }
     
     .site-inner {
-        margin-top: 72px;
+        margin-top: 100px;
     }
     
     .home-banner {
