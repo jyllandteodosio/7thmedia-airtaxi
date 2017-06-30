@@ -5474,6 +5474,8 @@ footer {
     -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
             flex-basis: 100%; }
+  .page-template-front-page-2 .home-fleet .flex-box {
+    max-width: 100%; }
   .page-template-front-page-2 .home-contact .title {
     font-size: 36px; }
   .page-template-front-page-2 .home-contact .contact-num,
