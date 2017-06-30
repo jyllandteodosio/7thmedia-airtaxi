@@ -1,31 +1,4 @@
 jQuery(function( $ ){
-    
-    //-- Homepage - Menu Link - Smooth Scroll --//
-    var $root = $('html, body');
-    
-//    $('.genesis-nav-menu a').click(function() {
-//        var hash = $.attr(this, 'href');
-//        var href = $(this).attr('href').split('#')[1];
-//        console.log(href);
-//        $root.animate({
-//            scrollTop: $('#'+href).offset().top-140
-//        }, 1000, function () {
-//            window.location.hash = href;
-//        });
-//        return false;
-//    });
-    
-//    $('.genesis-nav-menu a').on('click',function (e) {
-//        e.preventDefault();
-//        var target = this.hash;
-//        $target = $(target);
-//        $('html, body').stop().animate({
-//            'scrollTop':  $target.offset().top-140 //no need of parseInt here
-//        }, 900, 'swing', function () {
-//            window.location.hash = target;
-//        });
-//    });
-    
     $('.genesis-nav-menu a').click(function() {
         var hash = $.attr(this, 'href');
         var href = $(this).attr('href').split('#')[1];
@@ -41,7 +14,7 @@ jQuery(function( $ ){
         }
     });
     
-    //Check if URL is /membership/ then change URL to /membership/#perks
+    //* Check if URL is /membership/ then change URL to /membership/#perks
     var lastPart = getLastPart(window.location.href);
     
     if(lastPart == "membership") {
@@ -55,9 +28,7 @@ jQuery(function( $ ){
            : parts[parts.length - 2]);
     }
     
-    console.log(lastPart);
-    
-    // Membership page tables
+    //* Membership page tables
     var border2px = "2px solid";
     var border4px = "4px solid";
     var emerald = "#056029";
@@ -107,5 +78,4 @@ jQuery(function( $ ){
             $('#mrates-end.mrates-diamond').parent().css("border-bottom",border4px + " " + diamond);
         }
     });
-    
 });

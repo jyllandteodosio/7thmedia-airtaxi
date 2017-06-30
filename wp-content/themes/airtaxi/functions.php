@@ -8,17 +8,6 @@ include_once( get_stylesheet_directory() . '/lib/theme-defaults.php' );
 //* Set Localization (do not remove)
 load_child_theme_textdomain( 'parallax', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'parallax' ) );
 
-//* Add Image upload to WordPress Theme Customizer
-add_action( 'customize_register', 'parallax_customizer' );
-function parallax_customizer(){
-
-	require_once( get_stylesheet_directory() . '/lib/customize.php' );
-	
-}
-
-//* Include Section Image CSS
-include_once( get_stylesheet_directory() . '/lib/output.php' );
-
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'AirTaxi' );
 define( 'CHILD_THEME_URL', '' );
@@ -43,7 +32,6 @@ function parallax_enqueue_scripts_styles() {
 	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:300,400,700', array(), CHILD_THEME_VERSION );
     
     wp_dequeue_style( 'expanding-archives' );
-
 }
 
 //* Add HTML5 markup structure
@@ -54,36 +42,20 @@ add_theme_support( 'genesis-responsive-viewport' );
 
 //* Reposition the primary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
-//add_action( 'genesis_header', 'genesis_do_nav' );
-
-//* Reposition the secondary navigation menu
-//remove_action( 'genesis_after_header', 'genesis_do_subnav' );
-//add_action( 'genesis_footer', 'genesis_do_subnav', 7 );
 
 //* Reduce the secondary navigation menu to one level depth
 add_filter( 'wp_nav_menu_args', 'parallax_secondary_menu_args' );
 function parallax_secondary_menu_args( $args ){
-
 	if( 'secondary' != $args['theme_location'] )
 	return $args;
-
 	$args['depth'] = 1;
 	return $args;
-
 }
 
 //* Unregister layout settings
 genesis_unregister_layout( 'content-sidebar-sidebar' );
 genesis_unregister_layout( 'sidebar-content-sidebar' );
 genesis_unregister_layout( 'sidebar-sidebar-content' );
-
-//* Add support for additional color styles
-//add_theme_support( 'genesis-style-selector', array(
-//	'parallax-pro-blue'   => __( 'Parallax Pro Blue', 'parallax' ),
-//	'parallax-pro-green'  => __( 'Parallax Pro Green', 'parallax' ),
-//	'parallax-pro-orange' => __( 'Parallax Pro Orange', 'parallax' ),
-//	'parallax-pro-pink'   => __( 'Parallax Pro Pink', 'parallax' ),
-//) );
 
 //* Unregister secondary sidebar
 unregister_sidebar( 'sidebar-alt' );
@@ -109,29 +81,13 @@ function parallax_comments_gravatar( $args ) {
 	$args['avatar_size'] = 120;
 	return $args;
 }
-
-//remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
-//remove_action( 'genesis_footer', 'genesis_do_footer' );
-//remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
-
-
 /**
 * CUSTOM CODE====================================================
 */
 /**
  * Replace "themeslug" with your theme's unique slug
- *
- * @see http://codex.wordpress.org/Theme_Review#Guidelines
  */
 add_filter( 'single_template', 'themeslug_single_template' );
-
-/**
- * Add category considerations to the templates WordPress uses for single posts
- *
- * @global obj $post The default WordPress post object. Used so we have an ID for get_post_type()
- * @param string $template The currently located template from get_single_template()
- * @return string The new locate_template() result
- */
 function themeslug_single_template( $template ) {
     global $post;
 
@@ -141,29 +97,18 @@ function themeslug_single_template( $template ) {
         return $template; // no need to continue if there are no categories
 
     $post_type = get_post_type( $post->ID );
-
     $templates = array();
 
     foreach ( $categories as $category ) {
-
         $templates[] = "single-{$post_type}-{$category->slug}.php";
-
         $templates[] = "single-{$post_type}-{$category->term_id}.php";
     }
 
     // remember the default templates
-
     $templates[] = "single-{$post_type}.php";
-
     $templates[] = 'single.php';
-
     $templates[] = 'index.php';
 
-    /**
-     * Let WordPress figure out if the templates exist or not.
-     *
-     * @see http://codex.wordpress.org/Function_Reference/locate_template
-     */
     return locate_template( $templates );
 }
 
@@ -186,53 +131,6 @@ function custom_register_sidebar_defaults( $defaults ) {
 	return $defaults;
 }
 
-//* Register widget areas
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-0',
-//	'name'        => __( 'Home Section 0', 'parallax' ),
-//	'description' => __( 'This is the home section 0 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-1',
-//	'name'        => __( 'Home Section 1', 'parallax' ),
-//	'description' => __( 'This is the home section 1 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-2',
-//	'name'        => __( 'Home Section 2', 'parallax' ),
-//	'description' => __( 'This is the home section 2 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-3',
-//	'name'        => __( 'Home Section 3', 'parallax' ),
-//	'description' => __( 'This is the home section 3 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-4',
-//	'name'        => __( 'Home Section 4', 'parallax' ),
-//	'description' => __( 'This is the home section 4 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-5',
-//	'name'        => __( 'Home Section 5', 'parallax' ),
-//	'description' => __( 'This is the home section 5 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-6',
-//	'name'        => __( 'Home Section 6', 'parallax' ),
-//	'description' => __( 'This is the home section 6 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-7',
-//	'name'        => __( 'Home Section 7', 'parallax' ),
-//	'description' => __( 'This is the home section 7 section.', 'parallax' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'          => 'home-section-8',
-//	'name'        => __( 'Home Section 8', 'parallax' ),
-//	'description' => __( 'This is the home section 8 section.', 'parallax' ),
-//) );
-
 //* Search Results Page Widget Areas
 function archive_widgets_init() {
 
@@ -247,6 +145,40 @@ function archive_widgets_init() {
 
 }
 add_action( 'widgets_init', 'archive_widgets_init' );
+
+function custom_header_attribute() {
+    //* Set what goes inside the wrapping tags
+	$inside = sprintf( '<a href="%s">%s</a>', trailingslashit( home_url() ), get_bloginfo( 'name' ) );
+	$wrap = 'p';
+
+	//* Build the title
+	$title  = genesis_html5() ? sprintf( "<{$wrap} %s title='%s'>", genesis_attr( 'site-title' ), "AirTaxi.PH - Premier Helicopter and Jet Charter Services in the Philippines" ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
+	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
+    
+    //* Echo (filtered)
+	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
+}
+
+//* Adds defer to core WP scripts
+add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+function wsds_defer_scripts( $tag, $handle, $src ) {
+
+	// The handles of the enqueued scripts we want to defer
+	$defer_scripts = array( 
+		'jquery',
+		'jquery-migrate',
+		'jquery-cycle',
+		'jquery-metadata',
+		'jquery-touchwipe',
+		'fullpage',
+		'meteorslides-script', 
+	);
+
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
+    }
+    return $tag;
+} 
 
 //* Adds async attribute to scripts
 function ikreativ_async_scripts($url) {
@@ -270,74 +202,5 @@ function ikreativ_defer_scripts($url) {
 }
 add_filter( 'clean_url', 'ikreativ_defer_scripts', 11, 1 );
 
-/**
- * Adds a title attribute to genesis logo
- *
- */
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 add_action( 'genesis_site_title', 'custom_header_attribute' );
-/**
- * Echo the site title into the header.
- *
- * Depending on the SEO option set by the user, this will either be wrapped in an `h1` or `p` element.
- *
- * Applies the `genesis_seo_title` filter before echoing.
- *
- * @since 1.1.0
- *
- * @uses genesis_get_seo_option() Get SEO setting value.
- * @uses genesis_html5()          Check or HTML5 support.
- */
-function custom_header_attribute() {
-    //* Set what goes inside the wrapping tags
-	$inside = sprintf( '<a href="%s">%s</a>', trailingslashit( home_url() ), get_bloginfo( 'name' ) );
-    
-    /**
-	 * Site title wrapping element
-	 *
-	 * The wrapping element for the site title.
-	 *
-	 * @since 2.2.3
-	 *
-	 * @param string $wrap The wrapping element (h1, h2, p, etc.).
-	 */
-	$wrap = 'p';
-
-	//* Build the title
-	$title  = genesis_html5() ? sprintf( "<{$wrap} %s title='%s'>", genesis_attr( 'site-title' ), "AirTaxi.PH - Premier Helicopter and Jet Charter Services in the Philippines" ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
-	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
-    
-    //* Echo (filtered)
-	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
-}
-
-//add_action( 'wp_print_scripts', 'wsds_detect_enqueued_scripts' );
-//function wsds_detect_enqueued_scripts() {
-//	global $wp_styles;
-//	foreach( $wp_styles->queue as $handle ) :
-//		echo $handle . ' | ';
-//	endforeach;
-//}
-
-//* Adds defer to core WP scripts
-add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
-function wsds_defer_scripts( $tag, $handle, $src ) {
-
-	// The handles of the enqueued scripts we want to defer
-	$defer_scripts = array( 
-		'jquery',
-		'jquery-migrate',
-		'jquery-cycle',
-		'jquery-metadata',
-		'jquery-touchwipe',
-		'fullpage',
-		'meteorslides-script', 
-	);
-
-    if ( in_array( $handle, $defer_scripts ) ) {
-        return '<script src="' . $src . '" defer="defer" type="text/javascript"></script>' . "\n";
-    }
-    
-    return $tag;
-} 
-

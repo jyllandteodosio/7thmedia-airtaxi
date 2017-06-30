@@ -15,13 +15,11 @@ jQuery(function( $ ){
     
     var screenWidth = $(window).width();
     
-    if(screenWidth < 1024) {
+    if(screenWidth <= 1024) {
         $(".responsive-menu > .menu-item").click(function(event){
             if (event.target !== this)
             return;
-                $(this).find(".sub-menu:first").slideToggle(function() {
-                $(this).parent().toggleClass("menu-open");
-            });
+            $(this).find(".sub-menu:first").slideToggle();
         });
     }
 });
