@@ -6228,6 +6228,11 @@ HOMEPAGE NEW CSS
         .flex-container {
             flex-wrap: wrap;
             max-width: 90%;
+            
+            &::before,
+            &::after {
+                content: normal;
+            }
         }
         
         .flex-box {
