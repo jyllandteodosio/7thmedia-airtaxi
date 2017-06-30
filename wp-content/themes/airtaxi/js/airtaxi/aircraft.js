@@ -1,9 +1,6 @@
 jQuery(function( $ ){
     
-    //-- Slick JS --//
-    
-    /*---- Aircraft Detail Page - Fleet Gallery Slick -----*/
-    
+    //* Aircraft Detail Page - Fleet Gallery Slick
     $('.gallery-slider').slick({
         dots: false,
         arrows: true,
@@ -36,9 +33,6 @@ jQuery(function( $ ){
                     slidesToScroll: 1
                 }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
         ]
     });
 
