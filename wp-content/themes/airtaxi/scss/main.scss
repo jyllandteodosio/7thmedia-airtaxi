@@ -902,9 +902,9 @@ Site Header
 	width: 200px;
 }
 
-.header-full-width .title-area {
-	width: 100%;
-}
+//.header-full-width .title-area {
+//	width: 100%;
+//}
 
 .site-title {
 	font-family: Lato, sans-serif;
@@ -1672,20 +1672,6 @@ Media Queries
 		max-width: 960px;
 	}
 
-	.site-header .widget-area {
-		width: 801px;
-	}
-
-	.home-section-1,
-	.home-section-3,
-	.home-section-5 {
-		background-attachment: scroll;
-		background-position: top;
-		-webkit-background-size: cover;
-		-moz-background-size:    cover;
-		background-size:         cover;
-	}
-
 	.content {
 		width: 520px;
 	}
@@ -1714,8 +1700,7 @@ Media Queries
 
 	.content,
 	.sidebar,
-	.site-header .widget-area,
-	.title-area {
+	.site-header .widget-area {
 		width: 100%;
 	}
 
@@ -4199,7 +4184,7 @@ table.destinations-box-itinerary {
 }
 
 .rates-search-form select {
-    display: inline-block;
+    display: inline-block;     
     max-width: 20%;
     margin: 0.77rem;
     font-size: 1rem;
@@ -4927,7 +4912,7 @@ table.destinations-box-itinerary {
     }
     
     .content, .sidebar, 
-    .site-header .widget-area, .title-area {
+    .site-header .widget-area {
         width: 100%;
     }
     
@@ -5475,16 +5460,6 @@ table.destinations-box-itinerary {
         line-height: 56px;
         margin-bottom: 40px;
     }
-    
-/*
-    .home-section-7 .wrap {
-        height: 300px;
-    }
-    
-    .home-section-7 {
-        max-height: 400px;
-    }
-*/
     
     .home-section-8 .wrap {
         height: 300px;
