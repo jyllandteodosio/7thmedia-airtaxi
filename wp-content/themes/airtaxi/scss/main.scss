@@ -6255,8 +6255,6 @@ HOMEPAGE NEW CSS
             padding: 0;
             background: none;
             border: none;
-            
-            
         }
         
         .vector-wrap {
@@ -6692,6 +6690,14 @@ footer {
             
         .home-banner .text-container {
             padding: 0 100px;
+        }
+        
+        .home-fleet {
+            .flex-box {
+                flex: 1;
+                max-width: 50%;
+                min-width: 45%;
+            }
         }
         
         .home-about {
