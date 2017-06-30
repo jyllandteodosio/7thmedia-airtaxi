@@ -5359,6 +5359,13 @@ footer {
     height: 570px; }
   .page-template-front-page-2 .home-banner .text-container {
     padding: 0 100px; }
+  .page-template-front-page-2 .home-fleet .flex-box {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    max-width: 50%;
+    min-width: 45%; }
   .page-template-front-page-2 .home-about .client-logos {
     width: 300px; }
   .page-template-front-page-2 .home-about .about-map {
