@@ -5010,6 +5010,8 @@ HOMEPAGE NEW CSS
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
     max-width: 90%; }
+    .page-template-front-page-2 .home-fleet .flex-container::before, .page-template-front-page-2 .home-fleet .flex-container::after {
+      content: normal; }
   .page-template-front-page-2 .home-fleet .flex-box {
     -webkit-flex-basis: 19%;
         -ms-flex-preferred-size: 19%;
