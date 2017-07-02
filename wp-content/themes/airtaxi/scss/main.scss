@@ -51,7 +51,7 @@ body {
 	background-color: #fff;
 	color: #000;
 	font-family: 'Lato', sans-serif;
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 400;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
@@ -380,34 +380,6 @@ th {
 	margin-top: 100px;
 }
 
-//* Avatar
-.avatar {
-	float: left;
-}
-
-.author-box .avatar {
-	height: 88px;
-	width: 88px;
-}
-
-.entry-comments .avatar {
-	height: 60px;
-	width: 60px;
-}
-
-.alignleft .avatar,
-.author-box .avatar {
-	margin-right: 24px;
-}
-
-.alignright .avatar {
-	margin-left: 24px;
-}
-
-.comment .avatar {
-	margin: 0 20px 24px 0;
-}
-
 //* Genesis
 .breadcrumb {
 	border-bottom: 2px solid #f5f5f5;
@@ -583,22 +555,6 @@ img.alignright,
 	text-align: center;
 }
 
-//* Plugins
-//* Genesis eNews Extended
-.enews-widget input {
-	font-size: 18px;
-	margin-bottom: 20px;
-}
-
-.enews form + p {
-	margin-top: 24px;
-}
-
-//* Jetpack
-#wpstats {
-	display: none;
-}
-
 //* Site Header
 .site-header {
 	background-color: #4ec5cd;
@@ -607,6 +563,7 @@ img.alignright,
 	top: 0;
 	width: 100%;
 	z-index: 999;
+    box-shadow: 1px 1px 1px #34a8b0;
 }
 
 .admin-bar .site-header {
@@ -665,10 +622,7 @@ img.alignright,
 
 .site-header .widget-area,
 .site-header .widget-area a,
-.site-header .widget-area h4 {
-	color: #fff;
-}
-
+.site-header .widget-area h4,
 .site-header .widget-area a:hover {
 	color: #fff;
 }
@@ -676,7 +630,6 @@ img.alignright,
 .site-header .textwidget {
 	margin-top: 27px;
 }
-
 
 //* Site Navigation
 .genesis-nav-menu {
@@ -841,7 +794,7 @@ img.alignright,
 }
 
 .full-width-content .content {
-	padding: 0 200px 50px;
+	padding: 40px;
 	width: 100%;
 }
 
@@ -850,10 +803,7 @@ img.alignright,
 }
 
 //* Entries
-.entry {
-	margin-bottom: 100px;
-}
-
+.entry,
 .sidebar .entry {
 	margin-bottom: 40px;
 }
@@ -1053,7 +1003,6 @@ p.form-submit {
 }
 
 @media only screen and (max-width: 960px) {
-
 	.site-inner,
 	.wrap {
 		max-width: 768px;
@@ -1061,6 +1010,7 @@ p.form-submit {
 
 	.parallax-home .site-inner {
 		max-width: none;
+        margin-top: 0;
 	}
 
 	.site-header {
@@ -1086,45 +1036,39 @@ p.form-submit {
 		padding: 10px;
 	}
 
-	.parallax-home .site-inner {
-		margin-top: 0;
-	}
-
 	.site-inner {
 		margin-top: 80px;
 	}
 
-	.full-width-content .content {
-		padding: 0;
-	}
-
-	.full-width-content img.pull-left {
-		margin-left: 0;
-	}
-
-	.full-width-content img.pull-right {
-		margin-right: 0;
-	}
+	.full-width-content {
+        .content {
+            padding: 0;
+        }
+        
+        img.pull-left {
+            margin-left: 0;
+        }
+        
+        img.pull-right {
+            margin-right: 0;
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {
-
 	.site-inner,
 	.wrap {
-		max-width: none;
+		max-width: 100%;
 		width: 100%;
 	}
 
-    .site-inner {
+    .site-inner,
+    .parallax-home .site-inner {
 		padding: 0;
     }
     
 	.wrap {
 		padding: 0 5%;
-	}
-
-	.parallax-home .site-inner {
-		padding: 0;
 	}
 
 	.genesis-nav-menu.responsive-menu {
@@ -1144,74 +1088,76 @@ p.form-submit {
 		position: static;
 	}
 
-	.genesis-nav-menu.responsive-menu li.current-menu-item > a,
-	.genesis-nav-menu.responsive-menu .sub-menu li.current-menu-item > a:hover,
-	.genesis-nav-menu.responsive-menu li a,
-	.genesis-nav-menu.responsive-menu li a:hover {
-		border: none;
-		display: block;
-		padding: 20px;
-	}
-
-	.genesis-nav-menu.responsive-menu .menu-item-has-children {
-		cursor: pointer;	
-	}
-
-	.genesis-nav-menu.responsive-menu .menu-item-has-children > a {
-		margin-right: 60px;
-	}
-
-	.genesis-nav-menu.responsive-menu > .menu-item-has-children:before {
-		content: "\f347";
-		float: right;
-		font: normal 20px/1 'dashicons';
-		height: 20px;
-		padding: 15px 20px;
-		right: 0;
-		text-align: right;
-		z-index: 9999;
-	}
-
-	.genesis-nav-menu.responsive-menu .menu-open.menu-item-has-children:before {
-		content: "\f343";
-	}
-
-	.genesis-nav-menu.responsive-menu > .menu-item > .sub-menu {
-		display: none;
-	}
-
-	.genesis-nav-menu.responsive-menu .sub-menu {
-		background-color: rgba(255, 255, 255, 0.05);
-		left: auto;
-		opacity: 1;
-		position: relative;
-		-moz-transition:    opacity .4s ease-in-out;
-		-ms-transition:     opacity .4s ease-in-out;
-		-o-transition:      opacity .4s ease-in-out;
-		-webkit-transition: opacity .4s ease-in-out;
-		transition:         opacity .4s ease-in-out;
-		width: 100%;
-		z-index: 99;
-	}
-
-	.genesis-nav-menu.responsive-menu .sub-menu .sub-menu {
-		background-color: transparent;
-		margin: 0;
-		padding-left: 25px;
-	}
-
-	.genesis-nav-menu.responsive-menu .sub-menu li a,
-	.genesis-nav-menu.responsive-menu .sub-menu li a:hover {
-		position: relative;
-		width: 100%;
-	}
-
-	.genesis-nav-menu.responsive-menu .current-menu-item > a,
-	.genesis-nav-menu.responsive-menu .sub-menu .current-menu-item > a:hover,
-	.genesis-nav-menu.responsive-menu > li.menu-item-has-children:hover > a,
-	.genesis-nav-menu.responsive-menu a:hover {
-		background: none;
-	}
+	.genesis-nav-menu.responsive-menu {
+        li.current-menu-item > a,
+        .sub-menu li.current-menu-item > a:hover,
+        li a,
+        li a:hover {
+            border: none;
+            display: block;
+            padding: 20px;
+        }
+        
+        .menu-item-has-children {
+            cursor: pointer;
+            
+            &> a {
+                margin-right: 60px;
+            }
+        }
+        
+        > .menu-item-has-children:before {
+            content: "\f347";
+            float: right;
+            font: normal 20px/1 'dashicons';
+            height: 20px;
+            padding: 15px 20px;
+            right: 0;
+            text-align: right;
+            z-index: 9999;
+        }
+        
+        .menu-open.menu-item-has-children:before {
+            content: "\f343";
+        }
+        
+        > .menu-item > .sub-menu {
+            display: none;
+        }
+        
+        .sub-menu {
+            background-color: rgba(255, 255, 255, 0.05);
+            left: auto;
+            opacity: 1;
+            position: relative;
+            -moz-transition:    opacity .4s ease-in-out;
+            -ms-transition:     opacity .4s ease-in-out;
+            -o-transition:      opacity .4s ease-in-out;
+            -webkit-transition: opacity .4s ease-in-out;
+            transition:         opacity .4s ease-in-out;
+            width: 100%;
+            z-index: 99;
+            
+            .sub-menu {
+                background-color: transparent;
+                margin: 0;
+                padding-left: 25px;
+            }
+            
+            li a,
+            li a:hover {
+                position: relative;
+                width: 100%;
+            }
+        }
+        
+        .current-menu-item > a,
+        .sub-menu .current-menu-item > a:hover,
+        > li.menu-item-has-children:hover > a,
+        a:hover {
+            background: none;
+        }
+    }
 
 	.site-header .genesis-nav-menu.responsive-menu .current-menu-item > a,
 	.site-header .genesis-nav-menu.responsive-menu .sub-menu li a,
@@ -1225,16 +1171,13 @@ p.form-submit {
 }
 
 @media only screen and (max-width: 480px) {
-	.footer-widgets .widget-title,
-	.home-even .widget-title,
-	.home-odd .widget-title {
-		font-size: 36px;
-	}
-
-	.home-even,
-	.home-odd {
-		font-size: 22px;
-	}
+	.footer-widgets,
+    .home-even,
+    .home-odd {
+        .widget-title {
+            font-size: 36px;
+        }
+    }
 }
 
 //* CUSTOM CSS
@@ -1258,16 +1201,16 @@ a:focus {
 }
 
 //* Homepage Section - Slideshow
-#meteor-slides-widget-3 {
-    display: none;
-}
+//#meteor-slides-widget-3 {
+//    display: none;
+//}
+//
+//.widget_meteor-slides-widget {
+//    font-size: 2em;
+//}
 
-.widget_meteor-slides-widget {
-    font-size: 2em;
-}
-
-#meteor-slides-widget-2 .meteor-buttons,
-#meteor-slides-widget-3 .meteor-buttons,
+//#meteor-slides-widget-2 .meteor-buttons,
+//#meteor-slides-widget-3 .meteor-buttons,
 .aircraft-slideshow .meteor-buttons {
     box-sizing: initial;
     
@@ -1284,8 +1227,8 @@ a:focus {
     z-index: 998;    
 }
 
-#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
-#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
+//#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+//#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     float: none;
     width: 16px;
@@ -1406,8 +1349,8 @@ div.meteor-slides.navboth {
 }
 
 .slide-buttons,
-#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
-#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
+//#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
+//#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     display: inline-block;
 }
@@ -1421,7 +1364,6 @@ div.meteor-slides.navboth {
 .slide-buttons:hover {
     background: #fff;
 }
-
 
 //* Homepage Section - Base Locations
 .location-images {
