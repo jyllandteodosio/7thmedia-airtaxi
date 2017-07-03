@@ -175,7 +175,9 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
 
 body.parallax-home {
   background: none; }
@@ -1284,6 +1286,10 @@ div.meteor-slides.navboth {
   text-align: left;
   color: #212121;
   margin-bottom: 20px; }
+
+input, textarea, button {
+  -webkit-appearance: none;
+  border-radius: 0; }
 
 .contact-tabs .contact-tab-links .one-fifth {
   width: 20%; }
@@ -2930,8 +2936,7 @@ table.destinations-box-itinerary {
     background-image: none !important; }
 
   .page-template-page-rates-location .site-inner {
-    padding: 0;
-    margin-top: 70px; }
+    padding: 0; }
 
   .tab-content {
     padding: 30px 60px; }
@@ -2977,12 +2982,6 @@ table.destinations-box-itinerary {
 
   .news-recent-post .wrap {
     padding: 0 5%; }
-
-  .single-news .site-inner {
-    margin-top: 70px; }
-
-  .single-aircraft .site-inner {
-    margin-top: 70px; }
 
   .aircraft-detail-page .aircraft-details {
     position: relative;
@@ -3036,9 +3035,6 @@ table.destinations-box-itinerary {
     font-size: 0.8em;
     line-height: 1em; }
 
-  .home-section-0 {
-    margin-top: 70px; }
-
   .aircraft-detail-page {
     margin-top: 70px; } }
 @media only screen and (max-width: 768px) {
@@ -3088,6 +3084,20 @@ table.destinations-box-itinerary {
   .rates-search-form select {
     max-width: 90%; } }
 @media only screen and (max-width: 425px) {
+  .mobile .site-header {
+    min-height: 70px; }
+
+  .header-image .title-area {
+    padding: 10px 0;
+    width: 150px;
+    margin: 0 auto;
+    float: none; }
+  .header-image .site-title > a {
+    height: 40px; }
+
+  .site-inner {
+    margin-top: 70px; }
+
   .related-news-item {
     width: 100%;
     display: block;
@@ -3138,7 +3148,11 @@ table.destinations-box-itinerary {
     padding: 0 0 1rem; }
 
   .rates-search-form label {
-    padding-top: 0.5rem; } }
+    padding-top: 0.5rem; }
+
+  .contact-left,
+  .contact-right {
+    width: 100%; } }
 @media only screen and (max-width: 375px) {
   body {
     font-size: 14px; }
@@ -3158,15 +3172,6 @@ table.destinations-box-itinerary {
     float: right;
     margin-top: -57px; }
 
-  .header-image .site-title > a {
-    margin: 0 auto;
-    height: 50px;
-    width: 258px;
-    margin-right: 4px; }
-
-  .header-image .title-area {
-    padding: 10px 0; }
-
   .footer-container .left,
   .footer-container .right {
     float: none; }
@@ -3178,9 +3183,6 @@ table.destinations-box-itinerary {
     text-align: center;
     min-height: 300px; }
 
-  .gallery-container {
-    width: 80%; }
-
   .aircraft-details ul {
     padding: 0;
     display: inline-block;
@@ -3190,9 +3192,6 @@ table.destinations-box-itinerary {
     width: 100%; }
 
   .aircraft-detail-page {
-    margin-top: 60px; }
-
-  .page-template-page-membership .site-inner {
     margin-top: 60px; }
 
   div.mperks-emerald-header,
@@ -3344,8 +3343,6 @@ table.destinations-box-itinerary {
 .page-template-front-page-2.full-width-content .content {
   padding: 0;
   width: 100%; }
-.page-template-front-page-2 .site-inner {
-  margin-top: 100px; }
 .page-template-front-page-2 .home-banner {
   height: 600px; }
   .page-template-front-page-2 .home-banner .text-wrap {
@@ -4054,6 +4051,8 @@ footer {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap; }
+  .page-template-front-page-2 .home-contact .contact-form-wrap {
+    overflow: auto; }
 
   footer .footer-container {
     -webkit-flex-wrap: wrap;
