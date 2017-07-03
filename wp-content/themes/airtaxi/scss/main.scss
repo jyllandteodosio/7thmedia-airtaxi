@@ -55,6 +55,8 @@ body {
 	font-weight: 400;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
 body.parallax-home {
@@ -1515,6 +1517,12 @@ div.meteor-slides.navboth {
     text-align: left;
     color: #212121;
     margin-bottom: 20px;
+}
+
+input, textarea, button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
 }
 
 
@@ -3467,7 +3475,6 @@ table.destinations-box-itinerary {
 }
 
 @media only screen and (max-width: 1280px) {
-    
     .about-image {
         position: relative;
         left: auto;
@@ -3489,7 +3496,6 @@ table.destinations-box-itinerary {
 }
 
 @media only screen and (max-width: 1024px) {
-    
     .site-header {
         .sub-menu {
             border: none; 
@@ -3645,7 +3651,6 @@ table.destinations-box-itinerary {
     
     .page-template-page-rates-location .site-inner {
         padding: 0;
-        margin-top: 70px;
     }
     
     .tab-content {
@@ -3705,20 +3710,13 @@ table.destinations-box-itinerary {
         padding: 0 5%;
     }
     
-    .single-news .site-inner {
-        margin-top: 70px;
-    }
-    
     //* Aircrafts Page
-    .single-aircraft .site-inner {
-        margin-top: 70px;
-    }
-    
     .aircraft-detail-page .aircraft-details {
         position: relative;
         width: 100%; 
         max-width: 100%; 
     }
+    
     .aircraft-detail-page {
         margin-top: 70px;
     }
@@ -3768,7 +3766,6 @@ table.destinations-box-itinerary {
     .ap-box {
         width: 47%;
     }
-
 }
 
 @media only screen and (max-width: 960px) {
@@ -3780,10 +3777,6 @@ table.destinations-box-itinerary {
     .meteor-slides p.slide-button-title {
         font-size: 0.8em;
         line-height: 1em;
-    }
-    
-    .home-section-0 {
-        margin-top: 70px;
     }
     
     .aircraft-detail-page {
@@ -3860,6 +3853,27 @@ table.destinations-box-itinerary {
 }
 
 @media only screen and (max-width: 425px) {
+    .mobile .site-header {
+        min-height: 70px;
+    }
+    
+    .header-image {
+        .title-area {
+            padding: 10px 0;
+            width: 150px;
+            margin: 0 auto;
+            float: none;
+        }
+        
+        .site-title > a {
+            height: 40px;
+        }
+    }
+    
+    .site-inner {
+        margin-top: 70px;
+    }
+    
     .related-news-item {
         width: 100%;
         display: block;
@@ -3925,10 +3939,14 @@ table.destinations-box-itinerary {
     .rates-search-form label {
         padding-top: 0.5rem;
     }
+    
+    .contact-left, 
+    .contact-right {
+        width: 100%;
+    }
 }
     
 @media only screen and (max-width: 375px) {
-    
     body {
         font-size: 14px;
     }
@@ -3952,17 +3970,6 @@ table.destinations-box-itinerary {
         margin-top: -57px;
     }
     
-    .header-image .site-title > a {
-        margin: 0 auto;
-        height: 50px;
-        width: 258px;
-        margin-right: 4px;
-    }
-    
-    .header-image .title-area {
-        padding: 10px 0;
-    }
-    
     //* Footer
     .footer-container .left,
     .footer-container .right {
@@ -3979,10 +3986,6 @@ table.destinations-box-itinerary {
     }
     
     //* Aircraft Page
-    .gallery-container {
-        width: 80%;
-    }
-    
     .aircraft-details ul {
         padding: 0;
         display: inline-block;
@@ -3997,10 +4000,6 @@ table.destinations-box-itinerary {
     }
     
     //* Membership Page - Perks and Rates
-    .page-template-page-membership .site-inner {
-        margin-top: 60px;
-    }
-    
     div.mperks-emerald-header, 
     div.mperks-sapphire-header, 
     div.mperks-diamond-header, 
@@ -4157,7 +4156,6 @@ table.destinations-box-itinerary {
 }
 
 @media only screen and (max-width: 320px) {
-    
     .header-image .site-title > a {
         margin-right: -20px;
     }
@@ -4204,7 +4202,7 @@ table.destinations-box-itinerary {
     }
     
     .site-inner {
-        margin-top: 100px;
+//        margin-top: 100px;
     }
     
     .home-banner {
@@ -5205,6 +5203,10 @@ footer {
             .contact-num-wrap,
             .join-us-panel {
                 flex-wrap: wrap;
+            }
+            
+            .contact-form-wrap {
+                overflow: auto;
             }
         }
     }
