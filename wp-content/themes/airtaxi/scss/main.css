@@ -3648,7 +3648,10 @@ table.destinations-box-itinerary {
       padding: 4px; }
       .page-template-front-page-2 .home-about .client-logos .logo img {
         height: 90px;
-        width: auto; }
+        width: auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2px;
+        border-radius: 1px; }
 .page-template-front-page-2 .home-contact {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-contact p {
