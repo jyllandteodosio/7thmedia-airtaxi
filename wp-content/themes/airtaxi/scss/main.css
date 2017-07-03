@@ -2848,14 +2848,14 @@ table.destinations-box-itinerary {
     margin-bottom: 1rem; }
 
   .header-image .title-area {
-    padding: 11px 0; }
+    padding: 17px 0; }
   .header-image .site-title > a {
     margin: 5px auto;
     max-width: 100%; }
 
   .responsive-menu-icon {
     float: right;
-    margin-top: -57px; }
+    margin-top: -67px; }
 
   .site-header .genesis-nav-menu.responsive-menu .current-menu-item > a,
   .site-header .genesis-nav-menu.responsive-menu .sub-menu li a,
@@ -3094,6 +3094,9 @@ table.destinations-box-itinerary {
     float: none; }
   .header-image .site-title > a {
     height: 40px; }
+
+  .responsive-menu-icon {
+    margin-top: -55px; }
 
   .site-inner {
     margin-top: 70px; }
