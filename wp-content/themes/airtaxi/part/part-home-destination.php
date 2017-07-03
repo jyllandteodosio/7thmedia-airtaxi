@@ -32,7 +32,8 @@
                <?php if(get_sub_field('text_or_button') == 'text'): ?>
 
                <div class="flex-content-wrap">
-                  <a href="<?php echo get_sub_field('destination_link');?>"> 
+                   <?php if(get_sub_field('destination_details')): ?>
+                   <a href="<?php echo get_sub_field('destination_link');?>"> 
                       <h3 class="flex-title">
                           <?php echo get_sub_field('destination_name');?>
                       </h3>
@@ -40,6 +41,15 @@
                    <p class="flex-content">
                        <?php echo get_sub_field('destination_details'); ?>
                    </p>
+                   <?php else: ?>
+                   <div class="flex-title-wrap">
+                       <a href="<?php echo get_sub_field('destination_link');?>">
+                           <h3 class="flex-title">
+                             <?php echo get_sub_field('destination_name');?>
+                           </h3>
+                       </a>
+                   </div>
+                   <?php endif; ?>
                </div><!--flex-content-wrap-->
 
                <?php else: ?>

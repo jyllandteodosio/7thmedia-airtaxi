@@ -4401,6 +4401,18 @@ table.destinations-box-itinerary {
         
         .flex-content-wrap {
             padding: 20px 20px 30px;
+            display: table;
+            width: 100%;
+            min-height: 140px;
+        }
+        
+        .flex-title-wrap {
+            display: table-cell;
+            vertical-align: middle;
+            
+            .flex-title {
+                margin-bottom: 0;
+            }
         }
         
         .inquire-button {

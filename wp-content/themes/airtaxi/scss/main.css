@@ -3483,7 +3483,15 @@ table.destinations-box-itinerary {
   font-weight: 700;
   letter-spacing: 1px; }
 .page-template-front-page-2 .home-destination .flex-content-wrap {
-  padding: 20px 20px 30px; }
+  padding: 20px 20px 30px;
+  display: table;
+  width: 100%;
+  min-height: 140px; }
+.page-template-front-page-2 .home-destination .flex-title-wrap {
+  display: table-cell;
+  vertical-align: middle; }
+  .page-template-front-page-2 .home-destination .flex-title-wrap .flex-title {
+    margin-bottom: 0; }
 .page-template-front-page-2 .home-destination .inquire-button {
   background-color: #4ec5cd;
   padding: 8px 20px;
