@@ -4053,6 +4053,9 @@ footer {
             flex-wrap: wrap; }
   .page-template-front-page-2 .home-contact .contact-form-wrap {
     overflow: auto; }
+  .page-template-front-page-2 .home-contact .contact-left p,
+  .page-template-front-page-2 .home-contact .contact-right p {
+    margin: 0; }
 
   footer .footer-container {
     -webkit-flex-wrap: wrap;
