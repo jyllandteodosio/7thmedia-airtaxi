@@ -5208,6 +5208,13 @@ footer {
             .contact-form-wrap {
                 overflow: auto;
             }
+            
+            .contact-left,
+            .contact-right {
+                p {
+                    margin: 0;
+                }
+            }
         }
     }
     
