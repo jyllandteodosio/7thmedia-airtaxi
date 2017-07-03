@@ -4847,6 +4847,12 @@ table.destinations-box-itinerary {
             flex-basis: 50%;
             margin-left: 0;
         }
+
+        div.wpcf7-response-output {
+            color: #212121;
+            font-size: 14px;
+            margin: 0;
+        }
     }
     
     .pop-dir, .pop-email, .pop-join {
@@ -4918,12 +4924,6 @@ footer {
     small {
         font-size: 12px;
     }
-}
-
-div.wpcf7-response-output {
-    color: #212121;
-    font-size: 14px;
-    margin: 0;
 }
 
 //* Homepage Media Queries

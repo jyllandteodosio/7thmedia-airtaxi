@@ -3817,6 +3817,10 @@ table.destinations-box-itinerary {
         -ms-flex-preferred-size: 50%;
             flex-basis: 50%;
     margin-left: 0; }
+  .page-template-front-page-2 .home-contact div.wpcf7-response-output {
+    color: #212121;
+    font-size: 14px;
+    margin: 0; }
 .page-template-front-page-2 .pop-dir, .page-template-front-page-2 .pop-email, .page-template-front-page-2 .pop-join {
   text-align: center;
   overflow: hidden; }
@@ -3875,11 +3879,6 @@ footer {
     font-size: 36px; }
   footer small {
     font-size: 12px; }
-
-.wpcf7-response-output {
-  color: #212121;
-  font-size: 14px;
-  margin: 0; }
 
 @media only screen and (max-width: 1024px) {
   .site-header {
