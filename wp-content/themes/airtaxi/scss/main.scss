@@ -4361,6 +4361,7 @@ table.destinations-box-itinerary {
 
             &:hover {
                 background-color: #34a8b0;
+                transition: background-color .2s;
             }
         }
     }
@@ -4387,43 +4388,58 @@ table.destinations-box-itinerary {
         
         .flex-box {
             padding: 0;
-            background-color: #212121;
             margin-top: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            flex-grow: 1;
             
             a {
                 color: #fff;
-            }
-            
-            .flex-icon {
-                height: 150px;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
             }
         }
         
         .flex-title {
             font-size: 16px;
             text-transform: uppercase;
-            margin-bottom: 20px;
             font-weight: 700;
             letter-spacing: 1px;
         }
         
         .flex-content-wrap {
-            padding: 20px 20px 30px;
+            padding: 20px;
             display: table;
             width: 100%;
-            min-height: 140px;
+            height: 100%;
+            background-color: rgba(31,31,31,0.5);
+            
+            &:hover {
+                background-color: rgba(31,31,31,0.7);
+                transition: background-color .5s;
+            }
         }
         
-        .flex-title-wrap {
+        .flex-content {
             display: table-cell;
+            width: 100%;
+            height: 100%;
             vertical-align: middle;
-            
-            .flex-title {
-                margin-bottom: 0;
-            }
+        }
+        
+        .flex-title {
+            margin-bottom: 0;
+        }
+        
+        .text-overlay {
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .details {
+            margin-top: 20px;
+            font-size: 14px;
         }
         
         .inquire-button {
@@ -4434,23 +4450,10 @@ table.destinations-box-itinerary {
             font-size: 12px;
             letter-spacing: 1px;
             display: inline-block;
+            margin-top: 20px;
             
             &:hover {
                 background-color: #12a8b2;
-            }
-        }
-        
-        .text-overlay {
-            display: table;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(104, 104, 104, 0.8);
-            
-            span {
-                display: table-cell;
-                vertical-align: middle;
-                text-transform: uppercase;
-                padding: 0 20px;
             }
         }
     }
