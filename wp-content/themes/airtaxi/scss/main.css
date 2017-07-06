@@ -3398,6 +3398,9 @@ table.destinations-box-itinerary {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }
+  .page-template-front-page-2 .home-section h1, .page-template-front-page-2 .home-section h2, .page-template-front-page-2 .home-section h3, .page-template-front-page-2 .home-section h4, .page-template-front-page-2 .home-section h5, .page-template-front-page-2 .home-section h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300; }
   .page-template-front-page-2 .home-section .section-wrap {
     max-width: 1366px;
     margin: 0 auto; }
@@ -3682,6 +3685,9 @@ table.destinations-box-itinerary {
   .page-template-front-page-2 .home-contact .contact-form-panel,
   .page-template-front-page-2 .home-contact .join-us-panel {
     background-color: #fff; }
+  .page-template-front-page-2 .home-contact .contact-form-panel h4,
+  .page-template-front-page-2 .home-contact .locations-text-panel h4 {
+    font-weight: 400; }
   .page-template-front-page-2 .home-contact .contact-form-panel {
     -webkit-flex-basis: 40%;
         -ms-flex-preferred-size: 40%;
