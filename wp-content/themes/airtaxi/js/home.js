@@ -41,6 +41,19 @@ jQuery(function( $ ){
         }
     });
     
+    //* Banner Button Animations
+    if($('.buttons-container .button').length) {
+        var order = 0;
+        
+        $('.buttons-container .button').each(function(order) {
+            var button = this;
+            setTimeout(function() {
+                $(button).css({ 'opacity': 1, 'transition': 'opacity 4s' });
+            }, (3000+(order * 1000)));
+            order++;
+        });
+    }
+     
     //* Contact Locations Map
     $('.locations-tab').ready(function() {
         var count = 0;
