@@ -61,7 +61,7 @@ jQuery(function( $ ){
                     
                     var markers = $('.about-map').vectorMap('get', 'mapObject').markers;
                     
-                    label.html('<div class="map-hover" style="background-image: url('+ markers[code].config.imgsrc +');"><\div>');
+                    label.html('<div class="map-hover" style="background-image: url('+ markers[code].config.imgsrc +');"><span class="map-title">'+ markers[code].config.name +'</span"</div>');
                 }
             });
             $('.about-map .jvectormap-zoomin').hide();

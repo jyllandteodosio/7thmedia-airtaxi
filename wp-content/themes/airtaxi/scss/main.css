@@ -3441,7 +3441,8 @@ table.destinations-box-itinerary {
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
-    min-height: 1px; }
+    min-height: 1px;
+    box-shadow: none; }
     .page-template-front-page-2 .home-membership .flex-box p {
       margin-bottom: 40px;
       font-weight: 300;
@@ -3867,6 +3868,15 @@ table.destinations-box-itinerary {
   margin-left: 55%;
   position: relative;
   background-size: cover; }
+  .map-hover .map-title {
+    display: block;
+    text-align: center;
+    padding: 2px;
+    background-color: rgba(31, 31, 31, 0.5);
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase; }
   .map-hover::after {
     content: '';
     position: absolute;
