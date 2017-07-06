@@ -2,8 +2,13 @@
     <div class="text-wrap">
         <div class="text-container">
             <span class="text"><?php echo get_field('banner_text'); ?></span>
-            <span class="button-heading"><?php echo get_field('banner_button_heading'); ?></span>
-            <a href="<?php echo get_field('banner_button_link'); ?>" class="button"><?php echo get_field('banner_button_title'); ?></a>
+            <?php if(have_rows('banner_buttons')): ?>
+                <div class="buttons-container">
+                    <?php while(have_rows('banner_buttons')): the_row(); ?>
+                    <a href="<?php echo get_sub_field('button_link'); ?>" class="button"><?php echo get_sub_field('button_title'); ?></a>
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
     <div class='video-wrap'>

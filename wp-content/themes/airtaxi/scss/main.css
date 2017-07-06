@@ -3368,17 +3368,17 @@ table.destinations-box-itinerary {
       font-weight: 300;
       font-size: 56px;
       padding-bottom: 100px; }
-    .page-template-front-page-2 .home-banner .text-container span.button-heading {
-      font-family: 'Dancing Script', cursive;
-      font-size: 32px;
-      padding-bottom: 20px; }
-    .page-template-front-page-2 .home-banner .text-container .button {
+    .page-template-front-page-2 .home-banner .text-container .buttons-container .button {
+      opacity: 0;
       width: 200px;
       background-color: rgba(255, 255, 255, 0.2);
       border: 3px solid white;
-      padding: 14px 20px; }
-      .page-template-front-page-2 .home-banner .text-container .button:hover {
-        background-color: #4ec5cd; }
+      padding: 14px 20px;
+      margin: 0 10px; }
+      .page-template-front-page-2 .home-banner .text-container .buttons-container .button:hover {
+        background-color: #4ec5cd;
+        -webkit-transition: backround 2s linear;
+                transition: backround 2s linear; }
   .page-template-front-page-2 .home-banner .video {
     height: 600px;
     overflow: hidden; }
