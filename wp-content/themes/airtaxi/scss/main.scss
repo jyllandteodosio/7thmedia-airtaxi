@@ -1808,6 +1808,10 @@ a.map-inquire:hover {
 
 //* Membership Page
 .page-template-page-membership {
+    .site-inner {
+        margin-top: 40px;
+    }
+    
     .site-container {
         background-color: #eaeaea;
     }
@@ -1845,8 +1849,12 @@ a.map-inquire:hover {
     text-align: center;
 }
 
-.m-panel-title h1 {
-    margin-bottom: 0;
+.m-panel-title {
+    padding-top: 80px;
+    
+    h1 {
+        margin-bottom: 0;
+    }
 }
 
 .m-panel-header {

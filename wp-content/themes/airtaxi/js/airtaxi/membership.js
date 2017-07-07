@@ -1,12 +1,12 @@
 jQuery(function( $ ){
-    $('.genesis-nav-menu a').click(function() {
+    $('.genesis-nav-menu a, a[href*=#]').click(function() {
         var hash = $.attr(this, 'href');
         var href = $(this).attr('href').split('#')[1];
         console.log(href);
         
         if(href) {
             $('html, body').animate({
-                scrollTop: $('#'+href).offset().top-140
+                scrollTop: $('#'+href).offset().top-80
             }, 1000, function () {
                 window.location.hash = href;
             });

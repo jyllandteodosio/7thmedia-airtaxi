@@ -19,38 +19,40 @@ function membership_enqueue_scripts_styles() {
 get_header('custom');
 $title = get_the_title();
 
-?>
-<div class="m-panel-title">
-    <h1><?php echo $title; ?></h1>
-</div>
-<?php
-
+$count = 0;
 $bg_image = '';
 $bg_color = 'transparent';
 
-if( have_rows('section') ) :
-while( have_rows('section') ) : the_row();
+if(have_rows('section')) : while(have_rows('section')) : the_row();
 
-if( get_sub_field('section_background') == 'image' ):
-$bg_image = get_sub_field('background_image');
-elseif( get_sub_field('section_background') == 'color' ):
-$bg_color = get_sub_field('background_color');
-endif;
+    if( get_sub_field('section_background') == 'image' ):
+    $bg_image = get_sub_field('background_image');
+    elseif( get_sub_field('section_background') == 'color' ):
+    $bg_color = get_sub_field('background_color');
+    endif;
 
-?>
-<div id="<?php the_sub_field('section_id');?>" class="m-panel" style="background-image: url('<?php echo $bg_image; ?>');background-color: <?php echo $bg_color; ?>;">
-    <div class="m-panel-content">
-        <h2 class="m-panel-header">
-            <?php the_sub_field('section_title'); ?>
-        </h2>
-        <div class="m-panel-table">
-            <?php the_sub_field('content'); ?>
+    $count++; 
+
+    if( $count == 1 ): ?>
+        <div id="<?php the_sub_field('section_id');?>" class="m-panel-title">
+            <h1><?php echo $title; ?></h1>
         </div>
-    </div>
-</div>
-<?php
-endwhile;
-else:
-endif;
+        <div class="m-panel" style="background-image: url('<?php echo $bg_image; ?>');background-color: <?php echo $bg_color; ?>;">
 
-get_footer('custom'); ?>
+    <?php else: ?>
+        <div id="<?php the_sub_field('section_id');?>" class="m-panel" style="background-image: url('<?php echo $bg_image; ?>');background-color: <?php echo $bg_color; ?>;">
+
+    <?php endif; ?>
+            <div class="m-panel-content">
+                <h2 class="m-panel-header">
+                    <?php the_sub_field('section_title'); ?>
+                </h2>
+                <div class="m-panel-table">
+                    <?php the_sub_field('content'); ?>
+                </div>
+            </div>
+        </div>
+
+<?php endwhile; endif; ?>
+
+<?php get_footer('custom'); ?>

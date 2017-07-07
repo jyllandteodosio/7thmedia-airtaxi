@@ -1527,6 +1527,8 @@ a.map-inquire:hover {
   left: 0;
   z-index: 99999; }
 
+.page-template-page-membership .site-inner {
+  margin-top: 40px; }
 .page-template-page-membership .site-container {
   background-color: #eaeaea; }
 .page-template-page-membership .entry-header {
@@ -1551,8 +1553,10 @@ a.map-inquire:hover {
 .m-panel-description {
   text-align: center; }
 
-.m-panel-title h1 {
-  margin-bottom: 0; }
+.m-panel-title {
+  padding-top: 80px; }
+  .m-panel-title h1 {
+    margin-bottom: 0; }
 
 .m-panel-header {
   font-family: 'Dancing Script', cursive;
