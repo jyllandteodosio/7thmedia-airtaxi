@@ -3782,7 +3782,7 @@ table.destinations-box-itinerary {
     color: #212121; }
   .page-template-front-page-2 .home-contact .location-map {
     height: 340px; }
-  .page-template-front-page-2 .home-contact .map-name {
+  .page-template-front-page-2 .home-contact .locations-text-panel h4.map-name {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 5px; }
