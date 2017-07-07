@@ -4529,6 +4529,7 @@ table.destinations-box-itinerary {
             box-shadow: none;
             border-bottom: 3px solid #4ec5cd;
             min-height: 1px;
+            cursor: pointer;
             
             &:hover {
                 box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);

@@ -26,7 +26,7 @@
                    setup_postdata($post);
                 ?>
 
-                <div class="flex-box">
+                <div class="flex-box aircraft-box">
 
                     <?php if(get_field('aircraft_vector')): $vector = get_field('aircraft_vector'); ?>
 

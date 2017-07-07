@@ -53,6 +53,12 @@ jQuery(function( $ ){
             order++;
         });
     }
+    
+    //* Aircraft box link
+    $('.aircraft-box').click(function() {
+        var link = $(this).find('.aircraft-name').attr('href');
+        window.location.href = link;
+    });
      
     //* Contact Locations Map
     $('.locations-tab').ready(function() {
