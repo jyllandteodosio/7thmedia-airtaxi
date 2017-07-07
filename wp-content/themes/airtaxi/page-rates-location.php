@@ -43,7 +43,7 @@ $term_value = get_field('location_rates_category');
                 <ul class="tab-links">
                     <li id="drop-off-link" class="active one-third first"><h2><a class="drop-off" href="#tab1">Drop-off or Pick-up</a></h2></li>
                     <li id="aerial-tours-link" class="one-third"><h2><a class="aerial-tours" href="#tab2">Aerial Tours</a></h2></li>
-                    <li id="destinations-link" class="one-third"><h2><a class="destinations" href="#tab3">Destination Tour Packages</a></h2></li>
+                    <li id="destinations-link" class="one-third"><h2><a class="destinations" href="#tab3">Daytrip Destinations</a></h2></li>
                 </ul>
             </div>
             <div class="tab-content">
