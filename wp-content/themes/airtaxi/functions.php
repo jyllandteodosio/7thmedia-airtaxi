@@ -17,9 +17,9 @@ define( 'CHILD_THEME_VERSION', '1.0' );
 add_action( 'wp_enqueue_scripts', 'parallax_enqueue_scripts_styles' );
 function parallax_enqueue_scripts_styles() {
 
-	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js#asyncload', array( 'jquery' ), '1.0.0' );
+	wp_enqueue_script( 'parallax-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js#asyncload', array( 'jquery' ), null );
     
-    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), null );
     
     wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), '', true );
     

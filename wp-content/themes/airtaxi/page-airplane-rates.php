@@ -10,7 +10,7 @@
 add_action( 'wp_enqueue_scripts', 'airplane_rates_enqueue_scripts_styles' );
 function airplane_rates_enqueue_scripts_styles() {
     
-    wp_enqueue_script( 'airplane-rates', get_bloginfo( 'stylesheet_directory' ) . '/js/airplane-rates.min.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'airplane-rates', get_bloginfo( 'stylesheet_directory' ) . '/js/airplane-rates.min.js', array( 'jquery' ), null );
 }
 
 get_header('custom');
