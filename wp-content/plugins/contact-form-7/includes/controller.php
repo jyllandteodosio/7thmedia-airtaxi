@@ -157,9 +157,13 @@ function wpcf7_enqueue_scripts() {
 	// jquery.form.js originally bundled with WordPress is out of date and deprecated
 	// so we need to deregister it and re-register the latest one
 	wp_deregister_script( 'jquery-form' );
-	wp_register_script( 'jquery-form',
+//	wp_register_script( 'jquery-form',
+//		wpcf7_plugin_url( 'includes/js/jquery.form.min.js' ),
+//		array( 'jquery' ), '3.51.0-2014.06.20', true );
+    
+    wp_register_script( 'jquery-form',
 		wpcf7_plugin_url( 'includes/js/jquery.form.min.js' ),
-		array( 'jquery' ), '3.51.0-2014.06.20', true );
+		array( 'jquery' ), null, true );
 
 	$in_footer = true;
 
@@ -167,9 +171,13 @@ function wpcf7_enqueue_scripts() {
 		$in_footer = false;
 	}
 
-	wp_enqueue_script( 'contact-form-7',
+//	wp_enqueue_script( 'contact-form-7',
+//		wpcf7_plugin_url( 'includes/js/scripts.js' ),
+//		array( 'jquery', 'jquery-form' ), WPCF7_VERSION, $in_footer );
+    
+    wp_enqueue_script( 'contact-form-7',
 		wpcf7_plugin_url( 'includes/js/scripts.js' ),
-		array( 'jquery', 'jquery-form' ), WPCF7_VERSION, $in_footer );
+		array( 'jquery', 'jquery-form' ), null, $in_footer );
 
 	$_wpcf7 = array(
 		'recaptcha' => array(

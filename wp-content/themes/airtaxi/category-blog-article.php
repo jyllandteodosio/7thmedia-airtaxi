@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'category_news_enqueue_scripts_styles' );
 function category_news_enqueue_scripts_styles() {
     
-    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/news.min.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'news', get_bloginfo( 'stylesheet_directory' ) . '/js/news.min.js', array( 'jquery' ), null );
     
 }
 
