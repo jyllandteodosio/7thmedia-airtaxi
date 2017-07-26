@@ -26,9 +26,7 @@
             <?php endwhile; endif; ?>
             <div class="flex-box visit-box">
                <div class="play-icon">
-                   <?php
-                   $channel_icon = get_field('youtube_channel_logo');
-                   ?>
+                   <?php $channel_icon = get_field('youtube_channel_logo'); ?>
                    <div class="channel">
                        <p><?php echo get_field('visit_youtube_text'); ?></p>
                        <a href="<?php echo get_field('youtube_channel_link'); ?>" target="_blank">
