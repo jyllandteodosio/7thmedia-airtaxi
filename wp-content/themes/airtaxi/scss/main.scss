@@ -1031,7 +1031,7 @@ p.form-submit {
 	}
 
 	.header-image .site-title > a {
-		margin: 0 auto 10px;
+		margin: 0;
 	}
 
 	.genesis-nav-menu a {
@@ -3514,6 +3514,11 @@ table.destinations-box-itinerary {
         }
     }
     
+    .genesis-nav-menu .sub-menu .sub-menu {
+        margin: 0;
+        padding-left: 20px;
+    }
+    
     .genesis-nav-menu.responsive-menu {
         max-height: 400px;
         overflow: scroll;
@@ -3531,19 +3536,14 @@ table.destinations-box-itinerary {
     }
     
     .header-image {
-        .title-area {
-            padding: 17px 0;
-        }
-        
         .site-title > a {
-            margin: 5px auto;
             max-width: 100%;
         }
     }
     
     .responsive-menu-icon {
         float: right;
-        margin-top: -67px;
+        margin-top: -60px;
     }
     
     //* Homepage
@@ -3862,7 +3862,7 @@ table.destinations-box-itinerary {
 
 @media only screen and (max-width: 425px) {
     .mobile .site-header {
-        min-height: 70px;
+        min-height: 60px;
     }
     
     .header-image {
@@ -3879,11 +3879,11 @@ table.destinations-box-itinerary {
     }
     
     .responsive-menu-icon {
-        margin-top: -55px;
+        margin-top: -50px;
     }
     
     .site-inner {
-        margin-top: 70px;
+        margin-top: 60px;
     }
     
     .related-news-item {
@@ -3975,11 +3975,6 @@ table.destinations-box-itinerary {
     
     .single-news .news-single-content {
         margin: 20px auto;
-    }
-    
-    .responsive-menu-icon {
-        float: right;
-        margin-top: -57px;
     }
     
     //* Footer
@@ -4211,10 +4206,6 @@ table.destinations-box-itinerary {
     &.full-width-content .content {
         padding: 0;
         width: 100%;
-    }
-    
-    .site-inner {
-//        margin-top: 100px;
     }
     
     .home-banner {
@@ -4467,6 +4458,65 @@ table.destinations-box-itinerary {
         }
     }
     
+    .home-videos {
+        h2 {
+            color: #fff;
+            font-size: 48px;
+        }
+        
+        .sub-title {
+            color: #fff;
+        }
+        
+        .flex-container {
+            max-width: 80%;
+        }
+        
+        .flex-box {
+            background-color: transparent;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 0;
+            margin: 0 10px;
+            min-height: 140px;
+            height: 140px;
+            flex-basis: 25%;
+            
+            &:first-child {
+                margin-left: 15px;
+            }
+            
+            &:last-child {
+                margin-right: 15px;
+            }
+        }
+        
+        .visit-box {
+            background-color: #d3d3d3;
+            padding: 10px;
+        }
+        
+        .play-icon {
+            display: table;
+            width: 100%;
+            height: 100%;
+            
+            span, .channel {
+                display: table-cell;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            
+            .channel p {
+                color: #212121;
+                font-size: 14px;
+                margin-bottom: 10px;
+                line-height: 1.5;
+            }
+        }
+    }
+    
     .home-call {
         padding: 30px;
         
@@ -4606,15 +4656,16 @@ table.destinations-box-itinerary {
             text-align: left;
         
             p {
-                font-size: 16px;
+                font-size: 18px;
+                font-weight: 300;
                 line-height: 2;
                 margin-bottom: 30px;
             }
         }
         
         .about-map {
-            height: 600px;
-            width: 600px;
+            height: 556px;
+            width: 560px;
             position: absolute;
             left: 140px;
         }
@@ -4645,24 +4696,24 @@ table.destinations-box-itinerary {
             }
         }
         
-        .client-logos {
-            width: 530px;
-            height: 130px;
-            max-width: 100%;
-            
-            .logo {
-                text-align: center;
-                padding: 4px;
-                
-                img {
-                    height: 90px;
-                    width: auto;
-                    background-color: rgba(255,255,255,0.9);
-                    padding: 2px;
-                    border-radius: 1px;
-                }
-            }
-        }
+//        .client-logos {
+//            width: 530px;
+//            height: 130px;
+//            max-width: 100%;
+//            
+//            .logo {
+//                text-align: center;
+//                padding: 4px;
+//                
+//                img {
+//                    height: 90px;
+//                    width: auto;
+//                    background-color: rgba(255,255,255,0.9);
+//                    padding: 2px;
+//                    border-radius: 1px;
+//                }
+//            }
+//        }
     }
     
     .home-contact {
@@ -4986,10 +5037,6 @@ footer {
 
 //* Homepage Media Queries
 @media only screen and (max-width: 1024px) {
-    .site-header {
-        min-height: 100px;
-    }
-    
     .page-template-front-page-2 {
         .home-section,
         .home-section .section-wrap,
@@ -4999,6 +5046,7 @@ footer {
         
         .home-membership,
         .home-destination,
+        .home-videos,
         .home-about,
         .home-fleet,
         .home-contact {
@@ -5024,9 +5072,9 @@ footer {
             
         
         .home-about {
-            .client-logos {
-                width: 300px;
-            }
+//            .client-logos {
+//                width: 300px;
+//            }
             
             .about-map {
                 left: 80px;
@@ -5058,9 +5106,15 @@ footer {
             height: 400px;
         }
         
-        .home-banner .text-container span.text {
-            padding-bottom: 50px;
-            font-size: 40px;
+        .home-banner .text-container {
+            span.text {
+                padding-bottom: 50px;
+                font-size: 40px;
+            }
+            
+            .buttons-container .button {
+                margin: 10px;
+            }
         }
         
         .home-membership .flex-container {
@@ -5076,10 +5130,31 @@ footer {
             }
         }
         
+        .home-membership {
+            .flex-box {
+                margin: 0 auto;
+            }
+        }
+        
         .home-destination {
             .flex-box {
                 &:last-child {
                     margin-bottom: 0;
+                }
+            }
+        }
+        
+        .home-videos {
+            .flex-box {
+                flex-basis: 100%;
+                height: 200px;
+                max-height: 200px;
+                max-width: 400px;
+                margin: 10px auto;
+                
+                &:first-child, 
+                &:last-child {
+                    margin: 10px auto;
                 }
             }
         }
@@ -5109,9 +5184,9 @@ footer {
                 margin: 0;
             }
             
-            .client-logos {
-                width: 560px;
-            }
+//            .client-logos {
+//                width: 560px;
+//            }
             
             .about-map {
                 left: 180px;
@@ -5155,7 +5230,7 @@ footer {
             height: 500px;
             
             .text-container {
-                padding: 60px 20px;
+                padding: 20px;
                 
                 span.text {
                     font-size: 36px;
@@ -5174,6 +5249,7 @@ footer {
         
         .home-membership,
         .home-destination,
+        .home-videos,
         .home-fleet,
         .home-about {
             h2 {
@@ -5190,9 +5266,9 @@ footer {
                 text-align: center;
             }
             
-            .client-logos {
-                height: 160px;
-            }
+//            .client-logos {
+//                height: 160px;
+//            }
             
             .about-map {
                 left: 20px;

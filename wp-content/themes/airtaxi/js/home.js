@@ -8,7 +8,7 @@ jQuery(function( $ ){
     }
     
     //* Smooth Scroll
-    $('.genesis-nav-menu a, a[href*=#]').click(function() {
+    $('.genesis-nav-menu a, a[href*=#]:not(.flex-link)').click(function() {
         var hash = $.attr(this, 'href');
         var href = $(this).attr('href').split('#')[1];
         console.log(href);
