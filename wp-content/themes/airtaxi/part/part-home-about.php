@@ -16,10 +16,11 @@
                <div class="flex-content">
                    <?php echo get_field('about_section_content');?>
 
+<!--
                    <div class="client-logos swiper-container">
                        <div class="swiper-wrapper">
 
-                       <?php if(have_rows('client_logos')): while(have_rows('client_logos')): the_row(); ?>
+                       <?php /*if(have_rows('client_logos')): while(have_rows('client_logos')): the_row(); ?>
                            <?php if(get_sub_field('logo')): $logo = get_sub_field('logo'); ?>
 
                                <div class="logo swiper-slide">
@@ -33,7 +34,8 @@
                        <div class="swiper-pagination"></div>
 
                    </div>
-                   <?php echo get_field('section_content_after');?>
+                   <?php echo get_field('section_content_after');*/?>
+-->
                </div>
 
             </div>

@@ -929,7 +929,7 @@ p.form-submit {
     text-align: center; }
 
   .header-image .site-title > a {
-    margin: 0 auto 10px; }
+    margin: 0; }
 
   .genesis-nav-menu a {
     padding: 10px; }
@@ -2841,6 +2841,10 @@ table.destinations-box-itinerary {
   .site-header .wrap {
     padding: 0px 20px; }
 
+  .genesis-nav-menu .sub-menu .sub-menu {
+    margin: 0;
+    padding-left: 20px; }
+
   .genesis-nav-menu.responsive-menu {
     max-height: 400px;
     overflow: scroll; }
@@ -2851,15 +2855,12 @@ table.destinations-box-itinerary {
     display: block;
     margin-bottom: 1rem; }
 
-  .header-image .title-area {
-    padding: 17px 0; }
   .header-image .site-title > a {
-    margin: 5px auto;
     max-width: 100%; }
 
   .responsive-menu-icon {
     float: right;
-    margin-top: -67px; }
+    margin-top: -60px; }
 
   .site-header .genesis-nav-menu.responsive-menu .current-menu-item > a,
   .site-header .genesis-nav-menu.responsive-menu .sub-menu li a,
@@ -3089,7 +3090,7 @@ table.destinations-box-itinerary {
     max-width: 90%; } }
 @media only screen and (max-width: 425px) {
   .mobile .site-header {
-    min-height: 70px; }
+    min-height: 60px; }
 
   .header-image .title-area {
     padding: 10px 0;
@@ -3100,10 +3101,10 @@ table.destinations-box-itinerary {
     height: 40px; }
 
   .responsive-menu-icon {
-    margin-top: -55px; }
+    margin-top: -50px; }
 
   .site-inner {
-    margin-top: 70px; }
+    margin-top: 60px; }
 
   .related-news-item {
     width: 100%;
@@ -3174,10 +3175,6 @@ table.destinations-box-itinerary {
 
   .single-news .news-single-content {
     margin: 20px auto; }
-
-  .responsive-menu-icon {
-    float: right;
-    margin-top: -57px; }
 
   .footer-container .left,
   .footer-container .right {
@@ -3536,6 +3533,45 @@ table.destinations-box-itinerary {
   margin-top: 20px; }
   .page-template-front-page-2 .home-destination .inquire-button:hover {
     background-color: #12a8b2; }
+.page-template-front-page-2 .home-videos h2 {
+  color: #fff;
+  font-size: 48px; }
+.page-template-front-page-2 .home-videos .sub-title {
+  color: #fff; }
+.page-template-front-page-2 .home-videos .flex-container {
+  max-width: 80%; }
+.page-template-front-page-2 .home-videos .flex-box {
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  margin: 0 10px;
+  min-height: 140px;
+  height: 140px;
+  -webkit-flex-basis: 25%;
+      -ms-flex-preferred-size: 25%;
+          flex-basis: 25%; }
+  .page-template-front-page-2 .home-videos .flex-box:first-child {
+    margin-left: 15px; }
+  .page-template-front-page-2 .home-videos .flex-box:last-child {
+    margin-right: 15px; }
+.page-template-front-page-2 .home-videos .visit-box {
+  background-color: #d3d3d3;
+  padding: 10px; }
+.page-template-front-page-2 .home-videos .play-icon {
+  display: table;
+  width: 100%;
+  height: 100%; }
+  .page-template-front-page-2 .home-videos .play-icon span, .page-template-front-page-2 .home-videos .play-icon .channel {
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer; }
+  .page-template-front-page-2 .home-videos .play-icon .channel p {
+    color: #212121;
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 1.5; }
 .page-template-front-page-2 .home-call {
   padding: 30px; }
   .page-template-front-page-2 .home-call .flex-container {
@@ -3637,12 +3673,13 @@ table.destinations-box-itinerary {
     box-shadow: none;
     text-align: left; }
     .page-template-front-page-2 .home-about .flex-box p {
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: 300;
       line-height: 2;
       margin-bottom: 30px; }
   .page-template-front-page-2 .home-about .about-map {
-    height: 600px;
-    width: 600px;
+    height: 556px;
+    width: 560px;
     position: absolute;
     left: 140px; }
   .page-template-front-page-2 .home-about .about-map-container {
@@ -3663,19 +3700,6 @@ table.destinations-box-itinerary {
     .page-template-front-page-2 .home-about .map-title .flex-content {
       font-size: 16px;
       font-weight: 300; }
-  .page-template-front-page-2 .home-about .client-logos {
-    width: 530px;
-    height: 130px;
-    max-width: 100%; }
-    .page-template-front-page-2 .home-about .client-logos .logo {
-      text-align: center;
-      padding: 4px; }
-      .page-template-front-page-2 .home-about .client-logos .logo img {
-        height: 90px;
-        width: auto;
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 2px;
-        border-radius: 1px; }
 .page-template-front-page-2 .home-contact {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-contact p {
@@ -3928,15 +3952,13 @@ footer {
     font-size: 12px; }
 
 @media only screen and (max-width: 1024px) {
-  .site-header {
-    min-height: 100px; }
-
   .page-template-front-page-2 .home-section,
   .page-template-front-page-2 .home-section .section-wrap,
   .page-template-front-page-2 .home-banner .text-container {
     max-width: 100%; }
   .page-template-front-page-2 .home-membership .flex-container,
   .page-template-front-page-2 .home-destination .flex-container,
+  .page-template-front-page-2 .home-videos .flex-container,
   .page-template-front-page-2 .home-about .flex-container,
   .page-template-front-page-2 .home-fleet .flex-container,
   .page-template-front-page-2 .home-contact .flex-container {
@@ -3953,8 +3975,6 @@ footer {
             flex: 1;
     max-width: 50%;
     min-width: 45%; }
-  .page-template-front-page-2 .home-about .client-logos {
-    width: 300px; }
   .page-template-front-page-2 .home-about .about-map {
     left: 80px; }
   .page-template-front-page-2 .home-contact .contact-form-panel {
@@ -3972,6 +3992,8 @@ footer {
   .page-template-front-page-2 .home-banner .text-container span.text {
     padding-bottom: 50px;
     font-size: 40px; }
+  .page-template-front-page-2 .home-banner .text-container .buttons-container .button {
+    margin: 10px; }
   .page-template-front-page-2 .home-membership .flex-container {
     margin-bottom: 10px; }
   .page-template-front-page-2 .home-membership .flex-box,
@@ -3981,8 +4003,20 @@ footer {
             flex-basis: 100%;
     max-width: 400px;
     margin: 0 auto 30px; }
+  .page-template-front-page-2 .home-membership .flex-box {
+    margin: 0 auto; }
   .page-template-front-page-2 .home-destination .flex-box:last-child {
     margin-bottom: 0; }
+  .page-template-front-page-2 .home-videos .flex-box {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    height: 200px;
+    max-height: 200px;
+    max-width: 400px;
+    margin: 10px auto; }
+    .page-template-front-page-2 .home-videos .flex-box:first-child, .page-template-front-page-2 .home-videos .flex-box:last-child {
+      margin: 10px auto; }
   .page-template-front-page-2 .home-call .flex-box {
     -webkit-flex-basis: 28%;
         -ms-flex-preferred-size: 28%;
@@ -4003,8 +4037,6 @@ footer {
             flex-basis: 100%;
     max-width: 100%;
     margin: 0; }
-  .page-template-front-page-2 .home-about .client-logos {
-    width: 560px; }
   .page-template-front-page-2 .home-about .about-map {
     left: 180px; }
   .page-template-front-page-2 .home-text {
@@ -4031,7 +4063,7 @@ footer {
   .page-template-front-page-2 .home-banner {
     height: 500px; }
     .page-template-front-page-2 .home-banner .text-container {
-      padding: 60px 20px; }
+      padding: 20px; }
       .page-template-front-page-2 .home-banner .text-container span.text {
         font-size: 36px;
         padding-bottom: 30px; }
@@ -4041,6 +4073,7 @@ footer {
     height: 500px; }
   .page-template-front-page-2 .home-membership h2,
   .page-template-front-page-2 .home-destination h2,
+  .page-template-front-page-2 .home-videos h2,
   .page-template-front-page-2 .home-fleet h2,
   .page-template-front-page-2 .home-about h2 {
     font-size: 36px; }
@@ -4048,8 +4081,6 @@ footer {
     padding: 30px 20px; }
   .page-template-front-page-2 .home-about .flex-content {
     text-align: center; }
-  .page-template-front-page-2 .home-about .client-logos {
-    height: 160px; }
   .page-template-front-page-2 .home-about .about-map {
     left: 20px; }
   .page-template-front-page-2 .home-about .map-title {
