@@ -3563,7 +3563,7 @@ table.destinations-box-itinerary {
   display: table;
   width: 100%;
   height: 100%; }
-  .page-template-front-page-2 .home-videos .play-icon span, .page-template-front-page-2 .home-videos .play-icon .channel {
+  .page-template-front-page-2 .home-videos .play-icon a.mpopup_iframe, .page-template-front-page-2 .home-videos .play-icon .channel {
     display: table-cell;
     vertical-align: middle;
     cursor: pointer; }

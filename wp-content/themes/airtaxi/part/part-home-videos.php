@@ -20,7 +20,7 @@
             ?>
             <div class="flex-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/0.jpg);">
                <div class="play-icon">
-                   <span data-video="<?php echo $youtube_ID['v'];?>"><img src="<?php echo get_field('youtube_play_icon');?>"/></span>
+                   <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe"><img src="<?php echo get_field('youtube_play_icon');?>"/></a>
                </div>
             </div>
             <?php endwhile; endif; ?>
