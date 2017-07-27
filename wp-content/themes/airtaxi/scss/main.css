@@ -3402,6 +3402,8 @@ table.destinations-box-itinerary {
   .page-template-front-page-2 .home-section h1, .page-template-front-page-2 .home-section h2, .page-template-front-page-2 .home-section h3, .page-template-front-page-2 .home-section h4, .page-template-front-page-2 .home-section h5, .page-template-front-page-2 .home-section h6 {
     font-family: 'Lato', sans-serif;
     font-weight: 300; }
+  .page-template-front-page-2 .home-section h2 {
+    font-size: 48px; }
   .page-template-front-page-2 .home-section .section-wrap {
     max-width: 1366px;
     margin: 0 auto; }
@@ -3433,7 +3435,6 @@ table.destinations-box-itinerary {
 .page-template-front-page-2 .home-membership {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-membership h2 {
-    font-size: 48px;
     color: #686868; }
   .page-template-front-page-2 .home-membership .flex-container {
     max-width: 80%; }
@@ -3466,8 +3467,7 @@ table.destinations-box-itinerary {
       -webkit-transition: background-color .2s;
               transition: background-color .2s; }
 .page-template-front-page-2 .home-destination h2 {
-  color: #4ec5cd;
-  font-size: 48px; }
+  color: #4ec5cd; }
 .page-template-front-page-2 .home-destination .sub-title {
   color: #686868;
   font-size: 16px;
@@ -3482,7 +3482,7 @@ table.destinations-box-itinerary {
           flex-wrap: wrap; }
 .page-template-front-page-2 .home-destination .flex-box {
   padding: 0;
-  margin-top: 30px;
+  margin-bottom: 30px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -3491,6 +3491,8 @@ table.destinations-box-itinerary {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1; }
+  .page-template-front-page-2 .home-destination .flex-box:last-child {
+    margin-bottom: 0; }
   .page-template-front-page-2 .home-destination .flex-box a {
     color: #fff; }
 .page-template-front-page-2 .home-destination .flex-title {
@@ -3533,11 +3535,11 @@ table.destinations-box-itinerary {
   margin-top: 20px; }
   .page-template-front-page-2 .home-destination .inquire-button:hover {
     background-color: #12a8b2; }
-.page-template-front-page-2 .home-videos h2 {
-  color: #fff;
-  font-size: 48px; }
+.page-template-front-page-2 .home-videos h2,
 .page-template-front-page-2 .home-videos .sub-title {
   color: #fff; }
+.page-template-front-page-2 .home-videos .sub-title {
+  font-size: 16px; }
 .page-template-front-page-2 .home-videos .flex-container {
   max-width: 80%; }
 .page-template-front-page-2 .home-videos .flex-box {
@@ -3598,8 +3600,6 @@ table.destinations-box-itinerary {
     text-transform: uppercase; }
 .page-template-front-page-2 .home-fleet {
   background-attachment: fixed; }
-  .page-template-front-page-2 .home-fleet h2 {
-    font-size: 48px; }
   .page-template-front-page-2 .home-fleet .sub-title {
     font-size: 16px;
     line-height: 1.8;
@@ -3657,8 +3657,7 @@ table.destinations-box-itinerary {
   background-size: cover !important;
   background-position: center !important; }
   .page-template-front-page-2 .home-about h2 {
-    color: #fff;
-    font-size: 48px; }
+    color: #fff; }
   .page-template-front-page-2 .home-about .flex-container {
     max-width: 90%; }
   .page-template-front-page-2 .home-about .flex-box {
@@ -3700,6 +3699,27 @@ table.destinations-box-itinerary {
     .page-template-front-page-2 .home-about .map-title .flex-content {
       font-size: 16px;
       font-weight: 300; }
+.page-template-front-page-2 .home-clients h2 {
+  color: #4ec5cd; }
+.page-template-front-page-2 .home-clients .flex-container {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+.page-template-front-page-2 .home-clients .flex-box {
+  -webkit-flex-basis: 16%;
+      -ms-flex-preferred-size: 16%;
+          flex-basis: 16%;
+  max-height: 80px;
+  min-height: 80px;
+  min-width: 150px;
+  padding: 0;
+  margin: 20px auto;
+  background-color: transparent;
+  box-shadow: none; }
+  .page-template-front-page-2 .home-clients .flex-box img {
+    max-width: 150px;
+    max-height: 80px;
+    width: auto; }
 .page-template-front-page-2 .home-contact {
   background-attachment: fixed; }
   .page-template-front-page-2 .home-contact p {
@@ -4039,6 +4059,8 @@ footer {
     margin: 0; }
   .page-template-front-page-2 .home-about .about-map {
     left: 180px; }
+  .page-template-front-page-2 .home-clients .flex-box {
+    margin: 20px auto; }
   .page-template-front-page-2 .home-text {
     padding: 30px 140px; }
   .page-template-front-page-2 .home-contact .flex-box {
