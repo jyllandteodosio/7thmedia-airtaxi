@@ -4283,6 +4283,10 @@ table.destinations-box-itinerary {
             font-weight: 300;
         }
         
+        h2 {
+            font-size: 48px;
+        }
+        
         .section-wrap {
             max-width: 1366px;
             margin: 0 auto;
@@ -4323,7 +4327,6 @@ table.destinations-box-itinerary {
         background-attachment: fixed;
         
         h2 {
-            font-size: 48px;
             color: #686868;
         }
         
@@ -4369,7 +4372,6 @@ table.destinations-box-itinerary {
     .home-destination {
         h2 {
             color: #4ec5cd;
-            font-size: 48px;
         }
         
         .sub-title {
@@ -4388,12 +4390,16 @@ table.destinations-box-itinerary {
         
         .flex-box {
             padding: 0;
-            margin-top: 30px;
+            margin-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             min-height: 200px;
             flex-grow: 1;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
             
             a {
                 color: #fff;
@@ -4459,13 +4465,13 @@ table.destinations-box-itinerary {
     }
     
     .home-videos {
-        h2 {
+        h2,
+        .sub-title {
             color: #fff;
-            font-size: 48px;
         }
         
         .sub-title {
-            color: #fff;
+            font-size: 16px;
         }
         
         .flex-container {
@@ -4556,10 +4562,6 @@ table.destinations-box-itinerary {
     .home-fleet {
         background-attachment: fixed;
         
-        h2 {
-            font-size: 48px;
-        }
-        
         .sub-title {
             font-size: 16px;
             line-height: 1.8;
@@ -4638,7 +4640,6 @@ table.destinations-box-itinerary {
         
         h2 {
             color: #fff;
-            font-size: 48px;
         }
         
         .flex-container {
@@ -4695,25 +4696,33 @@ table.destinations-box-itinerary {
                 font-weight: 300;
             }
         }
+    }
+    
+    .home-clients {
+        h2 {
+            color: #4ec5cd;
+        }
         
-//        .client-logos {
-//            width: 530px;
-//            height: 130px;
-//            max-width: 100%;
-//            
-//            .logo {
-//                text-align: center;
-//                padding: 4px;
-//                
-//                img {
-//                    height: 90px;
-//                    width: auto;
-//                    background-color: rgba(255,255,255,0.9);
-//                    padding: 2px;
-//                    border-radius: 1px;
-//                }
-//            }
-//        }
+        .flex-container {
+            flex-wrap: wrap;
+        }
+        
+        .flex-box {
+            flex-basis: 16%;
+            max-height: 80px;
+            min-height: 80px;
+            min-width: 150px;
+            padding: 0;
+            margin: 20px auto;
+            background-color: transparent;
+            box-shadow: none;
+            
+            img {
+                max-width: 150px;
+                max-height: 80px;
+                width: auto;
+            }
+        }
     }
     
     .home-contact {
@@ -5072,10 +5081,6 @@ footer {
             
         
         .home-about {
-//            .client-logos {
-//                width: 300px;
-//            }
-            
             .about-map {
                 left: 80px;
             }
@@ -5184,12 +5189,14 @@ footer {
                 margin: 0;
             }
             
-//            .client-logos {
-//                width: 560px;
-//            }
-            
             .about-map {
                 left: 180px;
+            }
+        }
+        
+        .home-clients {
+            .flex-box {
+                margin: 20px auto;
             }
         }
         
@@ -5265,10 +5272,6 @@ footer {
             .flex-content {
                 text-align: center;
             }
-            
-//            .client-logos {
-//                height: 160px;
-//            }
             
             .about-map {
                 left: 20px;

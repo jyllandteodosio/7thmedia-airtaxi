@@ -11,7 +11,8 @@
         <div class="flex-container">
             <?php if(have_rows('clients_boxes')): while(have_rows('clients_boxes')): the_row();?>
             <div class="flex-box">
-               
+               <?php $client_logo = get_sub_field('client_logo'); ?>
+               <img src="<?php echo $client_logo['url']?>" alt="<?php echo ($client_logo) ? $client_logo['url'] : ''; ?>">
             </div>
             <?php endwhile; endif; ?>
         </div>
