@@ -1,4 +1,4 @@
-<section class="home-banner">
+<section data-id="" class="home-banner section">
     <div class="text-wrap">
         <div class="text-container">
             <span class="text"><?php echo get_field('banner_text'); ?></span>

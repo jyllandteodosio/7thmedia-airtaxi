@@ -1,6 +1,6 @@
 <?php if(get_field('clients_section_background_color')): ?>
 
-<section id="<?php echo get_field('clients_section_id'); ?>" class="home-clients home-section" style="background-color: <?php echo get_field('clients_section_background_color'); ?>');">
+<section data-id="<?php echo get_field('clients_section_id'); ?>" class="home-clients home-section section" style="background-color: <?php echo get_field('clients_section_background_color'); ?>');">
 
 <?php endif; ?>
    

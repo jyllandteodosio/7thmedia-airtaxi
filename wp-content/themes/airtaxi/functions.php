@@ -21,15 +21,15 @@ function parallax_enqueue_scripts_styles() {
     
     wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), null );
     
-    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), '', true );
+//    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), null, true );
     
-    wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), CHILD_THEME_VERSION );
+    wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), null );
 
 	wp_enqueue_style( 'dashicons' );
     
-    wp_enqueue_style( 'fontawesome', get_bloginfo( 'stylesheet_directory' ) . '/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+    wp_enqueue_style( 'fontawesome', get_bloginfo( 'stylesheet_directory' ) . '/font-awesome/css/font-awesome.min.css', array(), null );
     
-	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:300,400,700', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:300,400,700', array(), null );
     
     wp_dequeue_style( 'expanding-archives' );
 }
@@ -159,6 +159,25 @@ function custom_header_attribute() {
 	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
 }
 
+//* Adds async to core WP scripts
+add_filter( 'script_loader_tag', 'wsds_async_scripts', 10, 3 );
+function wsds_async_scripts( $tag, $handle, $src ) {
+
+	// The handles of the enqueued scripts we want to async
+	$async_scripts = array( 
+		'jquery',
+        'magnific-popup',
+        'wpmp',
+        'html5shiv',
+        'wp-gallery-custom-links-js',
+	);
+
+    if ( in_array( $handle, $async_scripts ) ) {
+        return '<script src="' . $src . '" async="async" type="text/javascript"></script>' . "\n";
+    }
+    return $tag;
+} 
+
 //* Adds defer to core WP scripts
 add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 function wsds_defer_scripts( $tag, $handle, $src ) {
@@ -171,7 +190,8 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'jquery-metadata',
 		'jquery-touchwipe',
 		'fullpage',
-		'meteorslides-script', 
+		'meteorslides-script',
+        'contact-form-7',
 	);
 
     if ( in_array( $handle, $defer_scripts ) ) {
