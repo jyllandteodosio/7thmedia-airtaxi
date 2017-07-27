@@ -7,6 +7,14 @@ jQuery(function( $ ){
         baseURL = baseURL + "/Projects/airtaxi"
     }
     
+    //* Scrollify JS
+    $.scrollify({
+        section : ".section",
+        sectionName : "id",
+        offset : -80,
+        setHeights : false,
+    });
+    
     //* Smooth Scroll
     $('.genesis-nav-menu a, a[href*=#]:not(.flex-link)').click(function() {
         var hash = $.attr(this, 'href');
@@ -20,24 +28,6 @@ jQuery(function( $ ){
                 window.location.hash = href;
             });
             return false;
-        }
-    });
-    
-    //* Client Logo Swiper
-    var logoSwiper = new Swiper ('.client-logos', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 2,
-        autoplay: 4000,
-        breakpoints: {
-            1024: {
-                slidesPerView: 1
-            },
-            768: {
-                slidesPerView: 2
-            },
-            425: {
-                slidesPerView: 1
-            },
         }
     });
     
@@ -61,45 +51,51 @@ jQuery(function( $ ){
     });
      
     //* Contact Locations Map
-    $('.locations-tab').ready(function() {
-        var count = 0;
-        var mapCount = $('.location-map').length;
-        
-        $('.location-map-container').each(function() {
-            count++;
-            var id = $(this).attr('data-id');
-            var lat = parseFloat($(this).find('.loc-lat-'+id).val());
-            var lng = parseFloat($(this).find('.loc-long-'+id).val());
-            var coords = {lat: lat, lng: lng};
-            
-            if( screenWidth <= 375 ) {
-                $(this).find('.location-map-'+id).css('width','288px');
-            } else if( screenWidth > 375 && screenWidth <= 768 ) {
-                $(this).find('.location-map-'+id).css('width','648px');
-            } 
+    var firstLoad = true;
+    $(document).scroll(function () {
+        if(window.location.hash == '#contact-us' && firstLoad) {
+            $('.locations-tab').ready(function() {
+                var count = 0;
+                var mapCount = $('.location-map').length;
 
-            var map = new google.maps.Map(document.getElementById('location-map-'+id), {
-                zoom: 17,
-                center: coords
-            });
+                $('.location-map-container').each(function() {
+                    count++;
+                    var id = $(this).attr('data-id');
+                    var lat = parseFloat($(this).find('.loc-lat-'+id).val());
+                    var lng = parseFloat($(this).find('.loc-long-'+id).val());
+                    var coords = {lat: lat, lng: lng};
 
-            var marker = new google.maps.Marker({
-                position: {lat: lat, lng: lng},
-                map: map,
-                title: 'AirTaxi.PH',
-                icon: {
-                    url: baseURL + "/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
-                    scaledSize: new google.maps.Size(128, 128)
-                }
-            });
+                    if( screenWidth <= 375 ) {
+                        $(this).find('.location-map-'+id).css('width','288px');
+                    } else if( screenWidth > 375 && screenWidth <= 768 ) {
+                        $(this).find('.location-map-'+id).css('width','648px');
+                    } 
 
-            google.maps.event.trigger(map, 'resize');
-            google.maps.event.addListener(map, 'tilesloaded', function() {
-               if(count == mapCount) {
-                   hideTabs();
-               }
+                    var map = new google.maps.Map(document.getElementById('location-map-'+id), {
+                        zoom: 17,
+                        center: coords
+                    });
+
+                    var marker = new google.maps.Marker({
+                        position: {lat: lat, lng: lng},
+                        map: map,
+                        title: 'AirTaxi.PH',
+                        icon: {
+                            url: baseURL + "/wp-content/uploads/2016/09/Airtaxi_Map_Marker.png",
+                            scaledSize: new google.maps.Size(128, 128)
+                        }
+                    });
+
+                    google.maps.event.trigger(map, 'resize');
+                    google.maps.event.addListener(map, 'tilesloaded', function() {
+                       if(count == mapCount) {
+                           hideTabs();
+                       }
+                    });
+                    firstLoad = false;
+                });
             });
-        });
+        }
     });
     
     function hideTabs() {
@@ -169,8 +165,8 @@ jQuery(function( $ ){
         $('.overlay').removeClass('hidden');
         
         $('#pop-email-close').on('click', function(){
-                $('.overlay').addClass('hidden');
-                $('.pop-email.pop-default').addClass('hidden').hide();
+            $('.overlay').addClass('hidden');
+            $('.pop-email.pop-default').addClass('hidden').hide();
         });
     });
     

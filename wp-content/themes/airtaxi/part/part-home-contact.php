@@ -1,10 +1,10 @@
 <?php if(get_field('contact_section_background') == 'Color'): ?>
 
-<section id="<?php echo get_field('contact_section_id'); ?>" class="home-contact home-section" style="background-color: <?php echo get_field('contact_background_color'); ?>');">
+<section data-id="<?php echo get_field('contact_section_id'); ?>" class="home-contact home-section section" style="background-color: <?php echo get_field('contact_background_color'); ?>');">
 
 <?php else: ?>
 
-<section id="<?php echo get_field('contact_section_id'); ?>" class="home-contact home-section" style="background-image: url('<?php echo get_field('contact_background_image'); ?>');">
+<section data-id="<?php echo get_field('contact_section_id'); ?>" class="home-contact home-section section" style="background-image: url('<?php echo get_field('contact_background_image'); ?>');">
 
 <?php endif; ?>
     <div class="section-wrap">
