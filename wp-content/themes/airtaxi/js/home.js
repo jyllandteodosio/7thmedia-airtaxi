@@ -44,7 +44,7 @@ jQuery(function( $ ){
         });
     }
     
-    //* Aircraft box link
+    //* Aircraft Box Link
     $('.aircraft-box').click(function() {
         var link = $(this).find('.aircraft-name').attr('href');
         window.location.href = link;
@@ -145,7 +145,6 @@ jQuery(function( $ ){
             $('.overlay').toggleClass('hidden');
             $('.pop-dir').toggleClass('hidden');
         });
-    
     });
     
     //* Contact Section - Driving Directions Email Form Popup
