@@ -1203,16 +1203,6 @@ a:focus {
 }
 
 //* Homepage Section - Slideshow
-//#meteor-slides-widget-3 {
-//    display: none;
-//}
-//
-//.widget_meteor-slides-widget {
-//    font-size: 2em;
-//}
-
-//#meteor-slides-widget-2 .meteor-buttons,
-//#meteor-slides-widget-3 .meteor-buttons,
 .aircraft-slideshow .meteor-buttons {
     box-sizing: initial;
     
@@ -1229,8 +1219,6 @@ a:focus {
     z-index: 998;    
 }
 
-//#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
-//#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     float: none;
     width: 16px;
@@ -1351,8 +1339,6 @@ div.meteor-slides.navboth {
 }
 
 .slide-buttons,
-//#meteor-slides-widget-2 .meteor-slides .meteor-buttons a,
-//#meteor-slides-widget-3 .meteor-slides .meteor-buttons a,
 .aircraft-slideshow .meteor-slides .meteor-buttons a {
     display: inline-block;
 }

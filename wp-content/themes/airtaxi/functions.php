@@ -133,7 +133,6 @@ function custom_register_sidebar_defaults( $defaults ) {
 
 //* Search Results Page Widget Areas
 function archive_widgets_init() {
-
     register_sidebar( array(
         'name'          => 'Search Results Sidebar',
         'id'            => 'search-results-sidebar',
@@ -142,7 +141,6 @@ function archive_widgets_init() {
         'before_title'  => '<h3>',
         'after_title'   => '</h3>',
     ) );
-
 }
 add_action( 'widgets_init', 'archive_widgets_init' );
 

@@ -30,7 +30,7 @@ foreach($cats as $c) {
 ?>
 <div class="news-page-title">
    <div class="news-header-container">
-       <h1><?php echo $cat->name; ?></h1>
+       <h1>News Category: <?php echo $cat->name; ?></h1>
        <?php include('searchform-dynamic.php'); ?>
    </div>
 </div>
