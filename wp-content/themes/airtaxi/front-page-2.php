@@ -51,12 +51,12 @@ function home_banner(){
 	get_template_part('part/part', 'home-banner');
 	get_template_part('part/part', 'home-membership');
 	get_template_part('part/part', 'home-destination');
-//	get_template_part('part/part', 'home-videos');
+	get_template_part('part/part', 'home-videos');
 	get_template_part('part/part', 'home-call');
 	get_template_part('part/part', 'home-fleet');
 	get_template_part('part/part', 'home-text');
 	get_template_part('part/part', 'home-about');
-//	get_template_part('part/part', 'home-clients');
+	get_template_part('part/part', 'home-clients');
 	get_template_part('part/part', 'home-contact');
     get_footer('custom');
     echo '</div>';
