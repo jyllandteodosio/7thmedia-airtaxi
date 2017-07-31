@@ -8,14 +8,18 @@ jQuery(function( $ ){
     }
     
     //* Scrollify JS
-    if(screenWidth >= 1024){
-        $.scrollify({
-            section : ".section",
-            sectionName : "id",
-            offset : -80,
-            setHeights : false,
-        });
+    var offset = -80;
+    if(screenWidth <= 425) {
+        offset = -60;
     }
+    
+    $.scrollify({
+        section : ".section",
+        sectionName : "id",
+        offset : offset,
+        setHeights : false,
+        touchScroll: false,
+    });
     
     //* Smooth Scroll
     $('.genesis-nav-menu a, a[href*=#]:not(.flex-link)').click(function() {
@@ -54,7 +58,7 @@ jQuery(function( $ ){
      
     //* Contact Locations Map
     var firstLoad = true;
-    $(document).scroll(function () {
+    $(window).scroll(function () {
         if(window.location.hash == '#contact-us' && firstLoad) {
             $('.locations-tab').ready(function() {
                 var count = 0;
