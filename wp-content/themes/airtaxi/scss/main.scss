@@ -5307,6 +5307,7 @@ footer {
         .home-clients {
             .flex-box {
                 margin: 20px auto;
+                flex-basis: 24%;
             }
         }
         
@@ -5395,9 +5396,10 @@ footer {
         
         .home-call,
         .home-contact,
+        .home-clients,
         .home-fleet {
             .flex-box {
-                flex-basis: 100%;
+                flex-basis: 49%;
             }
         }
         
