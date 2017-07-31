@@ -21,8 +21,6 @@ function parallax_enqueue_scripts_styles() {
     
     wp_enqueue_script( 'parallax-airtaxi', get_bloginfo( 'stylesheet_directory' ) . '/js/airtaxi.min.js#asyncload', array( 'jquery' ), null );
     
-//    wp_enqueue_script( 'blImageCenter', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.blImageCenter.js#asyncload', array( 'jquery' ), null, true );
-    
     wp_enqueue_style( 'main', get_bloginfo( 'stylesheet_directory' ) . '/scss/main.css', array(), null );
 
 	wp_enqueue_style( 'dashicons' );
@@ -32,6 +30,9 @@ function parallax_enqueue_scripts_styles() {
 	wp_enqueue_style( 'parallax-google-fonts', '//fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:300,400,700', array(), null );
     
     wp_dequeue_style( 'expanding-archives' );
+    wp_dequeue_style( 'wpsm-comptable-styles' );
+    wp_dequeue_style( 'meteor-slides' );
+    wp_dequeue_style( 'contact-form-7' );
 }
 
 //* Add HTML5 markup structure
@@ -156,6 +157,24 @@ function custom_header_attribute() {
     //* Echo (filtered)
 	echo apply_filters( 'genesis_seo_title', $title, $inside, $wrap );
 }
+
+//* Print out enqueued scripts
+//add_action( 'wp_print_scripts', 'themeslug_detect_enqueued_scripts' );
+//function themeslug_detect_enqueued_scripts() {
+//    global $wp_scripts;
+//    foreach( $wp_scripts->queue as $handle ) :
+//        echo $handle . ' | ';
+//    endforeach;
+//}
+
+//* Print out enqueued styles
+//add_action( 'wp_print_styles', 'themeslug_detect_enqueued_styles' );
+//function themeslug_detect_enqueued_styles() {
+//    global $wp_styles;
+//    foreach( $wp_styles->queue as $handle ) :
+//        echo $handle . ' | ';
+//    endforeach;
+//}
 
 //* Adds async to core WP scripts
 add_filter( 'script_loader_tag', 'wsds_async_scripts', 10, 3 );
