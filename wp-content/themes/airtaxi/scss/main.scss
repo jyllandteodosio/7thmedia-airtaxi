@@ -5394,13 +5394,16 @@ footer {
             }
         }
         
-        .home-call,
         .home-contact,
         .home-clients,
         .home-fleet {
             .flex-box {
                 flex-basis: 49%;
             }
+        }
+        
+        .home-call .flex-box {
+            flex-basis: 100%;
         }
         
         .home-fleet .flex-box {

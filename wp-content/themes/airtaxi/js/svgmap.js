@@ -1,7 +1,7 @@
 jQuery(function( $ ){
     var screenWidth = $(window).width();
     var firstLoad = true;
-    $(document).scroll(function () {
+    $(window).scroll(function () {
         if(window.location.hash == '#fly-with-us' && firstLoad) {
             $('.home-about').ready(function() {
 
