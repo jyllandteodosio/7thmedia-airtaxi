@@ -8,12 +8,14 @@ jQuery(function( $ ){
     }
     
     //* Scrollify JS
-    $.scrollify({
-        section : ".section",
-        sectionName : "id",
-        offset : -80,
-        setHeights : false,
-    });
+    if(screenWidth >= 1024){
+        $.scrollify({
+            section : ".section",
+            sectionName : "id",
+            offset : -80,
+            setHeights : false,
+        });
+    }
     
     //* Smooth Scroll
     $('.genesis-nav-menu a, a[href*=#]:not(.flex-link)').click(function() {
