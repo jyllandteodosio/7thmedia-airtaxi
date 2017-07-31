@@ -3585,6 +3585,7 @@ span.wpcf7-list-item {
   background-size: cover;
   background-position: center;
   min-height: 200px;
+  height: 200px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
