@@ -21,6 +21,8 @@ function rates_location_enqueue_scripts_styles() {
     
     wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  '1.6.0' );
     
+    wp_enqueue_style( 'meteor-slides' );
+    
 }
 
 get_header('custom'); ?>
