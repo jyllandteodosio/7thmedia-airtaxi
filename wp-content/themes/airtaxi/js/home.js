@@ -18,7 +18,7 @@ jQuery(function( $ ){
         sectionName : "id",
         offset : offset,
         setHeights : false,
-        touchScroll: false,
+//        touchScroll: true,
     });
     
     //* Smooth Scroll
