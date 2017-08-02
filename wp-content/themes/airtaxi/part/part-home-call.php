@@ -1,4 +1,4 @@
-<section data-id="call-us" class="home-call home-section section" style="background-color: <?php echo get_field('call_us_section_background_color'); ?>;">
+<section id="call-us" class="home-call home-section section" style="background-color: <?php echo get_field('call_us_section_background_color'); ?>;">
     <div class="section-wrap">
         <div class="flex-container">
 

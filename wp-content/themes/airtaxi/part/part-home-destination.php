@@ -1,9 +1,9 @@
 <?php if(get_field('destination_section_background') == 'color'): ?>
-<section data-id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section section" style="background-color: <?php echo get_field('destination_section_background_color'); ?>');">
+<section id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section section" style="background-color: <?php echo get_field('destination_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section data-id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section section" style="background-image: url('<?php echo get_field('destination_section_background_image'); ?>');">
+<section id="<?php echo get_field('destination_section_id'); ?>" class="home-destination home-section section" style="background-image: url('<?php echo get_field('destination_section_background_image'); ?>');">
 
 <?php endif; ?>
    

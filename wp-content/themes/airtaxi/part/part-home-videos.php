@@ -1,16 +1,18 @@
 <?php if(get_field('videos_section_background') == 'Color'): ?>
 
-<section data-id="<?php echo get_field('videos_section_id'); ?>" class="home-videos home-section section" style="background-color: <?php echo get_field('videos_section_background_color'); ?>');">
+<section id="<?php echo get_field('videos_section_id'); ?>" class="home-videos home-section section" style="background-color: <?php echo get_field('videos_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section data-id="<?php echo get_field('videos_section_id'); ?>" class="home-videos home-section section" style="background-image: url('<?php echo get_field('videos_section_background_image'); ?>');">
+<section id="<?php echo get_field('videos_section_id'); ?>" class="home-videos home-section section" style="background-image: url('<?php echo get_field('videos_section_background_image'); ?>');">
 
 <?php endif; ?>
    
     <div class="section-wrap">
-        <h2><?php echo get_field('videos_section_title');?></h2>
-        <span class="sub-title"><?php echo get_field('videos_section_sub_title');?></span>
+<!--
+        <h2><?php //echo get_field('videos_section_title');?></h2>
+        <span class="sub-title"><?php //echo get_field('videos_section_sub_title');?></span>
+-->
 
         <div class="flex-container">
             <?php if(have_rows('videos_boxes')): while(have_rows('videos_boxes')): the_row();?>
