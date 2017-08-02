@@ -8,17 +8,31 @@ jQuery(function( $ ){
     }
     
     //* Scrollify JS
-    var offset = -80;
-    if(screenWidth <= 425) {
-        offset = -60;
-    }
+//    var offset = -80;
+//    if(screenWidth <= 425) {
+//        offset = -60;
+//    }
     
-    $.scrollify({
-        section : ".section",
-        sectionName : "id",
-        offset : offset,
-        setHeights : false,
-//        touchScroll: true,
+//    $.scrollify({
+//        section : ".section",
+//        sectionName : "id",
+//        offset : offset,
+//        setHeights : false,
+////        touchScroll: true,
+//    });
+    
+    //* Change hash on scrolll
+    $(document).bind('scroll',function(e){
+        $('.sections section').each(function(){
+            if ($(this).offset().top < window.pageYOffset + 10
+    //begins before top
+            && $(this).offset().top + $(this).height() > window.pageYOffset + 10
+    //but ends in visible area
+    //+ 10 allows you to change hash before it hits the top border
+            ) {
+                window.location.hash = $(this).attr('id');
+            }
+        });
     });
     
     //* Smooth Scroll
@@ -59,7 +73,7 @@ jQuery(function( $ ){
     //* Contact Locations Map
     var firstLoad = true;
     $(window).scroll(function () {
-        if(window.location.hash == '#contact-us' && firstLoad) {
+        if(window.location.hash == '#clients' && firstLoad) {
             $('.locations-tab').ready(function() {
                 var count = 0;
                 var mapCount = $('.location-map').length;
