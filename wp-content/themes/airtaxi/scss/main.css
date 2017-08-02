@@ -4327,6 +4327,10 @@ footer {
     width: 400px; }
   .page-template-front-page-2 .home-about .about-map-container {
     height: 340px; }
+  .page-template-front-page-2 .home-clients .flex-box {
+    min-width: 110px; }
+    .page-template-front-page-2 .home-clients .flex-box img {
+      max-width: 110px; }
 
   .header-image .site-title > a {
     margin-right: auto; } }

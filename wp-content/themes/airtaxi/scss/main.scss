@@ -5574,6 +5574,16 @@ footer {
                 height: 340px;
             }
         }
+        
+        .home-clients {
+            .flex-box {
+                min-width: 110px;
+                
+                img {
+                    max-width: 110px;
+                }
+            }
+        }
     }
     
     .header-image .site-title > a {
