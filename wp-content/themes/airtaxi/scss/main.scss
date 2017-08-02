@@ -5402,7 +5402,13 @@ footer {
         
         .home-clients {
             .flex-box {
-                flex-basis: 49%;
+                flex-basis: 48%;
+                min-width: 120px;
+                
+                img {
+                    max-width: 120px;
+                    max-height: 60px;
+                }
             }
         }
         
