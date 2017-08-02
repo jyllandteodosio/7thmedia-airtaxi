@@ -5284,6 +5284,12 @@ footer {
             }
         }
         
+        .home-fleet .flex-box {
+            flex-basis: 32%;
+            max-width: 32%;
+            min-width: 32%;
+        }
+        
         .home-about {
             h2 {
                 text-align: center;
