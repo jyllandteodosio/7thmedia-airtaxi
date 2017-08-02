@@ -4217,9 +4217,13 @@ footer {
     float: none;
     margin-top: 0; }
   .page-template-front-page-2 .home-clients .flex-box {
-    -webkit-flex-basis: 49%;
-        -ms-flex-preferred-size: 49%;
-            flex-basis: 49%; }
+    -webkit-flex-basis: 48%;
+        -ms-flex-preferred-size: 48%;
+            flex-basis: 48%;
+    min-width: 120px; }
+    .page-template-front-page-2 .home-clients .flex-box img {
+      max-width: 120px;
+      max-height: 60px; }
   .page-template-front-page-2 .home-call .flex-box,
   .page-template-front-page-2 .home-contact .flex-box,
   .page-template-front-page-2 .home-fleet .flex-box {
