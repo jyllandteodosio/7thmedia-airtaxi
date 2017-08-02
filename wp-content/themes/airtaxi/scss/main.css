@@ -4146,6 +4146,12 @@ footer {
           -ms-flex-preferred-size: 100%;
               flex-basis: 100%;
       max-width: 100%; }
+  .page-template-front-page-2 .home-fleet .flex-box {
+    -webkit-flex-basis: 32%;
+        -ms-flex-preferred-size: 32%;
+            flex-basis: 32%;
+    max-width: 32%;
+    min-width: 32%; }
   .page-template-front-page-2 .home-about h2 {
     text-align: center; }
   .page-template-front-page-2 .home-about .flex-container {
