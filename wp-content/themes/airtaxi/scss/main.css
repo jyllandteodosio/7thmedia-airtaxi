@@ -4210,16 +4210,17 @@ footer {
   .page-template-front-page-2 .home-about .map-title {
     float: none;
     margin-top: 0; }
-  .page-template-front-page-2 .home-contact .flex-box,
-  .page-template-front-page-2 .home-clients .flex-box,
-  .page-template-front-page-2 .home-fleet .flex-box {
+  .page-template-front-page-2 .home-clients .flex-box {
     -webkit-flex-basis: 49%;
         -ms-flex-preferred-size: 49%;
             flex-basis: 49%; }
-  .page-template-front-page-2 .home-call .flex-box {
+  .page-template-front-page-2 .home-call .flex-box,
+  .page-template-front-page-2 .home-contact .flex-box,
+  .page-template-front-page-2 .home-fleet .flex-box {
     -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
             flex-basis: 100%; }
+  .page-template-front-page-2 .home-contact .flex-box,
   .page-template-front-page-2 .home-fleet .flex-box {
     max-width: 100%; }
   .page-template-front-page-2 .home-contact .title {
