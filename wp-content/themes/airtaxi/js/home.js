@@ -22,15 +22,18 @@ jQuery(function( $ ){
 //    });
     
     //* Change hash on scrolll
-    $(document).bind('scroll',function(e){
+    $(document).on('scroll',function(e){
         $('.sections section').each(function(){
             if ($(this).offset().top < window.pageYOffset + 10
-    //begins before top
             && $(this).offset().top + $(this).height() > window.pageYOffset + 10
-    //but ends in visible area
-    //+ 10 allows you to change hash before it hits the top border
             ) {
-                window.location.hash = $(this).attr('id');
+//                window.location.hash = $(this).attr('id');
+                var el = document.getElementById($(this).attr('id'));
+                var id = el.id;
+                var temp = $(this).attr('id');
+                el.removeAttribute('id');
+                location.hash = temp;
+                el.setAttribute('id',id);
             }
         });
     });
@@ -73,7 +76,7 @@ jQuery(function( $ ){
     //* Contact Locations Map
     var firstLoad = true;
     $(window).scroll(function () {
-        if(window.location.hash == '#clients' && firstLoad) {
+        if(window.location.hash == '#memberships' && firstLoad) {
             $('.locations-tab').ready(function() {
                 var count = 0;
                 var mapCount = $('.location-map').length;

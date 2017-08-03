@@ -2,7 +2,7 @@ jQuery(function( $ ){
     var screenWidth = $(window).width();
     var firstLoad = true;
     $(window).scroll(function () {
-        if(window.location.hash == '#aircraft-fleet' && firstLoad) {
+        if(window.location.hash == '#memberships' && firstLoad) {
             $('.home-about').ready(function() {
 
                 var newMarkers = [];
