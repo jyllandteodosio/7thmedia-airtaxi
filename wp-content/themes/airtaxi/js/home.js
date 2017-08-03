@@ -8,11 +8,6 @@ jQuery(function( $ ){
     }
     
     //* Scrollify JS
-//    var offset = -80;
-//    if(screenWidth <= 425) {
-//        offset = -60;
-//    }
-    
 //    $.scrollify({
 //        section : ".section",
 //        sectionName : "id",
@@ -42,11 +37,15 @@ jQuery(function( $ ){
     $('.genesis-nav-menu a, a[href*=#]:not(.flex-link)').click(function() {
         var hash = $.attr(this, 'href');
         var href = $(this).attr('href').split('#')[1];
+        var offset = 80;
+        if(screenWidth <= 425) {
+            offset = 60;
+        }
         console.log(href);
         
         if(href) {
             $('html, body').animate({
-                scrollTop: $('#'+href).offset().top-80
+                scrollTop: $('#'+href).offset().top-offset
             }, 1000, function () {
                 window.location.hash = href;
             });
