@@ -4311,12 +4311,15 @@ span.wpcf7-list-item {
 }
 
 //* Homepage New CSS
-.page-template-front-page-2 {
+.page-template-front-page-2,
+.page-template-page-rates {
     &.full-width-content .content {
         padding: 0;
         width: 100%;
     }
-    
+}
+
+.page-template-front-page-2 {
     .home-banner {
         height: 600px;
         
@@ -4449,9 +4452,29 @@ span.wpcf7-list-item {
             box-shadow: none;
             
             p {
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 font-weight: 300;
                 font-size: 32px;
+            }
+        }
+        
+        .video-box {
+            height: 480px;
+            width: 854px;
+            background-position: center;
+            background-size: cover;
+            margin: 0 auto 40px;
+        }
+        
+        .play-icon {
+            display: table;
+            width: 100%;
+            height: 100%;
+            
+            a.mpopup_iframe {
+                display: table-cell;
+                vertical-align: middle;
+                cursor: pointer;
             }
         }
         
@@ -4499,13 +4522,14 @@ span.wpcf7-list-item {
         
         .flex-box {
             padding: 0;
-            margin-bottom: 30px;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             min-height: 200px;
             height: 200px;
             flex-grow: 1;
+            flex-basis: 23%;
+            margin: 10px;
             
             &:last-child {
                 margin-bottom: 0;
@@ -4554,7 +4578,7 @@ span.wpcf7-list-item {
         }
         
         .details {
-            margin-top: 20px;
+            margin-top: 2px;
             font-size: 14px;
         }
         
@@ -4590,14 +4614,14 @@ span.wpcf7-list-item {
         
         .flex-box {
             background-color: transparent;
-            background-size: cover;
+            background-size: 110%;
             background-repeat: no-repeat;
             background-position: center;
             padding: 0;
             margin: 0 10px;
-            min-height: 140px;
-            height: 140px;
-            flex-basis: 25%;
+            min-height: 180px;
+            height: 180px;
+            flex-basis: 32%;
             
             &:first-child {
                 margin-left: 15px;
@@ -5077,7 +5101,87 @@ span.wpcf7-list-item {
         overflow: hidden;
     }
 }
+
+.page-template-page-rates {
+    .section {
+        padding: 20px 40px;
+        text-align: center;
+    }
+    
+    .section-wrap {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+    
+    .text-container {
+        max-width: 90%;
+        margin: 20px auto 0px;
+    }
+    
+    .inner-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 48px;
+        font-weight: 300;
+        margin-bottom: 40px;
+    }
+    
+    .rates-content {
+        padding: 20px;
+        background-color: #f3f3f3;
+        font-size: 12px;
+        margin: 0 15px;
         
+        tbody, td {
+            border: none;
+            padding: 0;
+        }
+        
+        table {
+            margin-bottom: 0;
+        }
+    }
+    
+    .rates-tabs {
+        padding-left: 0;
+        padding-right: 0;
+        
+        .section-wrap {
+            max-width: 100%;
+        }
+    }
+    
+    .tabs-wrap {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .tab-links-box {
+        padding: 0 40px;
+        background-color: #f3f3f3;
+    }
+    
+    .tab-links-wrap {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+    
+    .tab-links-box ul {
+        display: flex;
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
+    }
+    
+    .tab-links {
+        flex: 1;
+    }
+    
+    .tab-content {
+        height: 540px;
+    }
+}
+
 .map-hover {
     border: none;
     border-bottom: 3px solid #4ec5cd;

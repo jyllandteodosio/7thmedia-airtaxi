@@ -49,8 +49,8 @@ add_action('genesis_loop', 'home_banner');
 function home_banner(){
     echo '<div class="sections">';
 	get_template_part('part/part', 'home-banner');
-	get_template_part('part/part', 'home-membership');
 	get_template_part('part/part', 'home-destination');
+	get_template_part('part/part', 'home-membership');
 	get_template_part('part/part', 'home-videos');
 	get_template_part('part/part', 'home-call');
 	get_template_part('part/part', 'home-fleet');
