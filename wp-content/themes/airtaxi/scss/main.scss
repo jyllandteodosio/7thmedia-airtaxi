@@ -5150,9 +5150,18 @@ span.wpcf7-list-item {
         }
     }
     
+    .tab {
+        max-width: 1366px;
+    }
+    
+    .tab-content {
+        padding: 30px 40px;
+    }
+    
     .tabs-wrap {
         background-repeat: no-repeat;
         background-size: cover;
+        background-attachment: fixed;
         background-position: center;
     }
     
@@ -5177,8 +5186,110 @@ span.wpcf7-list-item {
         flex: 1;
     }
     
-    .tab-content {
-        height: 540px;
+    .airport-transfer-wrap {
+        font-size: 14px;
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
+        
+        .dataTables_length,
+        .dataTables_filter,
+        .dataTables_paginate {
+            padding: 10px 15px;
+            
+            input, select {
+                width: 60px;
+                padding: 8px;
+                font-size: 14px;
+                margin: 0 8px;
+            }
+            
+            input {
+                width: 200px;
+                margin-right: 0;
+            }
+        }
+    }
+    
+    .airport-transfer {
+        line-height: 1.4;
+        width: 100% !important;
+    }
+    
+    .dataTables_wrapper {
+        background-color: #ffffff;
+        
+        table.dataTable thead th, 
+        table.dataTable thead td {
+            padding: 10px 15px;
+            border: none;
+        }
+        
+        table.dataTable tbody th, 
+        table.dataTable tbody td {
+            padding: 8px 15px;
+        }
+        
+        table.dataTable.no-footer,
+        td {
+            border: none;
+        }
+        
+        thead {
+            background-color: #4ec5cd;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        
+        tr.odd {
+            background-color: #f3f3f3;
+        }
+        
+        .dataTables_paginate {
+            float: none;
+            background-color: #ddd;
+            
+            .paginate_button {
+                border: none;
+            }
+            
+            .paginate_button:hover {
+                background: #212121;
+                border: none;
+            }
+            
+            .paginate_button.current,
+            .paginate_button.current:hover {
+                background: #212121;
+                border: none;
+                color: #ffffff !important;
+            }
+            
+            .paginate_button.current:hover {
+                background: #333;
+            }
+        }
+        
+        .dt-center {
+            text-align: center;
+        }
+    }
+    
+    .aerial-tours-wrap {
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
+        
+        .slick-prev,
+        .slick-next {
+            background: #686868;
+            border-radius: 22px;
+            color: #fff;
+            height: 30px;
+            padding-left: 5px;
+            padding-top: 1px;
+            width: 30px;
+        }
     }
 }
 

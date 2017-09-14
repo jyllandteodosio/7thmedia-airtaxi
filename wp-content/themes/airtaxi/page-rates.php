@@ -19,6 +19,13 @@ function rates_scripts() {
     //* Datatables JS
     wp_enqueue_script( 'datatables-js', 'https://cdn.datatables.net/v/dt/dt-1.10.15/r-2.1.1/datatables.min.js', array('jquery'), null, true );
     
+    //* Slick JS
+    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), null );
+    
+    //* Slick CSS
+    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  null );
+    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  null );
+    
     
 }
 
