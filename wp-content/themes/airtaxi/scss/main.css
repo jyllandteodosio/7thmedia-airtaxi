@@ -4054,9 +4054,14 @@ span.wpcf7-list-item {
   padding-right: 0; }
   .page-template-page-rates .rates-tabs .section-wrap {
     max-width: 100%; }
+.page-template-page-rates .tab {
+  max-width: 1366px; }
+.page-template-page-rates .tab-content {
+  padding: 30px 40px; }
 .page-template-page-rates .tabs-wrap {
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-position: center; }
 .page-template-page-rates .tab-links-box {
   padding: 0 40px;
@@ -4077,8 +4082,80 @@ span.wpcf7-list-item {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }
-.page-template-page-rates .tab-content {
-  height: 540px; }
+.page-template-page-rates .airport-transfer-wrap {
+  font-size: 14px;
+  max-width: 90%;
+  margin: auto;
+  padding: 0 15px; }
+  .page-template-page-rates .airport-transfer-wrap .dataTables_length,
+  .page-template-page-rates .airport-transfer-wrap .dataTables_filter,
+  .page-template-page-rates .airport-transfer-wrap .dataTables_paginate {
+    padding: 10px 15px; }
+    .page-template-page-rates .airport-transfer-wrap .dataTables_length input, .page-template-page-rates .airport-transfer-wrap .dataTables_length select,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_filter input,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_filter select,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_paginate input,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_paginate select {
+      width: 60px;
+      padding: 8px;
+      font-size: 14px;
+      margin: 0 8px; }
+    .page-template-page-rates .airport-transfer-wrap .dataTables_length input,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_filter input,
+    .page-template-page-rates .airport-transfer-wrap .dataTables_paginate input {
+      width: 200px;
+      margin-right: 0; }
+.page-template-page-rates .airport-transfer {
+  line-height: 1.4;
+  width: 100% !important; }
+.page-template-page-rates .dataTables_wrapper {
+  background-color: #ffffff; }
+  .page-template-page-rates .dataTables_wrapper table.dataTable thead th,
+  .page-template-page-rates .dataTables_wrapper table.dataTable thead td {
+    padding: 10px 15px;
+    border: none; }
+  .page-template-page-rates .dataTables_wrapper table.dataTable tbody th,
+  .page-template-page-rates .dataTables_wrapper table.dataTable tbody td {
+    padding: 8px 15px; }
+  .page-template-page-rates .dataTables_wrapper table.dataTable.no-footer,
+  .page-template-page-rates .dataTables_wrapper td {
+    border: none; }
+  .page-template-page-rates .dataTables_wrapper thead {
+    background-color: #4ec5cd;
+    color: #ffffff;
+    text-transform: uppercase; }
+  .page-template-page-rates .dataTables_wrapper tr.odd {
+    background-color: #f3f3f3; }
+  .page-template-page-rates .dataTables_wrapper .dataTables_paginate {
+    float: none;
+    background-color: #ddd; }
+    .page-template-page-rates .dataTables_wrapper .dataTables_paginate .paginate_button {
+      border: none; }
+    .page-template-page-rates .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background: #212121;
+      border: none; }
+    .page-template-page-rates .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .page-template-page-rates .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      background: #212121;
+      border: none;
+      color: #ffffff !important; }
+    .page-template-page-rates .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      background: #333; }
+  .page-template-page-rates .dataTables_wrapper .dt-center {
+    text-align: center; }
+.page-template-page-rates .aerial-tours-wrap {
+  max-width: 90%;
+  margin: auto;
+  padding: 0 15px; }
+  .page-template-page-rates .aerial-tours-wrap .slick-prev,
+  .page-template-page-rates .aerial-tours-wrap .slick-next {
+    background: #686868;
+    border-radius: 22px;
+    color: #fff;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 1px;
+    width: 30px; }
 
 .map-hover {
   border: none;
