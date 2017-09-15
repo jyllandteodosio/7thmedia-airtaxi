@@ -35,8 +35,8 @@
                             <thead>
                                 <tr>
                                     <th>Location</th>
-                                    <th>Location Type</th>
-                                    <th>Flight Time</th>
+                                    <th class="desktop tablet-l">Location Type</th>
+                                    <th class="desktop tablet-l">Flight Time</th>
                                     <?php 
                                     $aircraft_capacity = array();
 
@@ -51,7 +51,7 @@
                                         
                                         //* Display user icons depending on the aircraft capacity
                                         ?>
-                                        <th>
+                                        <th class="desktop tablet-l">
                                             <?php the_title(); ?>
                                             <br/>
                                             <?php for($i = 0; $i < $capacity; $i++): ?>
@@ -156,7 +156,99 @@
                     </div>
                 </div>
                 
-                <div id="tab3" class="tab"></div>
+                <div id="tab3" class="tab">
+                    <div class="day-tours-wrap">
+                        <?php 
+                        if(have_rows('day_trips')):
+                        while(have_rows('day_trips')): the_row(); 
+                        
+                        $tour_image = get_sub_field('tour_image'); ?>
+                        
+                        <div class="destinations-box">
+                            <div class="destinations-box-text">
+                                <div class="destinations-box-row">
+                                    <div class="destinations-box-title">
+                                        <?php echo get_sub_field('tour_name'); ?>
+                                    </div>
+                                </div>
+                                <div class="destinations-box-description">
+                                    <?php the_sub_field('tour_description'); ?>
+                                </div>
+                                
+                                <div class="destinations-box-rates">
+                                <?php
+                                if( have_rows('rates') ):
+                                while( have_rows('rates') ) : the_row();
+                                    
+                                    $rate = get_sub_field('rate');
+                                    $addon = get_sub_field('addon');
+                                
+                                    if(get_sub_field('aircraft')):
+                                    $post = get_sub_field('aircraft');
+                                    setup_postdata($post); ?>
+                                      
+                                       <ul class="destinations-box-item">
+                                           <li>
+                                               <div class="item-capacity">
+                                                   <?php echo get_field('capacity'); ?> PAX
+                                               </div>  
+                                               <div class="item-price">
+                                                   &#8369; <?php echo $rate; ?>
+                                               </div>
+                                           </li>
+                                           <li>
+                                               <div class="item-aircraft">
+                                                   <?php echo get_field('model'); ?>
+                                               </div>
+                                           </li>
+                                           <li>
+                                               <?php if($addon): ?>
+                                               <div class="item-additional">
+                                                   <?php echo $addon; ?>
+                                               </div>
+                                               <?php endif;?>
+                                           </li>
+                                       </ul>
+                                       
+                                    <?php wp_reset_postdata(); endif; ?>
+                                <?php endwhile; endif; ?>
+                                </div>
+                                
+                                <div class="dest-container">
+                                   <div class="itinerary-title">
+                                       Tour Itinerary:
+                                   </div>
+                                   <table class="destinations-box-itinerary">
+                                       <?php
+                                       if( have_rows('itinerary') ):
+                                       while ( have_rows('itinerary') ) : the_row();
+                                       ?>
+                                       <tr>
+                                           <td>
+                                               <div class="item-time">
+                                                   <?php echo get_sub_field('time'); ?>
+                                               </div>
+                                           </td>
+                                           <td>
+                                               <div class="item-activity">
+                                                   <?php the_sub_field('activity'); ?>
+                                               </div>
+                                           </td>
+                                       </tr>
+                                       <?php endwhile; endif;
+                                       ?>
+                                   </table>
+                                </div>
+                                
+                                <div class="destinations-box-image">
+                                    <img src="<?php echo $tour_image['url']; ?>" alt="<?php echo $tour_image ? $tour_image : get_sub_field('tour_name'); ?>"/>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; endif; ?>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>

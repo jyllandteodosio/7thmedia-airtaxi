@@ -11,17 +11,6 @@
     <div class="section-wrap">
         <h2><?php echo get_field('membership_section_title');?></h2>
         <span class="sub-title"><?php echo get_field('membership_section_sub_title');?></span>
-        
-        <?php if(get_field('video_link')): 
-        $youtube_URL = get_field('video_link');
-        parse_str( parse_url( $youtube_URL, PHP_URL_QUERY ), $youtube_ID );
-        ?>
-        <div class="video-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/maxresdefault.jpg);">
-            <div class="play-icon">
-                <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe"><img src="<?php echo get_field('youtube_play_icon');?>"/></a>
-            </div>
-        </div>
-        <?php endif; ?>
        
         <div class="flex-container">
 
@@ -39,6 +28,17 @@
                
                <?php if(get_sub_field('text')): ?>
                <p class="flex-content"><?php echo get_sub_field('text');?></p>
+               <?php endif; ?>
+               
+               <?php if(get_field('video_link')): 
+               $youtube_URL = get_field('video_link');
+               parse_str( parse_url( $youtube_URL, PHP_URL_QUERY ), $youtube_ID );
+               ?>
+               <div class="video-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/maxresdefault.jpg);">
+                   <div class="play-icon">
+                       <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe"><img src="<?php echo get_field('youtube_play_icon');?>"/></a>
+                   </div>
+               </div>
                <?php endif; ?>
                
                <a href="<?php echo get_field('membership_button_link');?>" class="button"><?php echo get_field('membership_button_title');?></a>
