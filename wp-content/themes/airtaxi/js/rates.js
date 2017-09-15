@@ -6,6 +6,12 @@ jQuery(function( $ ){
             ordering :  false,
             bInfo : false,
             iDisplayLength : -1,
+            responsive: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                    type: ''
+                }
+            },
             columnDefs : [
                 {
                     targets : [ 1 ],
@@ -13,6 +19,7 @@ jQuery(function( $ ){
                     searchable : false
                 },
                 {
+                    responsivePriority : 1,
                     targets : [ 2 ],
                     searchable : false,
                     className : 'dt-center'
