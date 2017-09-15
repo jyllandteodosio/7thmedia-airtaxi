@@ -60,4 +60,92 @@
 
         </div><!--flex-container-->
     </div>
+    
+    <div class="section-wrap airport-transfers-section">
+        <h2><?php echo get_field('airport_transfers_section_title');?></h2>
+        
+        <div class="flex-container">
+            <div class="flex-box">
+                <span class="input-label"><?php echo get_field('transfer_from_text'); ?></span>
+            </div>
+            
+            <div class="flex-box">
+                <?php if(have_rows('origin_locations')): 
+                $count = 0;
+                ?>
+                
+                <select class="transfer-origin">
+                    <?php 
+                    while(have_rows('origin_locations')): 
+                    the_row(); 
+                    $count++; 
+                    ?>
+                    
+                    <option value="<?php echo get_sub_field('location'); ?>" <?php echo ($count == 1) ? 'selected' : '';?>>
+                        <?php echo get_sub_field('location'); ?>
+                    </option>
+                    
+                    <?php endwhile; ?>
+                </select>
+                
+                <?php endif; ?>
+            </div>
+            
+            <div class="flex-box">
+                <span class="input-label">to</span>
+            </div>
+            
+            <div class="flex-box">
+                <select class="transfer-destination">
+                <?php 
+                $terms = get_terms(array(
+                    'taxonomy' => 'locations',
+                    'hide_empty' => false,
+                    'orderby' => 'ID'
+                ));
+                
+                $selected_term = get_field('default_transfer_location');
+                $selected = '';
+                    
+                $child_terms = array();
+                $parent_terms = array();
+                
+                foreach($terms as $term):
+                    if($term->parent):
+                    array_push($child_terms, $term);
+                    else:
+                    array_push($parent_terms, $term);
+                    endif;
+                endforeach;
+                    
+                foreach($parent_terms as $parent): ?>
+                   
+                    <option value="<?php echo $parent->name; ?>" class="type"><?php echo $parent->name; ?></option>
+                    
+                    <?php
+                    foreach($child_terms as $child):
+                        if($child->term_id == $selected_term): 
+                            $selected = 'selected';
+                        else:
+                            $selected = '';
+                        endif;
+                    
+                        if($parent->term_id == $child->parent): ?>
+                        <option value="<?php echo $child->name; ?>" <?php echo $selected;?>><?php echo $child->name; ?></option>
+                        <?php endif; ?>
+                        
+                    <?php endforeach; ?>
+                    
+                <?php endforeach; ?>
+                </select>
+            </div>
+            
+            <div class="flex-box">
+                <a href="<?php echo get_sub_field('find_transfers_button_text');?>" class="inquire-button">
+                    <?php echo get_sub_field('find_transfers_button_text');?>
+                </a>
+            </div>
+        </div>
+    </div>
+    
 </section>
