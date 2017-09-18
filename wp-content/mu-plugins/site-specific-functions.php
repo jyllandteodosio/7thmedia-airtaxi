@@ -96,4 +96,17 @@ function mycustom_flamingo_map_meta_cap( $caps, $cap, $user_id, $args ) {
     return $caps;
 }
 add_filter( 'map_meta_cap', 'mycustom_flamingo_map_meta_cap', 9, 4 );
+
+//* Add ACF to Taxonomy Query on WP REST API
+function rest_prepare_locations( $response, $object ) {
+    if ( $object instanceof WP_Term ) {
+        $response->data['acf'] = get_fields( $object->taxonomy . '_' . $object->term_id );
+    }
+
+    return $response;
+}
+
+add_filter( 'rest_prepare_locations', 'rest_prepare_locations', 10, 2 );
+
+
 ?>

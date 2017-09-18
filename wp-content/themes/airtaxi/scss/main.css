@@ -3403,6 +3403,92 @@ span.wpcf7-list-item {
   margin-top: 20px; }
   .page-template-front-page-2 .home-destination .inquire-button:hover {
     background-color: #12a8b2; }
+.page-template-front-page-2 .home-destination .airport-transfers-section {
+  margin-top: 40px; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section h2 {
+    font-size: 36px; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-container {
+    background-color: #eee;
+    padding: 20px;
+    width: 80%;
+    display: block;
+    text-align: left;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .airport-transfer-search {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-box {
+    background-color: transparent;
+    box-shadow: none;
+    color: #333;
+    font-weight: 300;
+    margin: 0 10px;
+    height: auto;
+    min-height: 0;
+    -webkit-flex-basis: auto;
+        -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+    width: auto;
+    line-height: 2;
+    text-align: center; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field,
+  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button {
+    font-weight: 400; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field {
+    width: 240px; }
+    .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field input {
+      border: none;
+      padding: 12px 15px; }
+  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button {
+    width: 260px; }
+    .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button input.inquire-button {
+      margin-top: 0;
+      padding: 12px 15px;
+      width: 100%;
+      text-align: center;
+      margin-right: 0; }
+.page-template-front-page-2 .home-destination .dropdown-field {
+  position: relative;
+  cursor: pointer; }
+  .page-template-front-page-2 .home-destination .dropdown-field input {
+    font-size: 14px; }
+  .page-template-front-page-2 .home-destination .dropdown-field .fa-caret-down {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 12px;
+    color: #4ec5cd; }
+.page-template-front-page-2 .home-destination .dropdown-box {
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+  padding: 15px 0px;
+  border: 1px solid #ddd;
+  display: none;
+  position: absolute;
+  min-width: 240px; }
+  .page-template-front-page-2 .home-destination .dropdown-box li {
+    padding: 0px 15px;
+    cursor: pointer;
+    line-height: 1.5; }
+    .page-template-front-page-2 .home-destination .dropdown-box li:hover {
+      color: #4ec5cd; }
+    .page-template-front-page-2 .home-destination .dropdown-box li.type {
+      color: #4ec5cd;
+      font-weight: 700;
+      line-height: 2;
+      cursor: default; }
+  .page-template-front-page-2 .home-destination .dropdown-box .destination-dropdown {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-fill: auto;
+       -moz-column-fill: auto;
+            column-fill: auto; }
 .page-template-front-page-2 .home-videos h2,
 .page-template-front-page-2 .home-videos .sub-title {
   color: #fff; }
@@ -4007,7 +4093,10 @@ span.wpcf7-list-item {
   height: auto;
   min-height: 280px;
   margin-bottom: 20px;
-  padding: 15px; }
+  margin-left: 60px;
+  padding: 15px;
+  max-width: 80%;
+  min-width: 1100px; }
   .page-template-page-rates .destinations-box tbody,
   .page-template-page-rates .destinations-box td {
     border: none; }
@@ -4135,6 +4224,18 @@ footer {
   footer small {
     font-size: 12px; }
 
+@media only screen and (max-width: 1440px) {
+  .page-template-page-rates .destinations-box {
+    margin-left: 20px; } }
+@media only screen and (max-width: 1366px) {
+  .page-template-page-rates .destinations-box {
+    margin-left: 80px;
+    max-width: 60%;
+    min-width: 900px; } }
+@media only screen and (max-width: 1280px) {
+  .page-template-page-rates .destinations-box {
+    margin-left: 0px;
+    min-width: 820px; } }
 @media only screen and (max-width: 1024px) {
   .page-template-front-page-2 .home-section,
   .page-template-front-page-2 .home-section .section-wrap,
@@ -4177,6 +4278,10 @@ footer {
     text-align: center; }
   .page-template-page-rates .rates-box:nth-child(even) {
     margin-right: 0; }
+  .page-template-page-rates .destinations-box {
+    margin-left: 0px;
+    max-width: 100%;
+    min-width: 0px; }
   .page-template-page-rates .destinations-box-item {
     width: 100%;
     margin-right: 10px;
@@ -4481,6 +4586,16 @@ footer {
     max-width: 130px;
     max-height: 70px;
     width: auto; }
+
+  .page-template-page-rates .airport-transfer-wrap,
+  .page-template-page-rates .aerial-tours-wrap,
+  .page-template-page-rates .day-tours-wrap {
+    max-width: 100%;
+    padding: 0; }
+  .page-template-page-rates .rates-box {
+    width: 100% !important; }
+  .page-template-page-rates .rates-box-header {
+    width: 100%; }
 
   .header-image .site-title > a {
     margin-right: auto; } }
