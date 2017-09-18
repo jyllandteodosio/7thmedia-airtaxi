@@ -1,8 +1,26 @@
 jQuery(function( $ ){
     
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    
+    console.log(getUrlParameter('destination-input'));
+    var destination = getUrlParameter('destination-input');
+    
     $(document).ready(function() {
     
-        $('#airport-transfer').DataTable({
+        var table = $('#airport-transfer').DataTable({
             ordering :  false,
             bInfo : false,
             iDisplayLength : -1,
@@ -36,6 +54,9 @@ jQuery(function( $ ){
                 }
             ]
         });
+        
+        table.search(destination);
+        table.draw();
     });
     
     $('.tabs-wrap .tab-links a').on('click', function(e)  {
@@ -58,6 +79,23 @@ jQuery(function( $ ){
         infinite: false,
         rows: 2,
         slidesPerRow: 4,
+        speed: 300,
+        slidesToShow: -1,
+        variableWidth: true,
+        responsive: [
+            {
+                breakpoint: 1025,
+                settings: "unslick"
+            }
+        ]
+    });
+    
+    $('.day-tours').slick({
+        dots: false,
+        arrows: true,
+        infinite: false,
+        rows: 2,
+        slidesPerRow: 1,
         speed: 300,
         slidesToShow: -1,
         variableWidth: true,

@@ -4392,6 +4392,119 @@ span.wpcf7-list-item {
                 background-color: #12a8b2;
             }
         }
+        
+        .airport-transfers-section {
+            margin-top: 40px;
+            
+            h2 {
+                font-size: 36px;
+            }
+            
+            .flex-container {
+                background-color: #eee;
+                padding: 20px;
+                width: 80%;
+                display: block;
+                text-align: left;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+            }
+            
+            .airport-transfer-search {
+                width: 100%;
+                display: flex;
+            }
+            
+            .flex-box {
+                background-color: transparent;
+                box-shadow: none;
+                color: #333;
+                font-weight: 300;
+                margin: 0 10px;
+                height: auto;
+                min-height: 0;
+                flex-basis: auto;
+                width: auto;
+                line-height: 2;
+                text-align: center;
+            }
+            
+            .transfer-field,
+            .transfer-button {
+                font-weight: 400;
+            }
+            
+            .transfer-field {
+                width: 240px;
+                
+                input {
+                    border: none;
+                    padding: 12px 15px;
+                }
+            }
+            
+            .transfer-button {
+                width: 260px;
+                
+                input.inquire-button {
+                    margin-top: 0;
+                    padding: 12px 15px;
+                    width: 100%;
+                    text-align: center;
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        .dropdown-field {
+            position: relative;
+            cursor: pointer;
+            
+            input {
+                font-size: 14px;
+            }
+            
+            .fa-caret-down {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 12px;
+                color: #4ec5cd;
+            }
+        }
+        
+        .dropdown-box {
+            background-color: #fff;
+            color: #333;
+            font-size: 14px;
+            text-align: left;    
+            padding: 15px 0px;
+            border: 1px solid #ddd;
+            display: none;
+            position: absolute;
+            min-width: 240px;
+            
+            li {
+                padding: 0px 15px;
+                cursor: pointer;
+                line-height: 1.5;
+                
+                &:hover {
+                    color: #4ec5cd;
+                }
+                
+                &.type {
+                    color: #4ec5cd;
+                    font-weight: 700;
+                    line-height: 2;
+                    cursor: default;
+                }
+            }
+            
+            .destination-dropdown {
+                column-count: 2;
+                column-fill: auto;
+            }
+        }
     }
     
     .home-videos {
@@ -5241,7 +5354,10 @@ span.wpcf7-list-item {
         height: auto;
         min-height: 280px;
         margin-bottom: 20px;
+        margin-left: 60px;
         padding: 15px;
+        max-width: 80%;
+        min-width: 1100px;
         
         tbody,
         td {
@@ -5422,6 +5538,33 @@ footer {
 }
 
 //* Homepage Media Queries
+@media only screen and (max-width: 1440px) {
+    .page-template-page-rates {
+        .destinations-box {
+            margin-left: 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .page-template-page-rates {
+        .destinations-box {
+            margin-left: 80px;
+            max-width: 60%;
+            min-width: 900px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .page-template-page-rates {
+        .destinations-box {
+            margin-left: 0px;
+            min-width: 820px;
+        }
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .page-template-front-page-2 {
         .home-section,
@@ -5490,6 +5633,12 @@ footer {
         
         .rates-box:nth-child(even) {
             margin-right: 0;
+        }
+        
+        .destinations-box {
+            margin-left: 0px;
+            max-width: 100%;
+            min-width: 0px;
         }
         
         .destinations-box-item {
@@ -5979,6 +6128,23 @@ footer {
                 max-height: 70px;
                 width: auto;
             }
+        }
+    }
+    
+    .page-template-page-rates {
+        .airport-transfer-wrap,
+        .aerial-tours-wrap,
+        .day-tours-wrap {
+            max-width: 100%;
+            padding: 0;
+        }
+        
+        .rates-box {
+            width: 100% !important;
+        }
+        
+        .rates-box-header {
+            width: 100%;
         }
     }
     

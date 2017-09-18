@@ -71,6 +71,96 @@ jQuery(function( $ ){
         var link = $(this).find('.aircraft-name').attr('href');
         window.location.href = link;
     });
+    
+    //* Airport Transfers Search
+    $('.transfer-origin input.selected').val($('.origin-dropdown li.selected').attr('data-value'));
+    $('.airport-transfer-search').attr('action', $('.origin-dropdown li.selected').attr('data-url'));
+    
+    // Toggle custom dropdown when field is clicked
+    $('.dropdown-field').click(function() {
+        $(this).parent().find('.dropdown-box').toggle();
+    });
+    
+    // Set origin field value based on selected item on dropdown
+    $('.origin-dropdown li').click(function() {
+        $selected = $(this).attr('data-value');
+        $airport = $(this).attr('data-id');
+        $url = $(this).attr('data-url');
+        
+        if($selected) {
+            $('.origin-input').val($selected);
+            $('.airport-transfer-search').attr('action', $url);
+            
+            // Update dropdown values based on selected airport origin
+            changeDestinations($airport);
+        }
+        
+        $('.transfer-origin .dropdown-box').hide();
+    });
+    
+    // Set destination field value based on selected item on dropdown
+    $('.destination-dropdown li').click(function() {
+        $selected = $(this).attr('data-value');
+        
+        if($selected) {
+            $('.destination-input').val($selected);
+        }
+        
+        $('.transfer-destination .dropdown-box').hide();
+    });
+    
+    // Function to update dropdown values based on selected airport origin
+    function changeDestinations($airport) {
+        $url = '' + baseURL + '/wp-json/wp/v2/locations/?per_page=100';
+        $.ajax({
+            url: $url,
+            method: 'GET',
+            crossDomain: true,            
+            success: function(data, status) {
+                if(!data) {
+                    //console.log('no data found');
+                } else {
+                    // Empty the destination dropbox
+                    $('.destination-dropdown').html('');
+                    //console.log(data);
+                    
+                    // Initialize arrays
+                    $child_terms = new Array();
+                    $parent_terms = new Array();
+                    $origin = new Array();
+                    
+                    // Filter terms based on selected airport origin
+                    $.each(data, function(key, post){
+                        if(post.parent !== 0) {
+                            
+                            if(post.acf.airport_origin) {
+                                if(parseInt(post.acf.airport_origin) === parseInt($airport)) {
+                                    $child_terms.push(post);
+                                }
+                            }
+                        } else {
+                            $parent_terms.push(post);
+                        }
+                    });
+                    
+                    // Add items to dropdown
+                    $.each($parent_terms, function(key, term) {
+                        $('.destination-dropdown').append('<li label="'+term.name+'" class="type">'+term.name+'</li>');
+                        
+                        $.each($child_terms, function(child_key, child_term) {
+                            if(child_key === 0) {
+                                $('.destination-input').val(child_term.name);
+                            }
+                            
+                            if(child_term.parent === term.id) {
+                                $('.destination-dropdown').append('<li data-value="'+child_term.name+'" data-id="'+child_term.id+'" class="">'+child_term.name+'</li>');
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
      
     //* Contact Locations Map
     var firstLoad = true;
