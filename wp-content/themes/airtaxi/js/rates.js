@@ -56,8 +56,12 @@ jQuery(function( $ ){
             ]
         });
         
-        table.search(destination);
-        table.draw();
+        if(destination) {
+            var search = destination.replace(/\+/g,' ');
+            console.log('search:'+search);
+            table.search(search);
+            table.draw();
+        }
     });
     
     $('.tabs-wrap .tab-links a').on('click', function(e)  {
