@@ -15,8 +15,9 @@ jQuery(function( $ ){
         }
     };
     
-    console.log(getUrlParameter('destination-input'));
     var destination = getUrlParameter('destination-input');
+    var slide = getUrlParameter('slide') ? getUrlParameter('slide') : 1;
+    var tab = getUrlParameter('tab');
     
     $(document).ready(function() {
     
@@ -73,6 +74,10 @@ jQuery(function( $ ){
         e.preventDefault();
     });
     
+    if(tab) {
+        $('.tab'+tab).click();
+    }
+    
     $('.aerial-tours').slick({
         dots: false,
         arrows: true,
@@ -93,12 +98,9 @@ jQuery(function( $ ){
     $('.day-tours').slick({
         dots: false,
         arrows: true,
-        infinite: false,
+        initialSlide: slide-1,
         rows: 2,
         slidesPerRow: 1,
-        speed: 300,
-        slidesToShow: -1,
-        variableWidth: true,
         responsive: [
             {
                 breakpoint: 1025,

@@ -20,12 +20,11 @@ function rates_scripts() {
     wp_enqueue_script( 'datatables-js', 'https://cdn.datatables.net/v/dt/dt-1.10.15/r-2.1.1/datatables.min.js', array('jquery'), null, true );
     
     //* Slick JS
-    wp_enqueue_script( 'slick-js', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.min.js', array( 'jquery' ), null );
+    wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/js/slick/slick.min.js', array( 'jquery' ), null );
     
     //* Slick CSS
-    wp_enqueue_style( 'slick', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick.css', array(),  null );
-    wp_enqueue_style( 'slick-theme', get_bloginfo( 'stylesheet_directory' ) . '/js/slick/slick-theme.css', array(),  null );
-    
+    wp_enqueue_style( 'slick', get_stylesheet_directory_uri() . '/js/slick/slick.css', array(),  null );
+    wp_enqueue_style( 'slick-theme', get_stylesheet_directory_uri() . '/js/slick/slick-theme.css', array(),  null );
     
 }
 
@@ -37,6 +36,7 @@ add_action('genesis_loop', 'rates_content');
 function rates_content(){
     echo '<div class="sections">';
 	get_template_part('part/part', 'rates-tabs');
+	get_template_part('part/part', 'rates-destinations');
     get_footer('custom');
     echo '</div>';
 }

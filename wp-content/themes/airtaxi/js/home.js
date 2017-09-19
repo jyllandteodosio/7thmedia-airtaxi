@@ -165,7 +165,7 @@ jQuery(function( $ ){
     //* Contact Locations Map
     var firstLoad = true;
     $(window).scroll(function () {
-        if(window.location.hash == '#memberships' && firstLoad) {
+        if((window.location.hash == '#memberships' || window.location.hash == '#contact-us') && firstLoad) {
             $('.locations-tab').ready(function() {
                 var count = 0;
                 var mapCount = $('.location-map').length;
