@@ -65,7 +65,7 @@
         <h2><?php echo get_field('airport_transfers_section_title');?></h2>
         
         <div class="flex-container">
-            <form role="search" method="get" id="airport-transfer-search" action="" autocomplete="off" class="airport-transfer-search">
+            <form enctype="text/plain" role="search" method="get" id="airport-transfer-search" action="" autocomplete="off" class="airport-transfer-search">
             
                 <div class="flex-box">
                     <span class="input-label"><?php echo get_field('transfer_from_text'); ?></span>
