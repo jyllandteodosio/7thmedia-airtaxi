@@ -999,7 +999,7 @@ p.form-submit {
 	}
 
 	.full-width-content .content {
-		padding: 0 110px;
+		padding: 40px 110px;
 	}
 
 }
@@ -1044,7 +1044,7 @@ p.form-submit {
 
 	.full-width-content {
         .content {
-            padding: 0;
+            padding: 40px;
         }
         
         img.pull-left {
@@ -4115,7 +4115,8 @@ span.wpcf7-list-item {
     }
 }
 
-.page-template-front-page-2 {
+.page-template-front-page-2,
+.page-template-page-rates {
     .home-banner {
         height: 600px;
         
@@ -5566,7 +5567,8 @@ footer {
 }
 
 @media only screen and (max-width: 1024px) {
-    .page-template-front-page-2 {
+    .page-template-front-page-2,
+    .page-template-page-rates {
         .home-section,
         .home-section .section-wrap,
         .home-banner .text-container {
@@ -5593,8 +5595,21 @@ footer {
             padding: 0 100px;
         }
         
-        .home-destination .flex-box {
-            flex-basis: 40%;
+        .home-destination {
+            .flex-box {
+                flex-basis: 40%;
+            }
+            
+            .airport-transfers-section {
+                .flex-container {
+                    margin: 0 10px;
+                    width: auto;
+                }
+                
+                .transfer-field {
+                    width: auto;
+                }
+            }
         }
         
         .home-membership .video-box {
@@ -5651,7 +5666,8 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
-    .page-template-front-page-2 {
+    .page-template-front-page-2,
+    .page-template-page-rates {
         .home-section {
             .flex-container {
                 flex-wrap: wrap;
@@ -5700,6 +5716,21 @@ footer {
         }
         
         .home-destination {
+            .airport-transfers-section {
+                .flex-box {
+                    margin: 0 auto;
+                }
+                
+                .transfer-button {
+                    margin-top: 20px;
+                    width: auto;
+                }
+                
+                .airport-transfer-search {
+                    display: block;
+                }
+            }
+            
             .flex-box {
                 flex-basis: 40%;
                 margin: 0 10px 20px;
@@ -5889,7 +5920,8 @@ footer {
 }
 
 @media only screen and (max-width: 480px) {
-    .page-template-front-page-2 {
+    .page-template-front-page-2,
+    .page-template-page-rates {
         .home-destination .flex-box {
             flex-basis: 100%;
             margin: 0 auto 20px;
@@ -5899,7 +5931,8 @@ footer {
 }
 
 @media only screen and (max-width: 425px) {
-    .page-template-front-page-2 {
+    .page-template-front-page-2,
+    .page-template-page-rates {
         .home-banner {
             height: 500px;
             
@@ -6065,6 +6098,13 @@ footer {
         .tab-links a {
             padding: 0;
         }
+        
+        .rates-content {
+            table, th, td {
+                border: 1px solid #ddd;
+                padding: 5px;
+            }
+        }
     }
     
     footer {
@@ -6156,7 +6196,8 @@ footer {
 @media only screen and (max-width: 320px) {
     .page-template-front-page-2 {
         .home-banner {
-             height: 440px;
+            height: 440px;
+            overflow: hidden;
         }
         
         .home-about {
@@ -6178,6 +6219,13 @@ footer {
                     max-width: 110px;
                 }
             }
+        }
+    }
+    
+    .page-template-page-rates {
+        .section,
+        .tab-content {
+            padding: 20px;
         }
     }
     

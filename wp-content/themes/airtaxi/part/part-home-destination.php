@@ -28,7 +28,7 @@
                        <?php endif; ?>
 
                        <?php if(get_sub_field('text_or_button') == 'text'): ?>
-                       <a href="<?php echo get_sub_field('destination_link');?>"> 
+                       <a href="<?php echo get_sub_field('destination_link'); echo  get_sub_field('custom_url_parameter') ? '?' . get_sub_field('custom_url_parameter') : '';?>"> 
                           <h3 class="flex-title">
                               <?php echo get_sub_field('destination_name');?>
                           </h3>

@@ -32,7 +32,7 @@ add_action('wp_logout','redirect_after_logout');
 
 function redirect_after_logout(){
 
-  wp_redirect(get_bloginfo('home').'/trade-access');
+  wp_redirect(get_bloginfo('url'));
 
   exit();
 
