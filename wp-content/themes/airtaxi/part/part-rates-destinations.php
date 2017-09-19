@@ -1,18 +1,20 @@
-<?php if(get_field('destination_section_background', 1174) == 'color'): ?>
-<section id="<?php echo get_field('destination_section_id', 1174); ?>" class="home-destination home-section section" style="background-color: <?php echo get_field('destination_section_background_color', 1174); ?>');">
+<?php $pageID = get_option('page_on_front'); ?>
+
+<?php if(get_field('destination_section_background', $pageID) == 'color'): ?>
+<section id="<?php echo get_field('destination_section_id', $pageID); ?>" class="home-destination home-section section" style="background-color: <?php echo get_field('destination_section_background_color', $pageID); ?>');">
 
 <?php else: ?>
 
-<section id="<?php echo get_field('destination_section_id', 1174); ?>" class="home-destination home-section section" style="background-image: url('<?php echo get_field('destination_section_background_image', 1174); ?>');">
+<section id="<?php echo get_field('destination_section_id', $pageID); ?>" class="home-destination home-section section" style="background-image: url('<?php echo get_field('destination_section_background_image', $pageID); ?>');">
 
 <?php endif; ?>
     <div class="section-wrap">
-        <h2><?php echo get_field('destination_section_title', 1174);?></h2>
-        <span class="sub-title"><?php echo get_field('destination_sub_title', 1174);?></span>
+        <h2><?php echo get_field('destination_section_title', $pageID);?></h2>
+        <span class="sub-title"><?php echo get_field('destination_sub_title', $pageID);?></span>
 
         <div class="flex-container">
 
-           <?php if(have_rows('destination_packages', 1174)): while(have_rows('destination_packages', 1174)): the_row(); ?>
+           <?php if(have_rows('destination_packages', $pageID)): while(have_rows('destination_packages', $pageID)): the_row(); ?>
 
            <?php if(get_sub_field('destination_image')): $icon = get_sub_field('destination_image'); ?>
            <div class="flex-box" style="background-image: url('<?php echo $icon['url']?>');">
