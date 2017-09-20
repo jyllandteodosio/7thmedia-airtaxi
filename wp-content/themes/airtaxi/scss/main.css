@@ -4675,7 +4675,7 @@ footer {
 @media only screen and (max-width: 713px) {
   .page-template-page-rates .rates-box,
   .page-template-page-rates .rates-box:nth-child(even) {
-    display: block;
+    display: table;
     margin-left: auto;
     margin-right: auto; } }
 @media only screen and (max-width: 480px) {
