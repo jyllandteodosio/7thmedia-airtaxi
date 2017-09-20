@@ -20,46 +20,48 @@ jQuery(function( $ ){
     var tab = getUrlParameter('tab');
     
     $(document).ready(function() {
-    
-        var table = $('#airport-transfer').DataTable({
-            ordering :  false,
-            bInfo : false,
-            iDisplayLength : -1,
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                    type: ''
-                }
+        
+        var columnDefs = [
+            {
+                targets : [ 1 ],
+                className : 'dt-center',
+                searchable : false
             },
-            columnDefs : [
-                {
-                    targets : [ 1 ],
-                    className : 'dt-center',
-                    searchable : false
-                },
-                {
-                    responsivePriority : 1,
-                    targets : [ 2 ],
+            {
+                responsivePriority : 1,
+                targets : [ 2 ],
+                searchable : false,
+                className : 'dt-center'
+            }
+        ];
+        
+        var aircraftLength = $('.aircraft-column').length;
+        
+        if(aircraftLength) {
+            for(var a = 0; a < aircraftLength; a++) {
+                var targetValue = 3 + a;
+        
+                var thProperty = {
+                    targets : [targetValue],
                     searchable : false,
                     className : 'dt-center'
+                };
+                columnDefs.push(thProperty);
+            }
+            
+            var table = $('#airport-transfer').DataTable({
+                ordering :  false,
+                bInfo : false,
+                iDisplayLength : -1,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                        type: ''
+                    }
                 },
-                {
-                    targets : [ 3 ],
-                    searchable : false,
-                    className : 'dt-center'
-                },
-                {
-                    targets : [ 4 ],
-                    searchable : false,
-                    className : 'dt-center'
-                },
-                {
-                    targets : [ 5 ],
-                    searchable : false,
-                    className : 'dt-center'
-                }
-            ]
-        });
+                columnDefs : columnDefs
+            });
+        }
         
         if(destination) {
             var search = destination.replace(/\+/g,' ');

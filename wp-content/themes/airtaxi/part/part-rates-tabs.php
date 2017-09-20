@@ -51,7 +51,7 @@
                                         
                                         //* Display user icons depending on the aircraft capacity
                                         ?>
-                                        <th class="desktop tablet-l">
+                                        <th class="desktop tablet-l aircraft-column">
                                             <?php the_title(); ?>
                                             <br/>
                                             <?php for($i = 0; $i < $capacity; $i++): ?>
