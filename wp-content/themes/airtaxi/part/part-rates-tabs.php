@@ -151,7 +151,13 @@
                                 </table>
                             </div>
 
-                            <?php endwhile; endif; ?>
+                            <?php endwhile; else: ?>
+                            
+                            <div class="no-rates-box">
+                                <?php the_field('no_rates_found_notice'); ?>
+                            </div>
+                            
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -246,7 +252,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php endwhile; endif; ?>
+                            <?php endwhile; else: ?>
+                            
+                            <div class="no-rates-box">
+                                <?php the_field('no_rates_found_notice'); ?>
+                            </div>
+                            
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

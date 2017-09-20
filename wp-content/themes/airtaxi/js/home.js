@@ -157,6 +157,16 @@ jQuery(function( $ ){
                             }
                         });
                     });
+                    
+                    $('.destination-dropdown li').click(function() {
+                        $selected = $(this).attr('data-value');
+
+                        if($selected) {
+                            $('.destination-input').val($selected);
+                        }
+
+                        $('.transfer-destination .dropdown-box').hide();
+                    });
                 }
             }
         });

@@ -82,34 +82,38 @@ jQuery(function( $ ){
         $('.tab'+tab).click();
     }
     
-    $('.aerial-tours').slick({
-        dots: false,
-        arrows: true,
-        infinite: false,
-        rows: 2,
-        slidesPerRow: 4,
-        speed: 300,
-        slidesToShow: -1,
-        variableWidth: true,
-        responsive: [
-            {
-                breakpoint: 1025,
-                settings: "unslick"
-            }
-        ]
-    });
+    if($('.aerial-tours .rates-box').length) {
+        $('.aerial-tours').slick({
+            dots: false,
+            arrows: true,
+            infinite: false,
+            rows: 2,
+            slidesPerRow: 4,
+            speed: 300,
+            slidesToShow: -1,
+            variableWidth: true,
+            responsive: [
+                {
+                    breakpoint: 1025,
+                    settings: "unslick"
+                }
+            ]
+        });
+    }
     
-    $('.day-tours').slick({
-        dots: false,
-        arrows: true,
-        initialSlide: slide-1,
-        rows: 2,
-        slidesPerRow: 1,
-        responsive: [
-            {
-                breakpoint: 1025,
-                settings: "unslick"
-            }
-        ]
-    });
+    if($('.day-tours .destinations-box').length) {
+        $('.day-tours').slick({
+            dots: false,
+            arrows: true,
+            initialSlide: slide-1,
+            rows: 2,
+            slidesPerRow: 1,
+            responsive: [
+                {
+                    breakpoint: 1025,
+                    settings: "unslick"
+                }
+            ]
+        });
+    }
 });
