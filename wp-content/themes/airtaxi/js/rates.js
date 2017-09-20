@@ -52,6 +52,11 @@ jQuery(function( $ ){
                     targets : [ 4 ],
                     searchable : false,
                     className : 'dt-center'
+                },
+                {
+                    targets : [ 5 ],
+                    searchable : false,
+                    className : 'dt-center'
                 }
             ]
         });
