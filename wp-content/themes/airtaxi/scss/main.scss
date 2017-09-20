@@ -5921,7 +5921,7 @@ footer {
     .page-template-page-rates {
         .rates-box,
         .rates-box:nth-child(even) {
-            display: block;
+            display: table;
             margin-left: auto;
             margin-right: auto;
         }
