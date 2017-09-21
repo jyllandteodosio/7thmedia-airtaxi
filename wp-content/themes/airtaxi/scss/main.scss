@@ -3352,6 +3352,7 @@ span.wpcf7-list-item {
             float: right;
             text-align: right;
             width: 900px;
+            margin-right: 20px;
         }
         
         .wrap {
@@ -3373,17 +3374,19 @@ span.wpcf7-list-item {
 
 @media only screen and (min-width: 1090px) and (max-width: 1140px) {
     .title-area {
-        width: 180px;
+//        width: 180px;
+        margin-left: 20px;
     }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1089px) {
     .site-header .widget-area {
-        width: 870px;
+        width: 700px;
     }
     
     .title-area {
-        width: 150px;
+//        width: 150px;
+        margin-left: 20px;
     }
 }
 
@@ -4256,8 +4259,8 @@ span.wpcf7-list-item {
         }
         
         .video-box {
-            height: 480px;
-            max-width: 854px;
+            height: 360px;
+            max-width: 640px;
             background-position: center;
             background-size: cover;
             margin: 0 auto 40px;
@@ -4381,7 +4384,7 @@ span.wpcf7-list-item {
         
         .inquire-button {
             background-color: #4ec5cd;
-            padding: 8px 20px;
+            padding: 8px 15px;
             text-transform: uppercase;
             font-weight: 700;
             font-size: 12px;
@@ -4483,6 +4486,7 @@ span.wpcf7-list-item {
             display: none;
             position: absolute;
             min-width: 240px;
+            z-index: 2;
             
             li {
                 padding: 0px 15px;
@@ -4504,6 +4508,26 @@ span.wpcf7-list-item {
             .destination-dropdown {
                 column-count: 2;
                 column-fill: auto;
+            }
+        }
+        
+        .pre-loader {
+            text-align: center;
+            
+            img {
+                width: 20px;
+            }
+        }
+        
+        .pre-loader-field {
+            width: 90%;
+            background-color: #fff;
+            position: absolute;
+            height: 100%;
+            
+            img {
+                width: 20px;
+                vertical-align: middle;
             }
         }
     }
@@ -5368,6 +5392,7 @@ span.wpcf7-list-item {
         
         td {
             padding: 0px;
+            vertical-align: top
         }
         
         .itinerary-title {
@@ -5506,6 +5531,11 @@ span.wpcf7-list-item {
     }
 }
 
+.stop-scroll {
+    height: 100%;
+    overflow: hidden;
+}
+
 footer {
     width: 100%;
     background-color: #212121;
@@ -5566,7 +5596,24 @@ footer {
     }
 }
 
+@media only screen and (max-width: 1330px) {
+    .page-template-front-page-2 {
+        .home-destination .flex-box {
+            flex-basis: 22%;
+        }
+    }
+}
+
 @media only screen and (max-width: 1280px) {
+    .page-template-page-rates {
+        .destinations-box {
+            margin-left: 0px;
+            min-width: 860px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1070px) {
     .page-template-page-rates {
         .destinations-box {
             margin-left: 0px;
@@ -5619,11 +5666,10 @@ footer {
                     width: auto;
                 }
             }
-        }
-        
-        .home-membership .video-box {
-            max-width: 640px;
-            height: 360px;
+            
+            .dropdown-box {
+                max-width: 400px;
+            }
         }
         
         .home-fleet .flex-box {
@@ -5651,6 +5697,35 @@ footer {
     }
     
     .page-template-page-rates {
+        .background-wrap {
+            z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        
+        .section {
+            padding: 40px;
+        }
+        
+        .rates-header,
+        .home-destination {
+            background-color: #fff;
+        }
+        
+        .rates-tabs {
+            padding: 0;
+        }
+        
+        input, select, textarea {
+            -webkit-appearance: none;
+        }
+        
         .aerial-tours-wrap {
             text-align: center;
         }
@@ -5716,11 +5791,6 @@ footer {
             .flex-box {
                 margin: 0 auto;
                 max-width: 100%;
-            }
-            
-            .video-box {
-                max-width: 640px;
-                height: 360px;
             }
         }
         
@@ -5845,8 +5915,18 @@ footer {
             }
         }
         
-        .dataTables_wrapper tr.even {
-            background-color: #f3f3f3;
+            
+        
+        .dataTables_wrapper {
+            table.dataTable tbody td.td-location {
+                font-size: 16px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+            
+            tr.even {
+                background-color: #f3f3f3;
+            }
         }
         
         table.dataTable>tbody>tr.child {
@@ -5890,6 +5970,10 @@ footer {
             }
         }
         
+        .airport-transfer thead tr th:first-child {
+            display: none;
+        }
+        
         .tab-links h2 a {
             font-size: 14px;
         }
@@ -5924,6 +6008,21 @@ footer {
             display: table;
             margin-left: auto;
             margin-right: auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .page-template-front-page-2 {
+        .home-destination {
+            .dropdown-box {
+                max-width: 220px;
+                min-width: 220px;
+                
+                .destination-dropdown {
+                    column-count: 1;
+                }
+            }
         }
     }
 }
@@ -6217,6 +6316,12 @@ footer {
             
             .about-map-container {
                 height: 340px;
+            }
+        }
+        
+        .home-membership {
+            .video-box {
+                height: 140px;
             }
         }
         

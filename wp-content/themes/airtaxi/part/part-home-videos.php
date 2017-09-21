@@ -20,7 +20,7 @@
             $youtube_URL = get_sub_field('youtube_video_url');
             parse_str( parse_url( $youtube_URL, PHP_URL_QUERY ), $youtube_ID );
             ?>
-            <div class="flex-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/maxresdefault.jpg);">
+            <div class="flex-box vid-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/maxresdefault.jpg);">
                <div class="play-icon">
                    <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe"><img src="<?php echo get_field('youtube_play_icon');?>"/></a>
                </div>
