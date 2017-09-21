@@ -4520,7 +4520,8 @@ footer {
     background-attachment: initial;
     background-repeat: no-repeat;
     border-top: 80px solid #fff;
-    border-bottom: 80px solid #fff; }
+    border-bottom: 80px solid #fff;
+    margin-top: 80px; }
   .page-template-page-rates .section {
     padding: 40px; }
   .page-template-page-rates .rates-header,
