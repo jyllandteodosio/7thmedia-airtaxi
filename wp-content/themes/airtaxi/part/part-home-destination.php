@@ -78,7 +78,7 @@
 
                     <div class="transfer-origin">
                         <div class="dropdown-field">
-                            <input type="text" class="selected origin-input" value="" disabled/>
+                            <input type="text" class="selected origin-input" value="" readonly/>
                             <i class="fa fa-caret-down"></i>
                         </div>
 
