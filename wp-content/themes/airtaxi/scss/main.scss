@@ -5778,19 +5778,11 @@ footer {
             margin-bottom: 10px;
         }
         
-        .home-membership,
-        .home-destination {
-            .flex-box {
-                flex-basis: 100%;
-                max-width: 400px;
-                margin: 0 auto 30px;
-            }
-        }
-        
         .home-membership {
             .flex-box {
                 margin: 0 auto;
                 max-width: 100%;
+                flex-basis: 100%;
             }
         }
         
@@ -5813,6 +5805,7 @@ footer {
             .flex-box {
                 flex-basis: 40%;
                 margin: 0 10px 20px;
+                max-width: 320px;
                 
                 &:last-child {
                     margin-bottom: 0;
