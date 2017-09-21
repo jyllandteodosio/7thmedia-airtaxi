@@ -4518,7 +4518,9 @@ footer {
     width: 100%;
     background-size: cover;
     background-attachment: initial;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    border-top: 100px solid #fff;
+    border-bottom: 100px solid #fff; }
   .page-template-page-rates .section {
     padding: 40px; }
   .page-template-page-rates .rates-header,
