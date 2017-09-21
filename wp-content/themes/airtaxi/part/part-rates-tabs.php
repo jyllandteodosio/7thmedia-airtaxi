@@ -12,7 +12,7 @@
 <section class="rates-tabs section">
     <div class="section-wrap">
         <?php $image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );?>
-        <div class="tabs-wrap" style="<?php echo $image ? 'background-image: url('.$image.')' : ''; ?>;">
+        <div class="tabs-wrap" data-bg="<?php echo $image ? $image : ''; ?>" style="<?php echo $image ? 'background-image: url('.$image.')' : ''; ?>;">
             <div class="tab-links-box">
                 <div class="tab-links-wrap">
                     <ul>
@@ -78,7 +78,7 @@
                                 ?>
 
                                 <tr>
-                                    <td><?php echo $term->name; ?></td>
+                                    <td class="td-location"><?php echo $term->name; ?></td>
                                     <td><?php echo get_term($term->parent, 'locations')->name; ?></td>
                                     <td><?php echo get_sub_field('flight_time'); ?></td>
                                     <?php 

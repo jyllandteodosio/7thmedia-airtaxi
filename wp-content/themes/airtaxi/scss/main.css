@@ -2648,7 +2648,8 @@ span.wpcf7-list-item {
   .site-header .widget-area {
     float: right;
     text-align: right;
-    width: 900px; }
+    width: 900px;
+    margin-right: 20px; }
   .site-header .wrap {
     max-width: 1140px; } }
 @media only screen and (min-width: 1024px) and (max-width: 1160px) {
@@ -2661,13 +2662,13 @@ span.wpcf7-list-item {
     width: 100%; } }
 @media only screen and (min-width: 1090px) and (max-width: 1140px) {
   .title-area {
-    width: 180px; } }
+    margin-left: 20px; } }
 @media only screen and (min-width: 1025px) and (max-width: 1089px) {
   .site-header .widget-area {
-    width: 870px; }
+    width: 700px; }
 
   .title-area {
-    width: 150px; } }
+    margin-left: 20px; } }
 @media only screen and (max-width: 1280px) {
   .about-image {
     position: relative;
@@ -3330,8 +3331,8 @@ span.wpcf7-list-item {
       font-size: 32px; }
   .page-template-front-page-2 .home-membership .video-box,
   .page-template-page-rates .home-membership .video-box {
-    height: 480px;
-    max-width: 854px;
+    height: 360px;
+    max-width: 640px;
     background-position: center;
     background-size: cover;
     margin: 0 auto 40px; }
@@ -3443,7 +3444,7 @@ span.wpcf7-list-item {
 .page-template-front-page-2 .home-destination .inquire-button,
 .page-template-page-rates .home-destination .inquire-button {
   background-color: #4ec5cd;
-  padding: 8px 20px;
+  padding: 8px 15px;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 12px;
@@ -3535,7 +3536,8 @@ span.wpcf7-list-item {
   border: 1px solid #ddd;
   display: none;
   position: absolute;
-  min-width: 240px; }
+  min-width: 240px;
+  z-index: 2; }
   .page-template-front-page-2 .home-destination .dropdown-box li,
   .page-template-page-rates .home-destination .dropdown-box li {
     padding: 0px 15px;
@@ -3558,6 +3560,22 @@ span.wpcf7-list-item {
     -webkit-column-fill: auto;
        -moz-column-fill: auto;
             column-fill: auto; }
+.page-template-front-page-2 .home-destination .pre-loader,
+.page-template-page-rates .home-destination .pre-loader {
+  text-align: center; }
+  .page-template-front-page-2 .home-destination .pre-loader img,
+  .page-template-page-rates .home-destination .pre-loader img {
+    width: 20px; }
+.page-template-front-page-2 .home-destination .pre-loader-field,
+.page-template-page-rates .home-destination .pre-loader-field {
+  width: 90%;
+  background-color: #fff;
+  position: absolute;
+  height: 100%; }
+  .page-template-front-page-2 .home-destination .pre-loader-field img,
+  .page-template-page-rates .home-destination .pre-loader-field img {
+    width: 20px;
+    vertical-align: middle; }
 .page-template-front-page-2 .home-videos h2,
 .page-template-front-page-2 .home-videos .sub-title,
 .page-template-page-rates .home-videos h2,
@@ -4274,7 +4292,8 @@ span.wpcf7-list-item {
   .page-template-page-rates .destinations-box td {
     border: none; }
   .page-template-page-rates .destinations-box td {
-    padding: 0px; }
+    padding: 0px;
+    vertical-align: top; }
   .page-template-page-rates .destinations-box .itinerary-title {
     padding: 10px 0px 2px;
     width: 100%;
@@ -4369,6 +4388,10 @@ span.wpcf7-list-item {
     border-top: 10px solid #4ec5cd;
     clear: both; }
 
+.stop-scroll {
+  height: 100%;
+  overflow: hidden; }
+
 footer {
   width: 100%;
   background-color: #212121;
@@ -4411,7 +4434,16 @@ footer {
     margin-left: 80px;
     max-width: 60%;
     min-width: 900px; } }
+@media only screen and (max-width: 1330px) {
+  .page-template-front-page-2 .home-destination .flex-box {
+    -webkit-flex-basis: 22%;
+        -ms-flex-preferred-size: 22%;
+            flex-basis: 22%; } }
 @media only screen and (max-width: 1280px) {
+  .page-template-page-rates .destinations-box {
+    margin-left: 0px;
+    min-width: 860px; } }
+@media only screen and (max-width: 1070px) {
   .page-template-page-rates .destinations-box {
     margin-left: 0px;
     min-width: 820px; } }
@@ -4456,10 +4488,9 @@ footer {
   .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field,
   .page-template-page-rates .home-destination .airport-transfers-section .transfer-field {
     width: auto; }
-  .page-template-front-page-2 .home-membership .video-box,
-  .page-template-page-rates .home-membership .video-box {
-    max-width: 640px;
-    height: 360px; }
+  .page-template-front-page-2 .home-destination .dropdown-box,
+  .page-template-page-rates .home-destination .dropdown-box {
+    max-width: 400px; }
   .page-template-front-page-2 .home-fleet .flex-box,
   .page-template-page-rates .home-fleet .flex-box {
     -webkit-box-flex: 1;
@@ -4478,6 +4509,25 @@ footer {
   .page-template-page-rates .home-contact .locations-text-panel {
     margin-left: 15px; }
 
+  .page-template-page-rates .background-wrap {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat; }
+  .page-template-page-rates .section {
+    padding: 40px; }
+  .page-template-page-rates .rates-header,
+  .page-template-page-rates .home-destination {
+    background-color: #fff; }
+  .page-template-page-rates .rates-tabs {
+    padding: 0; }
+  .page-template-page-rates input, .page-template-page-rates select, .page-template-page-rates textarea {
+    -webkit-appearance: none; }
   .page-template-page-rates .aerial-tours-wrap {
     text-align: center; }
   .page-template-page-rates .rates-box:nth-child(even) {
@@ -4525,10 +4575,6 @@ footer {
   .page-template-page-rates .home-membership .flex-box {
     margin: 0 auto;
     max-width: 100%; }
-  .page-template-front-page-2 .home-membership .video-box,
-  .page-template-page-rates .home-membership .video-box {
-    max-width: 640px;
-    height: 360px; }
   .page-template-front-page-2 .home-destination .airport-transfers-section .flex-box,
   .page-template-page-rates .home-destination .airport-transfers-section .flex-box {
     margin: 0 auto; }
@@ -4628,6 +4674,10 @@ footer {
         line-height: 18px;
         vertical-align: middle;
         display: table-cell; }
+  .page-template-page-rates .dataTables_wrapper table.dataTable tbody td.td-location {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700; }
   .page-template-page-rates .dataTables_wrapper tr.even {
     background-color: #f3f3f3; }
   .page-template-page-rates table.dataTable > tbody > tr.child ul.dtr-details {
@@ -4657,6 +4707,8 @@ footer {
       display: none; }
   .page-template-page-rates table.dataTable > tbody > tr.child span.dtr-data {
     text-align: center; }
+  .page-template-page-rates .airport-transfer thead tr th:first-child {
+    display: none; }
   .page-template-page-rates .tab-links h2 a {
     font-size: 14px; }
 
@@ -4678,6 +4730,14 @@ footer {
     display: table;
     margin-left: auto;
     margin-right: auto; } }
+@media only screen and (max-width: 540px) {
+  .page-template-front-page-2 .home-destination .dropdown-box {
+    max-width: 220px;
+    min-width: 220px; }
+    .page-template-front-page-2 .home-destination .dropdown-box .destination-dropdown {
+      -webkit-column-count: 1;
+         -moz-column-count: 1;
+              column-count: 1; } }
 @media only screen and (max-width: 480px) {
   .page-template-front-page-2 .home-destination .flex-box,
   .page-template-page-rates .home-destination .flex-box {
@@ -4895,6 +4955,8 @@ footer {
     width: 400px; }
   .page-template-front-page-2 .home-about .about-map-container {
     height: 340px; }
+  .page-template-front-page-2 .home-membership .video-box {
+    height: 140px; }
   .page-template-front-page-2 .home-clients .flex-box {
     min-width: 110px; }
     .page-template-front-page-2 .home-clients .flex-box img {

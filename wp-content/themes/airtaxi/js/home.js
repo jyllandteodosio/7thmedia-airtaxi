@@ -66,6 +66,15 @@ jQuery(function( $ ){
         });
     }
     
+    //* Video Pop Up - prevent scrolling
+    $('.video-box, .vid-box').click(function() {
+        $('body').addClass('stop-scroll');
+    });
+
+    $('.home').on('click', '.mfp-wrap', function(e) {
+        $('body').removeClass('stop-scroll'); 
+    });
+    
     //* Aircraft Box Link
     $('.aircraft-box').click(function() {
         var link = $(this).find('.aircraft-name').attr('href');
@@ -115,12 +124,18 @@ jQuery(function( $ ){
         $.ajax({
             url: $url,
             method: 'GET',
-            crossDomain: true,            
+            crossDomain: true,
+            beforeSend: function() {
+                $('.transfer-destination .dropdown-field').prepend('<div class="pre-loader-field"><img src="'+baseURL+'/wp-content/themes/images/ajax-loader.gif"/></div>');
+                $('.transfer-destination .dropdown-box').append('<div class="pre-loader"><img src="'+baseURL+'/wp-content/themes/images/ajax-loader.gif"/></div>');
+                $('.destination-dropdown').html('');
+            },
             success: function(data, status) {
                 if(!data) {
                     //console.log('no data found');
                 } else {
                     // Empty the destination dropbox
+                    $('.pre-loader, .pre-loader-field').remove();
                     $('.destination-dropdown').html('');
                     //console.log(data);
                     

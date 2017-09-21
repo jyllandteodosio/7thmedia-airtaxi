@@ -1,5 +1,17 @@
 jQuery(function( $ ){
     
+    var screenWidth = $(window).width();
+    
+    if(screenWidth <= 1024) {
+        
+        var background = $('.tabs-wrap').attr('data-bg');
+        
+        $('.page-template-page-rates').prepend('<div class="background-wrap" style="background-image: url('+background+');"></div>');
+        
+        $('.tabs-wrap').css({ 'background-image': 'none' });
+        
+    }
+    
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -25,13 +37,15 @@ jQuery(function( $ ){
             {
                 targets : [ 1 ],
                 className : 'dt-center',
-                searchable : false
+                searchable : false,
+                ordering : false,
             },
             {
                 responsivePriority : 1,
                 targets : [ 2 ],
                 searchable : false,
-                className : 'dt-center'
+                className : 'dt-center',
+                ordering : false,
             }
         ];
         
@@ -44,13 +58,14 @@ jQuery(function( $ ){
                 var thProperty = {
                     targets : [targetValue],
                     searchable : false,
-                    className : 'dt-center'
+                    className : 'dt-center',
                 };
                 columnDefs.push(thProperty);
             }
             
             var table = $('#airport-transfer').DataTable({
-                ordering :  false,
+                ordering :  true,
+                order: [[ 1, 'asc' ]],
                 bInfo : false,
                 iDisplayLength : -1,
                 responsive: {
@@ -100,6 +115,12 @@ jQuery(function( $ ){
             slidesToShow: -1,
             variableWidth: true,
             responsive: [
+                {
+                    breakpoint: 1340,
+                    settings: {
+                        slidesPerRow: 3,
+                    }
+                },
                 {
                     breakpoint: 1025,
                     settings: "unslick"
