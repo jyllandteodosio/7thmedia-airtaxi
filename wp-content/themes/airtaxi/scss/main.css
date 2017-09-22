@@ -4519,9 +4519,7 @@ footer {
     background-size: cover;
     background-attachment: initial;
     background-repeat: no-repeat;
-    border-top: 80px solid #fff;
-    border-bottom: 80px solid #fff;
-    margin-top: 80px; }
+    border-top: 80px solid #fff; }
   .page-template-page-rates .section {
     padding: 40px; }
   .page-template-page-rates .rates-header,
@@ -4532,7 +4530,11 @@ footer {
   .page-template-page-rates input, .page-template-page-rates select, .page-template-page-rates textarea {
     -webkit-appearance: none; }
   .page-template-page-rates .aerial-tours-wrap {
-    text-align: center; }
+    text-align: left; }
+    .page-template-page-rates .aerial-tours-wrap .aerial-tours {
+      width: 540px;
+      max-width: 100%;
+      margin: auto; }
   .page-template-page-rates .rates-box:nth-child(even) {
     margin-right: 0; }
   .page-template-page-rates .destinations-box {
