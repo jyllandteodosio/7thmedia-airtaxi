@@ -4,9 +4,9 @@ jQuery(function( $ ){
     
     if(screenWidth <= 1024) {
         
-        var background = $('.tabs-wrap').attr('data-bg');
-        
-        $('.page-template-page-rates').prepend('<div class="background-wrap" style="background-image: url('+background+');"></div>');
+//        var background = $('.tabs-wrap').attr('data-bg');
+//        
+//        $('.page-template-page-rates').prepend('<div class="background-wrap" style="background-image: url('+background+');"></div>');
         
         $('.tabs-wrap').css({ 'background-image': 'none' });
         
@@ -68,6 +68,7 @@ jQuery(function( $ ){
                 order: [[ 1, 'asc' ]],
                 bInfo : false,
                 iDisplayLength : -1,
+                lengthMenu : [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.childRowImmediate,
