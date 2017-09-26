@@ -3,11 +3,6 @@ jQuery(function( $ ){
     var screenWidth = $(window).width();
     
     if(screenWidth <= 1024) {
-        
-//        var background = $('.tabs-wrap').attr('data-bg');
-//        
-//        $('.page-template-page-rates').prepend('<div class="background-wrap" style="background-image: url('+background+');"></div>');
-        
         $('.tabs-wrap').css({ 'background-image': 'none' });
         
     }
@@ -28,6 +23,7 @@ jQuery(function( $ ){
     };
     
     var destination = getUrlParameter('destination-input');
+    var destinationID = getUrlParameter('destination-id');
     var slide = getUrlParameter('slide') ? getUrlParameter('slide') : 1;
     var tab = getUrlParameter('tab');
     
@@ -103,6 +99,23 @@ jQuery(function( $ ){
     
     if(tab) {
         $('.tab'+tab).click();
+        
+        $('.tab'+tab).on('click', function(){
+            if(screenWidth <= 1024) {
+                if(destinationID) {
+                    console.log('destinationID: '+destinationID);
+
+                    var offset = 120;
+                    if(screenWidth <= 425) {
+                        offset = 100;
+                    }
+
+                    $('html, body').animate({
+                        scrollTop: $('#'+destinationID).offset().top+offset
+                    }, 1000);
+                }
+            }
+        });
     }
     
     if($('.aerial-tours .rates-box').length) {

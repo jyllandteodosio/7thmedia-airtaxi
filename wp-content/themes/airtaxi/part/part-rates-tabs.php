@@ -171,7 +171,7 @@
 
                             $tour_image = get_sub_field('tour_image'); ?>
 
-                            <div class="destinations-box">
+                            <div id="<?php echo get_sub_field('tour_id'); ?>" class="destinations-box">
                                 <div class="destinations-box-text">
                                     <div class="destinations-box-row">
                                         <div class="destinations-box-title">
