@@ -5753,11 +5753,6 @@ footer {
             text-align: left;
             display: block;
         }
-        
-        .destinations-box-image img {
-            width: 100%;
-            margin-top: 20px;
-        }
     }
 }
 
@@ -5920,7 +5915,10 @@ footer {
             }
         }
         
-            
+        .destinations-box-image img {
+            width: 100%;
+            margin-top: 20px;
+        }
         
         .dataTables_wrapper {
             table.dataTable tbody td.td-location {
