@@ -110,15 +110,16 @@ jQuery(function( $ ){
     function scrollRates() {
         if(screenWidth <= 1024) {
             if(destinationID) {
-                console.log('destinationID: '+destinationID);
 
-                var offset = 80;
+                var offset = 120;
                 if(screenWidth <= 425) {
-                    offset = 60;
+                    offset = 100;
                 }
+                
+                console.log('offset: '+offset);
 
                 $('html, body').animate({
-                    scrollTop: $('#'+destinationID).offset().top+offset
+                    scrollTop: $('#'+destinationID).offset().top-offset
                 }, 1000);
             }
         }
