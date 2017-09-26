@@ -112,7 +112,7 @@ jQuery(function( $ ){
             if(destinationID) {
                 console.log('destinationID: '+destinationID);
 
-                var offset = 120;
+                var offset = 80;
                 if(screenWidth <= 425) {
                     offset = 100;
                 }
