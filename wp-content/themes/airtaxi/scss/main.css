@@ -4674,6 +4674,9 @@ footer {
         line-height: 18px;
         vertical-align: middle;
         display: table-cell; }
+  .page-template-page-rates .destinations-box-image img {
+    width: 100%;
+    margin-top: 20px; }
   .page-template-page-rates .dataTables_wrapper table.dataTable tbody td.td-location {
     font-size: 16px;
     text-transform: uppercase;
