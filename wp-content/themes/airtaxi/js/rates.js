@@ -97,25 +97,35 @@ jQuery(function( $ ){
         e.preventDefault();
     });
     
-    if(tab) {
-        $('.tab'+tab).click();
-        
-        $('.tab'+tab).on('click', function(){
-            if(screenWidth <= 1024) {
-                if(destinationID) {
-                    console.log('destinationID: '+destinationID);
+    function tabClick(callback) {
+        var interval = setInterval(function() {
+            $('.tab'+tab).click();
+            clearInterval(interval);
+            callback();
+            return;
+        },100);
+        return true;
+    }
+    
+    function scrollRates() {
+        if(screenWidth <= 1024) {
+            if(destinationID) {
+                console.log('destinationID: '+destinationID);
 
-                    var offset = 120;
-                    if(screenWidth <= 425) {
-                        offset = 100;
-                    }
-
-                    $('html, body').animate({
-                        scrollTop: $('#'+destinationID).offset().top+offset
-                    }, 1000);
+                var offset = 120;
+                if(screenWidth <= 425) {
+                    offset = 100;
                 }
+
+                $('html, body').animate({
+                    scrollTop: $('#'+destinationID).offset().top+offset
+                }, 1000);
             }
-        });
+        }
+    }
+    
+    if(tab) {
+        tabClick(scrollRates);
     }
     
     if($('.aerial-tours .rates-box').length) {
