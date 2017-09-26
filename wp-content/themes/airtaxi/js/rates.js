@@ -114,7 +114,7 @@ jQuery(function( $ ){
 
                 var offset = 80;
                 if(screenWidth <= 425) {
-                    offset = 100;
+                    offset = 60;
                 }
 
                 $('html, body').animate({
