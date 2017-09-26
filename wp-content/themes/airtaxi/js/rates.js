@@ -2,11 +2,13 @@ jQuery(function( $ ){
     
     var screenWidth = $(window).width();
     
+    //* Remove rates tab background if tablet
     if(screenWidth <= 1024) {
         $('.tabs-wrap').css({ 'background-image': 'none' });
         
     }
     
+    //* Function to get URL parameters
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -27,8 +29,10 @@ jQuery(function( $ ){
     var slide = getUrlParameter('slide') ? getUrlParameter('slide') : 1;
     var tab = getUrlParameter('tab');
     
+    //* Initialize datatable for airport transfer
     $(document).ready(function() {
         
+        //* Initialize default table columns (location and location type)
         var columnDefs = [
             {
                 targets : [ 1 ],
@@ -45,6 +49,7 @@ jQuery(function( $ ){
             }
         ];
         
+        //* Initialize dynamic table columns (aircraft)
         var aircraftLength = $('.aircraft-column').length;
         
         if(aircraftLength) {
@@ -75,6 +80,7 @@ jQuery(function( $ ){
             });
         }
         
+        //* If airport transfer search parameter exists
         if(destination) {
             var search = destination.replace(/\+/g,' ');
             console.log('search:'+search);
@@ -83,6 +89,7 @@ jQuery(function( $ ){
         }
     });
     
+    //* Rates tab show and hide function
     $('.tabs-wrap .tab-links a').on('click', function(e)  {
         var classname = $(this).attr('class');
         var currentAttrValue = $(this).attr('href');
@@ -97,6 +104,7 @@ jQuery(function( $ ){
         e.preventDefault();
     });
     
+    //* Function to set active tab
     function tabClick(callback) {
         var interval = setInterval(function() {
             $('.tab'+tab).click();
@@ -107,6 +115,7 @@ jQuery(function( $ ){
         return true;
     }
     
+    //* Callback function for offset scroll on day trip boxes (tablet)
     function scrollRates() {
         if(screenWidth <= 1024) {
             if(destinationID) {
@@ -125,10 +134,12 @@ jQuery(function( $ ){
         }
     }
     
+    //* If tab parameter exists, call tabClick function to set active tab
     if(tab) {
         tabClick(scrollRates);
     }
     
+    //* Initialize slick slider for aerial tours tab
     if($('.aerial-tours .rates-box').length) {
         $('.aerial-tours').slick({
             dots: false,
@@ -154,6 +165,7 @@ jQuery(function( $ ){
         });
     }
     
+    //* Initialize slick slider for day tours tab
     if($('.day-tours .destinations-box').length) {
         $('.day-tours').slick({
             dots: false,
