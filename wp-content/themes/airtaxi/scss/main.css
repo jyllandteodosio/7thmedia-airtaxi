@@ -4097,18 +4097,40 @@ span.wpcf7-list-item {
   font-family: 'Lato', sans-serif;
   font-size: 48px;
   font-weight: 300;
-  margin-bottom: 40px; }
+  margin-bottom: 0px; }
+.page-template-page-rates .rates-content-wrap {
+  font-size: 14px;
+  max-width: 90%;
+  margin: auto;
+  padding: 0 15px; }
 .page-template-page-rates .rates-content {
-  padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 10px;
   background-color: #f3f3f3;
-  font-size: 12px;
-  margin: 0 auto;
-  max-width: 600px; }
+  font-size: 12px; }
+  .page-template-page-rates .rates-content p {
+    -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
+            flex-basis: 50%;
+    text-align: left;
+    line-height: 2;
+    margin-bottom: 0; }
+  .page-template-page-rates .rates-content table {
+    display: table-cell;
+    width: auto;
+    margin-bottom: 0; }
   .page-template-page-rates .rates-content tbody, .page-template-page-rates .rates-content td {
     border: none;
     padding: 0; }
-  .page-template-page-rates .rates-content table {
-    margin-bottom: 0; }
 .page-template-page-rates .rates-tabs {
   padding-left: 0;
   padding-right: 0; }
@@ -4921,8 +4943,6 @@ footer {
   .page-template-page-rates .text-container {
     max-width: 100%;
     margin: auto; }
-  .page-template-page-rates .rates-content {
-    margin: 0; }
   .page-template-page-rates .tab-links-box {
     padding: 0; }
     .page-template-page-rates .tab-links-box ul {

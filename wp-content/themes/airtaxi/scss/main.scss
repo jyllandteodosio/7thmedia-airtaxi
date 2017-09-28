@@ -5098,23 +5098,41 @@ span.wpcf7-list-item {
         font-family: 'Lato', sans-serif;
         font-size: 48px;
         font-weight: 300;
-        margin-bottom: 40px;
+        margin-bottom: 0px;
+    }
+    
+    .rates-content-wrap {
+        font-size: 14px;
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
     }
     
     .rates-content {
-        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        margin: 0;
+        margin-bottom: 30px;
+        padding: 10px;
         background-color: #f3f3f3;
         font-size: 12px;
-        margin: 0 auto;
-        max-width: 600px;
+
+        p {
+            flex-basis: 50%;
+            text-align: left;
+            line-height: 2;
+            margin-bottom: 0;
+        }
+
+        table {
+            display: table-cell;
+            width: auto;
+            margin-bottom: 0;
+        }
         
         tbody, td {
             border: none;
             padding: 0;
-        }
-        
-        table {
-            margin-bottom: 0;
         }
     }
     
@@ -6228,10 +6246,6 @@ footer {
         .text-container {
             max-width: 100%;
             margin: auto;
-        }
-        
-        .rates-content {
-            margin: 0;
         }
         
         .tab-links-box {
