@@ -4188,6 +4188,10 @@ span.wpcf7-list-item {
     .page-template-page-rates .airport-transfer-wrap .dataTables_paginate select {
       border: 3px solid #4ec5cd;
       border-radius: 2px; }
+  .page-template-page-rates .airport-transfer-wrap .dataTables_length,
+  .page-template-page-rates .airport-transfer-wrap .dataTables_filter {
+    float: none;
+    display: inline-block; }
   .page-template-page-rates .airport-transfer-wrap .dataTables_filter label {
     background-color: #4ec5cd;
     padding: 12px 0px 12px 10px;
