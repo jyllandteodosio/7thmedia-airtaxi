@@ -3756,6 +3756,15 @@ span.wpcf7-list-item {
       font-weight: 300;
       line-height: 2;
       margin-bottom: 30px; }
+  .page-template-front-page-2 .home-about .about-text-wrap,
+  .page-template-page-rates .home-about .about-text-wrap {
+    display: table;
+    height: 100%; }
+  .page-template-front-page-2 .home-about .about-text-container,
+  .page-template-page-rates .home-about .about-text-container {
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom: 40px; }
   .page-template-front-page-2 .home-about .about-map,
   .page-template-page-rates .home-about .about-map {
     height: 556px;

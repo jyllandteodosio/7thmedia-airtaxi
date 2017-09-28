@@ -11,33 +11,14 @@
     <div class="section-wrap">
         <div class="flex-container">
            <div class="flex-box about-text-panel">
-
-               <h2><?php echo get_field('about_section_title');?></h2>
-               <div class="flex-content">
-                   <?php echo get_field('about_section_content');?>
-
-<!--
-                   <div class="client-logos swiper-container">
-                       <div class="swiper-wrapper">
-
-                       <?php /*if(have_rows('client_logos')): while(have_rows('client_logos')): the_row(); ?>
-                           <?php if(get_sub_field('logo')): $logo = get_sub_field('logo'); ?>
-
-                               <div class="logo swiper-slide">
-                                   <img src="<?php echo $logo['url']?>" alt="<?php echo $logo['alt']?>" />
-                               </div>
-
-                           <?php endif; ?>
-                       <?php endwhile; endif; ?>
-
+               <div class="about-text-wrap">
+                   <div class="about-text-container">
+                       <h2><?php echo get_field('about_section_title');?></h2>
+                       <div class="flex-content">
+                           <?php echo get_field('about_section_content');?>
                        </div>
-                       <div class="swiper-pagination"></div>
-
                    </div>
-                   <?php echo get_field('section_content_after');*/?>
--->
                </div>
-
             </div>
 
             <div class="map-markers">

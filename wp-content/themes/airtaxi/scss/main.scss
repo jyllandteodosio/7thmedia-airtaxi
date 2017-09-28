@@ -4732,6 +4732,17 @@ span.wpcf7-list-item {
             }
         }
         
+        .about-text-wrap {
+            display: table;
+            height: 100%;
+        }
+        
+        .about-text-container {
+            display: table-cell;
+            vertical-align: middle;
+            padding-bottom: 40px;
+        }
+        
         .about-map {
             height: 556px;
             width: 560px;
