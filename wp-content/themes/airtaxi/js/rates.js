@@ -100,6 +100,10 @@ jQuery(function( $ ){
 
         // Change/remove current tab to active
         tabselect.addClass('active').siblings().removeClass('active');
+        
+        if(classname === 'tab3') {
+            $('.day-tours').slick('slickGoTo', slide-1);
+        }
 
         e.preventDefault();
     });
@@ -141,28 +145,35 @@ jQuery(function( $ ){
     
     //* Initialize slick slider for aerial tours tab
     if($('.aerial-tours .rates-box').length) {
-        $('.aerial-tours').slick({
-            dots: false,
-            arrows: true,
-            infinite: false,
-            rows: 2,
-            slidesPerRow: 4,
-            speed: 300,
-            slidesToShow: -1,
-            variableWidth: true,
-            responsive: [
-                {
-                    breakpoint: 1340,
-                    settings: {
-                        slidesPerRow: 3,
+        if($('.aerial-tours .rates-box').length > 4) {
+            $('.aerial-tours').slick({
+                dots: false,
+                arrows: true,
+                infinite: false,
+                rows: 2,
+                slidesPerRow: 4,
+                speed: 300,
+                slidesToShow: -1,
+                variableWidth: true,
+                responsive: [
+                    {
+                        breakpoint: 1340,
+                        settings: {
+                            slidesPerRow: 3,
+                        }
+                    },
+                    {
+                        breakpoint: 1025,
+                        settings: "unslick"
                     }
-                },
-                {
-                    breakpoint: 1025,
-                    settings: "unslick"
-                }
-            ]
-        });
+                ]
+            });
+        } else {
+            $('.aerial-tours').css({
+                'display' : 'flex',
+                'justify-content' : 'center'
+            });
+        }
     }
     
     //* Initialize slick slider for day tours tab

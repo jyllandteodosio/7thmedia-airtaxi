@@ -7,6 +7,38 @@ jQuery(function( $ ){
         baseURL = baseURL + "/Projects/airtaxi"
     }
     
+    function screen_width() {
+		return $(window).width();
+	}
+
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
+    
+    function seventh_media() {
+        screenWidth = screen_width();
+    }
+    
+    $(window).resize(debounce(function(){
+        
+        seventh_media();
+        
+	}, 250));
+    
+    seventh_media();
+    
     //* Scrollify JS
 //    $.scrollify({
 //        section : ".section",
@@ -88,6 +120,18 @@ jQuery(function( $ ){
     // Toggle custom dropdown when field is clicked
     $('.dropdown-field').click(function() {
         $(this).parent().find('.dropdown-box').toggle();
+        
+        if($(this).parent().find('.dropdown-box').is(':visible')) {
+            if(!$(this).parent().find('.dropdown-box').visible()) {
+                if(screenWidth > 425) {
+                    $(this).parent().find('.dropdown-box').insertBefore($(this).parent().find('.dropdown-field'));
+                    $(this).parent().find('.dropdown-box').css({ transform: 'translateY(-100%)' });
+                }
+            }
+        } else {
+            $(this).parent().find('.dropdown-field').insertBefore($(this).parent().find('.dropdown-box'));
+            $(this).parent().find('.dropdown-box').css({ transform: 'translateY(0%)' });
+        }
     });
     
     // Set origin field value based on selected item on dropdown
