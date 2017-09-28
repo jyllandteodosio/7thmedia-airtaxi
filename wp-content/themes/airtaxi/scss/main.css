@@ -3791,7 +3791,11 @@ span.wpcf7-list-item {
 .page-template-page-rates .home-clients .flex-container {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
 .page-template-front-page-2 .home-clients .flex-box,
 .page-template-page-rates .home-clients .flex-box {
   -webkit-flex-basis: 16%;
@@ -3801,7 +3805,7 @@ span.wpcf7-list-item {
   min-height: 80px;
   min-width: 150px;
   padding: 0;
-  margin: 20px auto;
+  margin: 20px 1px;
   background-color: transparent;
   box-shadow: none; }
   .page-template-front-page-2 .home-clients .flex-box img,
