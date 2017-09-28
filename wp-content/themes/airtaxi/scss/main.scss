@@ -4773,6 +4773,7 @@ span.wpcf7-list-item {
         
         .flex-container {
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
         
         .flex-box {
@@ -4781,7 +4782,7 @@ span.wpcf7-list-item {
             min-height: 80px;
             min-width: 150px;
             padding: 0;
-            margin: 20px auto;
+            margin: 20px 1px;
             background-color: transparent;
             box-shadow: none;
             
