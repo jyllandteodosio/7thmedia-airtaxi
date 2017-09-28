@@ -2,9 +2,6 @@
     <div class="section-wrap">
         <div class="text-container">
             <h1 class="inner-title"><?php the_title(); ?></h1>
-            <div class="rates-content">
-                <?php the_content(); ?>
-            </div>
         </div>
     </div>
 </section>
@@ -30,6 +27,11 @@
             </div>
             <div class="tab-content">
                 <div id="tab1" class="tab active">
+                    <div class="rates-content-wrap">
+                        <div class="rates-content">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
                     <div class="airport-transfer-wrap">
                         <table id="airport-transfer" class="airport-transfer">
                             <thead>
