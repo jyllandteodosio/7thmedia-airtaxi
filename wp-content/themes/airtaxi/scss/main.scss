@@ -5216,6 +5216,12 @@ span.wpcf7-list-item {
             }
         }
         
+        .dataTables_length,
+        .dataTables_filter {
+            float: none;
+            display: inline-block;
+        }
+        
         .dataTables_filter label {
             background-color: #4ec5cd;
             padding: 12px 0px 12px 10px;
