@@ -79,7 +79,8 @@ jQuery(function( $ ){
             $('html, body').animate({
                 scrollTop: $('#'+href).offset().top-offset
             }, 1000, function () {
-                window.location.hash = href;
+//                window.location.hash = href;
+                history.pushState(null, null, '#'+href);
             });
             return false;
         }
