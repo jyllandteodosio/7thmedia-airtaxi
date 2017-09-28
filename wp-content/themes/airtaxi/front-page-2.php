@@ -37,8 +37,13 @@ function home_scripts() {
     //* Swiper CSS
     wp_enqueue_style( 'swiper', get_stylesheet_directory_uri() . '/css/vendor/swiper.min.css', array(), null, 'all');
     
+    //* JQuery Visible JS
+	wp_enqueue_script( 'jquery-visible', get_stylesheet_directory_uri() . '/js/jquery.visible.min.js#asyncload', array( 'jquery' ), null, true);
+    
     //* Scrollify JS
 //    wp_enqueue_script( 'fullpage-scrolloverflow', get_bloginfo( 'stylesheet_directory' ) . '/js/jquery.scrollify.min.js#asyncload', array( 'jquery' ), null );
+    
+    
 }
 
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
