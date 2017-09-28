@@ -145,7 +145,7 @@ jQuery(function( $ ){
     
     //* Initialize slick slider for aerial tours tab
     if($('.aerial-tours .rates-box').length) {
-        if($('.aerial-tours .rates-box').length > 4) {
+        if($('.aerial-tours .rates-box').length > 8) {
             $('.aerial-tours').slick({
                 dots: false,
                 arrows: true,
