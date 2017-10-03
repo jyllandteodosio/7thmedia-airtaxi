@@ -27,11 +27,6 @@
             </div>
             <div class="tab-content">
                 <div id="tab1" class="tab active">
-                    <div class="rates-content-wrap">
-                        <div class="rates-content">
-                            <?php the_content(); ?>
-                        </div>
-                    </div>
                     <div class="airport-transfer-wrap">
                         <table id="airport-transfer" class="airport-transfer">
                             <thead>
@@ -95,6 +90,11 @@
                                 <?php endwhile; endif; ?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="rates-content-wrap">
+                        <div class="rates-content">
+                            <?php the_content(); ?>
+                        </div>
                     </div>
                 </div>
                 
