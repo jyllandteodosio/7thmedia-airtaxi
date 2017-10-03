@@ -32,17 +32,22 @@
                           <h3 class="flex-title">
                               <?php echo get_sub_field('destination_name');?>
                           </h3>
+
+						   <?php if(get_sub_field('destination_details')): ?>
+						   <p class="details">
+							   <?php echo get_sub_field('destination_details'); ?>
+						   </p>
+						   <?php endif; ?>
                        </a>
                        <?php else: ?>
-                       <h3 class="flex-title">
-                          <?php echo get_sub_field('destination_name');?>
-                       </h3>
-                       <?php endif; ?>
-                       
-                       <?php if(get_sub_field('destination_details')): ?>
-                       <p class="details">
-                           <?php echo get_sub_field('destination_details'); ?>
-                       </p>
+						   <h3 class="flex-title">
+							  <?php echo get_sub_field('destination_name');?>
+						   </h3>
+						   <?php if(get_sub_field('destination_details')): ?>
+						   <p class="details">
+							   <?php echo get_sub_field('destination_details'); ?>
+						   </p>
+						   <?php endif; ?>
                        <?php endif; ?>
 
                        <?php if(get_sub_field('text_or_button') == 'button'): ?>
@@ -68,7 +73,7 @@
             <form enctype="text/plain" role="search" method="get" id="airport-transfer-search" action="" autocomplete="off" class="airport-transfer-search">
             
                 <div class="flex-box">
-                    <span class="input-label"><?php echo get_field('transfer_from_text'); ?></span>
+                    <span class="input-label"><?php echo str_replace(' ', '&nbsp;', get_field('transfer_from_text')); ?></span>
                 </div>
 
                 <div class="flex-box transfer-field">
