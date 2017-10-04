@@ -49,7 +49,7 @@
                                         //* Display user icons depending on the aircraft capacity
                                         ?>
                                         <th class="desktop tablet-l aircraft-column">
-                                            <?php the_title(); ?>
+                                            <?php echo get_field('model'); ?>
                                             <br/>
                                             <?php for($i = 0; $i < $capacity; $i++): ?>
                                                 <i class="fa fa-user"></i>
