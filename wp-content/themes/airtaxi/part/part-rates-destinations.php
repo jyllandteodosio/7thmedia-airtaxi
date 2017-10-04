@@ -33,17 +33,23 @@
                           <h3 class="flex-title">
                               <?php echo get_sub_field('destination_name');?>
                           </h3>
+						   <?php if(get_sub_field('destination_details')): ?>
+						   <p class="details">
+							   <?php echo get_sub_field('destination_details'); ?>
+						   </p>
+						   <?php endif; ?>
                        </a>
                        <?php else: ?>
                        <h3 class="flex-title">
                           <?php echo get_sub_field('destination_name');?>
                        </h3>
-                       <?php endif; ?>
 
                        <?php if(get_sub_field('destination_details')): ?>
                        <p class="details">
                            <?php echo get_sub_field('destination_details'); ?>
                        </p>
+                       <?php endif; ?>
+
                        <?php endif; ?>
 
                        <?php if(get_sub_field('text_or_button') == 'button'): ?>
