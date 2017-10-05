@@ -36,7 +36,7 @@
                                </h3>
 
                                <?php if(get_sub_field('destination_type')): ?>
-                               <p class="details">
+                               <p class="details type">
                                    <?php echo get_sub_field('destination_type'); ?>
                                </p>
                                <?php endif; ?>
