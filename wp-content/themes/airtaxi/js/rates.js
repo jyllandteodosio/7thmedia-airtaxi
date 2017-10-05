@@ -101,9 +101,9 @@ jQuery(function( $ ){
         // Change/remove current tab to active
         tabselect.addClass('active').siblings().removeClass('active');
         
-        if(classname === 'tab3') {
-            $('.day-tours').slick('slickGoTo', slide-1);
-        }
+//        if(classname === 'tab3') {
+//            $('.day-tours').slick('slickGoTo', slide-1);
+//        }
 
         e.preventDefault();
     });
