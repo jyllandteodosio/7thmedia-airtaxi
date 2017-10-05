@@ -3410,7 +3410,8 @@ span.wpcf7-list-item {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  padding: 0 20px; }
 .page-template-front-page-2 .home-destination .flex-content-wrap,
 .page-template-page-rates .home-destination .flex-content-wrap {
   display: table;
