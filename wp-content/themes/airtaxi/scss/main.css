@@ -3411,7 +3411,7 @@ span.wpcf7-list-item {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 0 20px; }
+  padding: 0 30px; }
 .page-template-front-page-2 .home-destination .flex-content-wrap,
 .page-template-page-rates .home-destination .flex-content-wrap {
   display: table;
@@ -4805,6 +4805,8 @@ footer {
     text-align: center; }
   .page-template-page-rates .airport-transfer thead tr th:first-child {
     display: none; }
+  .page-template-page-rates .airport-transfer-wrap .dataTables_filter input {
+    width: 60%; }
   .page-template-page-rates .tab-links h2 a {
     font-size: 14px; }
 

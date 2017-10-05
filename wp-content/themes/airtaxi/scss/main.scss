@@ -4345,7 +4345,7 @@ span.wpcf7-list-item {
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 1px;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .flex-content-wrap {
@@ -6058,6 +6058,10 @@ footer {
         
         .airport-transfer thead tr th:first-child {
             display: none;
+        }
+        
+        .airport-transfer-wrap .dataTables_filter input {
+            width: 60%;
         }
         
         .tab-links h2 a {

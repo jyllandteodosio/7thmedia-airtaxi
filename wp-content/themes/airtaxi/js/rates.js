@@ -171,7 +171,8 @@ jQuery(function( $ ){
         } else {
             $('.aerial-tours').css({
                 'display' : 'flex',
-                'justify-content' : 'center'
+                'justify-content' : 'center',
+                'flex-wrap' : 'wrap',
             });
         }
     }
