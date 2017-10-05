@@ -126,7 +126,7 @@ jQuery(function( $ ){
 
                 var offset = 120;
                 if(screenWidth <= 425) {
-                    offset = 100;
+                    offset = 80;
                 }
                 
                 console.log('offset: '+offset);
