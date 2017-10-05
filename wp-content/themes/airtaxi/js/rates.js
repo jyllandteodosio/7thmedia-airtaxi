@@ -177,19 +177,19 @@ jQuery(function( $ ){
     }
     
     //* Initialize slick slider for day tours tab
-    if($('.day-tours .destinations-box').length) {
-        $('.day-tours').slick({
-            dots: false,
-            arrows: true,
-            initialSlide: slide-1,
-            rows: 2,
-            slidesPerRow: 1,
-            responsive: [
-                {
-                    breakpoint: 1025,
-                    settings: "unslick"
-                }
-            ]
-        });
-    }
+//    if($('.day-tours .destinations-box').length) {
+//        $('.day-tours').slick({
+//            dots: false,
+//            arrows: true,
+//            initialSlide: slide-1,
+//            rows: 2,
+//            slidesPerRow: 1,
+//            responsive: [
+//                {
+//                    breakpoint: 1025,
+//                    settings: "unslick"
+//                }
+//            ]
+//        });
+//    }
 });
