@@ -29,28 +29,34 @@
 
                        <?php if(get_sub_field('text_or_button') == 'text'): ?>
 
-                       <a href="<?php echo get_sub_field('destination_link'); echo  get_sub_field('custom_url_parameter') ? '?' . get_sub_field('custom_url_parameter') : '';?>"> 
-                          <h3 class="flex-title">
-                              <?php echo get_sub_field('destination_name');?>
-                          </h3>
+                           <a href="<?php echo get_sub_field('destination_link'); echo  get_sub_field('custom_url_parameter') ? '?' . get_sub_field('custom_url_parameter') : '';?>">
+                               <h3 class="flex-title">
+                                   <?php echo get_sub_field('destination_name');?>
+                               </h3>
 
-          						   <?php if(get_sub_field('destination_details')): ?>
-          						   <p class="details">
-          							   <?php echo get_sub_field('destination_details'); ?>
-          						   </p>
-          						   <?php endif; ?>
-                       </a>
+                               <?php if(get_sub_field('destination_type')): ?>
+                               <p class="details type">
+                                   <?php echo get_sub_field('destination_type'); ?>
+                               </p>
+                               <?php endif; ?>
 
+                               <?php if(get_sub_field('destination_details')): ?>
+                               <p class="details">
+                                   <?php echo get_sub_field('destination_details'); ?>
+                               </p>
+                               <?php endif; ?>
+                           </a>
+                           
                        <?php else: ?>
 
-          						   <h3 class="flex-title">
-          							  <?php echo get_sub_field('destination_name');?>
-          						   </h3>
-          						   <?php if(get_sub_field('destination_details')): ?>
-          						   <p class="details">
-          							   <?php echo get_sub_field('destination_details'); ?>
-          						   </p>
-          						   <?php endif; ?>
+                           <h3 class="flex-title">
+                              <?php echo get_sub_field('destination_name');?>
+                           </h3>
+                           <?php if(get_sub_field('destination_details')): ?>
+                           <p class="details">
+                               <?php echo get_sub_field('destination_details'); ?>
+                           </p>
+                           <?php endif; ?>
 
                        <?php endif; ?>
 

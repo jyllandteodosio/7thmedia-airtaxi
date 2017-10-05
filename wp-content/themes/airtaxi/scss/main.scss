@@ -4395,6 +4395,10 @@ span.wpcf7-list-item {
             font-size: 14px;
         }
         
+        .type {
+            font-weight: 700;
+        }
+        
         .inquire-button {
             background-color: #4ec5cd;
             padding: 8px 15px;
@@ -4443,6 +4447,11 @@ span.wpcf7-list-item {
                 width: auto;
                 line-height: 2;
                 text-align: center;
+                
+                &:first-child .input-label {
+                    min-width: 120px;
+                    display: block;
+                }
             }
             
             .transfer-field,
@@ -5147,6 +5156,10 @@ span.wpcf7-list-item {
         tbody, td {
             border: none;
             padding: 0;
+        }
+        
+        td, th {
+            padding: 0 8px;
         }
     }
     
