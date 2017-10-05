@@ -121,7 +121,7 @@ jQuery(function( $ ){
     
     //* Callback function for offset scroll on day trip boxes (tablet)
     function scrollRates() {
-        if(screenWidth <= 1024) {
+//        if(screenWidth <= 1024) {
             if(destinationID) {
 
                 var offset = 120;
@@ -135,7 +135,7 @@ jQuery(function( $ ){
                     scrollTop: $('#'+destinationID).offset().top-offset
                 }, 1000);
             }
-        }
+//        }
     }
     
     //* If tab parameter exists, call tabClick function to set active tab
