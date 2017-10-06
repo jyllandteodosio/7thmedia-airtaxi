@@ -36,15 +36,15 @@ get_header('custom');
    
     <div class="news-single-post">
     <?php  
-        $featuredURL = wp_get_attachment_image( get_post_thumbnail_id(get_field('post_id')), 'full');
-    ?>
-        <?php if($featuredURL != ""): ?>
+    $featuredURL = wp_get_attachment_image( get_post_thumbnail_id(get_field('post_id')), 'full');
+        
+    if($featuredURL != ""): ?>
            
-            <div class="news-featured-image">
-                <?php echo $featuredURL; ?>
-            </div>
+        <div class="news-featured-image">
+            <?php echo $featuredURL; ?>
+        </div>
             
-        <?php endif; ?>
+    <?php endif; ?>
     
         <div class="news-single-content">
             <h1><?php the_title(); ?></h1>

@@ -1,5 +1,8 @@
 <?php
 /**
+ *
+ * [DEPRECATED - TO BE DELETED]
+ *
  * Template Name: Front Page
  *
  * This file adds the Home Page to the Parallax Pro Theme.
