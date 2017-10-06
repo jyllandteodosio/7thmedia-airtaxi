@@ -2433,17 +2433,8 @@ li.active a, li.active a:hover,
 .emergency-landing-container {
   max-width: 1140px;
   padding: 40px;
-  margin: 0 auto; }
-  @media (min-width: 769px) and (max-width: 1920px) {
-    .ambulance-landing-container img,
-    .emergency-landing-container img {
-      width: 50%;
-      padding: 10px; } }
-  @media only screen and (max-width: 768px) {
-    .ambulance-landing-container img,
-    .emergency-landing-container img {
-      width: 100%;
-      padding: 20px; } }
+  margin: 0 auto;
+  overflow: auto; }
 
 @media only screen and (min-width: 769px) and (max-width: 1920px) {
   .emergency-section-white .emergency-logos .logo {
