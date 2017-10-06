@@ -509,7 +509,6 @@ class MPSUM_Admin {
 	 */
 	public function get_json_options() {
 		$options = MPSUM_Updates_Manager::get_options();
-		//die( '<pre>' . print_r( $options, true ) );
 		
 		$boxes = array();
 		$boxes[] = array(
@@ -792,7 +791,17 @@ class MPSUM_Admin {
             return;	
         }
         
-    	wp_enqueue_script( 'mpsum_dashboard', MPSUM_Updates_Manager::get_plugin_url( '/js/admin.js' ), array( 'jquery' ), '20170221', true );
+        // Get user data
+        $user_id = get_current_user_id();
+		$dashboard_showing = get_user_meta( $user_id, 'mpsum_dashboard', true );
+		
+		// Get options
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+        
+        wp_enqueue_script( 'sweetalert', MPSUM_Updates_Manager::get_plugin_url( '/js/source/sweetalert2.js' ), array( 'jquery' ), '6.6.6', true );
+        //wp_enqueue_script( 'sweetalert2', MPSUM_Updates_Manager::get_plugin_url( '/js/source/sweetalert2.common.js' ), array( 'sweetalert', 'jquery' ), '6.6.6', true );
+        
+    	wp_enqueue_script( 'mpsum_dashboard', MPSUM_Updates_Manager::get_plugin_url( '/js/admin.js' ), array( 'jquery' ), '20170801', true );
     	
     	$user_id = get_current_user_id();
 		$dashboard_showing = get_user_meta( $user_id, 'mpsum_dashboard', true );
@@ -814,6 +823,25 @@ class MPSUM_Admin {
 			$ratings_nag_showing = false;
 		}
 		
+		/**
+		 * Filter whether a tracking nag is enabled/disabled or not
+		 *
+		 * @since 6.3.3
+		 *
+		 * @param bool true to show tracking nag, false if not
+		 */
+		$tracking_nag_showing = apply_filters( 'mpsum_tracking_nag', true );
+		if ( isset( $options[ 'core' ][ 'tracking_nag' ] ) && 'off' == $options[ 'core' ][ 'tracking_nag' ] ) {
+			$tracking_nag_showing = 'off';
+		}
+		
+		$has_wizard = 'off';
+		$maybe_has_wizard = MPSUM_Updates_Manager::get_options( 'core' );
+		if ( empty( $maybe_has_wizard ) ) {
+			$has_wizard = 'on';
+		}
+		
+		//  tracking_nag
     	wp_localize_script( 'mpsum_dashboard', 'mpsum', array( 
     		'spinner'           => MPSUM_Updates_Manager::get_plugin_url( '/images/spinner.gif' ),
     		'tabs'              => _x( 'Tabs', 'Show or hide admin tabs', 'stops-core-theme-and-plugin-updates' ),
@@ -828,9 +856,24 @@ class MPSUM_Admin {
 	    		'affirm' => __( 'Sure! Absolutely.', 'stops-core-theme-and-plugin-updates' ),
 	    		'cancel' => __( 'No thanks!', 'stops-core-theme-and-plugin-updates' ),
 	    		'enabled' => $ratings_nag_showing
-    		)
+    		),
+    		'tracking_nag' => array(
+	    		'text' => __( 'Please help us improve this plugin. We are working on a new admin interface for you, and we need your help. Once a month you can automatically send us helpful data on how you are using the plugin. You can always turn it off later in the Advanced section.', 'stops-core-theme-and-plugin-updates' ),
+	    		'url' => 'https://easyupdatesmanager.com/tracking/',
+	    		'affirm' => __( 'Sure! Absolutely!', 'stops-core-theme-and-plugin-updates' ),
+	    		'cancel' => __( 'No Thanks, but Good Luck!', 'stops-core-theme-and-plugin-updates' ),
+	    		'help' => __( 'Learn More.', 'stops-core-theme-and-plugin-updates' ),
+	    		'enabled' => $tracking_nag_showing
+	    	),
+	    	'welcome' => __( 'Welcome to Easy Updates Manager.', 'stops-core-theme-and-plugin-updates' ),
+	    	'welcome_intro' =>  __( 'What would you like to do?', 'stops-core-theme-and-plugin-updates' ),
+	    	'welcome_automatic' =>  __( 'Turn on Automatic Updates', 'stops-core-theme-and-plugin-updates' ),
+	    	'welcome_disable' =>  __( 'Disable All Updates (not recommended)', 'stops-core-theme-and-plugin-updates' ),
+	    	'welcome_skip' =>  __( 'Configure Manually', 'stops-core-theme-and-plugin-updates' ),
+	    	'new_user' => $has_wizard,
     	) );
-    	wp_enqueue_style( 'mpsum_dashboard', MPSUM_Updates_Manager::get_plugin_url( '/css/style.css' ), array(), '20170221' );
+    	wp_enqueue_style( 'mpsum_dashboard', MPSUM_Updates_Manager::get_plugin_url( '/css/style.css' ), array(), '20170801' );
+    	wp_enqueue_style( 'sweetalert2', MPSUM_Updates_Manager::get_plugin_url( '/css/sweetalert2.css' ), array(), '20170801' );
     }
 	
 	/**
