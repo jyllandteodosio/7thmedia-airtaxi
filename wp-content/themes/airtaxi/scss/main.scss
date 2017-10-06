@@ -2565,7 +2565,7 @@ li.active a, li.active a:hover,
 .related-news-header p,
 .related-news-item .inner-title {
     font-family: 'Lato', sans-serif;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .news-page-title {
@@ -2597,9 +2597,10 @@ li.active a, li.active a:hover,
     margin: 0 auto;
     line-height: 1.5em;
     text-align: center;
-    font-weight: 500;
-    font-size: 1.8em;
+    font-weight: 400;
+    font-size: 28px;
     padding: 20px;
+    padding-bottom: 0;
     color: #212121;
 }
 
@@ -2613,6 +2614,7 @@ li.active a, li.active a:hover,
     max-width: 1140px;
     margin: 0 auto;
     display: block;
+    padding-top: 20px;
 }
 
 .news-landing-item {
@@ -2663,7 +2665,7 @@ li.active a, li.active a:hover,
 }
 
 .news-load-more {
-    padding: 40px 0;
+    padding: 40px 0;     
     text-align: center;
     background: #f1f1f1;
 }
@@ -2760,11 +2762,11 @@ li.active a, li.active a:hover,
     margin-bottom: 100px;
     
     h1 {
-        text-align: center;
         font-family: 'Lato', sans-serif;
         font-size: 36px;
-        font-weight: 700;
-        color: #212121;
+        font-weight: 300;
+        color: #686868;
+        text-align: center;
     }
 }
 

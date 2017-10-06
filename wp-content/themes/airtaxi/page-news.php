@@ -75,6 +75,9 @@ foreach($cats as $c) :
             <div class="news-title-container">
                 <h2 class="news-landing-title"><?php the_title(); ?></h2>
             </div>
+            
+            <?php if(get_post_thumbnail_id($post->ID)): ?>
+            
             <a href="<?php the_permalink(); ?>" class="news-item-image">
                 <figure>
                 <?php 
@@ -83,9 +86,13 @@ foreach($cats as $c) :
                 ?>
                 </figure>
             </a>
+            
+            <?php endif; ?>
+            
             <div class="news-landing-excerpt"><?php the_excerpt(); ?>
                 <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
             </div>
+            
             <div class="news-landing-content"></div>
         </article>
     </div>
