@@ -21,3 +21,11 @@
 	width: 600px;
 }
 
+.wordfence-assistant-waiting {
+	line-height: 32px;
+	border-bottom: 0px !important;
+}
+
+.wordfence-assistant-waiting img {
+	vertical-align: middle;
+}

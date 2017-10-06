@@ -6,8 +6,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: wordpress security plugin, wordpress security audit log, audit log, wordpress log, event log wordpress, wordpress user tracking, wordpress activity log, wordpress audit, security event log, audit trail, security audit trail, wordpress security alerts, wordpress monitor, wordpress security monitor, wordpress admin, wordpress admin monitoring, analytics, activity, admin, multisite, wordpress multisite, actions, dashboard, log, notification, wordpress monitoring, email notification, wordpress email alerts, tracking, user tracking, user activity report, wordpress audit trail
 Requires at least: 3.6
-Tested up to: 4.7.3
-Stable tag: 2.6.1
+Tested up to: 4.8.1
+Stable tag: 2.6.8
 
 Keep an audit trail of all changes and under the hood WordPress activity to ensure productivity and thwart possible WordPress hacker attacks.
 
@@ -115,9 +115,11 @@ WP Security Audit Log plugin also has a number of features that make WordPress a
 
 = As Featured On: =
 
+* [WP Couple](https://wpcouple.com/wordpress-audit-logs/)
 * [WPLift](http://wplift.com/audit-wordpress-security-logs) - Review by Ahmad Awais
 * [WP SmackDown](https://wpsmackdown.com/wp-plugins/wp-security-audit-log/)
 * [WPKube](http://www.wpkube.com/improve-wordpress-security-wp-security-audit-log/)
+* [Cloudways](https://www.cloudways.com/blog/monitor-wordpress-with-wp-security-audit-log-plugin/)
 * [ManageWP Plugins of the month](https://managewp.com/free-wordpress-plugins-june-2014)
 * [MyWPExpert](http://www.mywpexpert.com/wp-security-audit-log/)
 * [BlogVault](https://blogvault.net/wp-security-audit-log-plugin-review/)
@@ -139,6 +141,7 @@ We need help translating the plugin and the WordPress Security Alerts. Please vi
 
 * Italian translation by [Leonardo Musumeci](http://leonardomusumeci.net/)
 * German translation by [Mourad Louha](http://excel-translator.de)
+* Spanish translation by the [WP Body team](https://wpbody.com/)
 
 = Related Links and Documentation =
 For more information and to get started with WordPress Security, check out the following:
@@ -184,6 +187,101 @@ Please refer to the [FAQs page](https://www.wpsecurityauditlog.com/documentation
 11. Mirror the WordPress audit trail to an external solution such as Syslog or Papertrail to centralize logging, ensure logs are always available and cannot be tampered with in the unfortunate case of a hack attack.
 
 == Changelog ==
+
+= 2.6.8 (2017-09-19) =
+
+* **Improvement**
+	* Improved the sensor for custom post types so posts with NULL value or other temp custom posts are not reported. This was reported in several support tickets; [here](https://wordpress.org/support/topic/a-plugin-automatically-created-the-following-custom-post-null/), [here](https://wordpress.org/support/topic/would-you-tell-me-about-meanings-of-2-message/) and [here](https://wordpress.org/support/topic/pinpointing-the-plugin/).
+
+* **Bug Fix**
+	* Add a new check to ensure the object is of WP_Post class [Support Ticket](https://wordpress.org/support/topic/undefined-property-wp_post_typepost_type/)
+
+= 2.6.7 (2017-09-09) =
+
+* **Improvements**
+	* Added a new property in WSAL main class to store the current plugin version.
+	* Added a new function in WSAL main class to define constants (to be used throughout the plugin)
+	* Improved the code formatting in AuditLog.php
+
+= 2.6.6 (2017-08-30) =
+
+* **New Audit Trail Alerts**
+	* Alert 4015 for when a user creates a custom field in a user profile.
+	* Alert 4016 for when a user updates a custom field value in a user profile.
+	
+* **New Feature**
+	* Logging of changes in custom fields (in posts, pages, custom post types, user profiles) created by Advanced Custom Fields (ACF) or similar plugins.
+	* New option to show either the Username or Firstname and Lastname of the user in the Audit Trail.
+	
+* **Improvements**
+	* 404 errors logfiles are now saved in /uploads/wp-security-audit-log/404s/ directory.
+	* Changed the 404 errors logfile name format to [alert]_[yyyymmdd].log. Thanks to [Enable Security](https://www.enablesecurity.com/) for PoC of vulnerability and advise.
+	* Removed link to view post from Alerts about permanently deleted posts (2008, 2009, 2033).
+	* Added tooltip for filter via IP address.
+	
+* **Bug Fix**
+	* Fixed an issue where the viewing of content was not being logged when Yoast SEO is installed.
+
+= 2.6.5 (2017-07-18) =
+
+* **New Audit Trail Alerts**
+	* Alert 1007 for when an administrator terminate's a logged in session using the Users Sessions Management Add-On
+	* Alert 6023 to log 404 HTTP errors (requests to non-existing pages) by website visitors (non WordPress users)
+	
+* **Improvements**
+	* Seggregated the logging of 404 HTTP Errors by who generates them. Alert 6007 for logged in users, 6023 for anonymous website visitors.
+	* Improved the logging of Alert 4014 so it is not reported every time a user's profile page is reloaded with a refresh or when a change is applied.
+	* Removed the wsal_wp_session cookie, which was used to store the selected database when [archiving of audit trail alerts is enabled](https://www.wpsecurityauditlog.com/wordpress-user-monitoring-plugin-documentation/faq-archiving-wordpress-audit-trail/). Using LocalStorage instead.
+	* Replaced mcrypt (deprecated in PHP 7) with OpenSSL. Mcrypt still used temporarily to convert configured password. Will be removed completely in future updates. [Support Ticket](https://wordpress.org/support/topic/php-issues-9/)
+
+= 2.6.4 (2017-06-01) =
+
+* **New Features**
+	* Added a number of queries in the plugin to support the new version of the [Reports Add-On](https://www.wpsecurityauditlog.com/wordpress-user-monitoring-plugin-releases/statistics-scheduled-wordpress-reports/)
+	
+= 2.6.3 (2017-05-03) =
+
+* **Security Update**
+	* Updated third party session libraries to a more secure version
+
+= 2.6.2 (2017-04-22) =
+
+* **New alerts to record actions & profile changes**
+	* 1006: User logged out all other sessions with the same username
+	* 4014: User opened the profile page of another user
+	
+* **New alerts to record post and page specific settings changes**
+	* 2111: Disabled Comments / Trackbacks and Pingbacks on a published post
+	* 2112: Enabled Comments / Trackbacks and Pingbacks on a published post
+	* 2113: Disabled Comments / Trackbacks and Pingbacks on a draft post
+	* 2114: Enabled Comments / Trackbacks and Pingbacks on a draft post
+	* 2115: Disabled Comments / Trackbacks and Pingbacks on a published page
+	* 2116: Enabled Comments / Trackbacks and Pingbacks on a published page
+	* 2117: Disabled Comments / Trackbacks and Pingbacks on a draft page
+	* 2118: Enabled Comments / Trackbacks and Pingbacks on a draft page
+	
+* **New alerts to record WordPress site-wide settings changes**
+	* 6008: User enabled / disabled the option Discourage search engines from indexing this site
+	* 6009: User enabled / disabled comments on all the website
+	* 6010: User enabled / disabled the option Comment author must fill out name and email
+	* 6011: User enabled / disabled the option Users must be logged in and registered to comment
+	* 6012: User enabled / disabled the option to automatically close comments after [X] days
+	* 6013: User changed the value of the option Automatically close comments from [X] to [X] days
+	* 6014: User enabled / disabled the option for comments to be manually approved
+	* 6015: User enabled / disabled the option for an author to have previously approved comments for the comments to appear
+	* 6016: User changed the number of links from [X] to [X] that a comment must have to be held in the queue
+	* 6017: User modified the list of keywords for comments moderation
+	* 6018: User modified the list of keywords for comments blacklisting
+
+* **Plugin Improvements**
+	* URL of content in alert is no longer truncated. Now it will be reported in full
+	* Organised the alerts in Enable/Disable Alerts section in categories and sub categories, thus they are easier to find
+	* Plugin no longer links to a non-existing log file when 404 logging is switched off
+	* Added additional checks for when using the function wp_Sessions_register_garbage_collection, which was causing a conflict with another plugin
+
+* **Bug Fixes**
+	* Fixed an issue in which the plugin was changing the titles of WooCommerce product pages for logged in users [Ticket](https://wordpress.org/support/topic/woocommerce-product-name-missing-from-page-titles-after-v2-6/)
+	* Fixed an issue in which plugin was unable to handle automated generated content with author 0 [Ticket](https://github.com/WPWhiteSecurity/WP-Security-Audit-Log/issues/378)
 
 = 2.6.1 (2017-03-09) =
 

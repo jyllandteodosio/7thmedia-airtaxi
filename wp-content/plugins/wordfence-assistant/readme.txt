@@ -2,8 +2,8 @@
 Contributors: mmaunder
 Tags: wordfence, wordfence assistant, wordfence helper, wordfence security assistant, wordfence security helper 
 Requires at least: 3.8
-Tested up to: 4.5.2
-Stable tag: 1.0.3
+Tested up to: 4.8.0
+Stable tag: 1.0.4
 
 Wordfence Assistant provides data management utilities for Wordfence users.  
 
@@ -32,6 +32,13 @@ Once installed you'll see a "WF Assistant" menu on the left side of your adminis
 If you click the menu option the data management options are self explanatory. 
 
 == Changelog ==
+
+= 1.0.4 =
+* Improvement: Included new Wordfence tables added since the last update in the table removal function.
+* Improvement: Added a function to disable automatic update of Wordfence.
+* Improvement: Disabling the WAF provides better status updates for sites using .user.ini and the associated cache time.
+* Fix: When clearing all blocks, the WAF's are now also cleared.
+* Fix: Fixed a PHP notice when Wordfence is not active.
 
 = 1.0.3 =
 * Added Firewall uninstall tools.

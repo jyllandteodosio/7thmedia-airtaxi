@@ -1,7 +1,12 @@
 <?php
 //require_once('ConnectorInterface.php');
 require_once('wp-db-custom.php');
-
+/**
+ * @package Wsal
+ * Adapter Classes loader class.
+ *
+ * Abstract class used as a class loader.
+ */
 abstract class WSAL_Connector_AbstractConnector
 {
     protected $connection = null;
@@ -23,6 +28,7 @@ abstract class WSAL_Connector_AbstractConnector
             require_once($this->getAdaptersDirectory() . DIRECTORY_SEPARATOR . 'MetaAdapter.php');
             require_once($this->getAdaptersDirectory() . DIRECTORY_SEPARATOR . 'OccurrenceAdapter.php');
             require_once($this->getAdaptersDirectory() . DIRECTORY_SEPARATOR . 'QueryAdapter.php');
+            require_once($this->getAdaptersDirectory() . DIRECTORY_SEPARATOR . 'TmpUserAdapter.php');
         }
     }
 

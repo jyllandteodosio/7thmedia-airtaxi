@@ -1,4 +1,6 @@
 <?php
+require_once(dirname(__FILE__) . '/wfaWebServerInfo.php');
+
 class wfaWAFAutoPrependUninstaller {
 	public function getHtaccessPath() {
 		return get_home_path() . '.htaccess';
@@ -15,8 +17,23 @@ class wfaWAFAutoPrependUninstaller {
 	public function getWAFBootstrapPath() {
 		return ABSPATH . 'wordfence-waf.php';
 	}
+	
+	public function bootstrapFileIsActive() {
+		$includes = get_included_files();
+		return array_search(realpath($this->getWAFBootstrapPath()), $includes) !== false; 
+	}
+	
+	public function usesUserIni() {
+		$userIni = ini_get('user_ini.filename');
+		if (!$userIni) {
+			return false;
+		}
+		
+		$serverInfo = wfaWebServerInfo::createFromEnvironment();
+		return ($serverInfo->isApache() && !$serverInfo->isApacheSuPHP() && ($serverInfo->isCGI() || $serverInfo->isFastCGI()));
+	}
 
-	public function uninstall() {
+	public function uninstall($removeBootstrap = null) {
 		/** @var WP_Filesystem_Base $wp_filesystem */
 		global $wp_filesystem;
 
@@ -71,8 +88,12 @@ class wfaWAFAutoPrependUninstaller {
 			}
 		}
 
+		if ($removeBootstrap === null) {
+			$removeBootstrap = !$this->usesUserIni(); //Default to removing bootstrap file except when user.ini in use
+		}
+		
 		$bootstrapPath = $this->getWAFBootstrapPath();
-		if ($wp_filesystem->is_file($bootstrapPath)) {
+		if ($removeBootstrap && $wp_filesystem->is_file($bootstrapPath)) {
 			$wp_filesystem->delete($bootstrapPath);
 		}
 		return true;

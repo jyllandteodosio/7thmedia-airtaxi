@@ -172,7 +172,7 @@ body {
   background-color: #fff;
   color: #000;
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -248,7 +248,7 @@ h4,
 h5,
 h6 {
   color: #686868;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.2;
   margin: 0 0 20px; }
@@ -1937,7 +1937,7 @@ li.active a, li.active a:hover,
   color: inherit; }
 
 .page-template-page-news .site-inner {
-  margin-top: 100px; }
+  margin-top: 80px; }
 
 .page-template-page-news .content,
 .news-single-after {
@@ -2430,7 +2430,7 @@ li.active a, li.active a:hover,
 .ambulance-landing-container,
 .emergency-landing-container {
   max-width: 1140px;
-  padding: 80px 20px 5px 20px;
+  padding: 40px;
   margin: 0 auto; }
   @media (min-width: 769px) and (max-width: 1920px) {
     .ambulance-landing-container img,
@@ -2843,7 +2843,7 @@ span.wpcf7-list-item {
     max-width: 100%; }
 
   .aircraft-detail-page {
-    margin-top: 70px; }
+    margin-top: 0px; }
 
   .aircraft-details-main {
     display: none; }
@@ -2900,9 +2900,6 @@ span.wpcf7-list-item {
 
   .gallery-slider .gallery-slider-item {
     width: 250px; }
-
-  .aircraft-detail-page {
-    margin-top: 70px; }
 
   .page-template-page-rates-location .site-inner {
     padding: 0; }
@@ -3009,7 +3006,10 @@ span.wpcf7-list-item {
 
   .contact-left,
   .contact-right {
-    width: 100%; } }
+    width: 100%; }
+
+  .page-template-page-news .site-inner {
+    margin-top: 60px; } }
 @media only screen and (max-width: 375px) {
   body {
     font-size: 14px; }
@@ -3043,9 +3043,6 @@ span.wpcf7-list-item {
     vertical-align: top;
     text-align: left;
     width: 100%; }
-
-  .aircraft-detail-page {
-    margin-top: 60px; }
 
   div.mperks-emerald-header,
   div.mperks-sapphire-header,

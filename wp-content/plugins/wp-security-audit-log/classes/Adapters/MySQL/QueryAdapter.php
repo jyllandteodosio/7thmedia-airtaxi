@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @package Wsal
+ * MySQL database Query class.
+ *
+ * The SQL query is created in this class, here the SQL is filled with
+ * the arguments.
+ */
 class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
 {
     protected $connection;
@@ -10,13 +16,15 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
     }
 
     /**
+     * Get the SQL filled with the args.
+     * @param object $query query object
+     * @param array $args args of the query
      * @return string Generated sql.
      */
     protected function GetSql($query, &$args = array())
     {
         $conditions = $query->getConditions();
         $searchCondition = $this->SearchCondition($query);
-
         $sWhereClause = "";
         foreach ($conditions as $fieldName => $fieldValue) {
             if (empty($sWhereClause)) {
@@ -27,12 +35,22 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
 
             if (is_array($fieldValue)) {
                 $subWhereClause = "(";
-                foreach($fieldValue as $orFieldName => $orFieldValue) {
-                    if ($subWhereClause != '(') {
-                        $subWhereClause .= " OR ";
+                foreach ($fieldValue as $orFieldName => $orFieldValue) {
+                    if (is_array($orFieldValue)) {
+                        foreach ($orFieldValue as $value) {
+                            if ($subWhereClause != '(') {
+                                $subWhereClause .= " OR ";
+                            }
+                            $subWhereClause .= $orFieldName;
+                            $args[] = $value;
+                        }
+                    } else {
+                        if ($subWhereClause != '(') {
+                            $subWhereClause .= " OR ";
+                        }
+                        $subWhereClause .= $orFieldName;
+                        $args[] = $orFieldValue;
                     }
-                    $subWhereClause .= $orFieldName;
-                    $args[] = $orFieldValue;
                 }
                 $subWhereClause .= ")";
                 $sWhereClause .= $subWhereClause;
@@ -64,7 +82,8 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
         if (!empty($searchCondition)) {
             $args[] = $searchCondition['args'];
         }
-        return 'SELECT ' . $fields
+
+        $sql = 'SELECT ' . $fields
             . ' FROM ' . implode(',', $fromDataSets)
             . $joinClause
             . $sWhereClause
@@ -72,15 +91,22 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
             // @todo GROUP BY goes here
             . (!empty($orderBys) ? (' ORDER BY ' . implode(', ', array_keys($orderBys)) . ' ' . implode(', ', array_values($orderBys))) : '')
             . $sLimitClause;
+        return $sql;
     }
-    
+
+    /**
+     * Get an instance of the ActiveRecord Adapter.
+     * @return WSAL_Adapters_MySQL_ActiveRecord
+     */
     protected function getActiveRecordAdapter()
     {
         return new WSAL_Adapters_MySQL_ActiveRecord($this->connection);
     }
-    
+
     /**
-     * @return WSAL_Models_ActiveRecord[] Execute query and return data as $ar_cls objects.
+     * Execute query and return data as $ar_cls objects.
+     * @param object $query query object
+     * @return WSAL_Models_ActiveRecord[]
      */
     public function Execute($query)
     {
@@ -95,9 +121,11 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
             return $this->getActiveRecordAdapter()->LoadMulti($sql, $args);
         }
     }
-    
+
     /**
-     * @return int Use query for counting records.
+     * Count query
+     * @param object $query query object
+     * @return integer counting records.
      */
     public function Count($query)
     {
@@ -115,15 +143,21 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
         return $this->getActiveRecordAdapter()->CountQuery($sql, $args);
     }
 
+    /**
+     * Count DELETE query
+     * @param object $query query object
+     * @return integer counting records.
+     */
     public function CountDelete($query)
     {
         $result = $this->GetSqlDelete($query, true);
         // execute query and return result
         return $this->getActiveRecordAdapter()->CountQuery($result['sql'], $result['args']);
     }
-    
+
     /**
-     * Use query for deleting records.
+     * Query for deleting records
+     * @param object $query query object.
      */
     public function Delete($query)
     {
@@ -132,6 +166,11 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
         return $this->getActiveRecordAdapter()->DeleteQuery($result['sql'], $result['args']);
     }
 
+    /**
+     * Load occurrence IDs then delete Metadata by occurrence_id
+     * @param object $query query object
+     * @param array $args args of the query
+     */
     public function DeleteMetas($query, $args)
     {
         // back up columns, use COUNT as default column and generate sql
@@ -152,6 +191,12 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
         $meta->DeleteByOccurenceIds($occ_ids);
     }
 
+    /**
+     * Get the DELETE query SQL filled with the args.
+     * @param object $query query object
+     * @param array $args args of the query
+     * @return string Generated sql.
+     */
     public function GetSqlDelete($query, $getCount = false)
     {
         $result = array();
@@ -190,16 +235,22 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
             . (!empty($orderBys) ? (' ORDER BY ' . implode(', ', array_keys($orderBys)) . ' ' . implode(', ', array_values($orderBys))) : '')
             . $sLimitClause;
         $result['args'] = $args;
-        //restore columns        
+        // restore columns
         $query->setColumns($cols);
-        
+
         return $result;
     }
 
+    /**
+     * Search by alert code OR by Metadata value.
+     * @param object $query query object
+     */
     public function SearchCondition($query)
     {
         $condition = $query->getSearchCondition();
-        if (empty($condition)) return null;
+        if (empty($condition)) {
+            return null;
+        }
         $searchConditions = array();
         $meta = new WSAL_Adapters_MySQL_Meta($this->connection);
         $occurrence = new WSAL_Adapters_MySQL_Occurrence($this->connection);
@@ -215,5 +266,4 @@ class WSAL_Adapters_MySQL_Query implements WSAL_Adapters_QueryInterface
         $searchConditions['args'] = "%". $condition. "%";
         return $searchConditions;
     }
-
 }
