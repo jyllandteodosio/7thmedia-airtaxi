@@ -83,7 +83,10 @@ class MPSUM_Admin_Core {
 			'notification_core_update_emails_translations' => 'on',
 			'logs'                                         => 'off',
 			'email_addresses'                              => array(),
-			'ratings_nag'                                  => true
+			'ratings_nag'                                  => 'on',
+			'tracking_nag'                                 => 'on',
+			'tracking_enabled'                             => 'off',
+			'wizard'                                       => 'on'
 		) );
 	}
 
@@ -126,6 +129,7 @@ class MPSUM_Admin_Core {
 			$email_addresses_to_save = array();
 			if ( count( $email_addresses ) > 0 ) {
 				foreach( $email_addresses as $email ) {
+					$email = trim($email);
 					if ( ! is_email( $email ) && ! empty( $email ) ) {
 						$email_addresses_to_save = array();
 						$query_args[ 'bad_email' ] = 1;

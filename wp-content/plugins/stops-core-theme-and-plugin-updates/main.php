@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: Easy Updates Manager
-Plugin URI: https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/
+Plugin URI: https://easyupdatesmanager.com
 Description: Manage and disable WordPress updates, including core, plugin, theme, and automatic updates - Works with Multisite and has built-in logging features.
 Author: Easy Updates Manager Team
-Version: 6.3.0
+Version: 6.4.0
 Requires at least: 4.4
-Author URI: https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/
+Author URI: https://easyupdatesmanager.com
 Contributors: kidsguide, ronalfy
 Text Domain: stops-core-theme-and-plugin-updates
 Domain Path: /languages
@@ -95,6 +95,10 @@ class MPSUM_Updates_Manager {
 
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
+		
+		add_filter( 'cron_schedules', array( $this, 'set_monthly_cron_schedule' ) );
+		
+		add_action( 'eum-monthly', array( 'MPSUM_Tracking', 'send' ) );
 	} //end constructor
 
 	/**
@@ -184,8 +188,7 @@ class MPSUM_Updates_Manager {
 				return array();	
 			}
 		}
-		
-		
+				
 		return $options;
 	} //get_options
 	
@@ -301,6 +304,7 @@ class MPSUM_Updates_Manager {
 	*
 	*/
 	public function plugins_loaded() {
+		
 		//Skip disable updates if a user is excluded
 		$disable_updates_skip = false;
 		if ( current_user_can( 'install_plugins' ) ) {
@@ -318,7 +322,11 @@ class MPSUM_Updates_Manager {
 		add_action( 'wp_ajax_mpsum_ajax_action', array( $this, 'ajax_update_option' ) );
 		add_action( 'wp_ajax_mpsum_ajax_get_json', array( $this, 'ajax_get_json' ) );
 		add_action( 'wp_ajax_mpsum_ajax_remove_ratings_nag', array( $this, 'ajax_remove_ratings_nag' ) );
-		
+		add_action( 'wp_ajax_mpsum_ajax_enable_tracking', array( $this, 'ajax_enable_tracking' ) );
+		add_action( 'wp_ajax_mpsum_ajax_remove_tracking_nag', array( $this, 'ajax_remove_tracking_nag' ) );
+		add_action( 'wp_ajax_mpsum_ajax_disable_updates', array( $this, 'ajax_disable_updates' ) );
+		add_action( 'wp_ajax_mpsum_ajax_remove_wizard', array( $this, 'ajax_remove_wizard' ) );
+		add_action( 'wp_ajax_mpsum_ajax_enable_automatic_updates', array( $this, 'ajax_enable_automatic_updates' ) );
 		
 		$not_doing_ajax = ( !defined( 'DOING_AJAX' ) || !DOING_AJAX );
 		$not_admin_disabled = ( !defined( 'MPSUM_DISABLE_ADMIN' ) || !MPSUM_DISABLE_ADMIN );
@@ -327,13 +335,99 @@ class MPSUM_Updates_Manager {
 		}	
 	}
 	
-	public function ajax_remove_ratings_nag() {
+	public function ajax_enable_automatic_updates() {
+		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
+			die( 'Cheating, huh' );
+		}
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		
+		// Load auto update options
+		$options['automatic_translation_updates'] = 'on';
+		$options['automatic_theme_updates']       = 'on';
+		$options['logs']                          = 'on';
+		$options['automatic_minor_updates']       = 'on';
+		$options['automatic_plugin_updates']      = 'on';
+		$options['automatic_translation_updates'] = 'on';
+		$options['automatic_major_updates']       = 'on';
+		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
+		MPSUM_Updates_Manager::update_options( $options, 'core' );
+		die( '' );
+	}
+	
+	public function ajax_remove_wizard() {
 		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
 			die( 'Cheating, huh' );
 		}
 		$options = MPSUM_Updates_Manager::get_options( 'core' );
 		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
-		$options[ 'ratings_nag' ] = false;
+		$options[ 'tracking_nag' ] = 'off';
+		$options[ 'logs' ] = 'on';
+		MPSUM_Updates_Manager::update_options( $options, 'core' );
+		die( '' );
+	}
+	
+	public function ajax_disable_updates() {
+		
+		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
+			die( 'Cheating, huh' );
+		}
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		$options['all_updates'] = 'off';
+		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
+		$options[ 'tracking_nag' ] = 'off';
+		$options[ 'logs' ] = 'on';
+		MPSUM_Updates_Manager::update_options( $options, 'core' );
+		die( '' );
+	}
+	
+	public function ajax_remove_tracking_nag() {
+		
+		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
+			die( 'Cheating, huh' );
+		}
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
+		$options[ 'tracking_nag' ] = 'off';
+		MPSUM_Updates_Manager::update_options( $options, 'core' );
+		die( '' );
+	}
+	
+	public function ajax_enable_tracking() {
+		
+		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
+			die( 'Cheating, huh' );
+		}
+		
+		// Enable Tracking
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
+		$options[ 'tracking_nag' ] = 'off';
+		$options[ 'tracking_enabled' ] = 'on';
+		MPSUM_Updates_Manager::update_options( $options, 'core' );
+		
+		$cron = new MPSUM_Tracking();
+		MPSUM_Tracking::enable_cron();
+		
+		die( '' );
+	}
+	
+	public function set_monthly_cron_schedule( $schedules ) {
+		$schedules['eum-monthly'] = array(
+			'interval' => MONTH_IN_SECONDS,
+			'display' => __('Once Monthly')
+		);
+		return $schedules;
+	}
+	
+	public function ajax_remove_ratings_nag() {
+		
+		if ( !wp_verify_nonce( $_POST[ '_ajax_nonce' ], 'mpsum_options_save' ) || ! current_user_can( 'install_plugins' ) ) {
+			die( 'Cheating, huh' );
+		}
+		wp_clear_scheduled_hook( 'eum-monthly' );
+		$options = MPSUM_Updates_Manager::get_options( 'core' );
+		$options = wp_parse_args( $options, MPSUM_Admin_Core::get_defaults() );
+		$options[ 'ratings_nag' ] = 'off';
 		MPSUM_Updates_Manager::update_options( $options, 'core' );
 		die( '' );
 	}
