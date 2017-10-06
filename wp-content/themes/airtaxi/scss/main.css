@@ -2048,7 +2048,7 @@ li.active a, li.active a:hover,
 .related-news-header p,
 .related-news-item .inner-title {
   font-family: 'Lato', sans-serif;
-  font-weight: 700; }
+  font-weight: 300; }
 
 .news-page-title {
   padding: 20px;
@@ -2075,9 +2075,10 @@ li.active a, li.active a:hover,
   margin: 0 auto;
   line-height: 1.5em;
   text-align: center;
-  font-weight: 500;
-  font-size: 1.8em;
+  font-weight: 400;
+  font-size: 28px;
   padding: 20px;
+  padding-bottom: 0;
   color: #212121; }
 
 .news-landing-excerpt,
@@ -2088,7 +2089,8 @@ li.active a, li.active a:hover,
 .news-item-image {
   max-width: 1140px;
   margin: 0 auto;
-  display: block; }
+  display: block;
+  padding-top: 20px; }
 
 .news-landing-item:nth-of-type(odd) {
   background: #f3f3f3; }
@@ -2186,11 +2188,11 @@ li.active a, li.active a:hover,
 .news-single-post {
   margin-bottom: 100px; }
   .news-single-post h1 {
-    text-align: center;
     font-family: 'Lato', sans-serif;
     font-size: 36px;
-    font-weight: 700;
-    color: #212121; }
+    font-weight: 300;
+    color: #686868;
+    text-align: center; }
 
 .search-results h1, .search-results h2, .search-results h3, .search-results h4, .search-results h5, .search-results h6 {
   font-family: 'Lato', sans-serif;
@@ -3147,10 +3149,6 @@ span.wpcf7-list-item {
   .tab, .tab-active {
     max-width: 1140px;
     margin: 0 auto 30px; }
-
-  .page-template-page-news .site-inner,
-  .single-news .site-inner {
-    margin-top: 72px; }
 
   .news-landing-title {
     line-height: 1.2em;
