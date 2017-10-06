@@ -3098,20 +3098,7 @@ li.active a, li.active a:hover,
     max-width: 1140px;
     padding: 40px;
     margin: 0 auto;
-
-	@media (min-width: 769px) and (max-width: 1920px) {
-	    img {
-	    	width: 50%;
-	    	padding: 10px;
-	    }
-	}
-
-	@media only screen and (max-width: 768px){
-	    img {
-	    	width: 100%;
-	    	padding: 20px;
-	    }
-	}
+    overflow: auto;
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1920px) {
