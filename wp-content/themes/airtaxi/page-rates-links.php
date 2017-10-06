@@ -1,5 +1,8 @@
 <?php
 /**
+ *
+ * [DEPRECATED - TO BE DELETED]
+ *
  * Template Name: Rates Links
  *
  * @author 
