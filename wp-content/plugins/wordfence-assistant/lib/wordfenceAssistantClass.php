@@ -26,8 +26,8 @@ class wordfenceAssistant {
 	public static function admin_init(){
 		if(! self::isAdmin()){ return; }
 		add_action('wp_ajax_wordfenceAssistant_do', 'wordfenceAssistant::ajax_do_callback');
-		wp_enqueue_script('wordfenceAstjs', self::getBaseURL() . 'js/admin.js', array('jquery'), WORDFENCE_VERSION);
-		wp_enqueue_style('wordfenceast-main-style', self::getBaseURL() . 'css/main.css', '', WORDFENCE_VERSION);
+		wp_enqueue_script('wordfenceAstjs', self::getBaseURL() . 'js/admin.js', array('jquery'), WORDFENCE_ASSISTANT_VERSION);
+		wp_enqueue_style('wordfenceast-main-style', self::getBaseURL() . 'css/main.css', '', WORDFENCE_ASSISTANT_VERSION);
 		wp_localize_script('wordfenceAstjs', 'WordfenceAstVars', array(
 			'ajaxURL' => admin_url('admin-ajax.php'),
 			'firstNonce' => wp_create_nonce('wp-ajax')
@@ -56,8 +56,12 @@ class wordfenceAssistant {
 			return self::delAll();
 		} else if($func == 'clearLocks'){
 			return self::clearLocks();
+		} else if ($func == 'disableAutoUpdate') {
+			return self::disableAutoUpdate();
 		} else if($func == 'disableFirewall'){
 			return self::disableFirewall();
+		} else if ($func == 'finalizeDisableFirewall') {
+			return self::finalizeDisableFirewall();
 		} else if($func == 'clearLiveTraffic'){
 			return self::clearLiveTraffic();
 		} else {
@@ -71,11 +75,48 @@ class wordfenceAssistant {
 		$wpdb->query("delete from " . $wpdb->base_prefix . "wfHits");
 		die(json_encode(array('msg' => "All Wordfence live traffic data deleted.")));
 	}
-	public static function disableFirewall(){
-		self::_disableFirewall();
+	public static function disableAutoUpdate() {
+		global $wpdb;
+		$wpdb->query("update " . $wpdb->base_prefix . "wfConfig set val=0 where name='autoUpdate'");
+	}
+	public static function disableFirewall() {
+		$wafUninstaller = new wfaWAFAutoPrependUninstaller();
+		
+		$removeBootstrap = null;
+		if (!$wafUninstaller->bootstrapFileIsActive()) {
+			$removeBootstrap = true;
+		}
+		
+		self::_disableFirewall($removeBootstrap);
+		if ($removeBootstrap !== true && $wafUninstaller->usesUserIni()) { //Using a .user.ini where there's a delay before taking effect
+			$iniTTL = intval(ini_get('user_ini.cache_ttl'));
+			if ($iniTTL == 0) {
+				$iniTTL = 300; //The PHP default
+			}
+			$timeout = max(30000, ($iniTTL + 1) * 1000);
+			
+			if ($timeout < 60000) { $timeoutString = floor($timeout / 1000) . ' second' . ($timeout == 1000 ? '' : 's'); }
+			else { $timeoutString = floor($timeout / 60000) . ' minute' . (floor($timeout / 60000) == 1 ? '' : 's'); }
+			
+			$content = "<p class='wordfence-assistant-waiting'><img src='" . self::getBaseURL() . "images/loading_large.gif' alt='Loading indicator'>&nbsp;&nbsp;<span>Waiting for it to take effect. This may take up to {$timeoutString} due to caching of the .user.ini file. Stay on this page to ensure that the last step is finished, and a message will appear when this is complete.</span></p>";
+			$content .= "<script>
+setTimeout(function() { WFAST.finalizeDisableFirewall(); }, {$timeout});
+</script>";
+			die(json_encode(array('html' => $content)));
+		}
+		
 		die(json_encode(array('msg' => "Wordfence firewall has been disabled.")));
 	}
-	private static function _disableFirewall() {
+	public static function finalizeDisableFirewall() {
+		$wafUninstaller = new wfaWAFAutoPrependUninstaller();
+		if ($wafUninstaller->bootstrapFileIsActive()) {
+			die(json_encode(array('msg' => "The Wordfence Web Application Firewall has not been fully removed. This may be because auto_prepend_file is configured somewhere else or the value is still cached by PHP.")));
+		}
+		
+		self::_disableFirewall(true);
+		die(json_encode(array('msg' => "Wordfence firewall has been disabled.")));
+	}
+	private static function _disableFirewall($removeBootstrap = null) {
 		global $wpdb;
 
 		//Old Firewall
@@ -89,7 +130,7 @@ class wordfenceAssistant {
 		@rmdir(WFWAF_LOG_PATH);
 
 		$wafUninstaller = new wfaWAFAutoPrependUninstaller();
-		$wafUninstaller->uninstall();
+		$wafUninstaller->uninstall($removeBootstrap);
 	}
 	public static function clearLocks(){
 		global $wpdb;
@@ -98,6 +139,24 @@ class wordfenceAssistant {
 			$wpdb->query("truncate table " . $wpdb->base_prefix . "$t"); //Some users don't have truncate permission but if they do the next query will return immediatelly. 
 			$wpdb->query("delete from " . $wpdb->base_prefix . "$t");
 		}
+		
+		//WAF
+		if (class_exists('wfWAF')) {
+			try {
+				wfWAF::getInstance()->getStorageEngine()->setConfig('patternBlocks', '');
+				wfWAF::getInstance()->getStorageEngine()->setConfig('countryBlocks', '');
+				wfWAF::getInstance()->getStorageEngine()->setConfig('otherBlocks', '');
+				wfWAF::getInstance()->getStorageEngine()->setConfig('lockouts', '');
+				
+				if (method_exists(wfWAF::getInstance()->getStorageEngine(), 'purgeIPBlocks')) {
+					wfWAF::getInstance()->getStorageEngine()->purgeIPBlocks(wfWAFStorageInterface::IP_BLOCKS_BLACKLIST);
+				}
+			}
+			catch (Exception $e) {
+				// Do nothing
+			}
+		}
+		
 		die(json_encode(array('msg' => "All locked IPs, locked out users and advanced blocks cleared.")));
 	}
 	public static function delAll(){
@@ -106,7 +165,7 @@ class wordfenceAssistant {
 		}
 		global $wpdb;
 		self::_disableFirewall();
-		$tables = array('wfBadLeechers', 'wfBlocks', 'wfBlocksAdv', 'wfConfig', 'wfCrawlers', 'wfFileMods', 'wfHits', 'wfHoover', 'wfIssues', 'wfLeechers', 'wfLockedOut', 'wfLocs', 'wfLogins', 'wfNet404s', 'wfReverseCache', 'wfScanners', 'wfStatus', 'wfThrottleLog', 'wfVulnScanners');
+		$tables = array('wfBadLeechers', 'wfBlockedIPLog', 'wfBlocks', 'wfBlocksAdv', 'wfConfig', 'wfCrawlers', 'wfFileChanges', 'wfFileMods', 'wfHits', 'wfHoover', 'wfIssues', 'wfKnownFileList', 'wfLeechers', 'wfLockedOut', 'wfLocs', 'wfLogins', 'wfNet404s', 'wfNotifications', 'wfPendingIssues', 'wfPerfLog', 'wfReverseCache', 'wfSNIPCache', 'wfScanners', 'wfStatus', 'wfThrottleLog', 'wfVulnScanners');
 		foreach($tables as $t){
 			$wpdb->query("drop table " . $wpdb->base_prefix . "$t");
 		}
@@ -142,7 +201,7 @@ class wordfenceAssistant {
 		return false;
 	}
 	public static function getBaseURL(){
-		return plugins_url() . '/wordfence-assistant/';
+		return plugins_url('', WORDFENCE_ASSISTANT_FCPATH) . '/';
 	}
 }
 ?>

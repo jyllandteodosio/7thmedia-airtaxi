@@ -1,8 +1,27 @@
 <?php
-
+/**
+ * @package Wsal
+ * @subpackage Sensors
+ * User Profiles sensor.
+ *
+ * 4000 New user was created on WordPress
+ * 4001 User created another WordPress user
+ * 4002 The role of a user was changed by another WordPress user
+ * 4003 User has changed his or her password
+ * 4004 User changed another user's password
+ * 4005 User changed his or her email address
+ * 4006 User changed another user's email address
+ * 4007 User was deleted by another user
+ * 4008 User granted Super Admin privileges
+ * 4009 User revoked from Super Admin privileges
+ * 4013 The forum role of a user was changed by another WordPress user
+ * 4014 User opened the profile page of another user
+ */
 class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
 {
-
+    /**
+     * Listening to events using WP hooks.
+     */
     public function HookEvents()
     {
         add_action('admin_init', array($this, 'EventAdminInit'));
@@ -12,17 +31,22 @@ class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
         add_action('delete_user', array($this, 'EventUserDeleted'));
         add_action('wpmu_delete_user', array($this, 'EventUserDeleted'));
         add_action('set_user_role', array($this, 'EventUserRoleChanged'), 10, 3);
+
+        add_action('edit_user_profile', array($this, 'EventOpenProfile'), 10, 1);
     }
-    
+
     protected $old_superadmins;
-    
+
+    /**
+     * Triggered when a user accesses the admin area.
+     */
     public function EventAdminInit()
     {
         if ($this->IsMultisite()) {
             $this->old_superadmins = get_super_admins();
         }
     }
-    
+
     public function EventUserRegister($user_id)
     {
         $user = get_userdata($user_id);
@@ -41,7 +65,7 @@ class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
             ),
         ), true);
     }
-    
+
     public function EventUserRoleChanged($user_id, $role, $oldRoles)
     {
         $user = get_userdata($user_id);
@@ -107,11 +131,11 @@ class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
                 ));
             }
         }
-        
+
         if ($this->IsMultisite()) {
             $username = $user->user_login;
             $enabled = isset($_REQUEST['super_admin']);
-            
+
             if ($user_id != get_current_user_id()) {
                 // super admin enabled
                 if ($enabled && !in_array($username, $this->old_superadmins)) {
@@ -128,11 +152,11 @@ class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
                         'TargetUsername' => $user->user_login,
                     ));
                 }
-                
+
             }
         }
     }
-    
+
     public function EventUserDeleted($user_id)
     {
         $user = get_userdata($user_id);
@@ -148,12 +172,25 @@ class WSAL_Sensors_UserProfile extends WSAL_AbstractSensor
             ),
         ), array($this, 'MustNotContainCreateUser'));
     }
-    
+
+    public function EventOpenProfile( $user ) {
+        if ( ! empty( $user ) ) {
+            $current_user = wp_get_current_user();
+            $updated = ( isset( $_GET['updated'] ) ) ? true : false;
+            if ( ! empty( $current_user ) && ( $user->ID !== $current_user->ID ) && empty( $updated ) ) {
+                $this->plugin->alerts->Trigger( 4014, array(
+                    'UserChanger' => $current_user->user_login,
+                    'TargetUsername' => $user->user_login,
+                ) );
+            }
+        }
+    }
+
     public function MustNotContainCreateUser(WSAL_AlertManager $mgr)
     {
         return !$mgr->WillTrigger(4012);
     }
-    
+
     public function MustNotContainUserChanges(WSAL_AlertManager $mgr)
     {
         return !(  $mgr->WillOrHasTriggered(4010)

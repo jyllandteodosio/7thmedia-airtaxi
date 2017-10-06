@@ -15,6 +15,14 @@
 		reinstall Wordfence the firewall won't lock you out again. You can also use this plugin
 		to delete all Wordfence data.
 	</p>
+	<h3>Disable Wordfence Automatic Updates</h3>
+	<p>
+		If you have disabled Wordfence due to problems with an update, it can end up automatically updating on reinstall
+		and causing the same problem. You can use the button below to disable automatic updates so that when you 
+		reinstall, it stays on the version installed.
+		<br /><br />
+		<input class="button-primary" type="button" name="but1" value="Disable Wordfence Automatic Updates" onclick="WFAST.disableAutoUpdate(); return ;" />
+	</p>
 	<h3>Disable Wordfence Firewall</h3>
 	<p>
 		If you have locked yourself out of your website and the "recovery email" option does not work, 
@@ -30,6 +38,7 @@
 		access the Wordfence Firewall page and modify the configuration to make sure you don't get locked out again.
 		<br /><br />
 		<input class="button-primary" type="button" name="but1" value="Disable Wordfence Firewall" onclick="WFAST.disableFirewall(); return ;" />
+		<span id="disableFirewall"></span>
 	</p>
 	<h3>Remove all Wordfence Data in the Database and elsewhere</h3>
 	<p>
@@ -38,7 +47,7 @@
 		<br /><br />
 		<input class="button-primary" type="button" name="but1" value="Delete all Wordfence Data and Tables" onclick="WFAST.delAll(); return false;" />
 	</p>
-	<h3>Clear all locked out Wordfence IP's, locked out users and advanced blocks</h3>
+	<h3>Clear all locked out Wordfence IPs, locked out users and advanced blocks</h3>
 	<p>
 		If for some reason you can't disable the Firewall in Wordfence, you can use this option to clear all tables that contain locked out IP addresses,
 		locked out users and rules that may cause you to be locked out. 

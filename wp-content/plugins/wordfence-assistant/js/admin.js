@@ -22,10 +22,24 @@ window['wordfenceAst'] = {
 	},
 	disableFirewall: function(){
 		if(confirm("Are you sure you want to disable the Wordfence firewall?")){
-			this.ajax({ func: 'disableFirewall' });
+			this.ajax({ func: 'disableFirewall' }, function(json) {
+				if (json.html) {
+					jQuery('#disableFirewall').html(json.html);
+				}
+			});
 		}
 	},
-	ajax: function(data){
+	finalizeDisableFirewall: function() {
+		this.ajax({ func: 'finalizeDisableFirewall' }, function() {
+			jQuery('#disableFirewall').html('');
+		});
+	},
+	disableAutoUpdate: function() {
+		if(confirm("Are you sure you want to disable Wordfence automatic updates?")){
+			this.ajax({ func: 'disableAutoUpdate' });
+		}
+	},
+	ajax: function(data, callback){
 		if(typeof(data) == 'string'){
 			if(data.length > 0){
 				data += '&';
@@ -53,6 +67,7 @@ window['wordfenceAst'] = {
 				if(json.msg){
 					alert(json.msg);
 				}
+				typeof callback === 'function' && callback(json);
 			},
 			error: function(){ 
 				self.removeLoading();  
