@@ -4281,6 +4281,8 @@ span.wpcf7-list-item {
     }
     
     .home-destination {
+        background-attachment: fixed;
+        
         h2 {
             color: #4ec5cd;
         }
@@ -4378,27 +4380,36 @@ span.wpcf7-list-item {
         .type {
             font-weight: 700;
         }
-        
-        .inquire-button {
-            background-color: #4ec5cd;
-            padding: 8px 15px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 12px;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-top: 20px;
+    }
+    
+    .home-transfers {
+        .flex-box {
+            padding: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            height: 200px;
+            flex-grow: 1;
+            flex-basis: 23%;
+            margin: 10px;
             
-            &:hover {
-                background-color: #12a8b2;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            a {
+                color: #fff;
             }
         }
         
         .airport-transfers-section {
-            margin-top: 40px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
             
             h2 {
-                font-size: 36px;
+//                font-size: 36px;
+                color: #4ec5cd;
             }
             
             .flex-container {
@@ -4416,6 +4427,7 @@ span.wpcf7-list-item {
             }
             
             .flex-box {
+                padding: 0;
                 background-color: transparent;
                 box-shadow: none;
                 color: #333;
@@ -4530,6 +4542,21 @@ span.wpcf7-list-item {
             img {
                 width: 20px;
                 vertical-align: middle;
+            }
+        }
+        
+        .inquire-button {
+            background-color: #4ec5cd;
+            padding: 8px 15px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 20px;
+            
+            &:hover {
+                background-color: #12a8b2;
             }
         }
     }
@@ -5717,7 +5744,9 @@ footer {
             .flex-box {
                 flex-basis: 40%;
             }
-            
+        }
+        
+        .home-transfers {
             .airport-transfers-section {
                 .flex-container {
                     margin: 0 10px;
@@ -5856,6 +5885,18 @@ footer {
         }
         
         .home-destination {
+            .flex-box {
+                flex-basis: 40%;
+                margin: 0 10px 20px;
+                max-width: 320px;
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        
+        .home-transfers {
             .airport-transfers-section {
                 .flex-box {
                     margin: 0 auto;
@@ -5868,16 +5909,6 @@ footer {
                 
                 .airport-transfer-search {
                     display: block;
-                }
-            }
-            
-            .flex-box {
-                flex-basis: 40%;
-                margin: 0 10px 20px;
-                max-width: 320px;
-                
-                &:last-child {
-                    margin-bottom: 0;
                 }
             }
         }
