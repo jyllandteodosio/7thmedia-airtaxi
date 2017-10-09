@@ -3351,25 +3351,113 @@ span.wpcf7-list-item {
       background-color: #34a8b0;
       -webkit-transition: background-color .2s;
               transition: background-color .2s; }
-.page-template-front-page-2 .home-destination h2,
-.page-template-page-rates .home-destination h2 {
-  color: #4ec5cd; }
-.page-template-front-page-2 .home-destination .sub-title,
-.page-template-page-rates .home-destination .sub-title {
-  color: #686868;
-  font-size: 16px;
-  line-height: 1.8;
-  width: 800px;
-  max-width: 100%;
-  display: inline-block; }
-.page-template-front-page-2 .home-destination .flex-container,
-.page-template-page-rates .home-destination .flex-container {
-  max-width: 80%;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
-.page-template-front-page-2 .home-destination .flex-box,
-.page-template-page-rates .home-destination .flex-box {
+.page-template-front-page-2 .home-destination,
+.page-template-page-rates .home-destination {
+  background-attachment: fixed; }
+  .page-template-front-page-2 .home-destination h2,
+  .page-template-page-rates .home-destination h2 {
+    color: #4ec5cd; }
+  .page-template-front-page-2 .home-destination .sub-title,
+  .page-template-page-rates .home-destination .sub-title {
+    color: #686868;
+    font-size: 16px;
+    line-height: 1.8;
+    width: 800px;
+    max-width: 100%;
+    display: inline-block; }
+  .page-template-front-page-2 .home-destination .flex-container,
+  .page-template-page-rates .home-destination .flex-container {
+    max-width: 80%;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+  .page-template-front-page-2 .home-destination .flex-box,
+  .page-template-page-rates .home-destination .flex-box {
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 200px;
+    height: 200px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-flex-basis: 23%;
+        -ms-flex-preferred-size: 23%;
+            flex-basis: 23%;
+    margin: 10px; }
+    .page-template-front-page-2 .home-destination .flex-box:last-child,
+    .page-template-page-rates .home-destination .flex-box:last-child {
+      margin-bottom: 0; }
+    .page-template-front-page-2 .home-destination .flex-box a,
+    .page-template-page-rates .home-destination .flex-box a {
+      color: #fff; }
+  .page-template-front-page-2 .home-destination .flex-title,
+  .page-template-page-rates .home-destination .flex-title {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 0 30px; }
+  .page-template-front-page-2 .home-destination .flex-content-wrap,
+  .page-template-page-rates .home-destination .flex-content-wrap {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 31, 31, 0.8); }
+    .page-template-front-page-2 .home-destination .flex-content-wrap:hover,
+    .page-template-page-rates .home-destination .flex-content-wrap:hover {
+      background-color: rgba(31, 31, 31, 0.2);
+      -webkit-transition: background-color .5s;
+              transition: background-color .5s; }
+  .page-template-front-page-2 .home-destination .flex-content,
+  .page-template-page-rates .home-destination .flex-content {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle; }
+  .page-template-front-page-2 .home-destination .flex-content .details,
+  .page-template-page-rates .home-destination .flex-content .details {
+    padding-left: 20px;
+    padding-right: 20px; }
+  .page-template-front-page-2 .home-destination .flex-content > a:not(.inquire-button),
+  .page-template-page-rates .home-destination .flex-content > a:not(.inquire-button) {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .page-template-front-page-2 .home-destination .flex-title,
+  .page-template-page-rates .home-destination .flex-title {
+    margin-bottom: 0; }
+  .page-template-front-page-2 .home-destination .text-overlay,
+  .page-template-page-rates .home-destination .text-overlay {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block; }
+  .page-template-front-page-2 .home-destination .details,
+  .page-template-page-rates .home-destination .details {
+    margin-top: 2px;
+    font-size: 14px; }
+  .page-template-front-page-2 .home-destination .type,
+  .page-template-page-rates .home-destination .type {
+    font-weight: 700; }
+.page-template-front-page-2 .home-transfers .flex-box,
+.page-template-page-rates .home-transfers .flex-box {
   padding: 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3384,111 +3472,37 @@ span.wpcf7-list-item {
       -ms-flex-preferred-size: 23%;
           flex-basis: 23%;
   margin: 10px; }
-  .page-template-front-page-2 .home-destination .flex-box:last-child,
-  .page-template-page-rates .home-destination .flex-box:last-child {
+  .page-template-front-page-2 .home-transfers .flex-box:last-child,
+  .page-template-page-rates .home-transfers .flex-box:last-child {
     margin-bottom: 0; }
-  .page-template-front-page-2 .home-destination .flex-box a,
-  .page-template-page-rates .home-destination .flex-box a {
+  .page-template-front-page-2 .home-transfers .flex-box a,
+  .page-template-page-rates .home-transfers .flex-box a {
     color: #fff; }
-.page-template-front-page-2 .home-destination .flex-title,
-.page-template-page-rates .home-destination .flex-title {
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 0 30px; }
-.page-template-front-page-2 .home-destination .flex-content-wrap,
-.page-template-page-rates .home-destination .flex-content-wrap {
-  display: table;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(31, 31, 31, 0.8); }
-  .page-template-front-page-2 .home-destination .flex-content-wrap:hover,
-  .page-template-page-rates .home-destination .flex-content-wrap:hover {
-    background-color: rgba(31, 31, 31, 0.2);
-    -webkit-transition: background-color .5s;
-            transition: background-color .5s; }
-.page-template-front-page-2 .home-destination .flex-content,
-.page-template-page-rates .home-destination .flex-content {
-  display: table-cell;
-  width: 100%;
-  height: 100%;
-  vertical-align: middle; }
-.page-template-front-page-2 .home-destination .flex-content .details,
-.page-template-page-rates .home-destination .flex-content .details {
-  padding-left: 20px;
-  padding-right: 20px; }
-.page-template-front-page-2 .home-destination .flex-content > a:not(.inquire-button),
-.page-template-page-rates .home-destination .flex-content > a:not(.inquire-button) {
-  height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-.page-template-front-page-2 .home-destination .flex-title,
-.page-template-page-rates .home-destination .flex-title {
-  margin-bottom: 0; }
-.page-template-front-page-2 .home-destination .text-overlay,
-.page-template-page-rates .home-destination .text-overlay {
-  text-transform: uppercase;
+.page-template-front-page-2 .home-transfers .airport-transfers-section,
+.page-template-page-rates .home-transfers .airport-transfers-section {
   margin-bottom: 10px;
-  display: inline-block; }
-.page-template-front-page-2 .home-destination .details,
-.page-template-page-rates .home-destination .details {
-  margin-top: 2px;
-  font-size: 14px; }
-.page-template-front-page-2 .home-destination .type,
-.page-template-page-rates .home-destination .type {
-  font-weight: 700; }
-.page-template-front-page-2 .home-destination .inquire-button,
-.page-template-page-rates .home-destination .inquire-button {
-  background-color: #4ec5cd;
-  padding: 8px 15px;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1px;
-  display: inline-block;
-  margin-top: 20px; }
-  .page-template-front-page-2 .home-destination .inquire-button:hover,
-  .page-template-page-rates .home-destination .inquire-button:hover {
-    background-color: #12a8b2; }
-.page-template-front-page-2 .home-destination .airport-transfers-section,
-.page-template-page-rates .home-destination .airport-transfers-section {
-  margin-top: 40px; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section h2,
-  .page-template-page-rates .home-destination .airport-transfers-section h2 {
-    font-size: 36px; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-container,
-  .page-template-page-rates .home-destination .airport-transfers-section .flex-container {
+  background-color: #ffffff; }
+  .page-template-front-page-2 .home-transfers .airport-transfers-section h2,
+  .page-template-page-rates .home-transfers .airport-transfers-section h2 {
+    color: #4ec5cd; }
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .flex-container,
+  .page-template-page-rates .home-transfers .airport-transfers-section .flex-container {
     background-color: #eee;
     padding: 20px;
     width: 80%;
     display: block;
     text-align: left;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .airport-transfer-search,
-  .page-template-page-rates .home-destination .airport-transfers-section .airport-transfer-search {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .airport-transfer-search,
+  .page-template-page-rates .home-transfers .airport-transfers-section .airport-transfer-search {
     width: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-box,
-  .page-template-page-rates .home-destination .airport-transfers-section .flex-box {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .flex-box,
+  .page-template-page-rates .home-transfers .airport-transfers-section .flex-box {
+    padding: 0;
     background-color: transparent;
     box-shadow: none;
     color: #333;
@@ -3502,48 +3516,48 @@ span.wpcf7-list-item {
     width: auto;
     line-height: 2;
     text-align: center; }
-    .page-template-front-page-2 .home-destination .airport-transfers-section .flex-box:first-child .input-label,
-    .page-template-page-rates .home-destination .airport-transfers-section .flex-box:first-child .input-label {
+    .page-template-front-page-2 .home-transfers .airport-transfers-section .flex-box:first-child .input-label,
+    .page-template-page-rates .home-transfers .airport-transfers-section .flex-box:first-child .input-label {
       min-width: 120px;
       display: block; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field,
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-field,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-button {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-field,
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-button,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-field,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-button {
     font-weight: 400; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-field {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-field,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-field {
     width: 240px; }
-    .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field input,
-    .page-template-page-rates .home-destination .airport-transfers-section .transfer-field input {
+    .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-field input,
+    .page-template-page-rates .home-transfers .airport-transfers-section .transfer-field input {
       border: none;
       padding: 12px 15px; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-button {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-button,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-button {
     width: 260px; }
-    .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button input.inquire-button,
-    .page-template-page-rates .home-destination .airport-transfers-section .transfer-button input.inquire-button {
+    .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-button input.inquire-button,
+    .page-template-page-rates .home-transfers .airport-transfers-section .transfer-button input.inquire-button {
       margin-top: 0;
       padding: 12px 15px;
       width: 100%;
       text-align: center;
       margin-right: 0; }
-.page-template-front-page-2 .home-destination .dropdown-field,
-.page-template-page-rates .home-destination .dropdown-field {
+.page-template-front-page-2 .home-transfers .dropdown-field,
+.page-template-page-rates .home-transfers .dropdown-field {
   position: relative;
   cursor: pointer; }
-  .page-template-front-page-2 .home-destination .dropdown-field input,
-  .page-template-page-rates .home-destination .dropdown-field input {
+  .page-template-front-page-2 .home-transfers .dropdown-field input,
+  .page-template-page-rates .home-transfers .dropdown-field input {
     font-size: 14px; }
-  .page-template-front-page-2 .home-destination .dropdown-field .fa-caret-down,
-  .page-template-page-rates .home-destination .dropdown-field .fa-caret-down {
+  .page-template-front-page-2 .home-transfers .dropdown-field .fa-caret-down,
+  .page-template-page-rates .home-transfers .dropdown-field .fa-caret-down {
     position: absolute;
     top: 0;
     right: 0;
     margin: 12px;
     color: #4ec5cd; }
-.page-template-front-page-2 .home-destination .dropdown-box,
-.page-template-page-rates .home-destination .dropdown-box {
+.page-template-front-page-2 .home-transfers .dropdown-box,
+.page-template-page-rates .home-transfers .dropdown-box {
   background-color: #fff;
   color: #333;
   font-size: 14px;
@@ -3554,44 +3568,57 @@ span.wpcf7-list-item {
   position: absolute;
   min-width: 240px;
   z-index: 2; }
-  .page-template-front-page-2 .home-destination .dropdown-box li,
-  .page-template-page-rates .home-destination .dropdown-box li {
+  .page-template-front-page-2 .home-transfers .dropdown-box li,
+  .page-template-page-rates .home-transfers .dropdown-box li {
     padding: 0px 15px;
     cursor: pointer;
     line-height: 1.5; }
-    .page-template-front-page-2 .home-destination .dropdown-box li:hover,
-    .page-template-page-rates .home-destination .dropdown-box li:hover {
+    .page-template-front-page-2 .home-transfers .dropdown-box li:hover,
+    .page-template-page-rates .home-transfers .dropdown-box li:hover {
       color: #4ec5cd; }
-    .page-template-front-page-2 .home-destination .dropdown-box li.type,
-    .page-template-page-rates .home-destination .dropdown-box li.type {
+    .page-template-front-page-2 .home-transfers .dropdown-box li.type,
+    .page-template-page-rates .home-transfers .dropdown-box li.type {
       color: #4ec5cd;
       font-weight: 700;
       line-height: 2;
       cursor: default; }
-  .page-template-front-page-2 .home-destination .dropdown-box .destination-dropdown,
-  .page-template-page-rates .home-destination .dropdown-box .destination-dropdown {
+  .page-template-front-page-2 .home-transfers .dropdown-box .destination-dropdown,
+  .page-template-page-rates .home-transfers .dropdown-box .destination-dropdown {
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2;
     -webkit-column-fill: auto;
        -moz-column-fill: auto;
             column-fill: auto; }
-.page-template-front-page-2 .home-destination .pre-loader,
-.page-template-page-rates .home-destination .pre-loader {
+.page-template-front-page-2 .home-transfers .pre-loader,
+.page-template-page-rates .home-transfers .pre-loader {
   text-align: center; }
-  .page-template-front-page-2 .home-destination .pre-loader img,
-  .page-template-page-rates .home-destination .pre-loader img {
+  .page-template-front-page-2 .home-transfers .pre-loader img,
+  .page-template-page-rates .home-transfers .pre-loader img {
     width: 20px; }
-.page-template-front-page-2 .home-destination .pre-loader-field,
-.page-template-page-rates .home-destination .pre-loader-field {
+.page-template-front-page-2 .home-transfers .pre-loader-field,
+.page-template-page-rates .home-transfers .pre-loader-field {
   width: 90%;
   background-color: #fff;
   position: absolute;
   height: 100%; }
-  .page-template-front-page-2 .home-destination .pre-loader-field img,
-  .page-template-page-rates .home-destination .pre-loader-field img {
+  .page-template-front-page-2 .home-transfers .pre-loader-field img,
+  .page-template-page-rates .home-transfers .pre-loader-field img {
     width: 20px;
     vertical-align: middle; }
+.page-template-front-page-2 .home-transfers .inquire-button,
+.page-template-page-rates .home-transfers .inquire-button {
+  background-color: #4ec5cd;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-top: 20px; }
+  .page-template-front-page-2 .home-transfers .inquire-button:hover,
+  .page-template-page-rates .home-transfers .inquire-button:hover {
+    background-color: #12a8b2; }
 .page-template-front-page-2 .home-videos h2,
 .page-template-front-page-2 .home-videos .sub-title,
 .page-template-page-rates .home-videos h2,
@@ -4559,15 +4586,15 @@ footer {
     -webkit-flex-basis: 40%;
         -ms-flex-preferred-size: 40%;
             flex-basis: 40%; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-container,
-  .page-template-page-rates .home-destination .airport-transfers-section .flex-container {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .flex-container,
+  .page-template-page-rates .home-transfers .airport-transfers-section .flex-container {
     margin: 0 10px;
     width: auto; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-field,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-field {
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-field,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-field {
     width: auto; }
-  .page-template-front-page-2 .home-destination .dropdown-box,
-  .page-template-page-rates .home-destination .dropdown-box {
+  .page-template-front-page-2 .home-transfers .dropdown-box,
+  .page-template-page-rates .home-transfers .dropdown-box {
     max-width: 400px; }
   .page-template-front-page-2 .home-fleet .flex-box,
   .page-template-page-rates .home-fleet .flex-box {
@@ -4652,16 +4679,6 @@ footer {
     -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
             flex-basis: 100%; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .flex-box,
-  .page-template-page-rates .home-destination .airport-transfers-section .flex-box {
-    margin: 0 auto; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .transfer-button,
-  .page-template-page-rates .home-destination .airport-transfers-section .transfer-button {
-    margin-top: 20px;
-    width: auto; }
-  .page-template-front-page-2 .home-destination .airport-transfers-section .airport-transfer-search,
-  .page-template-page-rates .home-destination .airport-transfers-section .airport-transfer-search {
-    display: block; }
   .page-template-front-page-2 .home-destination .flex-box,
   .page-template-page-rates .home-destination .flex-box {
     -webkit-flex-basis: 40%;
@@ -4672,6 +4689,16 @@ footer {
     .page-template-front-page-2 .home-destination .flex-box:last-child,
     .page-template-page-rates .home-destination .flex-box:last-child {
       margin-bottom: 0; }
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .flex-box,
+  .page-template-page-rates .home-transfers .airport-transfers-section .flex-box {
+    margin: 0 auto; }
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .transfer-button,
+  .page-template-page-rates .home-transfers .airport-transfers-section .transfer-button {
+    margin-top: 20px;
+    width: auto; }
+  .page-template-front-page-2 .home-transfers .airport-transfers-section .airport-transfer-search,
+  .page-template-page-rates .home-transfers .airport-transfers-section .airport-transfer-search {
+    display: block; }
   .page-template-front-page-2 .home-videos .flex-box,
   .page-template-page-rates .home-videos .flex-box {
     -webkit-flex-basis: 100%;
