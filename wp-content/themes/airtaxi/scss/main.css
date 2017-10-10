@@ -3456,6 +3456,19 @@ span.wpcf7-list-item {
   .page-template-front-page-2 .home-destination .type,
   .page-template-page-rates .home-destination .type {
     font-weight: 700; }
+  .page-template-front-page-2 .home-destination .inquire-button,
+  .page-template-page-rates .home-destination .inquire-button {
+    background-color: #4ec5cd;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-top: 20px; }
+    .page-template-front-page-2 .home-destination .inquire-button:hover,
+    .page-template-page-rates .home-destination .inquire-button:hover {
+      background-color: #12a8b2; }
 .page-template-front-page-2 .home-transfers .flex-box,
 .page-template-page-rates .home-transfers .flex-box {
   padding: 0;

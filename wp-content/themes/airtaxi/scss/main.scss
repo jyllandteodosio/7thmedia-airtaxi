@@ -4380,6 +4380,21 @@ span.wpcf7-list-item {
         .type {
             font-weight: 700;
         }
+        
+        .inquire-button {
+            background-color: #4ec5cd;
+            padding: 8px 15px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 20px;
+            
+            &:hover {
+                background-color: #12a8b2;
+            }
+        }
     }
     
     .home-transfers {
