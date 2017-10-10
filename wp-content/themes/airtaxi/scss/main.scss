@@ -5664,6 +5664,15 @@ footer {
     small {
         font-size: 12px;
     }
+    
+    .footer-white {
+        color: #ffffff;
+        
+        &:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    }
 }
 
 //* Homepage Media Queries

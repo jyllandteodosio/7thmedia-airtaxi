@@ -4530,6 +4530,11 @@ footer {
     font-size: 36px; }
   footer small {
     font-size: 12px; }
+  footer .footer-white {
+    color: #ffffff; }
+    footer .footer-white:hover {
+      color: #ffffff;
+      text-decoration: underline; }
 
 @media only screen and (max-width: 1440px) {
   .page-template-page-rates .destinations-box {

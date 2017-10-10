@@ -31,7 +31,7 @@ $image = get_field('footer_logo', 'option');
                 <a href="<?php echo get_sub_field('link'); ?>" class="footer-link"><?php echo get_sub_field('icon'); ?></a>
                 <?php endwhile; endif; ?>
             </div>
-            <small>© Copyright 2017. All Rights Reserved. Web Design and Development by <a href="http://7thmedia.com/" title="7th Media Digital Studio Inc." target="_blank">7th Media</a>
+            <small>© Copyright 2017. All Rights Reserved. <a class="footer-white" href="https://7thmedia.com/services/web-design-philippines/" title="Web Design Company Philippines" target="_blank">Web Design</a> and <a class="footer-white" href="https://7thmedia.com/services/web-development-philippines/" title="Web Development Philippines" target="_blank">Development</a> by <a href="https://7thmedia.com/" title="7th Media Digital Studios Inc." target="_blank">7th Media</a>
             </small>
         </div>
     </div>
