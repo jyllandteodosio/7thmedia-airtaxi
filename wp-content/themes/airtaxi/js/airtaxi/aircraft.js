@@ -3,8 +3,8 @@ jQuery(function( $ ){
     //* Aircraft Detail Page - Fleet Gallery Slick
     $('.gallery-slider').slick({
         dots: false,
-        arrows: true,
         infinite: false,
+        arrows: true,
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -35,5 +35,4 @@ jQuery(function( $ ){
             }
         ]
     });
-
 });
