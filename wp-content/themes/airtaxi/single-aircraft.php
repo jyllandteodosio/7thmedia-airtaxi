@@ -172,13 +172,13 @@ get_header('custom'); ?>
             <?php
                 $args = array(
                     'post_type'     => 'aircraft',
-                    'post_status'   => 'any',
-                    'posts_per_page'=> '-1',
+                    'posts_per_page'=> -1,
                     'meta_key'      => 'gallery_order',
-                    'orderby'       => 'meta_key',
+                    'orderby'       => 'meta_value_num',
                     'order'         => 'ASC'
                 );
                 $the_query = new WP_Query( $args );
+           
                 $posts = $the_query->get_posts();
                 // get aircraft gallery vectors
                 if ( $the_query->have_posts() ) {
@@ -189,10 +189,10 @@ get_header('custom'); ?>
                         
                         //marks the displayed image in the gallery
                         if( $model == $alt ){
-                            echo '<a href="'. $url .'" alt="' . $alt . '" class="hidden">';
+                            echo '<a href="'. $url .'" alt="' . $alt . '" class="hidden" data-order="' . get_field('gallery_order') . '">';
                             echo '<div class="gallery-slider-item item-center" style="border: 3px solid #4ec5cd">';
                         } else {
-                            echo '<a href="'. $url .'" alt="' . $alt . '">';
+                            echo '<a href="'. $url .'" alt="' . $alt . '" data-order="' . get_field('gallery_order') . '">';
                             echo '<div class="gallery-slider-item">';
                         }
                         
