@@ -206,6 +206,12 @@ jQuery(function( $ ){
                     
                     // Add items to dropdown
                     if( child_terms != 0 ) {
+                        // Enable inquire button
+                        if( $('.transfer-button .inquire-button').attr("disabled") == 'disabled' ) {
+                            $('.transfer-button .inquire-button').removeAttr("disabled");
+                            $('.transfer-button .inquire-button').css({"background-color":"#4ec5cd", "opacity":"1", "cursor":"pointer"});
+                        }
+                        
                         $.each(parent_terms, function(key, term) {
                             $('.destination-dropdown').append('<li label="'+term.name+'" class="type">'+term.name+'</li>');
                             
@@ -229,9 +235,17 @@ jQuery(function( $ ){
 
                             $('.transfer-destination .dropdown-box').hide();
                         });
+
                     } else {
+                        // Set destination field value to Coming Soon
                         $('.destination-input').val('Coming Soon.');
+
+                        // Set destination field dropdown value to Coming Soon
                         $('.destination-dropdown').append('<li label="Coming Soon" class="type">Coming Soon.</li>');
+
+                        // Temporarily disable the inquire button
+                        $('.transfer-button .inquire-button').attr("disabled", "disabled");
+                        $('.transfer-button .inquire-button').css({"background-color":"gray", "opacity":"0.3", "cursor":"not-allowed"});
                     }
                 }
             }
