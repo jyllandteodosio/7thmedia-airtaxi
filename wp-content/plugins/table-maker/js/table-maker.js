@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+	
 	var field_name_prefix = 'table_values';
 
 	function get_effective(curr, index) {

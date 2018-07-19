@@ -51,10 +51,9 @@ class WPSM_List_Table extends WP_List_Table {
     }
 
 	function column_name($item){
-		//Build row actions
 		$actions = array(
-			'edit' => sprintf('<a href="?page=%s&action=%s&table=%s">%s</a>', $_REQUEST['page'],'edit',$item['id'], __('Edit', 'wpsm-tableplugin') ),
-			'delete' => sprintf('<a href="?page=%s&action=%s&table=%s">%s</a>', $_REQUEST['page'],'delete',$item['id'], __('Delete', 'wpsm-tableplugin') )
+			'edit' => sprintf('<a href="%s">%s</a>', wp_nonce_url(admin_url('admin.php?page='.$_REQUEST['page'].'&action=edit&table='.$item['id']), 'edit_table'), __('Edit', 'wpsm-tableplugin') ),
+			'delete' => sprintf('<a href="%s">%s</a>', wp_nonce_url(admin_url('admin.php?page='.$_REQUEST['page'].'&action=delete&table='.$item['id']), 'delete_table'), __('Delete', 'wpsm-tableplugin') )
 		);
 
 		//Return the title contents

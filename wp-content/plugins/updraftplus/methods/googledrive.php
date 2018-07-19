@@ -711,6 +711,7 @@ class UpdraftPlus_BackupModule_googledrive {
 			$response_http_code = $response->getResponseHttpCode();
 			
 			if ($response_http_code == 200 || $response_http_code == 201) {
+				fclose($handle);
 				$client->setDefer(false);
 				$updraftplus->jobdata_delete($transkey);
 				$updraftplus->log("$basename: upload appears to be already complete (HTTP code: $response_http_code)");

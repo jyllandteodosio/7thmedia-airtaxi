@@ -4,19 +4,18 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class WPSM_DB_Table
-{
+class WPSM_DB_Table {
 	private $db;
 
-	function __construct()
-	{
+	function __construct() {
 		global $wpdb;
 		$this->db = $wpdb;
-		$this->table_name = "wpsm_tables";
-		$this->db_version = "1.0";
+		$this->table_name = $this->db->prefix ."wpsm_tables";
+		$this->old_table_name = "wpsm_tables"; // since v.1.1
+		$this->db_version = "1.1";
 	}
 
-	public static function get_instance(){
+	public static function get_instance() {
 		static $instance = null;
 		if($instance == null){
 			$instance = new WPSM_DB_Table();
@@ -24,7 +23,7 @@ class WPSM_DB_Table
 		return $instance;
 	}
 
-	public function create_table(){
+	public function create_table() {
 		$current_version = get_option('wpsm_db_table_version');
 		if($current_version && $current_version == $this->db_version && $this->db->get_var("SHOW TABLES LIKE '$this->table_name'") == $this->table_name){
 			return;
@@ -45,10 +44,16 @@ class WPSM_DB_Table
 		";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
+		
+		// since v.1.1
+		if($this->db->get_var("SHOW TABLES LIKE '$this->old_table_name'") == $this->old_table_name){
+			$this->upgrade_new_name_table();
+		}
+		
 		update_option('wpsm_db_table_version', $this->db_version);
 	}
 
-	public function add($name, $rows, $cols, $subs, $color, $responsive, $tvalues){
+	public function add($name, $rows, $cols, $subs, $color, $responsive, $tvalues) {
 		$name 	= wp_strip_all_tags(wp_unslash($name));
 		$rows 		= intval(wp_unslash($rows));
 		$cols 		= intval(wp_unslash($cols));
@@ -63,7 +68,7 @@ class WPSM_DB_Table
 		return false;
 	}
 
-	public function update($id, $name, $rows, $cols, $subs, $color, $responsive, $tvalues){
+	public function update($id, $name, $rows, $cols, $subs, $color, $responsive, $tvalues) {
 		$name 	= wp_strip_all_tags(wp_unslash($name));
 		$rows 		= intval(wp_unslash($rows));
 		$cols 		= intval(wp_unslash($cols));
@@ -80,29 +85,19 @@ class WPSM_DB_Table
 		return $this->db->query($query);
 	}
 
-	public function delete($id){
-		if(is_array($id))
-			$id = sprintf('(%s)', implode(',', $id));
-		else {
-			$id = sprintf('(%d)', $id);
-		}
-
-		$query = "DELETE FROM $this->table_name WHERE id IN $id";
+	public function delete($id) {
+		$query = $this->db->prepare("DELETE FROM $this->table_name WHERE id IN (%d)", $id);
 		return $this->db->query($query);
 	}
 
 	public function get($id){
-		if( is_array($id) ){
-			$id = sprintf('(%s)', implode(',', $id));
-		}
-		else {
-			$id = sprintf('(%d)', $id);
-		}
-		$row = $this->db->get_row("SELECT * FROM $this->table_name WHERE id IN $id", ARRAY_A);
+		$query = $this->db->prepare("SELECT * FROM $this->table_name WHERE id IN (%d)", $id);
+		$row = $this->db->get_row($query, ARRAY_A);
 		if($row){
 			$row['tvalues'] = $this->unserialize($row['tvalues']);
+			return $row;
 		}
-		return $row;
+		return false;
 	}
 
 	public function get_page_items($curr_page, $per_page){
@@ -113,7 +108,7 @@ class WPSM_DB_Table
 
 	public function get_count(){
 		$count = $this->db->get_var("SELECT COUNT(*) FROM $this->table_name");
-		return isset($count)?$count:0;
+		return isset($count) ? $count : 0;
 	}
 
 	private function serialize($item){
@@ -122,6 +117,18 @@ class WPSM_DB_Table
 
 	private function unserialize($item){
 		return unserialize(base64_decode($item));
+	}
+	
+	/**
+	 * Removes old table and moves its data into renamed one
+	 *
+	 * @since v.1.1
+	 **/
+	public function upgrade_new_name_table(){
+		$copy_query = "INSERT INTO $this->table_name SELECT * FROM $this->old_table_name";
+		$this->db->query($copy_query);
+		$delete_query = "DROP TABLE $this->old_table_name";
+		$this->db->query($delete_query);
 	}
 }
 

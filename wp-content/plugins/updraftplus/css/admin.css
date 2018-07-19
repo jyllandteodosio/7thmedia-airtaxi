@@ -235,6 +235,14 @@ h3 .thank-you {
 	clear:left;
 }
 
+a .udp-logo {
+	border: 0px;
+	float: right; 
+	height: 150px;
+	width: 150px;
+	margin: 20px 15px 15px 35px;
+}
+
 .dismiss-dash-notice {
 	float: right;
 	position: relative;
@@ -324,46 +332,21 @@ h3 .thank-you {
 	#updraft_webdav_host_error {
 		color: red;
 	}
-	/* More files jstree styles */
-	#updraft_more_files_container {
-		position: relative;
-		display: none;
-		height:300px;
-		width:100%;
-		border: 1px dotted;
-		margin-bottom: 5px;
-	}
-
-	#updraft_jstree_buttons {
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-
-	#updraft_jstree_container {
-		height:100%;
-		width:100%;
-		overflow: auto;
-	}
-
-	#updraft_more_files_container button {
-		height:22px;
-		line-height: 20px;
-	}
-
-	#updraft_jstree_confirm, #updraft_jstree_cancel {
-		display: none;
-	}
 	
 	.updraftplus-morefiles-row-delete {
 		cursor: pointer;
 		color: red;
-		font-size: 23px !important;
+		font-size: 100%;
+		font-weight: bold;
+		border: 0px;
+		border-radius: 3px;
+		padding: 2px;
+		margin: 0 6px;
 	}
-
-	.updraftplus-morefiles-row-edit {
+	.updraftplus-morefiles-row-delete:hover {
 		cursor: pointer;
-		font-size: 24px !important;
+		color: white;
+		background: red;
 	}
 
 	#updraft-wrap .form-table th {
@@ -458,29 +441,7 @@ h3 .thank-you {
 		border: 1px solid black;
 		border-collapse: collapse;
 		font-size: 120%;
-		background-color: white; 
-		text-align: center;
-	}
-	.updraft_feat_table p {
-		padding: 0px 10px;
-		margin: 5px 0px;
-		font-size: 16px;
-	}
-	.updraft_feat_table h4 {
-		margin: 5px 0px;
-	}
-	.updraft_feat_table .dashicons {
-		width: 25px;
-		height: 25px;
-		font-size: 25px;
-		line-height: 1;
-	}
-	.updraft_feat_table .dashicons-yes, .updraft_feat_table .updraft-yes {
-		color:green;
-	}
-
-	.updraft_feat_table .dashicons-no-alt, .updraft_feat_table .updraft-no {
-		color:red;
+		background-color: white;
 	}
 	.updraft_tick_cell{
 		text-align: center;
@@ -529,19 +490,6 @@ h3 .thank-you {
 		clear:left;
 	}
 
-	.udp-premium-image {
-		display: none;
-		
-	}
-
-	@media screen and (min-width: 720px) {
-		.udp-premium-image {
-			display: block;
-			float: left;
-			padding-right: 5px;
-		}
-	}
-
 /* End stuff already in admin.php */
 	
 #plupload-upload-ui2 { 
@@ -554,6 +502,13 @@ h3 .thank-you {
 
 .backup-restored span { 
 	font-size: 120% 
+}
+
+.word-shell-advert {
+	max-width: 800px; 
+	font-size: 140%; 
+	line-height: 140%; 
+	padding: 14px;
 }
 
 .memory-limit { 
@@ -646,15 +601,10 @@ h3 .thank-you {
 	font-size: 120%;
 }
 
-#backupnow_includefiles_moreoptions, #backupnow_database_moreoptions {
+input #backupnow_includefiles_moreoptions {
 	margin: 4px 16px 6px; 
 	border: 1px dotted; 
 	padding: 6px 10px;
-}
-
-#backupnow_database_moreoptions {
-	max-height: 250px;
-	overflow: auto;
 }
 
 .form-table #updraft_activejobsrow .minimum-height{
@@ -764,15 +714,6 @@ h3 .thank-you {
 
 #updraft-message-modal-innards {
 	padding: 4px;
-}
-
-#updraft-authenticate-modal {
-	text-align: center;
-	font-size: 16px !important;
-}
-
-#updraft-authenticate-modal p {
-	font-size: 16px;
 }
 
 #updraft_delete_form p {
@@ -886,6 +827,16 @@ h3 .thank-you {
 .directory-permissions {
 	font-size: 110%;
 	font-weight: bold;
+}
+
+.wordshell-advert {
+	margin: 10px 0; 
+	padding: 10px; 
+	font-size: 140%; 
+	background-color: lightYellow; 
+	border-color: #E6DB55; 
+	border: 1px solid; 
+	border-radius: 4px;
 }
 
 .double-warning {
@@ -1515,82 +1466,53 @@ a.btn-get-started {
 	}*/
 }
 /* End Automation Backup Advert by B */
-/* New Responsive Pretty Advanced Settings */
-.expertmode .advanced_settings_container {
-	height: auto;
-	overflow: hidden;
+/*Pretty Advanced tools */
+.expertmode .form-table .advanced_settings_menu {
+	border-right: 1px solid rgb(204, 204, 204);
+	min-width: 215px;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu {
-	float: none;
-	border-bottom: 1px solid rgb(204, 204, 204);
-}
-
-.expertmode .advanced_settings_container .advanced_settings_content {
-	padding-top: 5px;
-	float: none;
-	width:auto;
-	overflow: auto;
-}
-
-.expertmode .advanced_settings_container .advanced_settings_content h3 {
-	margin-top: 5px !important;
-}
-
-.expertmode .advanced_settings_container .advanced_settings_content .advanced_tools {
+.expertmode .form-table .advanced_tools {
 	display: none;
 }
-.expertmode .advanced_settings_container .advanced_settings_content .site_info {
+.expertmode .form-table .site_info {
 	display: block;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button {
-	display: inline-block;
+.expertmode .form-table .advanced_tools_button {
 	cursor: pointer;
 	padding: 5px;
 	color: #000000;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_text {
+.expertmode .form-table .advanced_tools_text {
 	font-size: 16px;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button:hover {
+.expertmode .form-table .advanced_tools_button:hover {
 	background-color: #eaeaea;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu .active {
+.expertmode .form-table .active {
 	background-color: #3498db;
 	color:#ffffff;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_menu .active:hover {
+.expertmode .form-table .active:hover {
 	background-color: #72c5fd;
 	color: #ffffff;
 }
-
-.expertmode .advanced_settings_container .advanced_settings_content input#import_settings {
+.expertmode .form-table .updraft_debugrow th {
+	float: none;
+}
+.expertmode .form-table .updraft_debugrow td {
+	vertical-align: top;
+	padding-top: 5px;
+}
+.expertmode .form-table th {
+	width: 160px !important;
+}
+.expertmode .form-table td {
+	padding: 0px 0px;
+	vertical-align: top;
+}
+.expertmode .form-table td p {
+	margin:1em 0;
+}
+.expertmode .form-table input#import_settings {
 	height:auto !important;
-}
-
-div#updraft-wrap a {
-	cursor: pointer !important;
-}
-
-@media screen and (min-width: 670px) {
-	.expertmode .advanced_settings_container .advanced_settings_menu {
-		float: left;
-		width: 215px;
-		border-right: 1px solid rgb(204, 204, 204);
-		border-bottom: none;
-	}
-
-	.expertmode .advanced_settings_container .advanced_settings_content {
-		padding-left: 10px;
-		padding-top: 0px;
-	}
-
-	.expertmode .advanced_settings_container .advanced_settings_menu .advanced_tools_button {
-		display: block;
-	}
 }

@@ -3100,8 +3100,7 @@ li.active a, li.active a:hover,
     overflow: auto;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1920px) {
-	.emergency-section-white .emergency-logos .logo {
+@media only screen and (min-width: 769px) and (max-width: 1920px) {.emergency-section-white .emergency-logos .logo {
 		width: 20%;
 		height: 150px;
 		float: left;
@@ -3115,10 +3114,25 @@ li.active a, li.active a:hover,
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .ambulance-images {
+        text-align: center;
+    }
+    
+    .ambulance-images .alignleft {
+        float: none;
+    }
+    
+    .emergency-section-white .emergency-logos {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
 	.emergency-section-white .emergency-logos .logo {
 		width: 50%;
 		height: 100%;
-		float: left;
+        display: inline-block;
+        flex-basis: 50%;
+        
 		img {
 			width: 70%;
 			display: block;

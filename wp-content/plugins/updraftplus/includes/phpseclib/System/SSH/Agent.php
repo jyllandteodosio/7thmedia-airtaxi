@@ -130,21 +130,9 @@ class System_SSH_Agent_Identity
      * @return System_SSH_Agent_Identity
      * @access private
      */
-    function __construct($fsock)
-    {
-        $this->fsock = $fsock;
-    }
-
-    /**
-     * PHP4 compatible Default Constructor.
-     *
-     * @see self::__construct()
-     * @param resource $fsock
-     * @access public
-     */
     function System_SSH_Agent_Identity($fsock)
     {
-        $this->__construct($fsock);
+        $this->fsock = $fsock;
     }
 
     /**
@@ -281,7 +269,7 @@ class System_SSH_Agent
      * @return System_SSH_Agent
      * @access public
      */
-    function __construct()
+    function System_SSH_Agent()
     {
         switch (true) {
             case isset($_SERVER['SSH_AUTH_SOCK']):
@@ -299,17 +287,6 @@ class System_SSH_Agent
         if (!$this->fsock) {
             user_error("Unable to connect to ssh-agent (Error $errno: $errstr)");
         }
-    }
-
-    /**
-     * PHP4 compatible Default Constructor.
-     *
-     * @see self::__construct()
-     * @access public
-     */
-    function System_SSH_Agent()
-    {
-        $this->__construct();
     }
 
     /**

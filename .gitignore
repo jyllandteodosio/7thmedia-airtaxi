@@ -15,10 +15,12 @@ wp-config.php
 # "mu-plugins" directory
 # "plugins" directory
 # "themes" directory
+# "uploads" directory
 wp-content/*
 !wp-content/mu-plugins/
 !wp-content/plugins/
 !wp-content/themes/
+!wp-content/uploads/
 
 ~*
 ehthumbs.db

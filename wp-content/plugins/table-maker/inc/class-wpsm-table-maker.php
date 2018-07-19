@@ -7,31 +7,26 @@ if ( ! defined( 'WPINC' ) ) {
 class WPSM_Table_Maker
 {
 	private $version;
-
 	private $page_slug;
-
 	private $page_hook;
-
 	private $base_url;
-
 	private $db;
+	private $user_caps;
 
-	function __construct($_version, $_base_url = false ) {
+	function __construct($_version, $_base_url = false) {
 		$this->load_dependencies();
-
-		$this->version 		= $_version;
-		$this->page_slug 	= 'wpsm_table_maker';
-
-		$this->db 			= WPSM_DB_Table::get_instance();
-
-		add_action( 'admin_menu', array($this, 'add_menu_items') );
-		add_action( 'admin_enqueue_scripts', array($this, 'backend_enqueue') );
-		add_action( 'admin_init', array($this, 'handle_requests') );
-		add_action('plugins_loaded', array($this, 'xml_download'));
-		add_action( 'admin_notices', array($this, 'admin_notices') );
-		add_shortcode( 'wpsm_comparison_table', array($this, 'comparison_table_callback') );
-		add_action( 'init', array($this, 'wpsm_table_frontend_scripts') );
-		add_action( 'wp_enqueue_scripts', array($this, 'wpsm_table_frontend_styles') );
+		$this->version = $_version;
+		$this->page_slug = 'wpsm_table_maker';
+		$this->db = WPSM_DB_Table::get_instance();
+		$this->user_caps = 'manage_categories';
+		add_action('admin_menu', array($this, 'add_menu_items'));
+		add_action('admin_enqueue_scripts', array($this, 'backend_enqueue'));
+		add_action('current_screen', array($this, 'handle_requests'));
+		//add_action('current_screen', array($this, 'xml_download'));
+		add_action('admin_notices', array($this, 'admin_notices') );
+		add_shortcode('wpsm_comparison_table', array($this, 'comparison_table_callback'));
+		add_action('init', array($this, 'wpsm_table_frontend_scripts') );
+		add_action('wp_enqueue_scripts', array($this, 'wpsm_table_frontend_styles'));
 
 		if(!$_base_url)
 			$this->base_url = plugins_url( '', dirname(__FILE__) );
@@ -46,7 +41,8 @@ class WPSM_Table_Maker
 	}
 
 	public function add_menu_items() {
-		$this->page_hook = add_menu_page( __('Table Maker', 'wpsm-tableplugin'), __('Table Maker', 'wpsm-tableplugin'), 'manage_options', $this->page_slug, array($this, 'print_page'), $this->base_url . "/img/icon.png" );
+		$user_caps = apply_filters('wpsmt_user_cappabilities', $this->user_caps);
+		$this->page_hook = add_menu_page( __('Table Maker', 'wpsm-tableplugin'), __('Table Maker', 'wpsm-tableplugin'), $user_caps, $this->page_slug, array($this, 'print_page'), $this->base_url . "/img/icon.png" );
 	}
 
 	public function wpsm_table_frontend_scripts() {
@@ -62,12 +58,13 @@ class WPSM_Table_Maker
 	public function backend_enqueue($hook) {
 		if( $this->page_hook != $hook )
 			return;
-		wp_enqueue_style( 'wpsm-stylesheet', $this->base_url . '/css/table-maker.css', false, $this->version, 'all' );
-		wp_enqueue_script( 'wpsm-comptable-script', $this->base_url . '/js/table-maker.js', array('jquery'), $this->version );
-		wp_enqueue_script( 'jquery-ui-dialog' );
+		wp_enqueue_style('wpsm-stylesheet', $this->base_url . '/css/table-maker.css', false, $this->version, 'all' );
+		wp_enqueue_script('wpsm-comptable-script', $this->base_url . '/js/table-maker.js', array('jquery'), $this->version );
+		wp_enqueue_script('jquery-ui-dialog' );
 		wp_enqueue_script('jquery-effects-bounce');
-		if (function_exists('wp_enqueue_media')) {wp_enqueue_media();}
-
+		if (function_exists('wp_enqueue_media')) {
+			wp_enqueue_media();
+		}
 		$wpsm_js_strings = array(
 			'placeholder' 	=> __('Click to edit', 'wpsm-tableplugin'),
 			'resize_error' 	=> __('Please enter valid numbers', 'wpsm-tableplugin'),
@@ -84,17 +81,15 @@ class WPSM_Table_Maker
 		<div class="wrap">
 			<?php
 				if(isset($_GET['action']) && $_GET['action'] == 'add'){
-					echo sprintf( '<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Add Table', 'wpsm-tableplugin'), admin_url('admin.php?page='.$this->page_slug), __('View All', 'wpsm-tableplugin') );
+					printf('<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Add Table', 'wpsm-tableplugin'), wp_nonce_url(admin_url('admin.php?page='.$this->page_slug), 'add_table'), __('View All', 'wpsm-tableplugin'));
 					$this->create_ui();
-				}
-				elseif(isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['table']) && is_numeric($_GET['table'])){
-					echo sprintf( '<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Edit Table', 'wpsm-tableplugin'), admin_url('admin.php?page='.$this->page_slug), __('View All', 'wpsm-tableplugin') );
+				} elseif(isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['table']) && is_numeric($_GET['table'])) {
+					printf( '<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Edit Table', 'wpsm-tableplugin'), admin_url('admin.php?page='.$this->page_slug), __('View All', 'wpsm-tableplugin') );
 					$table = $this->db->get($_GET['table']);
 					if($table)
 						$this->create_ui($table);
-				}
-				else{
-					echo sprintf( '<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Tables', 'wpsm-tableplugin'), admin_url('admin.php?page='.$this->page_slug.'&action=add'), __('Add New', 'wpsm-tableplugin') );
+				} else {
+					printf( '<h2>%s <a class="add-new-h2" href="%s">%s</a></h2>', __('Tables', 'wpsm-tableplugin'), wp_nonce_url(admin_url('admin.php?page='.$this->page_slug.'&action=add'), 'add_table'), __('Add New', 'wpsm-tableplugin') );
 					$list_table = new WPSM_List_Table();
 					$list_table->show();
 				}
@@ -104,14 +99,14 @@ class WPSM_Table_Maker
 	}
 
 	private function create_ui($table = false){
-		$table_id 		= $table ? $table['id'] : '';
-		$name 			= $table ? $table['name'] : '';
-		$rows 				= $table ? $table['rows'] : 4;
-		$cols 				= $table ? $table['cols'] : 4;
-		$subs 				= $table ? $table['subs'] : '';
-		$color				= $table ? $table['color'] : 'default';
-		$responsive	= $table ? $table['responsive'] : '';
-		$curr_values 	= $table ? $table['tvalues'] : '';
+		$table_id = $table ? $table['id'] : '';
+		$name = $table ? $table['name'] : '';
+		$rows = $table ? $table['rows'] : 4;
+		$cols = $table ? $table['cols'] : 4;
+		$subs = $table ? $table['subs'] : '';
+		$color = $table ? $table['color'] : 'default';
+		$responsive = $table ? $table['responsive'] : '';
+		$curr_values = $table ? $table['tvalues'] : '';
 		$col_span = $cols; 
 		$sub_array = explode(',', $subs); 
 		?>
@@ -302,114 +297,127 @@ class WPSM_Table_Maker
 		return true;
 	}
 
-	public function handle_requests() {
-		if( !$this->is_plugin_page() )
-			return;
+	public function handle_requests($current_screen) {
+		$user_caps = apply_filters('wpsmt_user_cappabilities', $this->user_caps);
+		if(current_user_can($user_caps) && $current_screen->base == 'toplevel_page_wpsm_table_maker') { //Check if user have enough rights (min. author role by default)
+			if(!$this->is_plugin_page())
+				return;
 
-		if(isset($_GET['action2']) && $_GET['action2'] != -1 && $_GET['action'] == -1)
-			$_GET['action'] = $_GET['action2'];
-
-		if($_GET['action'] == 'add' && isset($_POST['wpsm-create-table'])){
-			if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
-			$result = $this->db->add( $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'],  $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
-			if($result){
-				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
-				wp_redirect($sendback);
-			}
-		}
-
-		if($_GET['action'] == 'edit' && isset($_POST['wpsm-save-changes']) && isset($_GET['table'])){
-			if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
-			$result = $this->db->update( $_GET['table'], $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'], $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
-			$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $_GET['table'], 'updated' => $result ), '' );
-			wp_redirect($sendback);
-		}
-		
-		if($_GET['action'] == 'edit' && isset($_POST['wpsm-create-table'])){
-			if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
-			$result = $this->db->add( $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'],  $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
-			if($result){
-				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
-				wp_redirect($sendback);
-			}
-		}
-
- 		if($_GET['action'] == 'delete' && isset($_GET['table']) ){
-			if(is_array($_GET['table']) || is_numeric($_GET['table'])) {
-				$result = $this->db->delete( $_GET['table'] );
-				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'deleted' => $result ), '' );
-				wp_redirect($sendback);
-			}
-		} 
-
-		
-		if(isset($_POST['wpsm-import-table'])) {
-			if(is_uploaded_file($_FILES['upload_file']['tmp_name']) && $_FILES['upload_file']['type'] == 'text/xml') {
-				$xml = simplexml_load_file($_FILES['upload_file']['tmp_name']);
-				$array = xml2array($xml);
-			} else {
-				exit('Can\'t open file: ' . $_FILES['userfile']['name'] . '. Error: '. $_FILES['upload_file']['error'] .'.');
-			}
-			$result = $this->db->add($array['name'], $array['rows'], $array['cols'], $array['subs'], $array['color'], $array['responsive'], $array['tvalues'] );
-			if($result){
-				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
-				wp_redirect($sendback);
-			}
-		}
-	
-		if(isset($_POST['wpsm-import-csv'])) {
-			if(is_uploaded_file($_FILES['upload_file']['tmp_name']) && $_FILES['upload_file']['type'] == 'text/csv' && isset($_POST['csv_delimiter'])) {
-				if (($handle = fopen($_FILES['upload_file']['tmp_name'], "r")) !== FALSE) {
-					$array =  csv2array( $handle, $_POST['csv_delimiter'] );
-				fclose($handle); 
+			if(isset($_GET['action2']) && $_GET['action2'] != -1 && $_GET['action'] == -1)
+				$_GET['action'] = $_GET['action2'];
+			//Add a new table from the table list
+			if($_GET['action'] == 'add' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'add_table') && isset($_POST['wpsm-create-table'])){
+				if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
+				$result = $this->db->add( $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'],  $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
+				if($result){
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
+					wp_redirect(wp_nonce_url($sendback, 'edit_table'));
 				}
-			} else {
-				exit('Can\'t open file: ' . $_FILES['userfile']['name'] . '. Error: '. $_FILES['upload_file']['error'] .'.');
 			}
-			$array['subs'] = '';
-			$result = $this->db->add(__('Noname Table', 'wpsm-tableplugin'), $array['rows'], $array['cols'], $array['subs'], 'default', '0', $array['tvalues'] );
-			if($result){
-				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
-				wp_redirect($sendback);
+			//Edit the current table
+			if($_GET['action'] == 'edit' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'edit_table') && isset($_POST['wpsm-save-changes'])){
+				if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
+				$result = $this->db->update( $_GET['table'], $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'], $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
+				$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $_GET['table'], 'updated' => $result ), '' );
+			}
+			//Dublicate the current table
+			if($_GET['action'] == 'edit' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'edit_table') && isset($_POST['wpsm-create-table'])){
+				if (!isset ($_POST['table_respon'])) {$_POST['table_respon'] = '';}
+				$result = $this->db->add( $_POST['table_name'], $_POST['table_rows'], $_POST['table_cols'],  $_POST['table_subs'], $_POST['table_color'], $_POST['table_respon'], $_POST['table_values'] );
+				if($result){
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
+					wp_redirect(wp_nonce_url($sendback, 'edit_table'));
+				}
+			}
+			//Single deleting in the table list
+	 		if($_GET['action'] == 'delete' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'delete_table') && isset($_GET['table']) ){
+				if(is_numeric($_GET['table'])) {
+					$result = $this->db->delete($_GET['table']);
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'deleted' => $result ), '' );
+					wp_redirect($sendback);
+				}
+			} 
+			//Bulk deleting in the table list
+	 		if($_GET['action'] == 'delete' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'bulk-tables') && isset($_GET['table']) ){
+				if(is_array($_GET['table'])) {
+					$ids = $_GET['table'];
+					$count = count($ids);
+					for($i = 0; $i < $count; $i++) {
+						$result = $this->db->delete($ids[$i]);
+					}
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'deleted' => $result ), '' );
+					wp_redirect($sendback);
+				}
+			}
+			//Add table with importing XML file
+			if(isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'add_table') && isset($_POST['wpsm-import-table'])) {
+				if(is_uploaded_file($_FILES['upload_file']['tmp_name']) && $_FILES['upload_file']['type'] == 'text/xml') {
+					$xml = simplexml_load_file($_FILES['upload_file']['tmp_name']);
+					$array = xml2array($xml);
+				}
+				if(!empty($array)) {
+					$array['subs'] = isset($array['subs']) ? $array['subs'] : '';
+					$result = $this->db->add($array['name'], $array['rows'], $array['cols'], $array['subs'], $array['color'], $array['responsive'], $array['tvalues'] );
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
+					wp_redirect($sendback);
+				}
+			}
+			//Add table with importing CSV file
+			if(isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'add_table') && isset($_POST['wpsm-import-csv'])) {
+				if(is_uploaded_file($_FILES['upload_file']['tmp_name']) && $_FILES['upload_file']['type'] == 'text/csv' && isset($_POST['csv_delimiter'])) {
+					if (($handle = fopen($_FILES['upload_file']['tmp_name'], "r")) !== FALSE) {
+						$array =  csv2array( $handle, $_POST['csv_delimiter'] );
+					fclose($handle); 
+					}
+				}
+				if(!empty($array)) {
+					$array['subs'] = isset($array['subs']) ? $array['subs'] : '';
+					$result = $this->db->add(__('Noname Table', 'wpsm-tableplugin'), $array['rows'], $array['cols'], $array['subs'], 'default', '0', $array['tvalues'] );
+					$sendback = add_query_arg( array( 'page' => $_GET['page'], 'action' => 'edit', 'table' => $result, 'added' => true ), '' );
+					wp_redirect($sendback);
+				}
+			}
+			//Export the current table in XML file
+			if($_GET['action'] == 'edit' && isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'edit_table') && isset($_POST['wpsm-export-table'])) {
+				$result = $this->db->get($_GET['table']);
+				if($result) {
+					$this->xml_download($result);
+				}
 			}
 		}
+
 	}
 
-	
 	public function admin_notices(){
 		if( !$this->is_plugin_page() )
 			return;
-
-		$format = '<div class="updated"><p>%s</p></div>';
-
+		$warning = '<div class="notice notice-warning"><p>%s</p></div>';
+		$success = '<div class="notice notice-success"><p>%s</p></div>';
+		if(isset($_FILES['upload_file'])){
+			if(!is_uploaded_file($_FILES['upload_file']['tmp_name']) || !isset($_POST['csv_delimiter'])) {
+				if(!isset($_FILES['userfile']['name']) || $_FILES['upload_file']['type'] != 'text/xml' || $_FILES['upload_file']['type'] != 'text/csv') {
+					echo sprintf($warning, __('Can not open file!', 'wpsm-tableplugin') );
+				}
+			}
+		}
 		if(isset($_GET['added']) && $_GET['added']):
-			echo sprintf($format, __('The table has been created successfully!', 'wpsm-tableplugin') );
+			echo sprintf($success, __('The table has been created successfully!', 'wpsm-tableplugin') );
 		elseif(isset($_GET['updated']) && $_GET['updated']):
-			echo sprintf($format, __('The table has been updated successfully!', 'wpsm-tableplugin') );
+			echo sprintf($success, __('The table has been updated successfully!', 'wpsm-tableplugin') );
 		elseif(isset($_GET['deleted']) && $_GET['deleted']):
-			echo sprintf($format, __('The table has been deleted successfully!', 'wpsm-tableplugin') );
+			echo sprintf($success, __('The table has been deleted successfully!', 'wpsm-tableplugin') );
 		endif;
 	}
 	
-	
-	function xml_download() {
-		if(isset($_POST['wpsm-export-table'])) {
-			$result = $this->db->get( $_GET['table'] );
-			
-			if(!$result)
-			return;
-		
-			$converter = new Array_XML();
-			$xmlStr = $converter->convert($result);
-
-			header("Content-type: txt/xml",true,200);
-			header("Content-Disposition: attachment; filename=" . $_POST['table_name'] . ".xml" );
-			//header('Content-Length: ' . ob_get_length($xmlStr));
-			header("Pragma: no-cache");
-			header("Expires: 0");
-			echo $xmlStr;
-			exit();
-		}
+	private function xml_download($result) {
+		$converter = new Array_XML();
+		$xmlStr = $converter->convert($result);
+		header("Content-type: txt/xml",true,200);
+		header("Content-Disposition: attachment; filename=" . $_POST['table_name'] . ".xml" );
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		echo $xmlStr;
+		exit();
 	}
 
 	function comparison_table_callback( $atts ){
@@ -427,6 +435,7 @@ class WPSM_Table_Maker
 		}
 		
 		$table = $this->db->get($atts['id']);
+		
 		if(!$table)
 			return;
 

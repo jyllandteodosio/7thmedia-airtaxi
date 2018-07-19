@@ -194,9 +194,11 @@ jQuery(function( $ ){
                         if(post.parent !== 0) {
                             
                             if(post.acf.airport_origin) {
-                                if(parseInt(post.acf.airport_origin) === parseInt($airport)) {
-                                    $child_terms.push(post);
-                                }
+                                $.each(post.acf.airport_origin, function(key, dest) {
+                                    if(parseInt(dest) === parseInt($airport)) {
+                                        $child_terms.push(post);
+                                    }
+                                });
                             }
                         } else {
                             $parent_terms.push(post);
@@ -275,6 +277,24 @@ jQuery(function( $ ){
                        }
                     });
                     firstLoad = false;
+                });
+            });
+        }
+        
+        if((window.location.hash == '#flights' || window.location.hash == '#videos') && firstLoad) {
+            $('.home-videos .vid-box').each(function(){
+                var bg = $(this).attr('data-bg');
+                $(this).css({
+                    'background-image' : 'url('+ bg +')',
+                });
+            });
+        }
+        
+        if((window.location.hash == '#flights' || window.location.hash == '#memberships') && firstLoad) {
+            $('.home-membership .video-box').each(function(){
+                var bg = $(this).attr('data-bg');
+                $(this).css({
+                    'background-image' : 'url('+ bg +')',
                 });
             });
         }

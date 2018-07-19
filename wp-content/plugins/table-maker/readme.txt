@@ -3,8 +3,8 @@ Contributors: wpsoul
 Tags: responsive tables, pricing tables, comparison tables, wordpress tables, table maker, top list table, pricing table maker, table generator, price comparison
 Donate link: https://wpsoul.com/
 Requires at least: 3.0
-Tested up to: 4.3.3
-Stable tag: 1.5
+Tested up to: 4.9.1
+Stable tag: 1.9.1
 License: License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,17 @@ If you like this plugin please give it a good rating.
 3. How it looks on mobile
 
 == Changelog ==
+
+= 1.9.1 =
+* Fix for duplicate table function
+* If you have any problems from updating from 1.6 version of plugin to new version, just deactivate plugin and activate again, tables must be visible again on site
+
+= 1.9 =
+* Security improvements
+
+= 1.7 =
+* Fixed DB table name
+* Fixed language template
 
 = 1.6 =
 * Added responsive for columns of tables

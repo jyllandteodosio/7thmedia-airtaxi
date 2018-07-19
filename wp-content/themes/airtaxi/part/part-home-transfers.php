@@ -75,8 +75,10 @@
                                 $term_origin = get_field('airport_origin', 'locations_'.$term->term_id);
                                 
                                 if($term->parent) {
-                                    if($term_origin[0] == $airport) {
-                                        array_push($child_terms, $term);
+                                    foreach ($term_origin as $term_og) {
+                                        if($term_og == $airport) {
+                                            array_push($child_terms, $term);
+                                        }
                                     }
                                 } else {
                                     array_push($parent_terms, $term);

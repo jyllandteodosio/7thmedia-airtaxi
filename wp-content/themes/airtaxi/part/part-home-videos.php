@@ -9,23 +9,24 @@
 <?php endif; ?>
    
     <div class="section-wrap">
-<!--
-        <h2><?php //echo get_field('videos_section_title');?></h2>
-        <span class="sub-title"><?php //echo get_field('videos_section_sub_title');?></span>
--->
-
         <div class="flex-container">
             <?php if(have_rows('videos_boxes')): while(have_rows('videos_boxes')): the_row();?>
+            
             <?php 
             $youtube_URL = get_sub_field('youtube_video_url');
             parse_str( parse_url( $youtube_URL, PHP_URL_QUERY ), $youtube_ID );
             ?>
-            <div class="flex-box vid-box" style="background-image: url(https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/hqdefault.jpg);">
+            
+            <div class="flex-box vid-box" data-bg="https://img.youtube.com/vi/<?php echo $youtube_ID['v'];?>/hqdefault.jpg">
                <div class="play-icon">
-                   <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe"><img src="<?php echo get_field('youtube_play_icon');?>"/></a>
+                   <a href="http://www.youtube.com/watch?v=<?php echo $youtube_ID['v'];?>" class="mpopup_iframe">
+                       <img src="<?php echo get_field('youtube_play_icon');?>"/>
+                   </a>
                </div>
             </div>
+            
             <?php endwhile; endif; ?>
+            
             <div class="flex-box visit-box">
                <div class="play-icon">
                    <?php $channel_icon = get_field('youtube_channel_logo'); ?>
@@ -37,6 +38,7 @@
                    </div>
                </div>
             </div>
+            
         </div>
     </div>
 </section>

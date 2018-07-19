@@ -60,6 +60,8 @@
                                                 <?php endif; ?>
 
                                             <?php endfor; ?>
+                                            <br/>
+                                            <?php echo get_sub_field('note') ? get_sub_field('note') : '<br/>'; ?>
                                         </th>
 
                                         <?php wp_reset_postdata(); endif; ?>
@@ -82,7 +84,7 @@
                                     if(have_rows('aircraft_rate')): 
                                     while(have_rows('aircraft_rate')): the_row(); ?>
 
-                                    <td>P <?php echo get_sub_field('rate'); ?></td>
+                                    <td><?php echo get_sub_field('rate') != '-' ? 'P ' . get_sub_field('rate') : '-'; ?></td>
 
                                     <?php endwhile; endif; ?>
 
