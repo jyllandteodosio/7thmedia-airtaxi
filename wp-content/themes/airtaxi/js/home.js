@@ -4,7 +4,7 @@ jQuery(function( $ ){
     var baseURL = window.location.protocol + "//" + window.location.host;
     
     if(baseURL == "http://localhost") {
-        baseURL = baseURL + "/Projects/airtaxi"
+        baseURL = baseURL + "/airtaxi"
     }
     
     function screen_width() {
@@ -182,12 +182,11 @@ jQuery(function( $ ){
                     // Empty the destination dropbox
                     $('.pre-loader, .pre-loader-field').remove();
                     $('.destination-dropdown').html('');
-                    //console.log(data);
                     
                     // Initialize arrays
-                    $child_terms = new Array();
-                    $parent_terms = new Array();
-                    $origin = new Array();
+                    var child_terms = new Array();
+                    var parent_terms = new Array();
+                    var origin = new Array();
                     
                     // Filter terms based on selected airport origin
                     $.each(data, function(key, post){
@@ -196,39 +195,58 @@ jQuery(function( $ ){
                             if(post.acf.airport_origin) {
                                 $.each(post.acf.airport_origin, function(key, dest) {
                                     if(parseInt(dest) === parseInt($airport)) {
-                                        $child_terms.push(post);
+                                        child_terms.push(post);
                                     }
                                 });
                             }
                         } else {
-                            $parent_terms.push(post);
+                            parent_terms.push(post);
                         }
                     });
                     
                     // Add items to dropdown
-                    $.each($parent_terms, function(key, term) {
-                        $('.destination-dropdown').append('<li label="'+term.name+'" class="type">'+term.name+'</li>');
-                        
-                        $.each($child_terms, function(child_key, child_term) {
-                            if(child_key === 0) {
-                                $('.destination-input').val(child_term.name);
-                            }
-                            
-                            if(child_term.parent === term.id) {
-                                $('.destination-dropdown').append('<li data-value="'+child_term.name+'" data-id="'+child_term.id+'" class="">'+child_term.name+'</li>');
-                            }
-                        });
-                    });
-                    
-                    $('.destination-dropdown li').click(function() {
-                        $selected = $(this).attr('data-value');
-
-                        if($selected) {
-                            $('.destination-input').val($selected);
+                    if( child_terms != 0 ) {
+                        // Enable inquire button
+                        if( $('.transfer-button .inquire-button').attr("disabled") == 'disabled' ) {
+                            $('.transfer-button .inquire-button').removeAttr("disabled");
+                            $('.transfer-button .inquire-button').css({"background-color":"#4ec5cd", "opacity":"1", "cursor":"pointer"});
                         }
+                        
+                        $.each(parent_terms, function(key, term) {
+                            $('.destination-dropdown').append('<li label="'+term.name+'" class="type">'+term.name+'</li>');
+                            
+                            $.each(child_terms, function(child_key, child_term) {
+                                if(child_key === 0) {
+                                    $('.destination-input').val(child_term.name);
+                                }
+                                
+                                if(child_term.parent === term.id) {
+                                    $('.destination-dropdown').append('<li data-value="'+child_term.name+'" data-id="'+child_term.id+'" class="">'+child_term.name+'</li>');
+                                }
+                            });
+                        });
+                        
+                        $('.destination-dropdown li').click(function() {
+                            $selected = $(this).attr('data-value');
 
-                        $('.transfer-destination .dropdown-box').hide();
-                    });
+                            if($selected) {
+                                $('.destination-input').val($selected);
+                            }
+
+                            $('.transfer-destination .dropdown-box').hide();
+                        });
+
+                    } else {
+                        // Set destination field value to Coming Soon
+                        $('.destination-input').val('Coming Soon.');
+
+                        // Set destination field dropdown value to Coming Soon
+                        $('.destination-dropdown').append('<li label="Coming Soon" class="type">Coming Soon.</li>');
+
+                        // Temporarily disable the inquire button
+                        $('.transfer-button .inquire-button').attr("disabled", "disabled");
+                        $('.transfer-button .inquire-button').css({"background-color":"gray", "opacity":"0.3", "cursor":"not-allowed"});
+                    }
                 }
             }
         });
