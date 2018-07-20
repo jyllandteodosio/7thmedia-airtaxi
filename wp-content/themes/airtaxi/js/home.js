@@ -165,7 +165,8 @@ jQuery(function( $ ){
     
     // Function to update dropdown values based on selected airport origin
     function changeDestinations($airport) {
-        $url = '' + baseURL + '/wp-json/wp/v2/locations/?per_page=100';
+        // $url = '' + baseURL + '/wp-json/wp/v2/locations/?per_page=100&page=2';
+        $url = '' + baseURL + '/wp-json/wp/v2/locations/?per_page=200';
         $.ajax({
             url: $url,
             method: 'GET',
@@ -187,7 +188,7 @@ jQuery(function( $ ){
                     var child_terms = new Array();
                     var parent_terms = new Array();
                     var origin = new Array();
-                    
+
                     // Filter terms based on selected airport origin
                     $.each(data, function(key, post){
                         if(post.parent !== 0) {
@@ -203,6 +204,8 @@ jQuery(function( $ ){
                             parent_terms.push(post);
                         }
                     });
+
+                    // console.log(child_terms);
                     
                     // Add items to dropdown
                     if( child_terms != 0 ) {

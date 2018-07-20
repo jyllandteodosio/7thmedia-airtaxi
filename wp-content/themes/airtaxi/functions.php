@@ -239,5 +239,15 @@ function ikreativ_defer_scripts($url) {
 }
 add_filter( 'clean_url', 'ikreativ_defer_scripts', 11, 1 );
 
+//* Increase WP REST API per_page limit
+add_filter( 'rest_locations_collection_params', 'my_prefix_change_post_per_page', 10, 1 );
+function my_prefix_change_post_per_page( $params ) {
+    if ( isset( $params['per_page'] ) ) {
+        $params['per_page']['maximum'] = 200;
+    }
+
+    return $params;
+}
+
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 add_action( 'genesis_site_title', 'custom_header_attribute' );
