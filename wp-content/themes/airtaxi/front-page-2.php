@@ -56,6 +56,7 @@ function home_banner(){
 	get_template_part('part/part', 'home-banner');
 	get_template_part('part/part', 'home-destination');
 	get_template_part('part/part', 'home-transfers');
+    get_template_part('part/part', 'home-bridal');
 	get_template_part('part/part', 'home-membership');
 	get_template_part('part/part', 'home-videos');
 	get_template_part('part/part', 'home-call');

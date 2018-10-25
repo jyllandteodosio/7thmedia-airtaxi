@@ -1,4 +1,4 @@
-<?php if(get_field('membership_section_background') == 'Color'): ?>
+<?php if(get_field('membership_section_background') == 'color'): ?>
 
 <section id="<?php echo get_field('membership_section_id'); ?>" class="home-membership home-section section" style="background-color: <?php echo get_field('membership_section_background_color'); ?>');">
 

@@ -15,6 +15,28 @@ do_action( 'genesis_meta' );
 
 wp_head(); //* we need this for plugins
 ?>
+<style type="text/css">
+
+.page-template-page-membership #aircraft-fleet { background: #fff !important; }
+
+.page-template-page-membership .detail-capacity .dashicons {
+    font-size: 16px;
+    color: #333;
+    margin-top: 5px;
+    margin-left: -5px;
+}
+
+#wpsm-table-1 thead th:nth-child(2) .mperks-emerald-header { background-color: #397f55; }
+#wpsm-table-1 thead th:nth-child(2) { border: 2px solid #397f55 !important; }
+#wpsm-table-1 tbody tr:nth-child(-n+8) td:nth-child(2) {
+    border-left: 2px solid #397f55 !important;
+    border-right: 2px solid #397f55 !important;
+}
+#wpsm-table-1 tbody td:nth-child(2) .mperks-emerald { color: #397f55; }
+#wpsm-table-1 tbody tr:nth-child(8) td:nth-child(2) { border-bottom: 2px solid #397f55 !important; }
+</style>
+
+
 </head>
 <?php
 genesis_markup( array(

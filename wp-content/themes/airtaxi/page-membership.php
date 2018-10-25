@@ -10,8 +10,8 @@
 add_action( 'wp_enqueue_scripts', 'membership_enqueue_scripts_styles' );
 function membership_enqueue_scripts_styles() {
     
-    wp_enqueue_script( 'membership', get_bloginfo( 'stylesheet_directory' ) . '/js/membership.min.js', array( 'jquery' ), null );
-    
+    wp_enqueue_script( 'membership', get_bloginfo( 'stylesheet_directory' ) . '/js/membership.min.js', array( 'jquery' ), null, true );
+
     wp_enqueue_style( 'wpsm-comptable-styles' );
     wp_enqueue_style( 'dashicons', get_bloginfo( 'stylesheet_directory' ) . '/scss/dashicons.css', array(), null );
 }
@@ -54,5 +54,7 @@ if(have_rows('section')) : while(have_rows('section')) : the_row();
         </div>
 
 <?php endwhile; endif; ?>
+
+<?php get_template_part('part/part', 'home-fleet'); ?>
 
 <?php get_footer('custom'); ?>

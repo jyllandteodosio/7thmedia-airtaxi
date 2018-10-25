@@ -4227,6 +4227,33 @@ span.wpcf7-list-item {
             font-size: 14px;
         }
     }
+
+    .home-bridal {
+    	.flex-container {
+    		justify-content: center;
+    		margin: 48px auto 64px;
+    	}
+
+    	.flex-box {
+    		background-color: #fff;
+    		flex-basis: 26%;
+    		height: 100%;
+    		min-height: unset;
+    		padding: 0;
+    		margin: 0 32px;
+
+    		.package-name {
+    			font-size: 18px;
+    			color: #212121;
+    			margin: 10px 0 16px;
+    		}
+    	}
+
+    	.button {
+    		min-width: 200px;
+    		font-size: 16px;
+    	}
+    }
     
     .home-membership {
         background-attachment: fixed;
@@ -5482,6 +5509,218 @@ span.wpcf7-list-item {
     }
     
     // Day Tours Tab
+    .day-tours-wrap {
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
+        text-align: left;
+    }
+    
+    .destinations-box {
+        background-color: #fff;
+        box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
+        overflow: auto;
+        position: relative;
+        font-size: 14px;
+        height: auto;
+        min-height: 280px;
+        margin-bottom: 20px;
+        margin-left: 60px;
+        padding: 15px;
+        max-width: 80%;
+        min-width: 1100px;
+        
+        tbody,
+        td {
+            border: none;
+        }
+        
+        td {
+            padding: 0px;
+            vertical-align: top
+        }
+        
+        .itinerary-title {
+            padding: 10px 0px 2px;
+            width: 100%;
+            color: #4ec5cd;
+        }
+    }
+
+    .dest-container {
+        float: left;
+        text-align: left;
+    }
+
+    .destinations-box-title {
+        font-size: 24px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .destinations-box-description {
+        font-size: 16px;
+        padding: 10px 0px 15px;
+        
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .destinations-box-item {
+        display: inline-block;
+        background-color: #f3f3f3;
+        width: 32.56%;
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        
+        .item-capacity,
+        .item-price {
+            display: inline-block;
+        }
+        
+        .item-price {
+            float: right;
+        }
+        
+        .item-additional {
+            font-weight: 600;
+            text-align: right;
+            color: #4ec5cd;
+            font-size: 12px;
+        }
+        
+        .item-aircraft {
+            font-size: 12px;
+        }
+    }
+
+    .destinations-box-rates .destinations-box-item:nth-of-type(3) {
+        margin-right: 0;
+    }
+
+    .destinations-box-image {
+        height: auto;
+        text-align: center;
+        float: right;
+        
+        img {
+            max-width: 100%;
+            width: 300px;
+        }
+    }
+
+    .destination-box-notes {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 12px;
+        padding-top: 10px;
+    }
+
+    table.destinations-box-itinerary {
+        margin-bottom: 0px;
+        width: auto;
+        
+        .item-activity {
+            margin-left: 20px;
+            max-width: 600px;
+            
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    .no-rates-box {
+        padding: 40px 20px;
+        background-color: #ffffff;
+        font-size: 16px;
+        text-align: center;
+        min-height: 200px;
+    }
+}
+
+.page-template-page-bridal {
+	.content {
+		padding: 0;
+	}
+
+    // Section Styling
+    .section {
+        padding: 20px 40px;
+        text-align: center;
+    }
+    
+    .section-wrap {
+    	background-attachment: fixed;
+    	background-size: cover;
+    	background-position: center;
+        // max-width: 1366px;
+        margin: 0 auto;
+    }
+    
+    // Text Section
+    .text-container {
+        max-width: 90%;
+        margin: 20px auto 0px;
+    }
+    
+    .inner-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 48px;
+        font-weight: 300;
+        margin-bottom: 0px;
+    }
+
+    // Background
+    // .bridal-content {
+    // 	background-attachment: fixed;
+    // 	background-size: cover;
+    // 	background-position: center;
+    // }
+    
+    .bridal-content-wrap {
+        font-size: 14px;
+        max-width: 90%;
+        margin: auto;
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+    
+    // .bridal-content {
+    //     display: flex;
+    //     justify-content: space-evenly;
+    //     margin: 0;
+    //     margin-bottom: 30px;
+    //     padding: 10px;
+    //     background-color: #f3f3f3;
+    //     font-size: 12px;
+
+    //     p {
+    //         flex-basis: 50%;
+    //         text-align: left;
+    //         line-height: 2;
+    //         margin-bottom: 0;
+    //     }
+
+    //     table {
+    //         display: table-cell;
+    //         width: auto;
+    //         margin-bottom: 0;
+    //     }
+        
+    //     tbody, td {
+    //         border: none;
+    //         padding: 0;
+    //     }
+        
+    //     td, th {
+    //         padding: 0 8px;
+    //     }
+    // }
+    
+    // Bridal Packages
     .day-tours-wrap {
         max-width: 90%;
         margin: auto;
