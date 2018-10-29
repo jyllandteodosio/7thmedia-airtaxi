@@ -4048,6 +4048,10 @@ div.mrates-diamond-header {
   padding: 0;
   margin: 0 32px;
 }
+.page-template-front-page-2 .home-bridal .flex-box img,
+.page-template-page-rates .home-bridal .flex-box img {
+  width: 100%;
+}
 .page-template-front-page-2 .home-bridal .flex-box .package-name,
 .page-template-page-rates .home-bridal .flex-box .package-name {
   font-size: 18px;
@@ -5369,9 +5373,16 @@ div.mrates-diamond-header {
   background-position: center;
   margin: 0 auto;
 }
+.page-template-page-bridal .bridal-content {
+  padding: 0;
+}
+.page-template-page-bridal .bridal-wrap {
+  background: rgba(78, 197, 205, 0.4);
+  padding: 30px 40px;
+}
 .page-template-page-bridal .text-container {
   max-width: 90%;
-  margin: 20px auto 0px;
+  margin: 20px auto;
 }
 .page-template-page-bridal .inner-title {
   font-family: "Lato", sans-serif;
@@ -5379,20 +5390,7 @@ div.mrates-diamond-header {
   font-weight: 300;
   margin-bottom: 0px;
 }
-.page-template-page-bridal .bridal-content-wrap {
-  font-size: 14px;
-  max-width: 90%;
-  margin: auto;
-  padding: 0 15px;
-  margin-top: 30px;
-}
-.page-template-page-bridal .day-tours-wrap {
-  max-width: 90%;
-  margin: auto;
-  padding: 0 15px;
-  text-align: left;
-}
-.page-template-page-bridal .destinations-box {
+.page-template-page-bridal .bridal-box {
   background-color: #fff;
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.12);
   overflow: auto;
@@ -5400,42 +5398,40 @@ div.mrates-diamond-header {
   font-size: 14px;
   height: auto;
   min-height: 280px;
-  margin-bottom: 20px;
-  margin-left: 60px;
+  margin: 10px auto 20px;
   padding: 15px;
-  max-width: 80%;
-  min-width: 1100px;
+  max-width: 60%;
+  min-width: 900px;
 }
-.page-template-page-bridal .destinations-box tbody,
-.page-template-page-bridal .destinations-box td {
+.page-template-page-bridal .bridal-box tbody,
+.page-template-page-bridal .bridal-box td {
   border: none;
 }
-.page-template-page-bridal .destinations-box td {
+.page-template-page-bridal .bridal-box td {
   padding: 0px;
   vertical-align: top;
 }
-.page-template-page-bridal .destinations-box .itinerary-title {
+.page-template-page-bridal .bridal-box .itinerary-title {
   padding: 10px 0px 2px;
   width: 100%;
   color: #4ec5cd;
 }
-.page-template-page-bridal .dest-container {
-  float: left;
+.page-template-page-bridal .box-text {
   text-align: left;
 }
-.page-template-page-bridal .destinations-box-title {
+.page-template-page-bridal .box-title {
   font-size: 24px;
   line-height: 1;
   text-transform: uppercase;
 }
-.page-template-page-bridal .destinations-box-description {
+.page-template-page-bridal .box-description {
   font-size: 16px;
   padding: 10px 0px 15px;
 }
-.page-template-page-bridal .destinations-box-description p {
+.page-template-page-bridal .box-description p {
   margin-bottom: 0;
 }
-.page-template-page-bridal .destinations-box-item {
+.page-template-page-bridal .box-item {
   display: inline-block;
   background-color: #f3f3f3;
   width: 32.56%;
@@ -5443,49 +5439,53 @@ div.mrates-diamond-header {
   margin-bottom: 10px;
   margin-right: 10px;
 }
-.page-template-page-bridal .destinations-box-item .item-capacity,
-.page-template-page-bridal .destinations-box-item .item-price {
+.page-template-page-bridal .box-item .item-capacity,
+.page-template-page-bridal .box-item .item-price {
   display: inline-block;
 }
-.page-template-page-bridal .destinations-box-item .item-price {
+.page-template-page-bridal .box-item .item-price {
   float: right;
 }
-.page-template-page-bridal .destinations-box-item .item-additional {
+.page-template-page-bridal .box-item .item-additional {
   font-weight: 600;
   text-align: right;
   color: #4ec5cd;
   font-size: 12px;
 }
-.page-template-page-bridal .destinations-box-item .item-aircraft {
+.page-template-page-bridal .box-item .item-aircraft {
   font-size: 12px;
 }
-.page-template-page-bridal .destinations-box-rates .destinations-box-item:nth-of-type(3) {
+.page-template-page-bridal .box-rates .box-item:nth-of-type(3) {
   margin-right: 0;
 }
-.page-template-page-bridal .destinations-box-image {
+.page-template-page-bridal .bridal-box-image {
   height: auto;
   text-align: center;
   float: right;
 }
-.page-template-page-bridal .destinations-box-image img {
+.page-template-page-bridal .bridal-box-image img {
   max-width: 100%;
   width: 300px;
 }
-.page-template-page-bridal .destination-box-notes {
+.page-template-page-bridal .box-notes {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
   padding-top: 10px;
 }
-.page-template-page-bridal table.destinations-box-itinerary {
+.page-template-page-bridal .tour-container {
+  float: left;
+  text-align: left;
+}
+.page-template-page-bridal table.box-itinerary {
   margin-bottom: 0px;
   width: auto;
 }
-.page-template-page-bridal table.destinations-box-itinerary .item-activity {
+.page-template-page-bridal table.box-itinerary .item-activity {
   margin-left: 20px;
   max-width: 600px;
 }
-.page-template-page-bridal table.destinations-box-itinerary .item-activity p {
+.page-template-page-bridal table.box-itinerary .item-activity p {
   margin-bottom: 0;
 }
 .page-template-page-bridal .no-rates-box {
@@ -5494,6 +5494,58 @@ div.mrates-diamond-header {
   font-size: 16px;
   text-align: center;
   min-height: 200px;
+}
+.page-template-page-bridal .bridal-rates .section-wrap {
+  padding-bottom: 60px;
+}
+.page-template-page-bridal .bridal-rates .inner-title {
+  color: #4ec5cd;
+  margin: 16px auto;
+}
+.page-template-page-bridal .bridal-rates .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: auto;
+}
+.page-template-page-bridal .bridal-rates .box-rate {
+  flex-grow: 1;
+  flex-basis: 25%;
+  background-color: #f3f3f3;
+  border-bottom: 4px solid #4ec5cd;
+  margin: 16px 8px 6px;
+}
+.page-template-page-bridal .bridal-rates .box-rate table {
+  margin: 0;
+}
+.page-template-page-bridal .bridal-rates .box-rate table tbody, .page-template-page-bridal .bridal-rates .box-rate table td {
+  border: 0;
+  padding: 0;
+}
+.page-template-page-bridal .bridal-rates .box-rate table tr td:last-child {
+  text-align: right;
+}
+.page-template-page-bridal .bridal-rates .box-rate .box-text {
+  text-align: center;
+  padding: 22px;
+}
+.page-template-page-bridal .bridal-rates .box-rate .title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0;
+}
+.page-template-page-bridal .bridal-rates .box-rate .title.divider::after {
+  content: "";
+  display: block;
+  background: #c9c9c9;
+  width: 57px;
+  height: 2px;
+  margin: 20px auto 12px;
+}
+.page-template-page-bridal .bridal-rates .box-rate .price {
+  font-size: 16px;
 }
 
 .map-hover {
@@ -5654,6 +5706,10 @@ footer .footer-white:hover {
 .page-template-page-rates .home-transfers .dropdown-box {
     max-width: 400px;
   }
+  .page-template-front-page-2 .home-bridal .flex-box,
+.page-template-page-rates .home-bridal .flex-box {
+    margin: 0 16px;
+  }
   .page-template-front-page-2 .home-fleet .flex-box,
 .page-template-page-rates .home-fleet .flex-box {
     flex: 1;
@@ -5720,6 +5776,18 @@ footer .footer-white:hover {
     text-align: left;
     display: block;
   }
+
+  .page-template-page-bridal .bridal-box {
+    max-width: 85%;
+    min-width: unset;
+  }
+  .page-template-page-bridal .box-text {
+    text-align: center;
+  }
+  .page-template-page-bridal .box-item {
+    width: 100%;
+    text-align: left;
+  }
 }
 @media only screen and (max-width: 768px) {
   .page-template-front-page-2 .home-section .flex-container,
@@ -5773,6 +5841,15 @@ footer .footer-white:hover {
   .page-template-front-page-2 .home-transfers .airport-transfers-section .airport-transfer-search,
 .page-template-page-rates .home-transfers .airport-transfers-section .airport-transfer-search {
     display: block;
+  }
+  .page-template-front-page-2 .home-bridal .flex-container,
+.page-template-page-rates .home-bridal .flex-container {
+    display: block;
+    max-width: 350px;
+  }
+  .page-template-front-page-2 .home-bridal .flex-container .flex-box,
+.page-template-page-rates .home-bridal .flex-container .flex-box {
+    margin: 0 auto 20px;
   }
   .page-template-front-page-2 .home-videos .flex-box,
 .page-template-page-rates .home-videos .flex-box {
@@ -5912,6 +5989,14 @@ footer .footer-white:hover {
     font-size: 14px;
   }
 
+  .page-template-page-bridal .bridal-box-image {
+    float: unset;
+  }
+  .page-template-page-bridal .bridal-box-image img {
+    width: 100%;
+    margin-top: 20px;
+  }
+
   footer .footer-logo-wrap {
     flex-basis: 30%;
   }
@@ -5923,6 +6008,17 @@ footer .footer-white:hover {
   .page-template-front-page-2 .home-membership .video-box {
     max-width: 426px;
     height: 240px;
+  }
+
+  .page-template-page-bridal .bridal-rates .box-container {
+    display: block;
+    max-width: 95%;
+  }
+  .page-template-page-bridal .bridal-rates .box-rate {
+    margin-bottom: 20px;
+  }
+  .page-template-page-bridal .bridal-rates .box-rate img {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 713px) {
@@ -5948,6 +6044,10 @@ footer .footer-white:hover {
     flex-basis: 100%;
     margin: 0 auto 20px;
     max-width: 300px;
+  }
+
+  .page-template-page-bridal .bridal-rates .box-rate table {
+    font-size: 13px;
   }
 }
 @media only screen and (max-width: 425px) {

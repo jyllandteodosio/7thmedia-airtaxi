@@ -35,7 +35,8 @@ remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action('genesis_loop', 'bridal_content');
 function bridal_content(){
     echo '<div class="sections">';
-	get_template_part('part/part', 'rates-bridal');
+	get_template_part('part/part', 'bridal-packages');
+    get_template_part('part/part', 'bridal-rates');
     get_footer('custom');
     echo '</div>';
 }

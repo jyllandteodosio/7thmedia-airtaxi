@@ -4242,6 +4242,10 @@ span.wpcf7-list-item {
     		padding: 0;
     		margin: 0 32px;
 
+    		img {
+    			width: 100%;
+    		}
+
     		.package-name {
     			font-size: 18px;
     			color: #212121;
@@ -5652,18 +5656,27 @@ span.wpcf7-list-item {
         text-align: center;
     }
     
+    // Background
     .section-wrap {
     	background-attachment: fixed;
     	background-size: cover;
     	background-position: center;
-        // max-width: 1366px;
         margin: 0 auto;
+    }
+
+    .bridal-content {
+    	padding: 0;
+    }
+
+    .bridal-wrap {
+    	background: rgba(78, 197, 205, 0.4);
+    	padding: 30px 40px;
     }
     
     // Text Section
     .text-container {
         max-width: 90%;
-        margin: 20px auto 0px;
+        margin: 20px auto;
     }
     
     .inner-title {
@@ -5672,63 +5685,9 @@ span.wpcf7-list-item {
         font-weight: 300;
         margin-bottom: 0px;
     }
-
-    // Background
-    // .bridal-content {
-    // 	background-attachment: fixed;
-    // 	background-size: cover;
-    // 	background-position: center;
-    // }
     
-    .bridal-content-wrap {
-        font-size: 14px;
-        max-width: 90%;
-        margin: auto;
-        padding: 0 15px;
-        margin-top: 30px;
-    }
-    
-    // .bridal-content {
-    //     display: flex;
-    //     justify-content: space-evenly;
-    //     margin: 0;
-    //     margin-bottom: 30px;
-    //     padding: 10px;
-    //     background-color: #f3f3f3;
-    //     font-size: 12px;
-
-    //     p {
-    //         flex-basis: 50%;
-    //         text-align: left;
-    //         line-height: 2;
-    //         margin-bottom: 0;
-    //     }
-
-    //     table {
-    //         display: table-cell;
-    //         width: auto;
-    //         margin-bottom: 0;
-    //     }
-        
-    //     tbody, td {
-    //         border: none;
-    //         padding: 0;
-    //     }
-        
-    //     td, th {
-    //         padding: 0 8px;
-    //     }
-    // }
-    
-    // Bridal Packages
-    .day-tours-wrap {
-        max-width: 90%;
-        margin: auto;
-        padding: 0 15px;
-        text-align: left;
-    }
-    
-    .destinations-box {
+    // Bridal Packages    
+    .bridal-box {
         background-color: #fff;
         box-shadow: 1px 1px 3px 0px rgba(0,0,0,.12);
         overflow: auto;
@@ -5736,11 +5695,10 @@ span.wpcf7-list-item {
         font-size: 14px;
         height: auto;
         min-height: 280px;
-        margin-bottom: 20px;
-        margin-left: 60px;
+        margin: 10px auto 20px;
         padding: 15px;
-        max-width: 80%;
-        min-width: 1100px;
+        max-width: 60%;
+        min-width: 900px;
         
         tbody,
         td {
@@ -5759,18 +5717,17 @@ span.wpcf7-list-item {
         }
     }
 
-    .dest-container {
-        float: left;
-        text-align: left;
+    .box-text {
+    	text-align: left;
     }
 
-    .destinations-box-title {
+    .box-title {
         font-size: 24px;
         line-height: 1;
         text-transform: uppercase;
     }
 
-    .destinations-box-description {
+    .box-description {
         font-size: 16px;
         padding: 10px 0px 15px;
         
@@ -5779,7 +5736,7 @@ span.wpcf7-list-item {
         }
     }
 
-    .destinations-box-item {
+    .box-item {
         display: inline-block;
         background-color: #f3f3f3;
         width: 32.56%;
@@ -5808,11 +5765,11 @@ span.wpcf7-list-item {
         }
     }
 
-    .destinations-box-rates .destinations-box-item:nth-of-type(3) {
+    .box-rates .box-item:nth-of-type(3) {
         margin-right: 0;
     }
 
-    .destinations-box-image {
+    .bridal-box-image {
         height: auto;
         text-align: center;
         float: right;
@@ -5823,14 +5780,19 @@ span.wpcf7-list-item {
         }
     }
 
-    .destination-box-notes {
+    .box-notes {
         text-transform: uppercase;
         font-weight: 600;
         font-size: 12px;
         padding-top: 10px;
     }
 
-    table.destinations-box-itinerary {
+    .tour-container {
+    	float: left;
+    	text-align: left;
+    }
+
+    table.box-itinerary {
         margin-bottom: 0px;
         width: auto;
         
@@ -5850,6 +5812,72 @@ span.wpcf7-list-item {
         font-size: 16px;
         text-align: center;
         min-height: 200px;
+    }
+
+    // Bridal Rates
+    .bridal-rates {
+    	.section-wrap {
+    		padding-bottom: 60px;
+    	}
+
+    	.inner-title {
+	    	color: #4ec5cd;
+	    	margin: 16px auto;
+	    }
+
+	    .box-container {
+	    	display: flex;
+	    	flex-wrap: wrap;
+	    	max-width: 900px;
+	    	margin: auto;
+	    }
+    
+    	.box-rate {
+    		flex-grow: 1;
+    		flex-basis: 25%;
+	    	background-color: #f3f3f3;
+	    	border-bottom: 4px solid #4ec5cd;
+	    	margin: 16px 8px 6px;
+
+	    	table {
+	    		margin: 0;
+
+	    		tbody, td {
+	    			border: 0;
+	    			padding: 0;
+	    		}
+
+	    		tr td:last-child {
+	    			text-align: right;
+	    		}
+	    	}
+
+	    	.box-text {
+	    		text-align: center;
+	    		padding: 22px;
+	    	}
+
+	    	.title {
+	    		font-size: 20px;
+	    		font-weight: 600;
+	    		color: #000;
+	    		text-transform: uppercase;
+	    		margin: 0;
+
+	    		&.divider::after {
+				    content: "";
+				    display: block;
+				    background: #c9c9c9;
+				    width: 57px;
+				    height: 2px;
+				    margin: 20px auto 12px;
+	    		}
+	    	}
+
+	    	.price {
+	    		font-size: 16px;
+	    	}
+	    }
     }
 }
 
@@ -6039,6 +6067,12 @@ footer {
                 max-width: 400px;
             }
         }
+
+        .home-bridal {
+        	.flex-box {
+        		margin: 0 16px;
+        	}
+        }
         
         .home-fleet .flex-box {
             flex: 1;
@@ -6122,6 +6156,22 @@ footer {
             display: block;
         }
     }
+
+    .page-template-page-bridal {
+    	.bridal-box {
+    		max-width: 85%;
+    		min-width: unset;
+    	}
+
+    	.box-text {
+		    text-align: center;
+		}
+
+		.box-item {
+			width: 100%;
+			text-align: left;
+		}
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -6188,6 +6238,17 @@ footer {
                     display: block;
                 }
             }
+        }
+
+        .home-bridal {
+        	.flex-container {
+        		display: block;
+        		max-width: 350px;
+
+        		.flex-box {
+        			margin: 0 auto 20px;
+        		}
+        	}
         }
         
         .home-videos {
@@ -6355,6 +6416,17 @@ footer {
             font-size: 14px;
         }
     }
+
+    .page-template-page-bridal {
+    	.bridal-box-image {
+    		float: unset;
+
+    		img {
+	    		width: 100%;
+	    		margin-top: 20px;
+	    	}
+    	}
+    }
     
     footer {
         .footer-logo-wrap {
@@ -6375,7 +6447,24 @@ footer {
                 height: 240px;
             }
         }
-    }    
+    }   
+
+    .page-template-page-bridal {
+    	.bridal-rates {
+    		.box-container {
+    			display: block;
+    			max-width: 95%;
+    		}
+
+    		.box-rate {
+    			margin-bottom: 20px;
+
+    			img {
+	    			width: 100%;
+	    		}
+    		}
+    	}
+    } 
 }
 
 @media only screen and (max-width: 713px) {
@@ -6412,6 +6501,12 @@ footer {
             margin: 0 auto 20px;
             max-width: 300px;
         }
+    }
+
+    .page-template-page-bridal {
+    	.bridal-rates .box-rate table {
+    		font-size: 13px;
+    	}
     }
 }
 
