@@ -122,25 +122,27 @@ jQuery(function( $ ){
     //* Callback function for offset scroll on day trip boxes (tablet)
     function scrollRates() {
 //        if(screenWidth <= 1024) {
-            if(destinationID) {
+        if(destinationID) {
 
-                var offset = 120;
-                if(screenWidth <= 425) {
-                    offset = 80;
-                }
-                
-                console.log('offset: '+offset);
-
-                $('html, body').animate({
-                    scrollTop: $('#'+destinationID).offset().top-offset
-                }, 1000);
+            var offset = 120;
+            if(screenWidth <= 425) {
+                offset = 80;
             }
+            
+            console.log('offset: '+offset);
+
+            $('html, body').animate({
+                scrollTop: $('#'+destinationID).offset().top-offset
+            }, 1000);
+        }
 //        }
     }
     
     //* If tab parameter exists, call tabClick function to set active tab
     if(tab) {
         tabClick(scrollRates);
+    } else {
+        scrollRates();
     }
     
     //* Initialize slick slider for aerial tours tab

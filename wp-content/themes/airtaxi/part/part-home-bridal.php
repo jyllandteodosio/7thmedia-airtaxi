@@ -1,10 +1,10 @@
 <?php if(get_field('bridal_section_background') == 'color'): ?>
 
-<section id="<?php echo get_field('bridal_section_id'); ?>" class="home-bridal home-section section" style="background-color: <?php echo get_field('bridal_section_background_color'); ?>');">
+<section id="<?php echo get_field('bridal_packages_section_id'); ?>" class="home-bridal home-section section" style="background-color: <?php echo get_field('bridal_section_background_color'); ?>');">
 
 <?php else: ?>
 
-<section id="<?php echo get_field('bridal_section_id'); ?>" class="home-bridal home-section section" style="background-image: url('<?php echo get_field('bridal_section_background_image'); ?>');">
+<section id="<?php echo get_field('bridal_packages_section_id'); ?>" class="home-bridal home-section section" style="background-image: url('<?php echo get_field('bridal_section_background_image'); ?>');">
 
 <?php endif; ?>
    
