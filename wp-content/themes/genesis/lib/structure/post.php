@@ -7,8 +7,8 @@
  *
  * @package Genesis\Entry
  * @author  StudioPress
- * @license GPL-2.0+
- * @link    http://my.studiopress.com/themes/genesis/
+ * @license GPL-2.0-or-later
+ * @link    https://my.studiopress.com/themes/genesis/
  */
 
 /**
@@ -21,7 +21,7 @@
  *
  * @since 1.5.0
  *
- * @global array $_genesis_loop_args Associative array for grid loop configuration
+ * @global array $_genesis_loop_args Associative array for grid loop configuration.
  */
 function genesis_reset_loops() {
 
@@ -45,17 +45,6 @@ function genesis_reset_loops() {
 	add_action( 'genesis_after_entry', 'genesis_adjacent_entry_nav' );
 	add_action( 'genesis_after_entry', 'genesis_get_comments_template' );
 
-	// Pre-HTML5 hooks.
-	add_action( 'genesis_before_post_title', 'genesis_do_post_format_image' );
-	add_action( 'genesis_post_title', 'genesis_do_post_title' );
-	add_action( 'genesis_post_content', 'genesis_do_post_image' );
-	add_action( 'genesis_post_content', 'genesis_do_post_content' );
-	add_action( 'genesis_post_content', 'genesis_do_post_permalink' );
-	add_action( 'genesis_post_content', 'genesis_do_post_content_nav' );
-	add_action( 'genesis_before_post_content', 'genesis_post_info' );
-	add_action( 'genesis_after_post_content', 'genesis_post_meta' );
-	add_action( 'genesis_after_post', 'genesis_do_author_box_single' );
-
 	// Other.
 	add_action( 'genesis_loop_else', 'genesis_do_noposts' );
 	add_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
@@ -64,6 +53,11 @@ function genesis_reset_loops() {
 	global $_genesis_loop_args;
 	$_genesis_loop_args = array();
 
+	/**
+	 * Fires after resetting the loop actions back to their defaults.
+	 *
+	 * @since 1.6.0
+	 */
 	do_action( 'genesis_reset_loops' );
 
 }
@@ -85,11 +79,7 @@ function genesis_entry_post_class( $classes ) {
 
 	// Add "entry" to the post class array.
 	$classes[] = 'entry';
-
-	// Remove "hentry" from post class array, if HTML5.
-	if ( genesis_html5() ) {
-		$classes = array_diff( $classes, array( 'hentry' ) );
-	}
+	$classes   = array_diff( $classes, array( 'hentry' ) );
 
 	return $classes;
 
@@ -137,7 +127,7 @@ function genesis_featured_image_post_class( $classes ) {
 
 	$image = genesis_get_image();
 
-	if ( $image && ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) && ! in_array( 'has-post-thumbnail', $classes ) ) {
+	if ( $image && ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) && ! in_array( 'has-post-thumbnail', $classes, true ) ) {
 		$classes[] = 'has-post-thumbnail';
 	}
 
@@ -146,7 +136,6 @@ function genesis_featured_image_post_class( $classes ) {
 }
 
 add_action( 'genesis_entry_header', 'genesis_do_post_format_image', 4 );
-add_action( 'genesis_before_post_title', 'genesis_do_post_format_image' );
 /**
  * Add a post format icon.
  *
@@ -166,14 +155,12 @@ function genesis_do_post_format_image() {
 	// Get post format.
 	$post_format = get_post_format();
 
-	// If post format is set, look for post format image.
 	if ( $post_format && file_exists( sprintf( '%s/images/post-formats/%s.png', CHILD_DIR, $post_format ) ) ) {
-		printf( '<a href="%s" rel="bookmark"><img src="%s" class="post-format-image" alt="%s" /></a>', get_permalink(), sprintf( '%s/images/post-formats/%s.png', CHILD_URL, $post_format ), $post_format );
-	}
-
-	// Else, look for the default post format image.
-	elseif ( file_exists( sprintf( '%s/images/post-formats/default.png', CHILD_DIR ) ) ) {
-		printf( '<a href="%s" rel="bookmark"><img src="%s/images/post-formats/default.png" class="post-format-image" alt="%s" /></a>', get_permalink(), CHILD_URL, 'post' );
+		// If post format is set, look for post format image.
+		printf( '<a href="%s" rel="bookmark"><img src="%s" class="post-format-image" alt="%s" /></a>', esc_url( get_permalink() ), sprintf( '%s/images/post-formats/%s.png', esc_url( CHILD_URL ), esc_html( $post_format ) ), esc_html( $post_format ) );
+	} elseif ( file_exists( sprintf( '%s/images/post-formats/default.png', CHILD_DIR ) ) ) {
+		// Else, look for the default post format image.
+		printf( '<a href="%s" rel="bookmark"><img src="%s/images/post-formats/default.png" class="post-format-image" alt="%s" /></a>', esc_url( get_permalink() ), esc_url( CHILD_URL ), 'post' );
 	}
 
 }
@@ -199,7 +186,6 @@ function genesis_entry_header_markup_close() {
 }
 
 add_action( 'genesis_entry_header', 'genesis_do_post_title' );
-add_action( 'genesis_post_title', 'genesis_do_post_title' );
 /**
  * Echo the title of a post.
  *
@@ -208,29 +194,37 @@ add_action( 'genesis_post_title', 'genesis_do_post_title' );
  *
  * @since 1.1.0
  *
- * @return void Return early if the length of the title string is zero.
+ * @return void Return early if the filtered trimmed title is an empty string.
  */
 function genesis_do_post_title() {
 
 	$title = apply_filters( 'genesis_post_title_text', get_the_title() );
 
-	if ( 0 === mb_strlen( $title ) ) {
+	if ( '' === trim( $title ) ) {
 		return;
 	}
 
 	// Link it, if necessary.
-	if ( ! is_singular() && apply_filters( 'genesis_link_post_title', true ) ){
-		$title = sprintf( '<a href="%s" rel="bookmark">%s</a>', get_permalink(), $title );
+	if ( ! is_singular() && apply_filters( 'genesis_link_post_title', true ) ) {
+		$title = genesis_markup(
+			array(
+				'open'    => '<a %s>',
+				'close'   => '</a>',
+				'content' => $title,
+				'context' => 'entry-title-link',
+				'echo'    => false,
+			)
+		);
 	}
 
 	// Wrap in H1 on singular pages.
 	$wrap = is_singular() ? 'h1' : 'h2';
 
 	// Also, if HTML5 with semantic headings, wrap in H1.
-	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h1' : $wrap;
+	$wrap = genesis_get_seo_option( 'semantic_headings' ) ? 'h1' : $wrap;
 
 	/**
-	 * Entry title wrapping element
+	 * Entry title wrapping element.
 	 *
 	 * The wrapping element for the entry title.
 	 *
@@ -241,24 +235,25 @@ function genesis_do_post_title() {
 	$wrap = apply_filters( 'genesis_entry_title_wrap', $wrap );
 
 	// Build the output.
-	$output = genesis_markup( array(
-		'open'    => "<{$wrap} %s>",
-		'close'   => "</{$wrap}>",
-		'content' => $title,
-		'context' => 'entry-title',
-		'params'  => array(
-			'wrap'  => $wrap,
-		),
-		'echo'    => false,
-	) );
+	$output = genesis_markup(
+		array(
+			'open'    => "<{$wrap} %s>",
+			'close'   => "</{$wrap}>",
+			'content' => $title,
+			'context' => 'entry-title',
+			'params'  => array(
+				'wrap' => $wrap,
+			),
+			'echo'    => false,
+		)
+	);
 
-	echo apply_filters( 'genesis_post_title_output', $output, $wrap, $title ) . "\n";
+	echo apply_filters( 'genesis_post_title_output', $output, $wrap, $title ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- title output is left unescaped to accommodate trusted user input. See https://codex.wordpress.org/Function_Reference/the_title#Security_considerations.
 
 }
 
 add_filter( 'genesis_post_info', 'do_shortcode', 20 );
 add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-add_action( 'genesis_before_post_content', 'genesis_post_info' );
 /**
  * Echo the post info (byline) under the post title.
  *
@@ -267,7 +262,7 @@ add_action( 'genesis_before_post_content', 'genesis_post_info' );
  * The post info makes use of several shortcodes by default, and the whole output
  * is filtered via `genesis_post_info` before echoing.
  *
- * @since 0.2.3
+ * @since 1.0.0
  *
  * @return void Return early if post type lacks support for `genesis-entry-meta-before-content`.
  */
@@ -279,21 +274,22 @@ function genesis_post_info() {
 
 	$filtered = apply_filters( 'genesis_post_info', '[post_date] ' . __( 'by', 'genesis' ) . ' [post_author_posts_link] [post_comments] [post_edit]' );
 
-	if ( false == trim( $filtered ) ) {
+	if ( false === trim( $filtered ) ) {
 		return;
 	}
 
-	genesis_markup( array(
-		'open'    => '<p %s>',
-		'close'   => '</p>',
-		'content' => genesis_strip_p_tags( $filtered ),
-		'context' => 'entry-meta-before-content',
-	) );
+	genesis_markup(
+		array(
+			'open'    => '<p %s>',
+			'close'   => '</p>',
+			'content' => genesis_strip_p_tags( $filtered ),
+			'context' => 'entry-meta-before-content',
+		)
+	);
 
 }
 
 add_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
-add_action( 'genesis_post_content', 'genesis_do_post_image' );
 /**
  * Echo the post image on archive pages.
  *
@@ -305,31 +301,30 @@ add_action( 'genesis_post_content', 'genesis_do_post_image' );
 function genesis_do_post_image() {
 
 	if ( ! is_singular() && genesis_get_option( 'content_archive_thumbnail' ) ) {
-
-		$img = genesis_get_image( array(
-			'format'  => 'html',
-			'size'    => genesis_get_option( 'image_size' ),
-			'context' => 'archive',
-			'attr'    => genesis_parse_attr( 'entry-image', array ( 'alt' => get_the_title() ) ),
-		) );
+		$img = genesis_get_image(
+			array(
+				'format'  => 'html',
+				'size'    => genesis_get_option( 'image_size' ),
+				'context' => 'archive',
+				'attr'    => genesis_parse_attr( 'entry-image', array() ),
+			)
+		);
 
 		if ( ! empty( $img ) ) {
-
-			genesis_markup( array(
- 				'open'    => '<a %s>',
- 				'close'   => '</a>',
- 				'content' => wp_make_content_images_responsive( $img ),
- 				'context' => 'entry-image-link'
- 			));
-
- 		}
-
+			genesis_markup(
+				array(
+					'open'    => '<a %s>',
+					'close'   => '</a>',
+					'content' => wp_make_content_images_responsive( $img ),
+					'context' => 'entry-image-link',
+				)
+			);
+		}
 	}
 
 }
 
 add_action( 'genesis_entry_content', 'genesis_do_post_content' );
-add_action( 'genesis_post_content', 'genesis_do_post_content' );
 /**
  * Echo the post content.
  *
@@ -356,22 +351,33 @@ function genesis_do_post_content() {
 		if ( is_page() && apply_filters( 'genesis_edit_post_link', true ) ) {
 			edit_post_link( __( '(Edit)', 'genesis' ), '', '' );
 		}
-	}
-	elseif ( 'excerpts' === genesis_get_option( 'content_archive' ) ) {
-		the_excerpt();
-	}
-	else {
-		if ( genesis_get_option( 'content_archive_limit' ) ) {
-			the_content_limit( (int) genesis_get_option( 'content_archive_limit' ), genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
-		} else {
-			the_content( genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
-		}
+
+		return;
 	}
 
+	if ( 'excerpts' === genesis_get_option( 'content_archive' ) ) {
+		the_excerpt();
+		return;
+	}
+
+	/**
+	 * Filters the more text used with the_content_limit() and the_content.
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param string $more_text The more text after going through genesis_a11y_more_link().
+	 */
+	$more_text = apply_filters( 'genesis_more_text', genesis_a11y_more_link( __( '[Read more...]', 'genesis' ) ) );
+
+	if ( genesis_get_option( 'content_archive_limit' ) ) {
+		the_content_limit( (int) genesis_get_option( 'content_archive_limit' ), $more_text );
+		return;
+	}
+
+	the_content( $more_text );
 }
 
 add_action( 'genesis_entry_content', 'genesis_do_post_content_nav', 12 );
-add_action( 'genesis_post_content', 'genesis_do_post_content_nav' );
 /**
  * Display page links for paginated posts (i.e. includes the <!--nextpage--> Quicktag one or more times).
  *
@@ -379,24 +385,29 @@ add_action( 'genesis_post_content', 'genesis_do_post_content_nav' );
  */
 function genesis_do_post_content_nav() {
 
-	wp_link_pages( array(
-		'before'      => genesis_markup( array(
-				'open'    => '<div %s>',
-				'context' => 'entry-pagination',
-				'echo'    => false,
-			) ) . __( 'Pages:', 'genesis' ),
-		'after'       => genesis_markup( array(
-				'close'    => '</div>',
-				'context' => 'entry-pagination',
-				'echo'    => false,
-			) ),
-		'link_before' => genesis_a11y( 'screen-reader-text' ) ? '<span class="screen-reader-text">' . __( 'Page ', 'genesis' ) .  '</span>' : '',
-	) );
+	wp_link_pages(
+		array(
+			'before'      => genesis_markup(
+				array(
+					'open'    => '<div %s>',
+					'context' => 'entry-pagination',
+					'echo'    => false,
+				)
+			) . __( 'Pages:', 'genesis' ),
+			'after'       => genesis_markup(
+				array(
+					'close'   => '</div>',
+					'context' => 'entry-pagination',
+					'echo'    => false,
+				)
+			),
+			'link_before' => genesis_a11y( 'screen-reader-text' ) ? '<span class="screen-reader-text">' . __( 'Page ', 'genesis' ) . '</span>' : '',
+		)
+	);
 
 }
 
 add_action( 'genesis_entry_content', 'genesis_do_post_permalink', 14 );
-add_action( 'genesis_post_content', 'genesis_do_post_permalink' );
 /**
  * Show permalink if no title.
  *
@@ -415,7 +426,26 @@ function genesis_do_post_permalink() {
 
 	$permalink = get_permalink();
 
-	echo apply_filters( 'genesis_post_permalink', sprintf( '<p class="entry-permalink"><a href="%s" rel="bookmark">%s</a></p>', esc_url( $permalink ), esc_html( $permalink ) ) );
+	$output = wp_kses_post(
+		sprintf(
+			'<p class="entry-permalink"><a href="%s" rel="bookmark">%s</a></p>',
+			esc_url( $permalink ),
+			esc_html( $permalink )
+		)
+	);
+
+	/**
+	 * Entry permalink filter.
+	 *
+	 * Allows you to filter the entry permalink.
+	 *
+	 * @since ???
+	 *
+	 * @param string $output Assembled permalink.
+	 */
+	$output = apply_filters( 'genesis_post_permalink', $output );
+
+	echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitize done prior to filter application
 
 }
 
@@ -463,16 +493,15 @@ function genesis_entry_footer_markup_close() {
 
 add_filter( 'genesis_post_meta', 'do_shortcode', 20 );
 add_action( 'genesis_entry_footer', 'genesis_post_meta' );
-add_action( 'genesis_after_post_content', 'genesis_post_meta' );
 /**
  * Echo the post meta after the post content.
  *
- * By default, only does post meta on posts.
+ * By default, does post meta on all public post types except page.
  *
  * The post info makes use of a couple of shortcodes by default, and the whole output is filtered via
  * `genesis_post_meta` before echoing.
  *
- * @since 0.2.3
+ * @since 1.0.0
  *
  * @return void Return early if post type lacks support for `genesis-entry-meta-after-content`.
  */
@@ -484,21 +513,22 @@ function genesis_post_meta() {
 
 	$filtered = apply_filters( 'genesis_post_meta', '[post_categories] [post_tags]' );
 
-	if ( false == trim( $filtered ) ) {
+	if ( false === trim( $filtered ) ) {
 		return;
 	}
 
-	$output = genesis_markup( array(
-		'open'    => '<p %s>',
-		'close'   => '</p>',
-		'content' => genesis_strip_p_tags( $filtered ),
-		'context' => 'entry-meta-after-content',
-	) );
+	genesis_markup(
+		array(
+			'open'    => '<p %s>',
+			'close'   => '</p>',
+			'content' => genesis_strip_p_tags( $filtered ),
+			'context' => 'entry-meta-after-content',
+		)
+	);
 
 }
 
 add_action( 'genesis_after_entry', 'genesis_do_author_box_single', 8 );
-add_action( 'genesis_after_post', 'genesis_do_author_box_single' );
 /**
  * Conditionally add the author box after single posts or pages.
  *
@@ -519,72 +549,76 @@ function genesis_do_author_box_single() {
 }
 
 /**
- * Echo the the author box and its contents.
+ * Return the author box and its contents.
  *
- * The title is filterable via `genesis_author_box_title`, and the gravatar size is filterable via
- * `genesis_author_box_gravatar_size`.
- *
- * The final output is filterable via `genesis_author_box`, which passes many variables through.
- *
- * @since 1.3.0
+ * @since 2.7.0
  *
  * @global WP_User $authordata Author (user) object.
  *
  * @param string $context Optional. Allows different author box markup for different contexts, specifically 'single'.
  *                        Default is empty string.
- * @param bool   $echo    Optional. If true, the author box will echo. If false, it will be returned.
- * @return string HTML for author box if `$echo` param is falsy.
+ * @return string HTML for author box.
  */
-function genesis_author_box( $context = '', $echo = true ) {
+function genesis_get_author_box( $context = '' ) {
 
 	global $authordata;
 
-	$authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
-	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 70, $context );
-	$gravatar      = get_avatar( get_the_author_meta( 'email' ), $gravatar_size );
-	$description   = wpautop( get_the_author_meta( 'description' ) );
+	$user_id = is_object( $authordata ) ? $authordata->ID : (int) get_query_var( 'author' );
+
+	return genesis_get_author_box_by_user( $user_id, $context );
+
+}
+
+/**
+ * Return the author box and its contents by WP_User ID.
+ *
+ * The title is filterable via `genesis_author_box_title`,
+ *      the description is filterable via `genesis_author_box_description`,
+ *      and the gravatar size is filterable via `genesis_author_box_gravatar_size`.
+ *
+ * The final output is filterable via `genesis_author_box`, which passes many variables through.
+ *
+ * @since 2.7.0
+ *
+ * @param  int    $user_id Required. The user ID to get the author box from.
+ * @param  string $context Optional. Allows different author box markup for different contexts, specifically 'single'.
+ *                         Default is empty string.
+ * @return string HTML for author box.
+ */
+function genesis_get_author_box_by_user( $user_id, $context = '' ) {
+
+	$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 70, $context, $user_id );
+	$gravatar      = get_avatar( get_the_author_meta( 'email', $user_id ), $gravatar_size );
+	$description   = apply_filters( 'genesis_author_box_description', wpautop( get_the_author_meta( 'description', $user_id ) ), $context, $user_id );
 
 	// The author box markup, contextual.
-	if ( genesis_html5() ) {
+	$title = __( 'About', 'genesis' ) . ' <span itemprop="name">' . get_the_author_meta( 'display_name', $user_id ) . '</span>';
 
-		$title = __( 'About', 'genesis' ) . ' <span itemprop="name">' . get_the_author() . '</span>';
+	/**
+	 * Author box title filter.
+	 *
+	 * Allows you to filter the title of the author box. $context passed as second parameter to allow for contextual filtering.
+	 *
+	 * @since unknown
+	 *
+	 * @param string $title   Assembled Title.
+	 * @param string $context Context.
+	 * @param int    $user_id User ID.
+	 */
+	$title = apply_filters( 'genesis_author_box_title', $title, $context, $user_id );
 
-		/**
-		 * Author box title filter.
-		 *
-		 * Allows you to filter the title of the author box. $context passed as second parameter to allow for contextual filtering.
-		 *
-		 * @since unknown
-		 *
-		 * @param string $title   Assembled Title.
-		 * @param string $context Context.
-		 */
-		$title = apply_filters( 'genesis_author_box_title', $title, $context );
+	$heading_element = 'h1';
 
-		$heading_element = 'h1';
-
-		if ( 'single' === $context && ! genesis_get_seo_option( 'semantic_headings' ) ) {
-			$heading_element = 'h4';
-		} elseif ( genesis_a11y( 'headings' ) || get_the_author_meta( 'headline', (int) get_query_var( 'author' ) ) ) {
-			$heading_element = 'h4';
-		}
-
-		$pattern  = sprintf( '<section %s>', genesis_attr( 'author-box' ) );
-		$pattern .= '%s<' . $heading_element . ' class="author-box-title">%s</' . $heading_element . '>';
-		$pattern .= '<div class="author-box-content" itemprop="description">%s</div>';
-		$pattern .= '</section>';
-
-	} else {
-
-		$title = apply_filters( 'genesis_author_box_title', sprintf( '<strong>%s %s</strong>', __( 'About', 'genesis' ), get_the_author() ), $context );
-
-		$pattern = '<div class="author-box">%s<h1>%s</h1><div>%s</div></div>';
-
-		if ( 'single' === $context || get_the_author_meta( 'headline', (int) get_query_var( 'author' ) ) ) {
-			$pattern = '<div class="author-box"><div>%s %s<br />%s</div></div>';
-		}
-
+	if ( 'single' === $context && ! genesis_get_seo_option( 'semantic_headings' ) ) {
+		$heading_element = 'h4';
+	} elseif ( genesis_a11y( 'headings' ) || get_the_author_meta( 'headline', $user_id ) ) {
+		$heading_element = 'h4';
 	}
+
+	$pattern  = sprintf( '<section %s>', genesis_attr( 'author-box' ) );
+	$pattern .= '%s<' . $heading_element . ' class="author-box-title">%s</' . $heading_element . '>';
+	$pattern .= '<div class="author-box-content" itemprop="description">%s</div>';
+	$pattern .= '</section>';
 
 	$output = sprintf( $pattern, $gravatar, $title, $description );
 
@@ -595,22 +629,59 @@ function genesis_author_box( $context = '', $echo = true ) {
 	 *
 	 * @since unknown
 	 *
-	 * @param string $output  Assembled output.
-	 * @param string $context Context.
-	 * @param string $pattern (s)printf pattern.
-	 * @param string $context Gravatar.
-	 * @param string $context Title.
-	 * @param string $context Description.
+	 * @param string $output      Assembled output.
+	 * @param string $context     Context.
+	 * @param string $pattern     (s)printf pattern.
+	 * @param string $gravatar    Gravatar.
+	 * @param string $title       Title.
+	 * @param string $description Description.
+	 * @param int    $user_id     User ID.
 	 */
-	$output = apply_filters( 'genesis_author_box', $output, $context, $pattern, $gravatar, $title, $description );
+	$output = apply_filters( 'genesis_author_box', $output, $context, $pattern, $gravatar, $title, $description, $user_id );
 
-	if ( $echo ) {
-		echo $output;
+	return $output;
 
-		return null;
-	} else {
+}
+
+/**
+ * Echo the author box and its contents.
+ *
+ * The title is filterable via `genesis_author_box_title`, and the gravatar size is filterable via
+ * `genesis_author_box_gravatar_size`.
+ *
+ * The final output is filterable via `genesis_author_box`, which passes many variables through.
+ *
+ * @since 1.3.0
+ * @since 2.7.0 Logic moved to `genesis_get_author_box()` and second parameter deprecated.
+ *
+ * @param string $context    Optional. Allows different author box markup for different contexts, specifically 'single'.
+ *                           Default is empty string.
+ * @param bool   $deprecated Deprecated.
+ * @return string HTML for author box if `$deprecated` param is falsy.
+ */
+function genesis_author_box( $context = '', $deprecated = null ) {
+
+	if ( null !== $deprecated ) {
+		$message = __( 'The default is true, so remove the second argument.', 'genesis' );
+
+		if ( false === (bool) $deprecated ) {
+			$message = __( 'Use `genesis_get_author_box()` instead.', 'genesis' );
+		}
+
+		_deprecated_argument( __FUNCTION__, '2.7.0', esc_html( $message ) );
+
+	}
+
+	$output = genesis_get_author_box( $context );
+
+	// Apply original default value.
+	$deprecated = null === $deprecated ? true : $deprecated;
+
+	if ( false === (bool) $deprecated ) { // Kept for backwards compatibility.
 		return $output;
 	}
+
+	echo $output;
 
 }
 
@@ -628,10 +699,13 @@ function genesis_after_entry_widget_area() {
 		return;
 	}
 
-	genesis_widget_area( 'after-entry', array(
-		'before' => '<div class="after-entry widget-area">',
-		'after'  => '</div>',
-	) );
+	genesis_widget_area(
+		'after-entry',
+		array(
+			'before' => '<div class="after-entry widget-area">',
+			'after'  => '</div>',
+		)
+	);
 
 }
 
@@ -641,7 +715,7 @@ add_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
  *
  * This is shown at the end of archives to get to another page of entries.
  *
- * @since 0.2.3
+ * @since 1.0.0
  */
 function genesis_posts_nav() {
 
@@ -658,7 +732,7 @@ function genesis_posts_nav() {
  *
  * Applies `genesis_prev_link_text` and `genesis_next_link_text` filters.
  *
- * @since 0.2.2
+ * @since 1.0.0
  */
 function genesis_prev_next_posts_nav() {
 
@@ -667,15 +741,17 @@ function genesis_prev_next_posts_nav() {
 
 	if ( $prev_link || $next_link ) {
 
-		$pagination = $prev_link ? sprintf( '<div class="pagination-previous alignleft">%s</div>', $prev_link ) : '';
+		$pagination  = $prev_link ? sprintf( '<div class="pagination-previous alignleft">%s</div>', $prev_link ) : '';
 		$pagination .= $next_link ? sprintf( '<div class="pagination-next alignright">%s</div>', $next_link ) : '';
 
-		genesis_markup( array(
-			'open'    => '<div %s>',
-			'close'   => '</div>',
-			'content' => $pagination,
-			'context' => 'archive-pagination',
-		) );
+		genesis_markup(
+			array(
+				'open'    => '<div %s>',
+				'close'   => '</div>',
+				'content' => $pagination,
+				'context' => 'archive-pagination',
+			)
+		);
 
 	}
 
@@ -696,7 +772,7 @@ function genesis_prev_next_posts_nav() {
  *  * last page,
  *  * next page arrow.
  *
- * @since 0.2.3
+ * @since 1.0.0
  *
  * @global WP_Query $wp_query Query object.
  *
@@ -704,14 +780,14 @@ function genesis_prev_next_posts_nav() {
  */
 function genesis_numeric_posts_nav() {
 
-	if( is_singular() ) {
+	if ( is_singular() ) {
 		return;
 	}
 
 	global $wp_query;
 
 	// Stop execution if there's only one page.
-	if( $wp_query->max_num_pages <= 1 ) {
+	if ( $wp_query->max_num_pages <= 1 ) {
 		return;
 	}
 
@@ -734,12 +810,14 @@ function genesis_numeric_posts_nav() {
 		$links[] = $paged + 1;
 	}
 
-	genesis_markup( array(
-		'open'    => '<div %s>',
-		'context' => 'archive-pagination',
-	) );
+	genesis_markup(
+		array(
+			'open'    => '<div %s>',
+			'context' => 'archive-pagination',
+		)
+	);
 
-	$before_number = genesis_a11y( 'screen-reader-text' ) ? '<span class="screen-reader-text">' . __( 'Page ', 'genesis' ) .  '</span>' : '';
+	$before_number = genesis_a11y( 'screen-reader-text' ) ? '<span class="screen-reader-text">' . __( 'Page ', 'genesis' ) . '</span>' : '';
 
 	echo '<ul>';
 
@@ -749,34 +827,45 @@ function genesis_numeric_posts_nav() {
 	}
 
 	// Link to first page, plus ellipses if necessary.
-	if ( ! in_array( 1, $links ) ) {
-
-		$class = 1 == $paged ? ' class="active"' : '';
+	if ( ! in_array( 1, $links, true ) ) {
+		$class = 1 === $paged ? ' class="active"' : '';
 
 		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), $before_number . '1' );
 
-		if ( ! in_array( 2, $links ) ) {
+		if ( ! in_array( 2, $links, true ) ) {
 			echo '<li class="pagination-omission">&#x02026;</li>' . "\n";
 		}
-
 	}
 
 	// Link to current page, plus 2 pages in either direction if necessary.
 	sort( $links );
 	foreach ( (array) $links as $link ) {
-		$class = $paged == $link ? ' class="active" ' : '';
-		$aria  = $paged == $link ? ' aria-label="' . esc_attr__( 'Current page', 'genesis' ) . '"' : '';
-		printf( '<li%s><a href="%s"%s>%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $aria, $before_number . $link );
+		$class = '';
+		$aria  = '';
+		if ( $paged === $link ) {
+			$class = ' class="active" ';
+			$aria  = ' aria-label="' . esc_attr__( 'Current page', 'genesis' ) . '" aria-current="page"';
+		}
+
+		printf(
+			'<li%s><a href="%s"%s>%s</a></li>' . "\n",
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
+			$class,
+			esc_url( get_pagenum_link( $link ) ),
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Value is hardcoded and safe, not set via input.
+			$aria,
+			$before_number . $link
+		);
 	}
 
 	// Link to last page, plus ellipses if necessary.
-	if ( ! in_array( $max, $links ) ) {
+	if ( ! in_array( $max, $links, true ) ) {
 
-		if ( ! in_array( $max - 1, $links ) ) {
+		if ( ! in_array( $max - 1, $links, true ) ) {
 			echo '<li class="pagination-omission">&#x02026;</li>' . "\n";
 		}
 
-		$class = $paged == $max ? ' class="active"' : '';
+		$class = $paged === $max ? ' class="active"' : '';
 		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $before_number . $max );
 
 	}
@@ -787,10 +876,12 @@ function genesis_numeric_posts_nav() {
 	}
 
 	echo '</ul>';
-	genesis_markup( array(
-		'close'    => '</div>',
-		'context' => 'archive-pagination',
-	) );
+	genesis_markup(
+		array(
+			'close'   => '</div>',
+			'context' => 'archive-pagination',
+		)
+	);
 
 	echo "\n";
 
@@ -810,23 +901,45 @@ function genesis_adjacent_entry_nav() {
 		return;
 	}
 
-	genesis_markup( array(
-		'open'    => '<div %s>',
-		'context' => 'adjacent-entry-pagination',
-	) );
+	genesis_markup(
+		array(
+			'open'    => '<div %s>',
+			'context' => 'adjacent-entry-pagination',
+		)
+	);
 
-	echo '<div class="pagination-previous alignleft">';
-	previous_post_link( '%link', '&#x000AB; %title' );
-	echo '</div>';
+	$previous_post_text = '<span class="adjacent-post-link">&#xAB; %title</span>';
+	if ( genesis_a11y() ) {
+		$previous_post_text = '<span class="screen-reader-text">' . esc_html__( 'Previous Post:', 'genesis' ) . ' </span>' . $previous_post_text;
+	}
+	genesis_markup(
+		array(
+			'open'    => '<div %s>',
+			'context' => 'pagination-previous',
+			'content' => get_previous_post_link( '%link', $previous_post_text ),
+			'close'   => '</div>',
+		)
+	);
 
-	echo '<div class="pagination-next alignright">';
-	next_post_link( '%link', '%title &#x000BB;' );
-	echo '</div>';
+	$next_post_text = '<span class="adjacent-post-link">%title &#xBB;</span>';
+	if ( genesis_a11y() ) {
+		$next_post_text = '<span class="screen-reader-text">' . esc_html__( 'Next Post:', 'genesis' ) . ' </span>' . $next_post_text;
+	}
+	genesis_markup(
+		array(
+			'open'    => '<div %s>',
+			'context' => 'pagination-next',
+			'content' => get_next_post_link( '%link', $next_post_text ),
+			'close'   => '</div>',
+		)
+	);
 
-	genesis_markup( array(
-		'close'    => '</div>',
-		'context' => 'adjacent-entry-pagination',
-	) );
+	genesis_markup(
+		array(
+			'close'   => '</div>',
+			'context' => 'adjacent-entry-pagination',
+		)
+	);
 
 }
 

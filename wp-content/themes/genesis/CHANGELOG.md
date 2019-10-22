@@ -2,7 +2,277 @@
 
 https://my.studiopress.com/themes/genesis/
 
-This project does not follow semantic versioning. It follows the WordPress policy where updates of _x_ and _y_ in an _x.y.z_ version number means a major release, and updates to _z_ means a patch release.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+Up until release 2.7.0, this project did _not_ follow semantic versioning. It followed the WordPress policy where updates of x and y in an x.y.z version number means a major release, and updates to z means a patch release.
+
+## [3.0.2] = 2019-07-03
+
+### Fixed
+* Fixed instances of late escaping that were too aggressive.
+* Fixed an issue encountered by the AMP plugin where the use of `uniqid()` breaks the post-processor.
+
+## [3.0.1] - 2019-06-20
+
+### Added
+* Restored `404.php`.
+* Restored `page.php`.
+* Restored `search.php`.
+* Restored `single.php`.
+
+### Removed
+* Removed language files from core while we work on reliability standards.
+
+### Fixed
+* Fixed issue where certain child theme styles fail to load. `CHILD_THEME_NAME` is now used (if available) when returning a theme handle (used when enqueueing CSS).
+
+## [3.0.0] - 2019-06-19
+
+### Added
+* Added AMP support if the WordPress AMP plugin is installed and active (https://wordpress.org/plugins/amp/). This includes an AMP-compatible, responsive menu that theme developers can add via `genesis_register_responsive_menus()`, in place of having to enqueue their own responsive menu scripts.
+* Added `genesis_get_theme_handle()` function that returns a formatted theme handle, via the theme name in `style.css`, for use in places where a string of words (lowercase, separated by dashes) is needed.
+* Added `genesis_get_theme_version()` function to return the version string from the stylesheet header, or the current Unix time if the `SCRIPT_DEBUG` constant is true. This is helpful as a cache-busting string when enqueueing assets, so that you no longer need to add a `CHILD_THEME_VERSION` constant to your `functions.php` that duplicates information in your stylesheet header.
+* Added memoization to `genesis_get_theme_handle()` and `genesis_get_theme_version()` so multiple uses of these functions won't negatively affect performance.
+* Added ability to use the `query_args` custom field to trigger a custom loop in pages (like the old `page_blog.php` used to do).
+* Added db upgrade functions that provide for backward compatibility for sites using the `page_blog.php` and `page_archive.php` page templates.
+* Added Genesis information to the WordPress Site Health admin page.
+
+### Removed
+* Removed Theme and SEO Settings page content. Customizer is now the canonical location for configuring these settings.
+* Removed support for all non-html5 output.
+* Removed `404.php` template.
+* Removed `page.php` template.
+* Removed `page_archive.php` template.
+* Removed `page_blog.php` template.
+* Removed `search.php` template.
+* Removed `single.php` template.
+* Removed Adsense Auto Ads integration, with limited backward compatibility.
+* Removed integration with Google Plus.
+* Removed all styles from `style.css`.
+* Removed all functions deprecated prior to Genesis 2.0.0.
+* Removed compatibility with old and unknown breadcrumb plugins/functions.
+* Removed unused `$backtotop` variable and filter from footer output function.
+* Deprecated the `genesis_nav_right()` callback function.
+
+### Changed
+* Output the responsive viewport meta tag by default.
+
+### Fixed
+* Fixed all known instances of content being output without any escaping or sanitization.
+* Fixed bug where an empty paragraph was output in the archive intro text.
+* Fixed bug in comments where certain markup was appearing out of order.
+* Fixed issue where the Genesis Plugins link was showing for people who did not have permission to install plugins.
+
+## [2.10.1] - 2019-05-07
+
+### Added
+* Added action links (via filter) to the end of the update completed screen.
+
+### Removed
+* Removed automatic redirect to Theme Settings after an update.
+* Removed the function that output a "success" notice after database upgrade. Upgrades are now silent.
+
+### Fixed
+* Fixed issue on Genesis Plugins page that resulted in a fatal error on WP 5.x or older.
+* Fixed issue with the database upgrade that would cause it not to run in certain circumstances.
+
+## [2.10.0] - 2019-05-01
+
+### Added
+* Added `wp genesis core upgrade` WP-CLI Command.
+* Added `wp genesis core version` WP-CLI Command.
+* Added `wp genesis db upgrade` WP-CLI Command.
+* Added `wp genesis db version` WP-CLI Command.
+* Added `wp genesis setting get` WP-CLI Command.
+* Added `wp genesis setting update` WP-CLI Command.
+* Added child theme version to data sent to update server.
+* Added Genesis Plugins page, to allow Genesis plugins to be discovered and installed easily.
+* Added actions hooks before and after content import during Theme Setup.
+* Added `wp_body_open()` to the header template, directly after the opening `<body>` tag.
+* Added ability for Genesis to run a database upgrade after an update.
+
+### Changed
+* Pass all comment markup through the Markup API.
+* Process shortcodes and embeds in archive intro text.
+* Allow for the import of local images during Theme Setup.
+* Made output of the Theme Setup screen conditional based on the content in the onboarding config file.
+* Pass comment author name through Markup API.
+
+### Fixed
+* Fixed broken comment author link in xHTML.
+* Fixed empty H1 on Theme Setup page.
+* Fixed many WordPress code standards warnings and errors.
+* Fixed multiple home links in breadcrumbs under certain circumstances.
+* Fixed instances where users who can't install plugins are sent to onboarding screen.
+
+## [2.9.1] - 2019-03-20
+
+### Fixed
+- Fixed issue where `get_comment_author_link()` was being escaped improperly.
+
+
+## [2.9.0] - 2019-03-13
+### Added
+* Added menu support to onboarding process.
+* Added featured image support to onboarding process.
+* Added support for assigning static Posts page to onboarding process.
+* Added post excerpt support to onboarding process.
+* Added dynamic support for child theme constants.
+* Added support for importing specified settings on theme activation via a config file.
+* Added functions to get, set, and delete settings that eventually expire.
+
+### Changed
+* Improved the onboarding process for screen readers.
+* Update Superfish to 1.7.10.
+* Changed references of "Front Page" to "Homepage" where appropriate.
+* Use the post type's label as linked text in the metabox on CPT archive settings.
+* Changed the Genesis update storage to an expiring setting rather than a transient.
+
+### Removed
+* Removed several Grunt dev tools and replaced with node scripts.
+* Removed sitemap from 404 template (performance and security).
+
+## [2.8.1] - 2019-01-30
+### Fixed
+- Fixed `genesis_human_time_diff()` to display accurate relative dates.
+- Fixed a problem with `aria-hidden` and `tabindex` attributes were being escaped, causing the quotes to be unintentionally encoded.
+
+## [2.8.0] - 2019-01-16
+### Added
+- Add a `genesis_get_config()` function, to locate and load config files from Genesis and a child theme.
+- Add a new "onboarding" feature that allows users to import homepage demo content in WordPress 5.0.
+- Add a new function that allows you to get an author box by specified user.
+
+### Changed
+- Improved/clarified the labels on settings/customizer pages.
+- Changed references of "- None -" to "None" in forms, for better accessibility.
+
+## [2.7.3] - 2018-12-19
+### Fixed
+- Fixed an issue with the search form, where some elements were missing attributes, or had the wrong attributes.
+
+## [2.7.2] - 2018-12-13
+### Fixed
+- Fixed issue with schema on the breadcrumbs wrapper by removing breadcrumb div schema.org attributes when not needed, use RDFa for Breadcrumb NavXT.
+- Fixed issue with the search form not properly outputting a label when a11y is enabled.
+
+## [2.7.1] - 2018-11-15
+### Fixed
+- Fixed issue with filtered content being passed to `wp_kses_post()`.
+- Fixed issue with the `genesis_search_form()` function returning nothing if used directly.
+
+## [2.7.0] - 2018-11-14
+### Added
+- Added soft PHP 5.3 requirement, with admin messaging.
+- Added meta tag for breadcrumb position.
+- Added ability to export or remove private data via the WordPress privacy tools.
+- Added ability to autoload namespaced classes.
+- Added `genesis_is_amp()` utility function for detecting when the request is an AMP URL.
+- Added `minimum-scale` to the viewport meta tag when the request is an AMP URL.
+- Added a `genesis_more_text` filter.
+- Added a `/docs` folder for housing Genesis documentation.
+- Added individual changelog files for each release.
+- Added SEO support for SEOPress.
+- Added Genesis version to the "At a Glance" dashboard widget.
+- Added `rel="noopener noreferrer"` to new window links.
+- Added `aria-current` to pagination for accessibility.
+
+### Changed
+- Use [Semantic Versioning](https://semver.org/) for all future releases.
+- Use config file for breadcrumb arguments.
+- Use Markup API to build breadcrumb links.
+- Redirect to the "What's New" page on all upgrades, not just "major" ones.
+- Change the license line in all file headers to "GPL-2.0-or-later".
+- Use `wp_strip_all_tags()` instead of `strip_tags()`.
+- Replace all references to "Copyblogger" with "StudioPress".
+- Refresh `.editorconfig`.
+- Use Markup API for opening and closing `entry-content` tags.
+- Clear cache at the end of an upgrade.
+
+### Fixed
+- Fixed various code standards violations.
+- Fixed various missing or incorrect inline documentation.
+- Fixed issue where avatars were fetched even when the size to fetch is `0`.
+- Fixed issue where `genesis_update_action_links()` was not returning an array.
+- Fixed potential null pointer exceptions.
+- Fixed misuses of `mb_strlen()`.
+- Fixed Tiago Hillebrandt's Twitter link.
+
+### Removed
+- Deprecated `genesis_is_major_version()`.
+- Removed direct file access block from `comments.php`.
+- Removed an unused variable assignment in the entry content output function.
+- Removed a duplicate `description` from `composer.json`.
+- Removed tab stop on `aria-hidden` featured images.
+- Remove all references to "Scribe".
+
+## [2.6.1] - 2018-03-14
+### Fixed
+- Fix compatibility issue with breadcrumbs in Yoast SEO.
+- Fix issue with extra slashes in settings when using Customizer.
+- Fix PHP 7 issue with non-static methods being used statically.
+- Fix empty string warning in `skip-links.js`.
+
+## [2.6.0] - 2018-03-05
+### Added
+- Add option to sort Featured Posts by date modified.
+- Add contextual filter for `content` passed through the Markup API.
+- Add `Genesis_Customizer` class.
+- Add `Genesis_SEO_Document_Title_Parts` class.
+- Add `title-tag` theme support by default.
+- Add class autoloader.
+- Add support for AdSense Auto Ads.
+- Add `aria-label` attribute to secondary `nav` element.
+- Add allowance for extra attributes on script tags for registered scripts.
+
+### Changed
+- Change URLs to `https` wherever possible.
+- Update normalize.css to `7.0.0`.
+- Duplicate all theme and SEO settings in the Customizer.
+- Move all classes to their own files in `lib/classes`.
+- Use Markup API for `entry-title-link`.
+- Use Markup API for 404 page title.
+- Change description for headings on archive pages to account for accessibility.
+- Improve color scheme retrieval function.
+
+### Fixed
+- More compliance with WordPress coding standards.
+- Set ID of `entry-pings` to `comments` if only pings exist.
+- Ensure default settings get saved to database in new installs.
+- Change `h3` to `h2` for titles in admin metaboxes.
+- Ensure theme support for Genesis import / export menu before outputting.
+- Check for post parents before outputting parent in breadcrumbs.
+- Ensure `[post_tags]` and `[post_categories]` are valid for post type before outputting.
+- Update `aria-label` attributes for `nav` elements to remove redundant "navigation" word.
+
+### Removed
+- Remove duplicate `genesis_load_favicon` from being hooked to `wp_head`.
+- Remove screen reader `h2` from inside Header Right widget area.
+- Remove screen reader `h2` from inside primary `nav` element.
+- Remove feed settings if Genesis 2.6 is your first version.
+
+## [2.5.3] - 2017-09-27
+### Fixed
+- Prevent global scripts being slashed if they are unchanged.
+
+## [2.5.2] - 2017-06-09
+### Fixed
+- Alternate method for preventing attribute filter on closing tags.
+
+## [2.5.1] - 2017-06-08
+### Added
+- Add logic to detect post-upgrade redirect type.
+
+### Changed
+- Updated docblock for `genesis_post_meta()`.
+
+### Fixed
+- Fix issue with script loading logic.
+- Fix issue with Layout API fallback logic.
+- Fix issue with Layout API type priority determination.
+- Fix issue with posts not being excluded in Featured Posts widget.
+- Fix issue with `entry` attribute filter being applied to closing tag.
+- Fix issue with use of `require` by switching back to `require_once`.
 
 ## [2.5.0] - 2017-04-20
 _Requires WordPress 4.7.0.__
@@ -410,7 +680,7 @@ _Requires WordPress 3.5.0._
 - Fix more tag on home page loop with Featured Post.
 - Fix Leave a Comment link when no comments are present.
 
-## [2.0.0] - 2013-08-07
+## 2.0.0 - 2013-08-07
 ### Added
 - Add semantic HTML5 elements across all output.
 - Add attributes markup functions `genesis_attr()` and `genesis_parse_attr()`, allowing key elements to have their attributes filtered in.
@@ -550,7 +820,7 @@ _Requires WordPress 3.5.0._
 - Fix redundant parameter in `genesis_save_custom_fields()`.
 - Fix breadcrumb issue for date archives.
 
-## [1.9.2] - 2013-04-10
+## 1.9.2 - 2013-04-10
 ### Fixed
 - Fix potential notice when saving post custom fields.
 - Fix potential security issue in the search form (props Sucuri Security team and Alun Jones).
@@ -559,11 +829,11 @@ _Requires WordPress 3.5.0._
 - Fix missing class on layout selector default radio input.
 - Fix distorted images in IE8.
 
-## [1.9.1] - 2013-01-08
+## 1.9.1 - 2013-01-08
 ### Fixed
 - Fix loading of child theme main style sheet, so it is referenced before any other extra child theme style sheets.
 
-## [1.9.0] - 2013-01-07
+## 1.9.0 - 2013-01-07
 ### Added
 - Add `.entry` class to all content, in preparation for the potential absence of `.hentry` in a HTML5-flavoured Genesis that prefers Microdata over Microformats.
 - Add filter for term meta defaults.
@@ -633,7 +903,7 @@ _Requires WordPress 3.5.0._
 - Add a new sanitization filter, `url`.
 - Add escaping to names and dimensions of image sizes used in image size dropdowns.
 
-## [1.8.2] - 2012-06-20
+## 1.8.2 - 2012-06-20
 _Requires WordPress 3.3.0._
 ### Changed
 - Improve user interface by removing Header setting box if WP native custom-header has theme support.
@@ -644,11 +914,11 @@ _Requires WordPress 3.3.0._
 - Fix warnings in theme editor by no longer hiding Genesis Framework files.
 - Fix warnings related to custom header by supporting native functionality if WordPress ≥ 3.4.
 
-## [1.8.1] - 2012-04-30
+## 1.8.1 - 2012-04-30
 ### Security
 - This was a security release. Details of what was actually fixed will be revealed when users have had chance to update their Genesis installs (recommended immediately).
 
-## [1.8.0] - 2012-01-20
+## 1.8.0 - 2012-01-20
 ### Added
 - Add new color scheme / style metabox on Theme Settings page which child themes can use instead of building their own.
 - Add setting to enable / disable breadcrumbs on attachment pages.
@@ -744,7 +1014,7 @@ _Requires WordPress 3.3.0._
 - Fix missing text-domain for footer widget area description, post author link shortcode, and user profile widget.
 - Fix the Scribe notice to be translatable.
 
-## [1.7.1] - 2011-07-18
+## 1.7.1 - 2011-07-18
 _Requires WordPress 3.2.0._
 ### Added
 - Add new conditionals to feed filter to ensure compatibility with other code that amend the feed link.
@@ -756,7 +1026,7 @@ _Requires WordPress 3.2.0._
 - Fix bug with `__genesis_return_content_sidebar` returning the wrong value.
 - Fix tweet text escaping not working as intended, so reverted.
 
-## [1.7.0] - 2011-07-06
+## 1.7.0 - 2011-07-06
 ### Added
 - Add `genesis_human_time_diff()` to use on relative post dates, as a replacement for poor WP function.
 - Add `genesis_canonical` filter.
@@ -840,13 +1110,13 @@ _Requires WordPress 3.2.0._
 - Add a capability check before displaying Header and Footer scripts meta box.
 - Add complete new settings sanitization class and API, aimed at core, extendable to child themes.
 
-## [1.6.1] - 2011-05-02
+## 1.6.1 - 2011-05-02
 _Requires WordPress 3.1.0._
 ### Fixed
 - Fix robots meta not outputting unless all meta tags were sent.
 - Fix minor CSS issues.
 
-## [1.6.0] - 2011-04-26
+## 1.6.0 - 2011-04-26
 ### Added
 - Add select / deselect all checkbox switch to category menu widget.
 - Add plugin detection function.
@@ -911,24 +1181,82 @@ _Requires WordPress 3.1.0._
 - Fix `sub-sub-menu` issue on non-superfish dropdowns.
 - Fix CSS conflict with admin bar.
 
+## 1.5.0 - 2011-02-08
 
-[2.5.0]: https://github.com/copyblogger/genesis/compare/2.4.2...2.5.0
-[2.4.2]: https://github.com/copyblogger/genesis/compare/2.4.1...2.4.2
-[2.4.1]: https://github.com/copyblogger/genesis/compare/2.4.0...2.4.1
-[2.4.0]: https://github.com/copyblogger/genesis/compare/2.3.1...2.4.0
-[2.3.1]: https://github.com/copyblogger/genesis/compare/2.3.0...2.3.1
-[2.3.0]: https://github.com/copyblogger/genesis/compare/2.2.7...2.3.0
-[2.2.7]: https://github.com/copyblogger/genesis/compare/2.2.6...2.2.7
-[2.2.6]: https://github.com/copyblogger/genesis/compare/2.2.5...2.2.6
-[2.2.5]: https://github.com/copyblogger/genesis/compare/2.2.4...2.2.5
-[2.2.4]: https://github.com/copyblogger/genesis/compare/2.2.3...2.2.4
-[2.2.3]: https://github.com/copyblogger/genesis/compare/2.2.2...2.2.3
-[2.2.2]: https://github.com/copyblogger/genesis/compare/2.2.1...2.2.2
-[2.2.1]: https://github.com/copyblogger/genesis/compare/2.2.0...2.2.1
-[2.2.0]: https://github.com/copyblogger/genesis/compare/2.1.3...2.2.0
-[2.1.3]: https://github.com/copyblogger/genesis/compare/2.1.2...2.1.3
-[2.1.2]: https://github.com/copyblogger/genesis/compare/2.1.1...2.1.2
-[2.1.1]: https://github.com/copyblogger/genesis/compare/2.1.0...2.1.1
-[2.1.0]: https://github.com/copyblogger/genesis/compare/2.0.2...2.1.0
-[2.0.2]: https://github.com/copyblogger/genesis/compare/2.0.1...2.0.2
-[2.0.1]: https://github.com/copyblogger/genesis/compare/2.0.0...2.0.1
+- https://www.studiopress.com/genesis-framework-v15/
+
+## 1.4.1 - 2010-12-10
+
+## 1.4.0 - 2010-11-17
+
+- https://www.studiopress.com/genesis-framework-v14/
+
+## 1.3.1 - 2010-09-15
+
+## 1.3.0 - 2010-08-10
+
+- https://www.studiopress.com/genesis-framework-v13/
+
+## 1.2.1 - 2010-06-23
+
+## 1.2.0 - 2010-06-17
+
+- https://www.studiopress.com/genesis-framework-v12/
+
+## 1.1.3 - 2010-05-04
+
+## 1.1.2 - 2010-04-26
+
+## 1.1.1 - 2010-04-09
+
+- https://www.studiopress.com/genesis-framework-v111/
+
+## 1.1.0 - 2010-03-26
+
+- https://www.studiopress.com/genesis-framework-v11/
+
+## 1.0.0 - 2010-02-01
+
+- https://www.studiopress.com/genesis-framework-v10/
+
+First public release.
+
+[3.0.2]: https://github.com/studiopress/genesis/compare/3.0.1...3.0.2
+[3.0.1]: https://github.com/studiopress/genesis/compare/3.0.0...3.0.1
+[3.0.0]: https://github.com/studiopress/genesis/compare/2.10.1...3.0.0
+[2.10.1]: https://github.com/studiopress/genesis/compare/2.10.0...2.10.1
+[2.10.0]: https://github.com/studiopress/genesis/compare/2.9.1...2.10.0
+[2.9.1]: https://github.com/studiopress/genesis/compare/2.9.0...2.9.1
+[2.9.0]: https://github.com/studiopress/genesis/compare/2.8.1...2.9.0
+[2.8.1]: https://github.com/studiopress/genesis/compare/2.8.0...2.8.1
+[2.8.0]: https://github.com/studiopress/genesis/compare/2.7.3...2.8.0
+[2.7.3]: https://github.com/studiopress/genesis/compare/2.7.2...2.7.3
+[2.7.2]: https://github.com/studiopress/genesis/compare/2.7.1...2.7.2
+[2.7.1]: https://github.com/studiopress/genesis/compare/2.7.0...2.7.1
+[2.7.0]: https://github.com/studiopress/genesis/compare/2.6.1...2.7.0
+[2.6.1]: https://github.com/studiopress/genesis/compare/2.6.0...2.6.1
+[2.6.0]: https://github.com/studiopress/genesis/compare/2.5.3...2.6.0
+[2.5.3]: https://github.com/studiopress/genesis/compare/2.5.2...2.5.3
+[2.5.3]: https://github.com/studiopress/genesis/compare/2.5.2...2.5.3
+[2.5.2]: https://github.com/studiopress/genesis/compare/2.5.1...2.5.2
+[2.5.1]: https://github.com/studiopress/genesis/compare/2.5.0...2.5.1
+[2.5.0]: https://github.com/studiopress/genesis/compare/2.4.2...2.5.0
+[2.4.2]: https://github.com/studiopress/genesis/compare/2.4.1...2.4.2
+[2.4.1]: https://github.com/studiopress/genesis/compare/2.4.0...2.4.1
+[2.4.0]: https://github.com/studiopress/genesis/compare/2.3.1...2.4.0
+[2.3.1]: https://github.com/studiopress/genesis/compare/2.3.0...2.3.1
+[2.3.0]: https://github.com/studiopress/genesis/compare/2.2.7...2.3.0
+[2.2.7]: https://github.com/studiopress/genesis/compare/2.2.6...2.2.7
+[2.2.6]: https://github.com/studiopress/genesis/compare/2.2.5...2.2.6
+[2.2.5]: https://github.com/studiopress/genesis/compare/2.2.4...2.2.5
+[2.2.4]: https://github.com/studiopress/genesis/compare/2.2.3...2.2.4
+[2.2.3]: https://github.com/studiopress/genesis/compare/2.2.2...2.2.3
+[2.2.2]: https://github.com/studiopress/genesis/compare/2.2.1...2.2.2
+[2.2.1]: https://github.com/studiopress/genesis/compare/2.2.0...2.2.1
+[2.2.0]: https://github.com/studiopress/genesis/compare/2.1.3...2.2.0
+[2.1.3]: https://github.com/studiopress/genesis/compare/2.1.2...2.1.3
+[2.1.2]: https://github.com/studiopress/genesis/compare/2.1.1...2.1.2
+[2.1.1]: https://github.com/studiopress/genesis/compare/2.1.0...2.1.1
+[2.1.0]: https://github.com/studiopress/genesis/compare/2.0.2...2.1.0
+[2.0.2]: https://github.com/studiopress/genesis/compare/2.0.1...2.0.2
+[2.0.1]: https://github.com/studiopress/genesis/compare/2.0.0...2.0.1

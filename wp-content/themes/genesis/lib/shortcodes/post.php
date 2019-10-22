@@ -7,8 +7,8 @@
  *
  * @package Genesis\Shortcodes
  * @author  StudioPress
- * @license GPL-2.0+
- * @link    http://my.studiopress.com/themes/genesis/
+ * @license GPL-2.0-or-later
+ * @link    https://my.studiopress.com/themes/genesis/
  */
 
 add_shortcode( 'post_date', 'genesis_post_date_shortcode' );
@@ -41,17 +41,13 @@ function genesis_post_date_shortcode( $atts ) {
 	$atts = shortcode_atts( $defaults, $atts, 'post_date' );
 
 	if ( 'relative' === $atts['format'] ) {
-		$display = genesis_human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ), $atts['relative_depth'] );
+		$display  = genesis_human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ), $atts['relative_depth'] );
 		$display .= ' ' . __( 'ago', 'genesis' );
 	} else {
 		$display = get_the_time( $atts['format'] );
 	}
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . $atts['before'] . $atts['label'] . $display . $atts['after'] . '</time>';
-	} else {
-		$output = sprintf( '<span class="date published time" title="%5$s">%1$s%3$s%4$s%2$s</span> ', $atts['before'], $atts['after'], $atts['label'], $display, get_the_time( 'c' ) );
-	}
+	$output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . $atts['before'] . $atts['label'] . $display . $atts['after'] . '</time>';
 
 	return apply_filters( 'genesis_post_date_shortcode', $output, $atts );
 
@@ -85,11 +81,7 @@ function genesis_post_time_shortcode( $atts ) {
 
 	$atts = shortcode_atts( $defaults, $atts, 'post_time' );
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . $atts['before'] . $atts['label'] . get_the_time( $atts['format'] ) . $atts['after'] . '</time>';
-	} else {
-		$output = sprintf( '<span class="date published time" title="%5$s">%1$s%3$s%4$s%2$s</span> ', $atts['before'], $atts['after'], $atts['label'], get_the_time( $atts['format'] ), get_the_time( 'c' ) );
-	}
+	$output = sprintf( '<time %s>', genesis_attr( 'entry-time' ) ) . $atts['before'] . $atts['label'] . get_the_time( $atts['format'] ) . $atts['after'] . '</time>';
 
 	return apply_filters( 'genesis_post_time_shortcode', $output, $atts );
 
@@ -125,17 +117,13 @@ function genesis_post_modified_date_shortcode( $atts ) {
 	$atts = shortcode_atts( $defaults, $atts, 'post_modified_date' );
 
 	if ( 'relative' === $atts['format'] ) {
-		$display = genesis_human_time_diff( get_the_modified_time( 'U' ), current_time( 'timestamp' ), $atts['relative_depth'] );
+		$display  = genesis_human_time_diff( get_the_modified_time( 'U' ), current_time( 'timestamp' ), $atts['relative_depth'] );
 		$display .= ' ' . __( 'ago', 'genesis' );
 	} else {
 		$display = get_the_modified_time( $atts['format'] );
 	}
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<time %s>', genesis_attr( 'entry-modified-time' ) ) . $atts['before'] . $atts['label'] . $display . $atts['after'] . '</time>';
-	} else {
-		$output = sprintf( '<span class="date updated time" title="%5$s">%1$s%3$s%4$s%2$s</span> ', $atts['before'], $atts['after'], $atts['label'], $display, get_the_modified_time( 'c' ) );
-	}
+	$output = sprintf( '<time %s>', genesis_attr( 'entry-modified-time' ) ) . $atts['before'] . $atts['label'] . $display . $atts['after'] . '</time>';
 
 	/**
 	 * Change the output of the post_modified_date shortcode.
@@ -184,11 +172,7 @@ function genesis_post_modified_time_shortcode( $atts ) {
 
 	$atts = shortcode_atts( $defaults, $atts, 'post_modified_time' );
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<time %s>', genesis_attr( 'entry-modified-time' ) ) . $atts['before'] . $atts['label'] . get_the_modified_time( $atts['format'] ) . $atts['after'] . '</time>';
-	} else {
-		$output = sprintf( '<span class="date updated time" title="%5$s">%1$s%3$s%4$s%2$s</span> ', $atts['before'], $atts['after'], $atts['label'], get_the_modified_time( $atts['format'] ), get_the_modified_time( 'c' ) );
-	}
+	$output = sprintf( '<time %s>', genesis_attr( 'entry-modified-time' ) ) . $atts['before'] . $atts['label'] . get_the_modified_time( $atts['format'] ) . $atts['after'] . '</time>';
 
 	/**
 	 * Change the output of the post_modified_time shortcode.
@@ -244,15 +228,11 @@ function genesis_post_author_shortcode( $atts ) {
 
 	$atts = shortcode_atts( $defaults, $atts, 'post_author' );
 
-	if ( genesis_html5() ) {
-		$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
-		$output .= $atts['before'];
-		$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) ) . esc_html( $author ) . '</span>';
-		$output .= $atts['after'];
-		$output .= '</span>';
-	} else {
-		$output = sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', esc_html( $author ), $atts['before'], $atts['after'] );
-	}
+	$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
+	$output .= $atts['before'];
+	$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) ) . esc_html( $author ) . '</span>';
+	$output .= $atts['after'];
+	$output .= '</span>';
 
 	return apply_filters( 'genesis_post_author_shortcode', $output, $atts );
 
@@ -295,23 +275,18 @@ function genesis_post_author_link_shortcode( $atts ) {
 	}
 
 	$defaults = array(
-		'after'    => '',
-		'before'   => '',
+		'after'  => '',
+		'before' => '',
 	);
 
 	$atts = shortcode_atts( $defaults, $atts, 'post_author_link' );
 
-	if ( genesis_html5() ) {
-		$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
-		$output .= $atts['before'];
-		$output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
-		$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
-		$output .= esc_html( $author );
-		$output .= '</span></a>' . $atts['after'] . '</span>';
-	} else {
-		$link = '<a href="' . esc_url( $url ) . '" rel="author external">' . esc_html( $author ) . '</a>';
-		$output = sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', $link, $atts['before'], $atts['after'] );
-	}
+	$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
+	$output .= $atts['before'];
+	$output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
+	$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
+	$output .= esc_html( $author );
+	$output .= '</span></a>' . $atts['after'] . '</span>';
 
 	return apply_filters( 'genesis_post_author_link_shortcode', $output, $atts );
 
@@ -354,17 +329,12 @@ function genesis_post_author_posts_link_shortcode( $atts ) {
 
 	$url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-	if ( genesis_html5() ) {
-		$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
-		$output .= $atts['before'];
-		$output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
-		$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
-		$output .= esc_html( $author );
-		$output .= '</span></a>' . $atts['after'] . '</span>';
-	} else {
-		$link   = sprintf( '<a href="%s" rel="author">%s</a>', esc_url( $url ), esc_html( $author ) );
-		$output = sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', $link, $atts['before'], $atts['after'] );
-	}
+	$output  = sprintf( '<span %s>', genesis_attr( 'entry-author' ) );
+	$output .= $atts['before'];
+	$output .= sprintf( '<a href="%s" %s>', $url, genesis_attr( 'entry-author-link' ) );
+	$output .= sprintf( '<span %s>', genesis_attr( 'entry-author-name' ) );
+	$output .= esc_html( $author );
+	$output .= '</span></a>' . $atts['after'] . '</span>';
 
 	return apply_filters( 'genesis_post_author_posts_link_shortcode', $output, $atts );
 
@@ -406,7 +376,7 @@ function genesis_post_comments_shortcode( $atts ) {
 		'one'         => __( '1 Comment', 'genesis' ),
 		'zero'        => __( 'Leave a Comment', 'genesis' ),
 	);
-	$atts = shortcode_atts( $defaults, $atts, 'post_comments' );
+	$atts     = shortcode_atts( $defaults, $atts, 'post_comments' );
 
 	if ( 'enabled' === $atts['hide_if_off'] && ( ! genesis_get_option( 'comments_posts' ) || ! comments_open() ) ) {
 		return '';
@@ -419,13 +389,15 @@ function genesis_post_comments_shortcode( $atts ) {
 
 	$comments = sprintf( '<a href="%s">%s</a>', get_comments_link(), $comments );
 
-	$output = genesis_markup( array(
-		'open'    => '<span class="entry-comments-link">',
-		'close'   => '</span>',
-		'content' => $atts['before'] . $comments . $atts['after'],
-		'context' => 'comments-shortcode',
-		'echo'    => false,
-	) );
+	$output = genesis_markup(
+		array(
+			'open'    => '<span class="entry-comments-link">',
+			'close'   => '</span>',
+			'content' => $atts['before'] . $comments . $atts['after'],
+			'context' => 'comments-shortcode',
+			'echo'    => false,
+		)
+	);
 
 	return apply_filters( 'genesis_post_comments_shortcode', $output, $atts );
 
@@ -445,16 +417,21 @@ add_shortcode( 'post_tags', 'genesis_post_tags_shortcode' );
  * @since 1.1.0
  *
  * @param array|string $atts Shortcode attributes. Empty string if no attributes.
- * @return string Return empty string if the post has no tags. Otherwise, output for `post_tags` shortcode.
+ * @return string Return empty string if the `post_tag` taxonomy is not associated with the current post type
+ *                or if the post has no tags. Otherwise, output for `post_tags` shortcode.
  */
 function genesis_post_tags_shortcode( $atts ) {
+
+	if ( ! is_object_in_taxonomy( get_post_type(), 'post_tag' ) ) {
+		return '';
+	}
 
 	$defaults = array(
 		'after'  => '',
 		'before' => __( 'Tagged With: ', 'genesis' ),
 		'sep'    => ', ',
 	);
-	$atts = shortcode_atts( $defaults, $atts, 'post_tags' );
+	$atts     = shortcode_atts( $defaults, $atts, 'post_tags' );
 
 	$tags = get_the_tag_list( $atts['before'], trim( $atts['sep'] ) . ' ', $atts['after'] );
 
@@ -463,11 +440,7 @@ function genesis_post_tags_shortcode( $atts ) {
 		return '';
 	}
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<span %s>', genesis_attr( 'entry-tags' ) ) . $tags . '</span>';
-	} else {
-		$output = '<span class="tags">' . $tags . '</span>';
-	}
+	$output = sprintf( '<span %s>', genesis_attr( 'entry-tags' ) ) . $tags . '</span>';
 
 	return apply_filters( 'genesis_post_tags_shortcode', $output, $atts );
 
@@ -487,11 +460,14 @@ add_shortcode( 'post_categories', 'genesis_post_categories_shortcode' );
  * @since 1.1.0
  *
  * @param array|string $atts Shortcode attributes. Empty string if no attributes.
- *
- * @return string Return empty string if the post has no categories.
- *                Otherwise, output for `post_categories` shortcode.
+ * @return string Return empty string if the `category` taxonomy is not associated with the current post type
+ *                or if the post has no categories. Otherwise, output for `post_categories` shortcode.
  */
 function genesis_post_categories_shortcode( $atts ) {
+
+	if ( ! is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+		return '';
+	}
 
 	$defaults = array(
 		'sep'    => ', ',
@@ -508,11 +484,7 @@ function genesis_post_categories_shortcode( $atts ) {
 		return '';
 	}
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<span %s>', genesis_attr( 'entry-categories' ) ) . $atts['before'] . $cats . $atts['after'] . '</span>';
-	} else {
-		$output = '<span class="categories">' . $atts['before'] . $cats . $atts['after'] . '</span>';
-	}
+	$output = sprintf( '<span %s>', genesis_attr( 'entry-categories' ) ) . $atts['before'] . $cats . $atts['after'] . '</span>';
 
 	return apply_filters( 'genesis_post_categories_shortcode', $output, $atts );
 
@@ -524,7 +496,7 @@ add_shortcode( 'post_terms', 'genesis_post_terms_shortcode' );
  *
  * Supported shortcode attributes are:
  *   after (output after link, default is empty string),
- *   before (output before link, default is 'Tagged With: '),
+ *   before (output before link, default is 'Filed Under: '),
  *   sep (separator string between tags, default is ', '),
  *    taxonomy (name of the taxonomy, default is 'category').
  *
@@ -567,11 +539,7 @@ function genesis_post_terms_shortcode( $atts ) {
 			return '';
 	}
 
-	if ( genesis_html5() ) {
-		$output = sprintf( '<span %s>', genesis_attr( 'entry-terms' ) ) . $terms . '</span>';
-	} else {
-		$output = '<span class="terms">' . $terms . '</span>';
-	}
+	$output = sprintf( '<span %s>', genesis_attr( 'entry-terms' ) ) . $terms . '</span>';
 
 	return apply_filters( 'genesis_post_terms_shortcode', $output, $terms, $atts );
 

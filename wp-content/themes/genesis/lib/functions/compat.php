@@ -10,8 +10,8 @@
  *
  * @package Genesis\Compatibility
  * @author  StudioPress
- * @license GPL-2.0+
- * @link    http://my.studiopress.com/themes/genesis/
+ * @license GPL-2.0-or-later
+ * @link    https://my.studiopress.com/themes/genesis/
  */
 
 if ( ! function_exists( 'mb_strpos' ) ) {
@@ -83,5 +83,26 @@ if ( ! function_exists( 'mb_strtolower' ) ) {
 	 */
 	function mb_strtolower( $string, $encoding = '' ) {
 		return strtolower( $string );
+	}
+}
+
+// Add compatibility for undefined wp_unique_id() by polyfilling; it was introduced in WP 5.0.3.
+if ( ! function_exists( 'wp_unique_id' ) ) {
+	/**
+	 * Get unique ID.
+	 *
+	 * This is a PHP implementation of Underscore's uniqueId method. A static variable
+	 * contains an integer that is incremented with each call. This number is returned
+	 * with the optional prefix. As such the returned value is not universally unique,
+	 * but it is unique across the life of the PHP process.
+	 *
+	 * @staticvar int $id_counter
+	 *
+	 * @param string $prefix Prefix for the returned ID.
+	 * @return string Unique ID.
+	 */
+	function wp_unique_id( $prefix = '' ) {
+		static $id_counter = 0;
+		return $prefix . (string) ++$id_counter;
 	}
 }
